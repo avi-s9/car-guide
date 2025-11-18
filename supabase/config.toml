@@ -1,0 +1,7 @@
+project_id = "sjzxvdedelivbpmscase"
+
+[functions.parse-preferences]
+verify_jwt = false
+
+[functions.recommend]
+verify_jwt = false
