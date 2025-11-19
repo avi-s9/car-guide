@@ -19,12 +19,10 @@ serve(async (req) => {
     // For v1, return hardcoded structured preferences
     // In future versions, this could use AI to parse natural language
     const preferences = {
-      usage: "city", // city, highway, mixed
-      budget: "mid", // low, mid, high
-      priorities: ["fuel-economy", "safety", "compact"],
-      priceMax: 30000,
-      preferredTypes: ["sedan", "hatchback", "compact-suv"],
-      rawInput: userInput
+      budgetLow: 20000,
+      budgetHigh: 30000,
+      bodyStyle: "sedan",
+      priorities: ["fuel-economy", "reliable", "safe"]
     };
 
     console.log('Parsed preferences:', preferences);

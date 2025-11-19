@@ -31,7 +31,7 @@ const Index = () => {
       if (parseError) throw parseError;
 
       // Call recommend endpoint with parsed preferences
-      const { data: recommendations, error: recError } = await supabase.functions.invoke(
+      const { data: recData, error: recError } = await supabase.functions.invoke(
         "recommend",
         {
           body: { preferences: parsedData },
@@ -41,7 +41,7 @@ const Index = () => {
       if (recError) throw recError;
 
       // Navigate to results page with recommendations
-      navigate("/results", { state: { recommendations, userInput: preferences } });
+      navigate("/results", { state: { recommendations: recData.recommendations, userInput: preferences } });
     } catch (error) {
       console.error("Error:", error);
       toast.error("Failed to get recommendations. Please try again.");

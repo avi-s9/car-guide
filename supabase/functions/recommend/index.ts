@@ -7,12 +7,10 @@ const corsHeaders = {
 };
 
 interface Preferences {
-  usage: string;
-  budget: string;
+  budgetLow: number;
+  budgetHigh: number;
+  bodyStyle: string | null;
   priorities: string[];
-  priceMax: number;
-  preferredTypes: string[];
-  rawInput: string;
 }
 
 interface ScoredCar {
@@ -27,69 +25,55 @@ interface ScoredCar {
   reasons: string[];
 }
 
-function scoreCar(car: any, preferences: Preferences): ScoredCar {
-  let score = 0;
+function scoreCar(car: any, prefs: Preferences): ScoredCar {
+  let score = 50; // Base score
   const reasons: string[] = [];
 
-  // Price matching (max 30 points)
-  if (car.price <= preferences.priceMax) {
-    const priceScore = 30 - ((car.price / preferences.priceMax) * 10);
-    score += priceScore;
-    reasons.push(`Fits within your ${preferences.priceMax.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 })} budget`);
+  // Budget matching - penalize if out of range
+  if (car.price < prefs.budgetLow || car.price > prefs.budgetHigh) {
+    score -= 100; // Heavy penalty for out of budget
   } else {
-    score -= 20; // Penalty for over budget
+    score += 30;
+    reasons.push(`Fits within your $${prefs.budgetLow.toLocaleString()} - $${prefs.budgetHigh.toLocaleString()} budget`);
   }
 
-  // Type matching (max 20 points)
-  const normalizedType = car.type.toLowerCase().replace(/\s+/g, '-');
-  if (preferences.preferredTypes.some(t => normalizedType.includes(t) || t.includes(normalizedType))) {
-    score += 20;
-    reasons.push(`${car.type} body style matches your preferences`);
+  // Body style matching
+  if (prefs.bodyStyle) {
+    const normalizedCarType = car.type.toLowerCase().replace(/\s+/g, '-');
+    const normalizedPrefType = prefs.bodyStyle.toLowerCase().replace(/\s+/g, '-');
+    if (normalizedCarType.includes(normalizedPrefType) || normalizedPrefType.includes(normalizedCarType)) {
+      score += 25;
+      reasons.push(`${car.type} body style matches your preference`);
+    }
   }
 
-  // Priority matching (max 30 points)
+  // Priorities matching - check overlap with car tags
   let priorityMatches = 0;
-  preferences.priorities.forEach(priority => {
+  prefs.priorities.forEach(priority => {
     if (car.tags.includes(priority)) {
       priorityMatches++;
-      score += 10;
+      score += 15;
     }
   });
 
   if (priorityMatches > 0) {
-    const matchedPriorities = preferences.priorities.filter(p => car.tags.includes(p));
-    reasons.push(`Excellent ${matchedPriorities.join(', ')} ratings`);
-  }
-
-  // Usage-based scoring (max 20 points)
-  if (preferences.usage === "city") {
-    if (car.mpgCity >= 30) {
-      score += 20;
-      reasons.push('Outstanding city fuel economy for daily commuting');
-    } else if (car.mpgCity >= 25) {
-      score += 10;
-      reasons.push('Good fuel economy for city driving');
-    }
-  } else if (preferences.usage === "highway") {
-    if (car.mpgHighway >= 35) {
-      score += 20;
-      reasons.push('Excellent highway fuel efficiency');
-    }
+    const matchedPriorities = prefs.priorities.filter(p => car.tags.includes(p));
+    reasons.push(`Strong in: ${matchedPriorities.join(', ')}`);
   }
 
   // Safety bonus
   if (car.safetyRating === 5) {
     score += 10;
-    reasons.push('Top 5-star safety rating for peace of mind');
+    reasons.push('Top 5-star safety rating');
   }
 
-  // Ensure we have at least 3 reasons
-  if (reasons.length < 3) {
+  // Ensure we have at least 2 reasons
+  if (reasons.length < 2) {
     if (car.tags.includes('reliable')) {
-      reasons.push('Proven reliability and low maintenance costs');
+      reasons.push('Proven reliability');
     }
-    if (reasons.length < 3) {
-      reasons.push(`Modern ${car.year} model with latest features`);
+    if (reasons.length < 2) {
+      reasons.push(`${car.year} model with modern features`);
     }
   }
 
@@ -101,8 +85,8 @@ function scoreCar(car: any, preferences: Preferences): ScoredCar {
     priceRange: car.priceRange,
     fuelEconomy: car.fuelEconomy,
     safetyRating: car.safetyRating,
-    score: Math.min(100, Math.max(0, Math.round(score))),
-    reasons: reasons.slice(0, 4)
+    score: Math.round(score),
+    reasons: reasons.slice(0, 3)
   };
 }
 
@@ -128,7 +112,7 @@ serve(async (req) => {
     console.log('Top recommendations:', topRecommendations);
 
     return new Response(
-      JSON.stringify(topRecommendations),
+      JSON.stringify({ recommendations: topRecommendations }),
       { 
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         status: 200,
