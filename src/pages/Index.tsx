@@ -12,92 +12,95 @@ const Index = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  /*
+  // NEW handleSubmit: derive preferences on the frontend and call only `recommend`
   const handleSubmit = async () => {
+    alert("handleSubmit called");
+    console.log("handleSubmit called, raw text:", preferences);
+
     if (!preferences.trim()) {
       toast.error("Please describe your driving situation");
       return;
     }
 
+    // ---- derive preferences on the frontend ----
+    const text = preferences.toLowerCase();
+
+    // defaults
+    let budgetLow = 20000;
+    let budgetHigh = 30000;
+    let bodyStyle: string | null = null;
+    const priorityTags: string[] = [];
+
+    // very simple budget parsing: "$25k", "25k", "$25000"
+    const dollarMatch = text.match(/\$?\s*(\d{2,3})\s*k\b/);
+    const fullNumMatch = text.match(/\$?\s*(\d{5})\b/);
+
+    if (dollarMatch) {
+      const mid = parseInt(dollarMatch[1], 10) * 1000;
+      budgetLow = mid - 5000;
+      budgetHigh = mid + 5000;
+    } else if (fullNumMatch) {
+      const mid = parseInt(fullNumMatch[1], 10);
+      budgetLow = mid - 3000;
+      budgetHigh = mid + 3000;
+    }
+
+    // body style from keywords
+    if (text.includes("suv") || text.includes("crossover")) {
+      bodyStyle = "compact suv";
+    } else if (text.includes("hatchback")) {
+      bodyStyle = "hatchback";
+    } else if (text.includes("sedan")) {
+      bodyStyle = "sedan";
+    }
+
+    // priorities that match your car.tags values
+    if (text.includes("fuel") || text.includes("mpg") || text.includes("gas")) {
+      priorityTags.push("fuel-economy");
+    }
+    if (text.includes("safe") || text.includes("safety")) {
+      priorityTags.push("safe");
+    }
+    if (text.includes("family") || text.includes("kids") || text.includes("space")) {
+      priorityTags.push("spacious");
+    }
+    if (text.includes("reliable") || text.includes("reliability")) {
+      priorityTags.push("reliable");
+    }
+
+    const preferencesPayload = {
+      budgetLow,
+      budgetHigh,
+      bodyStyle,
+      priorities: priorityTags,
+    };
+
+    console.log("Derived preferencesPayload:", preferencesPayload);
+
     setIsLoading(true);
     try {
-      // Call parse-preferences endpoint
-      const { data: parsedData, error: parseError } = await supabase.functions.invoke(
-        "parse-preferences",
-        {
-          body: { userInput: preferences },
-        }
-      );
+      const { data: recData, error: recError } =
+        await supabase.functions.invoke("recommend", {
+          body: { preferences: preferencesPayload },
+        });
 
-      console.log("parsedData from parse-preferences:", parsedData);
-
-      if (parseError) throw parseError;
-
-      // Call recommend endpoint with parsed preferences
-      const { data: recData, error: recError } = await supabase.functions.invoke(
-        "recommend",
-        {
-          body: { preferences: parsedData },
-        }
-      );
+      console.log("recData from recommend:", recData, "recError:", recError);
 
       if (recError) throw recError;
 
-      // Navigate to results page with recommendations
-      navigate("/results", { state: { recommendations: recData.recommendations, userInput: preferences } });
+      navigate("/results", {
+        state: {
+          recommendations: recData.recommendations,
+          userInput: preferences,
+        },
+      });
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error in handleSubmit:", error);
       toast.error("Failed to get recommendations. Please try again.");
     } finally {
       setIsLoading(false);
     }
-  }; */
-
-  const handleSubmit = async () => {
-  alert("handleSubmit called");
-  console.log("handleSubmit called, preferences:", preferences);
-
-  if (!preferences.trim()) {
-    toast.error("Please describe your driving situation");
-    return;
-  }
-
-  setIsLoading(true);
-  try {
-    const { data: parsedData, error: parseError } =
-      await supabase.functions.invoke("parse-preferences", {
-        body: { userInput: preferences },
-      });
-
-    console.log("parsedData from parse-preferences:", parsedData, parseError);
-
-    if (parseError) throw parseError;
-
-    const preferencesPayload = parsedData?.preferences ?? parsedData;
-
-    const { data: recData, error: recError } =
-      await supabase.functions.invoke("recommend", {
-        body: { preferences: preferencesPayload },
-      });
-
-    console.log("recData from recommend:", recData, recError);
-
-    if (recError) throw recError;
-
-    navigate("/results", {
-      state: {
-        recommendations: recData.recommendations,
-        userInput: preferences,
-      },
-    });
-  } catch (error) {
-    console.error("Error in handleSubmit:", error);
-    toast.error("Failed to get recommendations. Please try again.");
-  } finally {
-    setIsLoading(false);
-  }
-};
-
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
