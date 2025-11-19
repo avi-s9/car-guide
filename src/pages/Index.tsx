@@ -110,7 +110,7 @@ const Index = () => {
             <Car className="w-8 h-8 text-primary" />
           </div>
           <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            CarGuide DEBUG
+            CarGuide
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Find your perfect car match with AI-powered recommendations tailored to your lifestyle
