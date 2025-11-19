@@ -20,6 +20,8 @@ const Index = () => {
 
   // ---- derive preferences on the frontend ----
   const text = preferences.toLowerCase();
+  const normalized = text.replace(/,/g, "");
+
 
   // defaults
   let budgetLow = 20000;
@@ -27,9 +29,9 @@ const Index = () => {
   let bodyStyle: string | null = null;
   const priorityTags: string[] = [];
 
-  // very simple budget parsing: "$25k", "25k", "$25000"
-  const dollarMatch = text.match(/\$?\s*(\d{2,3})\s*k\b/);
-  const fullNumMatch = text.match(/\$?\s*(\d{5})\b/);
+  // very simple budget parsing: "$25k", "25k", "$25000", "$25,000"
+  const dollarMatch = normalized.match(/\$?\s*(\d{2,3})\s*k\b/);
+  const fullNumMatch = normalized.match(/\$?\s*(\d{5})\b/);
 
   if (dollarMatch) {
     const mid = parseInt(dollarMatch[1], 10) * 1000;
