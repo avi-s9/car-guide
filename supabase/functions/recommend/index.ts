@@ -1,117 +1,10 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { cars } from "./cars.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
-
-// Sample car database (in a real app, this would be loaded from a database or JSON file)
-const carsDatabase = [
-  {
-    make: "Honda",
-    model: "Civic",
-    year: 2024,
-    type: "Sedan",
-    priceRange: "$24,000 - $28,000",
-    price: 26000,
-    fuelEconomy: "33/42 MPG",
-    mpgCity: 33,
-    mpgHighway: 42,
-    safetyRating: 5,
-    tags: ["fuel-economy", "reliable", "compact", "safe"]
-  },
-  {
-    make: "Toyota",
-    model: "Corolla",
-    year: 2024,
-    type: "Sedan",
-    priceRange: "$22,000 - $26,000",
-    price: 24000,
-    fuelEconomy: "32/41 MPG",
-    mpgCity: 32,
-    mpgHighway: 41,
-    safetyRating: 5,
-    tags: ["fuel-economy", "reliable", "compact", "affordable"]
-  },
-  {
-    make: "Mazda",
-    model: "CX-5",
-    year: 2024,
-    type: "Compact SUV",
-    priceRange: "$28,000 - $38,000",
-    price: 33000,
-    fuelEconomy: "25/31 MPG",
-    mpgCity: 25,
-    mpgHighway: 31,
-    safetyRating: 5,
-    tags: ["safe", "spacious", "premium", "all-wheel-drive"]
-  },
-  {
-    make: "Hyundai",
-    model: "Elantra",
-    year: 2024,
-    type: "Sedan",
-    priceRange: "$21,000 - $25,000",
-    price: 23000,
-    fuelEconomy: "33/43 MPG",
-    mpgCity: 33,
-    mpgHighway: 43,
-    safetyRating: 5,
-    tags: ["fuel-economy", "affordable", "compact", "warranty"]
-  },
-  {
-    make: "Subaru",
-    model: "Impreza",
-    year: 2024,
-    type: "Hatchback",
-    priceRange: "$23,000 - $27,000",
-    price: 25000,
-    fuelEconomy: "28/36 MPG",
-    mpgCity: 28,
-    mpgHighway: 36,
-    safetyRating: 5,
-    tags: ["all-wheel-drive", "safe", "reliable", "compact"]
-  },
-  {
-    make: "Honda",
-    model: "CR-V",
-    year: 2024,
-    type: "Compact SUV",
-    priceRange: "$30,000 - $38,000",
-    price: 34000,
-    fuelEconomy: "28/34 MPG",
-    mpgCity: 28,
-    mpgHighway: 34,
-    safetyRating: 5,
-    tags: ["spacious", "reliable", "safe", "family"]
-  },
-  {
-    make: "Mazda",
-    model: "3",
-    year: 2024,
-    type: "Hatchback",
-    priceRange: "$23,000 - $30,000",
-    price: 26500,
-    fuelEconomy: "28/36 MPG",
-    mpgCity: 28,
-    mpgHighway: 36,
-    safetyRating: 5,
-    tags: ["fun-to-drive", "premium", "compact", "fuel-economy"]
-  },
-  {
-    make: "Toyota",
-    model: "RAV4",
-    year: 2024,
-    type: "Compact SUV",
-    priceRange: "$29,000 - $38,000",
-    price: 33500,
-    fuelEconomy: "27/35 MPG",
-    mpgCity: 27,
-    mpgHighway: 35,
-    safetyRating: 5,
-    tags: ["reliable", "spacious", "all-wheel-drive", "family"]
-  }
-];
 
 interface Preferences {
   usage: string;
@@ -225,7 +118,7 @@ serve(async (req) => {
     console.log('Finding recommendations for preferences:', preferences);
 
     // Score all cars
-    const scoredCars = carsDatabase.map(car => scoreCar(car, preferences));
+    const scoredCars = cars.map(car => scoreCar(car, preferences));
 
     // Sort by score and get top 3
     const topRecommendations = scoredCars
