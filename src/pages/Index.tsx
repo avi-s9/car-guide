@@ -14,8 +14,7 @@ const Index = () => {
 
   // NEW handleSubmit: derive preferences on the frontend and call only `recommend`
   const handleSubmit = async () => {
-    alert("handleSubmit called");
-    console.log("handleSubmit called, raw text:", preferences);
+    //console.log("handleSubmit called, raw text:", preferences);
 
     if (!preferences.trim()) {
       toast.error("Please describe your driving situation");
