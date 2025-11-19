@@ -79,7 +79,10 @@ const Index = () => {
   try {
     const { data: recData, error: recError } =
       await supabase.functions.invoke("recommend", {
-        body: { preferences: preferencesPayload },
+        body: {
+          preferences: preferencesPayload,
+          userInput: preferences, // 👈 send the raw text too
+        },
       });
 
     console.log("recData from recommend:", recData, "recError:", recError);
