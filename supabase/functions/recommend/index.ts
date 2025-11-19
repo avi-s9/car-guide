@@ -199,7 +199,10 @@ serve(async (req) => {
     console.log("Top recommendations:", topRecommendations);
 
     return new Response(
-      JSON.stringify({ recommendations: topRecommendations }),
+      JSON.stringify({ 
+        recommendations: topRecommendations,
+        _debugVersion: "recommend-v2-openai"  // 👈 add this
+      }),
       {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
         status: 200,
