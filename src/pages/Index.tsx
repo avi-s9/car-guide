@@ -12,6 +12,7 @@ const Index = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
+  /*
   const handleSubmit = async () => {
     if (!preferences.trim()) {
       toast.error("Please describe your driving situation");
@@ -50,7 +51,53 @@ const Index = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }; */
+
+  const handleSubmit = async () => {
+  alert("handleSubmit called");
+  console.log("handleSubmit called, preferences:", preferences);
+
+  if (!preferences.trim()) {
+    toast.error("Please describe your driving situation");
+    return;
+  }
+
+  setIsLoading(true);
+  try {
+    const { data: parsedData, error: parseError } =
+      await supabase.functions.invoke("parse-preferences", {
+        body: { userInput: preferences },
+      });
+
+    console.log("parsedData from parse-preferences:", parsedData, parseError);
+
+    if (parseError) throw parseError;
+
+    const preferencesPayload = parsedData?.preferences ?? parsedData;
+
+    const { data: recData, error: recError } =
+      await supabase.functions.invoke("recommend", {
+        body: { preferences: preferencesPayload },
+      });
+
+    console.log("recData from recommend:", recData, recError);
+
+    if (recError) throw recError;
+
+    navigate("/results", {
+      state: {
+        recommendations: recData.recommendations,
+        userInput: preferences,
+      },
+    });
+  } catch (error) {
+    console.error("Error in handleSubmit:", error);
+    toast.error("Failed to get recommendations. Please try again.");
+  } finally {
+    setIsLoading(false);
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
