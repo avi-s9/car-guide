@@ -200,11 +200,12 @@ serve(async (req) => {
 
 
     console.log("Top recommendations:", topRecommendations);
+    console.log("DEBUG_ACTIVE_RECOMMEND_FN_VERSION", "v3-lovable");
 
     return new Response(
       JSON.stringify({ 
         recommendations: topRecommendations,
-        _debugVersion: "recommend-v2-openai"  // 👈 add this
+        _debugVersion: "recommend-v3-lovable"
       }),
       {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
