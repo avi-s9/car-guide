@@ -143,14 +143,16 @@ const Results = () => {
                         <Gauge className="w-4 h-4 text-primary" />
                         Why This Car Matches You
                       </h4>
-                      <ul className="space-y-2">
-                        {car.reasons.map((reason, idx) => (
-                          <li key={idx} className="flex items-start gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
-                            <span className="text-sm text-muted-foreground">{reason}</span>
-                          </li>
-                        ))}
-                      </ul>
+                     {Array.isArray(car.reasons) && car.reasons.length > 0 && (
+  <ul className="space-y-2">
+    {car.reasons.map((reason, idx) => (
+      <li key={idx} className="flex items-start gap-2">
+        <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
+        <span className="text-sm text-muted-foreground">{reason}</span>
+      </li>
+    ))}
+  </ul>
+)}
                     </div>
                   </CardContent>
                 </div>
