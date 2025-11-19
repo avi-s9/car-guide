@@ -86,7 +86,8 @@ const Index = () => {
       console.log("recData from recommend:", recData, "recError:", recError);
       
       if (recError) throw recError;
-      
+
+      /*
       // NEW: call explain function to add AI-generated explanations
       const { data: explainData, error: explainError } =
         await supabase.functions.invoke("explain", {
@@ -99,7 +100,7 @@ const Index = () => {
       console.log("explainData from explain:", explainData, "explainError:", explainError);
       
       if (explainError) throw explainError;
-      
+      */
       navigate("/results", {
         state: {
           // use recommendations that now include aiExplanation
