@@ -15,6 +15,7 @@ interface CarRecommendation {
   fuelEconomy: string;
   safetyRating: number;
   type: string;
+  aiExplanation?: string;
 }
 
 const Results = () => {
@@ -144,15 +145,20 @@ const Results = () => {
                         Why This Car Matches You
                       </h4>
                      {Array.isArray(car.reasons) && car.reasons.length > 0 && (
-  <ul className="space-y-2">
-    {car.reasons.map((reason, idx) => (
-      <li key={idx} className="flex items-start gap-2">
-        <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
-        <span className="text-sm text-muted-foreground">{reason}</span>
-      </li>
-    ))}
-  </ul>
-)}
+                      <ul className="space-y-2">
+                        {car.reasons.map((reason, idx) => (
+                          <li key={idx} className="flex items-start gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
+                            <span className="text-sm text-muted-foreground">{reason}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                      {car.aiExplanation && (
+                        <p className="mt-4 text-sm text-foreground">
+                        {car.aiExplanation}
+                        </p>
+                      )}
                     </div>
                   </CardContent>
                 </div>
