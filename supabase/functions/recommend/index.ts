@@ -24,10 +24,9 @@ interface ScoredCar {
   safetyRating: number;
   score: number;
   reasons: string[];
-  aiExplanation?: string; // 👈 new
+  aiExplanation?: string;
 }
 
-// Same scoring logic as before
 function scoreCar(car: any, prefs: Preferences): ScoredCar {
   let score = 50; // Base score
   const reasons: string[] = [];
@@ -100,7 +99,7 @@ function scoreCar(car: any, prefs: Preferences): ScoredCar {
   };
 }
 
-// 👇 helper to call OpenAI and get a friendly explanation
+// 🔹 Call OpenAI to get a short explanation
 async function getExplanation(
   userInput: string,
   car: ScoredCar,
@@ -108,8 +107,9 @@ async function getExplanation(
   const apiKey = Deno.env.get("OPENAI_API_KEY");
   if (!apiKey) {
     console.error("OPENAI_API_KEY is not set");
-    // fall back to simple explanation using reasons
-    return `The ${car.year} ${car.make} ${car.model} matches your needs. ${car.reasons.join(" ")}.`;
+    return `The ${car.year} ${car.make} ${car.model} matches your needs. ${car.reasons.join(
+      " ",
+    )}.`;
   }
 
   const prompt = `
@@ -182,7 +182,7 @@ serve(async (req) => {
       .sort((a, b) => b.score - a.score)
       .slice(0, 3);
 
-    // 👇 Add AI explanations for each top car
+    // Add AI explanations
     const inputText = typeof userInput === "string" ? userInput : "";
     for (let i = 0; i < topRecommendations.length; i++) {
       try {
@@ -192,7 +192,7 @@ serve(async (req) => {
         );
       } catch (e) {
         console.error("Error generating explanation for car:", e);
-        topRecommendations[i].aiExplanation = undefined; // fallback
+        topRecommendations[i].aiExplanation = undefined;
       }
     }
 
