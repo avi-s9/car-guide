@@ -186,15 +186,18 @@ serve(async (req) => {
     const inputText = typeof userInput === "string" ? userInput : "";
     for (let i = 0; i < topRecommendations.length; i++) {
       try {
+        console.log("Calling OpenAI for:", topRecommendations[i].make, topRecommendations[i].model);
         topRecommendations[i].aiExplanation = await getExplanation(
           inputText,
           topRecommendations[i],
         );
+        console.log("Got aiExplanation:", topRecommendations[i].aiExplanation);
       } catch (e) {
         console.error("Error generating explanation for car:", e);
         topRecommendations[i].aiExplanation = undefined;
       }
-    }
+}
+
 
     console.log("Top recommendations:", topRecommendations);
 
