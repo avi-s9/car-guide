@@ -28,6 +28,8 @@ const Index = () => {
         }
       );
 
+      console.log("parsedData from parse-preferences:", parsedData);
+
       if (parseError) throw parseError;
 
       // Call recommend endpoint with parsed preferences
