@@ -82,17 +82,32 @@ const Index = () => {
         await supabase.functions.invoke("recommend", {
           body: { preferences: preferencesPayload },
         });
-
+      
       console.log("recData from recommend:", recData, "recError:", recError);
-
+      
       if (recError) throw recError;
-
+      
+      // NEW: call explain function to add AI-generated explanations
+      const { data: explainData, error: explainError } =
+        await supabase.functions.invoke("explain", {
+          body: {
+            userInput: preferences,
+            recommendations: recData.recommendations,
+          },
+        });
+      
+      console.log("explainData from explain:", explainData, "explainError:", explainError);
+      
+      if (explainError) throw explainError;
+      
       navigate("/results", {
         state: {
-          recommendations: recData.recommendations,
+          // use recommendations that now include aiExplanation
+          recommendations: explainData.recommendations,
           userInput: preferences,
         },
       });
+
     } catch (error) {
       console.error("Error in handleSubmit:", error);
       toast.error("Failed to get recommendations. Please try again.");
