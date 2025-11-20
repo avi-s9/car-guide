@@ -175,6 +175,15 @@ const Index = () => {
                 {isLoading ? "Finding matches..." : "Continue"}
               </Button>
             </div>
+            <div className="mt-4 text-right">
+              <button
+                type="button"
+                onClick={() => navigate("/quiz")}
+                className="text-sm text-primary underline-offset-2 hover:underline"
+              >
+                Prefer a guided quiz instead?
+              </button>
+            </div>
           </div>
         </Card>
 
