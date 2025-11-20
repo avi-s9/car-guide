@@ -45,11 +45,25 @@ const Results = () => {
     return null;
   }
 
+    // Normalize scores so they land between 70–100 for display
+  const rawScores = recommendations.map((car: CarRecommendation) => car.score);
+  const minScore = Math.min(...rawScores);
+  const maxScore = Math.max(...rawScores);
+  
+  const normalizeScore = (score: number) => {
+    if (maxScore === minScore) {
+      // all scores are equal, just pick a nice mid-high number
+      return 90;
+    }
+    const ratio = (score - minScore) / (maxScore - minScore);
+    // map to [70, 100]
+    return Math.round(70 + ratio * 30);
+  };
+
   const getScoreColor = (score: number) => {
-    const s = Math.min(score, 100); // clamp to 100
-    if (s >= 90) return "bg-green-500";
-    if (s >= 80) return "bg-blue-500";
-    if (s >= 70) return "bg-yellow-500";
+    if (score >= 90) return "bg-green-500";
+    if (score >= 80) return "bg-blue-500";
+    if (score >= 70) return "bg-yellow-500";
     return "bg-gray-500";
   };
 
@@ -77,7 +91,7 @@ const Results = () => {
         {/* Results Grid */}
         <div className="grid gap-6">
           {recommendations.map((car: CarRecommendation, index: number) => {
-            const displayScore = Math.min(car.score, 100);
+            const displayScore = normalizeScore(car.score);
 
             return (
               <Card
