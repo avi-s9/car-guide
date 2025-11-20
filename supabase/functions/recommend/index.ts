@@ -123,7 +123,9 @@ Recommended car:
 - Safety rating: ${car.safetyRating} stars
 - Match reasons: ${car.reasons.join("; ")}
 
-In 2–3 short sentences, explain in friendly, plain English why this car is a good fit based on what the user described. Mention tradeoffs if relevant.
+In 2–3 short sentences, explain in friendly, plain English why this car is a good fit based on what the user described.
+Start with a high-level summary in the first sentence, then mention 1–2 specific strengths that relate to their needs.
+Only mention tradeoffs if they are important.
 `;
 
   const response = await fetch("https://api.openai.com/v1/chat/completions", {
