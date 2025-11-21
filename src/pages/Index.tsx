@@ -104,6 +104,41 @@ const Index = () => {
   }
 };
 
+  const handleLuckyClick = async () => {
+    setIsLoading(true);
+    try {
+      const preferencesPayload = {
+        budgetLow: 15000,
+        budgetHigh: 50000,
+        bodyStyle: null,
+        priorities: [],
+      };
+
+      const { data: recData, error: recError } =
+        await supabase.functions.invoke("recommend", {
+          body: {
+            preferences: preferencesPayload,
+            userInput: "I'm feeling lucky! Surprise me with a great car.",
+          },
+        });
+
+      if (recError) throw recError;
+
+      // Take just the first recommendation
+      navigate("/results", {
+        state: {
+          recommendations: [recData.recommendations[0]],
+          userInput: "🍀 Lucky Pick",
+        },
+      });
+    } catch (error) {
+      console.error("Error in handleLuckyClick:", error);
+      toast.error("Failed to get recommendation. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
@@ -162,18 +197,28 @@ const Index = () => {
               onChange={(e) => setPreferences(e.target.value)}
               className="min-h-[180px] text-base resize-none"
             />
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center gap-3">
               <p className="text-sm text-muted-foreground">
                 {preferences.length} characters
               </p>
-              <Button
-                onClick={handleSubmit}
-                disabled={isLoading}
-                size="lg"
-                className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity"
-              >
-                {isLoading ? "Finding matches..." : "Continue"}
-              </Button>
+              <div className="flex gap-3">
+                <Button
+                  onClick={handleLuckyClick}
+                  disabled={isLoading}
+                  size="lg"
+                  variant="outline"
+                >
+                  🍀 I'm feeling lucky
+                </Button>
+                <Button
+                  onClick={handleSubmit}
+                  disabled={isLoading}
+                  size="lg"
+                  className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity"
+                >
+                  {isLoading ? "Finding matches..." : "Continue"}
+                </Button>
+              </div>
             </div>
             <div className="mt-4 text-right">
               <button
