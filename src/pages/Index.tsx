@@ -3,14 +3,33 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
-import { Car, Sparkles, TrendingUp } from "lucide-react";
+import { Car, Clock, Shield, ThumbsUp, Shuffle, ArrowRight, MessageSquare, ListChecks } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+
+const promptSuggestions = [
+  { label: "Budget", text: "My budget is around $25,000" },
+  { label: "Family", text: "I need space for 2 kids and a dog" },
+  { label: "Commute", text: "I drive 30 miles daily in city traffic" },
+  { label: "Fuel", text: "I prefer good fuel economy or hybrid" },
+  { label: "Safety", text: "Modern safety features are a priority" },
+  { label: "Size", text: "I want something compact and easy to park" },
+];
 
 const Index = () => {
   const [preferences, setPreferences] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [inputMode, setInputMode] = useState<"describe" | "quiz">("describe");
   const navigate = useNavigate();
+
+  const handleSuggestionClick = (text: string) => {
+    setPreferences((prev) => {
+      if (prev.trim()) {
+        return `${prev}. ${text}`;
+      }
+      return text;
+    });
+  };
 
   const handleSubmit = async () => {
     if (!preferences.trim()) {
@@ -36,20 +55,16 @@ const Index = () => {
         priorities: parseData?.priorities ?? [],
       };
 
-      console.log("Parsed preferencesPayload:", preferencesPayload);
       const { data: recData, error: recError } =
         await supabase.functions.invoke("recommend", {
           body: {
             preferences: preferencesPayload,
-            userInput: preferences, // 👈 send the raw text too
+            userInput: preferences,
           },
         });
 
-      console.log("recData from recommend:", recData, "recError:", recError);
-
       if (recError) throw recError;
 
-      // ✅ use recData directly
       navigate("/results", {
         state: {
           recommendations: recData.recommendations,
@@ -84,7 +99,6 @@ const Index = () => {
 
       if (recError) throw recError;
 
-      // Take just the first recommendation
       navigate("/results", {
         state: {
           recommendations: [recData.recommendations[0]],
@@ -99,7 +113,6 @@ const Index = () => {
     }
   };
 
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
       <div className="container mx-auto px-4 py-12 max-w-5xl">
@@ -112,85 +125,168 @@ const Index = () => {
             What Car Should I Buy?
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Find your perfect car match with AI-powered recommendations tailored to your lifestyle
+            Get personalized car recommendations in under a minute — no signup required
           </p>
         </div>
 
-        {/* Features */}
+        {/* Benefits - Outcome focused */}
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           <Card className="p-6 text-center border-2 hover:border-primary/50 transition-all">
             <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 mb-3">
-              <Sparkles className="w-6 h-6 text-accent" />
+              <ThumbsUp className="w-6 h-6 text-accent" />
             </div>
-            <h3 className="font-semibold mb-2">Smart Matching</h3>
+            <h3 className="font-semibold mb-2">Stop Second-Guessing</h3>
             <p className="text-sm text-muted-foreground">
-              AI analyzes your needs to find the perfect vehicles
+              Get confident picks tailored to your exact needs and budget
             </p>
           </Card>
           <Card className="p-6 text-center border-2 hover:border-primary/50 transition-all">
             <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 mb-3">
-              <TrendingUp className="w-6 h-6 text-accent" />
+              <Clock className="w-6 h-6 text-accent" />
             </div>
-            <h3 className="font-semibold mb-2">Data-Driven</h3>
+            <h3 className="font-semibold mb-2">Save Hours of Research</h3>
             <p className="text-sm text-muted-foreground">
-              Recommendations based on comprehensive car data
+              Skip the endless comparisons — we surface the best options instantly
             </p>
           </Card>
           <Card className="p-6 text-center border-2 hover:border-primary/50 transition-all">
             <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 mb-3">
-              <Car className="w-6 h-6 text-accent" />
+              <Shield className="w-6 h-6 text-accent" />
             </div>
-            <h3 className="font-semibold mb-2">Top 3 Picks</h3>
+            <h3 className="font-semibold mb-2">Make the Right Choice</h3>
             <p className="text-sm text-muted-foreground">
-              Get the best matches without overwhelming choices
+              Understand exactly why each car fits your lifestyle
             </p>
           </Card>
         </div>
 
+        {/* Input Mode Toggle */}
+        <div className="flex justify-center mb-6">
+          <div className="inline-flex rounded-lg border-2 border-border p-1 bg-muted/50">
+            <button
+              onClick={() => setInputMode("describe")}
+              className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                inputMode === "describe"
+                  ? "bg-background text-foreground shadow-sm"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              <MessageSquare className="w-4 h-4" />
+              Describe Your Needs
+            </button>
+            <button
+              onClick={() => setInputMode("quiz")}
+              className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                inputMode === "quiz"
+                  ? "bg-background text-foreground shadow-sm"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              <ListChecks className="w-4 h-4" />
+              Guided Quiz
+            </button>
+          </div>
+        </div>
+
         {/* Main Input Card */}
-        <Card className="p-8 shadow-lg">
-          <h2 className="text-2xl font-semibold mb-6">Describe Your Situation</h2>
-          <div className="space-y-4">
-            <Textarea
-              placeholder="Example: I drive mostly in the city, need good fuel economy, and prefer a compact car with modern safety features. My budget is around $25,000..."
-              value={preferences}
-              onChange={(e) => setPreferences(e.target.value)}
-              className="min-h-[180px] text-base resize-none"
-            />
-            <div className="flex justify-between items-center gap-3">
-              <p className="text-sm text-muted-foreground">
-                {preferences.length} characters
-              </p>
-              <div className="flex gap-3">
-                <Button
-                  onClick={handleLuckyClick}
-                  disabled={isLoading}
-                  size="lg"
-                  variant="outline"
+        {inputMode === "describe" ? (
+          <Card className="p-8 shadow-lg">
+            <h2 className="text-2xl font-semibold mb-2">Tell us about your situation</h2>
+            <p className="text-muted-foreground mb-4">
+              Describe your driving needs in your own words, or use the suggestions below to get started.
+            </p>
+
+            {/* Prompt Suggestions */}
+            <div className="flex flex-wrap gap-2 mb-4">
+              {promptSuggestions.map((suggestion) => (
+                <button
+                  key={suggestion.label}
+                  onClick={() => handleSuggestionClick(suggestion.text)}
+                  className="px-3 py-1.5 text-sm rounded-full border border-border bg-muted/50 text-muted-foreground hover:bg-primary/10 hover:text-primary hover:border-primary/50 transition-all"
                 >
-                  🍀 I'm feeling lucky
-                </Button>
+                  + {suggestion.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="space-y-4">
+              <Textarea
+                placeholder="Example: I have two kids and need a reliable SUV under $35,000 with good safety ratings..."
+                value={preferences}
+                onChange={(e) => setPreferences(e.target.value)}
+                className="min-h-[140px] text-base resize-none"
+              />
+
+              {/* CTA Section */}
+              <div className="space-y-4">
                 <Button
                   onClick={handleSubmit}
-                  disabled={isLoading}
+                  disabled={isLoading || !preferences.trim()}
                   size="lg"
-                  className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity"
+                  className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity text-lg py-6"
                 >
-                  {isLoading ? "Finding matches..." : "Continue"}
+                  {isLoading ? "Finding your matches..." : "Get My Recommendations"}
+                  {!isLoading && <ArrowRight className="ml-2 w-5 h-5" />}
                 </Button>
+
+                <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
+                  <span className="flex items-center gap-1">
+                    <Clock className="w-4 h-4" /> Takes under a minute
+                  </span>
+                  <span className="text-border">•</span>
+                  <span className="flex items-center gap-1">
+                    <Shield className="w-4 h-4" /> No signup required
+                  </span>
+                </div>
+
+                <div className="relative">
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="w-full border-t border-border" />
+                  </div>
+                  <div className="relative flex justify-center text-xs uppercase">
+                    <span className="bg-card px-2 text-muted-foreground">or</span>
+                  </div>
+                </div>
+
+                <button
+                  onClick={handleLuckyClick}
+                  disabled={isLoading}
+                  className="w-full flex items-center justify-center gap-2 py-3 text-muted-foreground hover:text-foreground transition-colors group"
+                >
+                  <Shuffle className="w-4 h-4 group-hover:rotate-180 transition-transform duration-300" />
+                  <span>I'm feeling lucky — surprise me with a great pick</span>
+                </button>
               </div>
             </div>
-            <div className="mt-4 text-right">
-              <button
-                type="button"
-                onClick={() => navigate("/quiz")}
-                className="text-sm text-primary underline-offset-2 hover:underline"
-              >
-                Prefer a guided quiz instead?
-              </button>
+          </Card>
+        ) : (
+          <Card className="p-8 shadow-lg text-center">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+              <ListChecks className="w-8 h-8 text-primary" />
             </div>
-          </div>
-        </Card>
+            <h2 className="text-2xl font-semibold mb-2">Answer a few quick questions</h2>
+            <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+              Not sure what to say? Our guided quiz will walk you through the key decisions step by step.
+            </p>
+            <Button
+              onClick={() => navigate("/quiz")}
+              size="lg"
+              className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity text-lg px-8 py-6"
+            >
+              Start the Quiz
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+            <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground mt-4">
+              <span className="flex items-center gap-1">
+                <Clock className="w-4 h-4" /> 5 quick questions
+              </span>
+              <span className="text-border">•</span>
+              <span className="flex items-center gap-1">
+                <Shield className="w-4 h-4" /> No signup required
+              </span>
+            </div>
+          </Card>
+        )}
 
         {/* Footer */}
         <p className="text-center text-sm text-muted-foreground mt-8">
