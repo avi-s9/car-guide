@@ -148,8 +148,8 @@ const Index = () => {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
             <Car className="w-8 h-8 text-primary" />
           </div>
-          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            CarGuide
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            What Car Should I Buy?
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Find your perfect car match with AI-powered recommendations tailored to your lifestyle
