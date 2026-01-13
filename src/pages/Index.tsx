@@ -13,96 +13,56 @@ const Index = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
-  if (!preferences.trim()) {
-    toast.error("Please describe your driving situation");
-    return;
-  }
+    if (!preferences.trim()) {
+      toast.error("Please describe your driving situation");
+      return;
+    }
 
-  // ---- derive preferences on the frontend ----
-  const text = preferences.toLowerCase();
-  const normalized = text.replace(/,/g, "");
+    setIsLoading(true);
+    try {
+      const { data: parseData, error: parseError } =
+        await supabase.functions.invoke("parse-preferences", {
+          body: {
+            userInput: preferences,
+          },
+        });
 
+      if (parseError) throw parseError;
 
-  // defaults
-  let budgetLow = 20000;
-  let budgetHigh = 30000;
-  let bodyStyle: string | null = null;
-  const priorityTags: string[] = [];
+      const preferencesPayload = {
+        budgetLow: parseData?.budgetLow ?? 20000,
+        budgetHigh: parseData?.budgetHigh ?? 30000,
+        bodyStyle: parseData?.bodyStyle ?? null,
+        priorities: parseData?.priorities ?? [],
+      };
 
-  // very simple budget parsing: "$25k", "25k", "$25000", "$25,000"
-  const dollarMatch = normalized.match(/\$?\s*(\d{2,3})\s*k\b/);
-  const fullNumMatch = normalized.match(/\$?\s*(\d{5})\b/);
+      console.log("Parsed preferencesPayload:", preferencesPayload);
+      const { data: recData, error: recError } =
+        await supabase.functions.invoke("recommend", {
+          body: {
+            preferences: preferencesPayload,
+            userInput: preferences, // 👈 send the raw text too
+          },
+        });
 
-  if (dollarMatch) {
-    const mid = parseInt(dollarMatch[1], 10) * 1000;
-    budgetLow = mid - 5000;
-    budgetHigh = mid + 5000;
-  } else if (fullNumMatch) {
-    const mid = parseInt(fullNumMatch[1], 10);
-    budgetLow = mid - 3000;
-    budgetHigh = mid + 3000;
-  }
+      console.log("recData from recommend:", recData, "recError:", recError);
 
-  // body style from keywords
-  if (text.includes("suv") || text.includes("crossover")) {
-    bodyStyle = "compact suv";
-  } else if (text.includes("hatchback")) {
-    bodyStyle = "hatchback";
-  } else if (text.includes("sedan")) {
-    bodyStyle = "sedan";
-  }
+      if (recError) throw recError;
 
-  // priorities that match your car.tags values
-  if (text.includes("fuel") || text.includes("mpg") || text.includes("gas")) {
-    priorityTags.push("fuel-economy");
-  }
-  if (text.includes("safe") || text.includes("safety")) {
-    priorityTags.push("safe");
-  }
-  if (text.includes("family") || text.includes("kids") || text.includes("space")) {
-    priorityTags.push("spacious");
-  }
-  if (text.includes("reliable") || text.includes("reliability")) {
-    priorityTags.push("reliable");
-  }
-
-  const preferencesPayload = {
-    budgetLow,
-    budgetHigh,
-    bodyStyle,
-    priorities: priorityTags,
-  };
-
-  console.log("Derived preferencesPayload:", preferencesPayload);
-
-  setIsLoading(true);
-  try {
-    const { data: recData, error: recError } =
-      await supabase.functions.invoke("recommend", {
-        body: {
-          preferences: preferencesPayload,
-          userInput: preferences, // 👈 send the raw text too
+      // ✅ use recData directly
+      navigate("/results", {
+        state: {
+          recommendations: recData.recommendations,
+          userInput: preferences,
         },
       });
-
-    console.log("recData from recommend:", recData, "recError:", recError);
-
-    if (recError) throw recError;
-
-    // ✅ use recData directly
-    navigate("/results", {
-      state: {
-        recommendations: recData.recommendations,
-        userInput: preferences,
-      },
-    });
-  } catch (error) {
-    console.error("Error in handleSubmit:", error);
-    toast.error("Failed to get recommendations. Please try again.");
-  } finally {
-    setIsLoading(false);
-  }
-};
+    } catch (error) {
+      console.error("Error in handleSubmit:", error);
+      toast.error("Failed to get recommendations. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const handleLuckyClick = async () => {
     setIsLoading(true);
