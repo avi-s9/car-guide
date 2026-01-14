@@ -270,6 +270,13 @@ const Index = () => {
                     {isLoading ? "Finding your matches..." : "Get My Recommendations"}
                     {!isLoading && <ArrowRight className="ml-2 w-5 h-5" aria-hidden="true" />}
                   </Button>
+                  <button
+                    type="button"
+                    onClick={() => navigate("/quiz")}
+                    className="w-full text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    Prefer a guided quiz instead?
+                  </button>
 
                   <div id="cta-reassurance" className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
                     <span className="flex items-center gap-1">
