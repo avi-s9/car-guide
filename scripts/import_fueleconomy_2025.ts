@@ -213,26 +213,6 @@ const transformRows = (rows: RawRow[]) => {
   return cars;
 };
 
-const ensureSupabaseConnectivity = async (supabaseUrl: string, supabaseKey: string) => {
-  try {
-    const response = await fetch(`${supabaseUrl}/rest/v1/`, {
-      headers: {
-        apikey: supabaseKey,
-        Authorization: `Bearer ${supabaseKey}`,
-      },
-    });
-    if (!response.ok) {
-      throw new Error(`Supabase responded with ${response.status} ${response.statusText}`);
-    }
-  } catch (error) {
-    const message =
-      error instanceof Error ? error.message : "Unknown error";
-    throw new Error(
-      `Unable to reach Supabase REST endpoint. Check SUPABASE_URL, network access, and any proxy settings. Root error: ${message}`,
-    );
-  }
-};
-
 const upsertCars = async (cars: CarRow[]) => {
   const supabaseUrl = process.env.SUPABASE_URL;
   const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -241,8 +221,6 @@ const upsertCars = async (cars: CarRow[]) => {
     throw new Error("SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY must be set.");
   }
 
-  await ensureSupabaseConnectivity(supabaseUrl, supabaseKey);
-
   const supabase = createClient(supabaseUrl, supabaseKey);
   const totalBatches = Math.ceil(cars.length / BATCH_SIZE);
 
@@ -250,19 +228,9 @@ const upsertCars = async (cars: CarRow[]) => {
     const batch = cars.slice(i, i + BATCH_SIZE);
     const batchNumber = Math.floor(i / BATCH_SIZE) + 1;
     console.log(`Upserting batch ${batchNumber} of ${totalBatches}...`);
-    try {
-      const { error } = await supabase
-        .from("cars")
-        .upsert(batch, { onConflict: "id" });
-      if (error) {
-        throw error;
-      }
-    } catch (error) {
-      const message =
-        error instanceof Error ? error.message : JSON.stringify(error);
-      throw new Error(
-        `Failed to upsert batch ${batchNumber}. Verify SUPABASE_URL is reachable and service role key is valid. Root error: ${message}`,
-      );
+    const { error } = await supabase.from("cars").upsert(batch, { onConflict: "id" });
+    if (error) {
+      throw error;
     }
   }
 };

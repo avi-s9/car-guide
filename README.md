@@ -79,10 +79,6 @@ This project includes a one-time import script to load 2025 model-year vehicles 
 **Run the import**
 
 ```sh
-npm run import-cars
-```
-
-```sh
 npx ts-node scripts/import_fueleconomy_2025.ts
 ```
 
