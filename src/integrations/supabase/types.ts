@@ -14,7 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      cars: {
+        Row: {
+          city_mpg: number | null
+          co2_gpm: number | null
+          combined_mpg: number | null
+          drive: string | null
+          fuel_type: string | null
+          highway_mpg: number | null
+          id: string
+          make: string
+          model: string
+          transmission: string | null
+          vehicle_class: string | null
+          year: number
+        }
+        Insert: {
+          city_mpg?: number | null
+          co2_gpm?: number | null
+          combined_mpg?: number | null
+          drive?: string | null
+          fuel_type?: string | null
+          highway_mpg?: number | null
+          id: string
+          make: string
+          model: string
+          transmission?: string | null
+          vehicle_class?: string | null
+          year: number
+        }
+        Update: {
+          city_mpg?: number | null
+          co2_gpm?: number | null
+          combined_mpg?: number | null
+          drive?: string | null
+          fuel_type?: string | null
+          highway_mpg?: number | null
+          id?: string
+          make?: string
+          model?: string
+          transmission?: string | null
+          vehicle_class?: string | null
+          year?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
