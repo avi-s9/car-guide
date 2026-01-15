@@ -71,3 +71,26 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+
+## Importing FuelEconomy.gov 2025 data into Supabase
+
+This project includes a one-time import script to load 2025 model-year vehicles into Supabase.
+
+**Run the import**
+
+```sh
+npx ts-node scripts/import_fueleconomy_2025.ts
+```
+
+**Required environment variables**
+
+```sh
+export SUPABASE_URL="https://your-project.supabase.co"
+export SUPABASE_SERVICE_ROLE_KEY="your-service-role-key"
+```
+
+**Verify the imported row count**
+
+```sql
+select count(*) from cars where year=2025;
+```
