@@ -89,6 +89,23 @@ export SUPABASE_URL="https://your-project.supabase.co"
 export SUPABASE_SERVICE_ROLE_KEY="your-service-role-key"
 ```
 
+**Option B (no service role key): use the Edge Function**
+
+If you cannot access the service role key (e.g., Lovable Cloud projects), deploy the
+`import-cars` Edge Function and run the script with your anon key instead:
+
+```sh
+supabase functions deploy import-cars
+```
+
+```sh
+export SUPABASE_URL="https://your-project.supabase.co"
+export SUPABASE_ANON_KEY="your-anon-key"
+```
+
+Make sure the `import-cars` function has access to `SUPABASE_SERVICE_ROLE_KEY`
+via your Supabase project secrets.
+
 **Verify the imported row count**
 
 ```sql

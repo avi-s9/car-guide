@@ -213,14 +213,7 @@ const transformRows = (rows: RawRow[]) => {
   return cars;
 };
 
-const upsertCars = async (cars: CarRow[]) => {
-  const supabaseUrl = process.env.SUPABASE_URL;
-  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-  if (!supabaseUrl || !supabaseKey) {
-    throw new Error("SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY must be set.");
-  }
-
+const upsertWithServiceRole = async (supabaseUrl: string, supabaseKey: string, cars: CarRow[]) => {
   const supabase = createClient(supabaseUrl, supabaseKey);
   const totalBatches = Math.ceil(cars.length / BATCH_SIZE);
 
@@ -233,6 +226,53 @@ const upsertCars = async (cars: CarRow[]) => {
       throw error;
     }
   }
+};
+
+const upsertViaFunction = async (supabaseUrl: string, anonKey: string, cars: CarRow[]) => {
+  const totalBatches = Math.ceil(cars.length / BATCH_SIZE);
+
+  for (let i = 0; i < cars.length; i += BATCH_SIZE) {
+    const batch = cars.slice(i, i + BATCH_SIZE);
+    const batchNumber = Math.floor(i / BATCH_SIZE) + 1;
+    console.log(`Upserting batch ${batchNumber} of ${totalBatches} via Edge Function...`);
+    const response = await fetch(`${supabaseUrl}/functions/v1/import-cars`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${anonKey}`,
+        apikey: anonKey,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ cars: batch }),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Edge Function import failed: ${response.status} ${errorText}`);
+    }
+  }
+};
+
+const upsertCars = async (cars: CarRow[]) => {
+  const supabaseUrl = process.env.SUPABASE_URL;
+  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const anonKey = process.env.SUPABASE_ANON_KEY;
+
+  if (!supabaseUrl) {
+    throw new Error("SUPABASE_URL must be set.");
+  }
+
+  if (serviceRoleKey) {
+    await upsertWithServiceRole(supabaseUrl, serviceRoleKey, cars);
+    return;
+  }
+
+  if (!anonKey) {
+    throw new Error(
+      "Set SUPABASE_SERVICE_ROLE_KEY or SUPABASE_ANON_KEY (with Edge Function import-cars).",
+    );
+  }
+
+  await upsertViaFunction(supabaseUrl, anonKey, cars);
 };
 
 const run = async () => {
