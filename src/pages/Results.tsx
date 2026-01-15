@@ -13,7 +13,7 @@ interface CarRecommendation {
   reasons: string[];
   score: number;
   fuelEconomy: string;
-  safetyRating: number;
+  safetyRating?: number | null;
   type: string;
   aiExplanation?: string;
 }
