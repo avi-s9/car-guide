@@ -96,6 +96,7 @@ If you cannot access the service role key (e.g., Lovable Cloud projects), deploy
 
 ```sh
 npx supabase@latest functions deploy import-cars
+supabase functions deploy import-cars
 ```
 
 ```sh
@@ -106,6 +107,7 @@ export SUPABASE_ANON_KEY="your-anon-key"
 Make sure the `import-cars` function has access to `SUPABASE_SERVICE_ROLE_KEY`
 via your Supabase project secrets. If you don't have the CLI installed globally,
 using `npx supabase@latest` avoids the unsupported `npm install -g supabase` path.
+via your Supabase project secrets.
 
 **Verify the imported row count**
 
