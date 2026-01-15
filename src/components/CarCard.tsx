@@ -23,7 +23,7 @@ interface CarRecommendation {
   reasons: string[];
   score: number;
   fuelEconomy: string;
-  safetyRating: number;
+  safetyRating?: number | null;
   type: string;
   aiExplanation?: string;
 }
@@ -146,7 +146,9 @@ export const CarCard = ({ car, index, displayScore, getScoreColor }: CarCardProp
                 <Shield className="w-5 h-5 text-primary" />
                 <div>
                   <div className="text-xs text-muted-foreground">Safety Rating</div>
-                  <div className="font-semibold">{car.safetyRating}/5 ⭐</div>
+                  <div className="font-semibold">
+                    {car.safetyRating == null ? "N/A" : `${car.safetyRating}/5 ⭐`}
+                  </div>
                 </div>
               </div>
 

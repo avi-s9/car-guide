@@ -8,7 +8,8 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "import-cars": "npx ts-node scripts/import_fueleconomy_2025.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
