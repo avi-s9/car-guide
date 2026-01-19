@@ -229,7 +229,7 @@ const Index = () => {
               id="describe-panel"
               aria-labelledby="describe-tab"
             >
-              <h2 className="text-2xl font-semibold mb-2">Tell us about your driving situation</h2>
+              <h2 className="text-2xl font-semibold mb-2">What kind of car are you looking for?</h2>
               <p className="text-muted-foreground mb-4">
                 Describe your needs in your own words — budget, family size, commute, fuel preferences, or must-have features.
                 {locationBadge && ` We'll factor in driving conditions for ${drivingContext}.`}
