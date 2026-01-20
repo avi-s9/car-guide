@@ -19,12 +19,15 @@ export type Database = {
           city_mpg: number | null
           co2_gpm: number | null
           combined_mpg: number | null
+          comfort_score: number | null
           drive: string | null
           fuel_type: string | null
           highway_mpg: number | null
           id: string
           make: string
           model: string
+          msrp: number | null
+          sportiness_score: number | null
           transmission: string | null
           vehicle_class: string | null
           year: number
@@ -33,12 +36,15 @@ export type Database = {
           city_mpg?: number | null
           co2_gpm?: number | null
           combined_mpg?: number | null
+          comfort_score?: number | null
           drive?: string | null
           fuel_type?: string | null
           highway_mpg?: number | null
           id: string
           make: string
           model: string
+          msrp?: number | null
+          sportiness_score?: number | null
           transmission?: string | null
           vehicle_class?: string | null
           year: number
@@ -47,12 +53,15 @@ export type Database = {
           city_mpg?: number | null
           co2_gpm?: number | null
           combined_mpg?: number | null
+          comfort_score?: number | null
           drive?: string | null
           fuel_type?: string | null
           highway_mpg?: number | null
           id?: string
           make?: string
           model?: string
+          msrp?: number | null
+          sportiness_score?: number | null
           transmission?: string | null
           vehicle_class?: string | null
           year?: number

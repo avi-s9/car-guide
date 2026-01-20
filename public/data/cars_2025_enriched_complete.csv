@@ -1,0 +1,1537 @@
+year,make,model,vehicleClass,fuelType,drive,transmission,cityMpg,highwayMpg,combinedMpg,co2,msrp,comfortScore,sportinessScore
+2025,Acura,Adx Awd,Small Station Wagons,Gasoline (Premium Unleaded Recommended),FWD,Auto (AV-S7),25.0,30.0,27.0,329.0,47600,7.3,6.0
+2025,Acura,Adx Fwd,Small Station Wagons,Gasoline (Premium Unleaded Recommended),FWD,Auto (AV-S7),26.0,31.0,28.0,317.0,47600,7.3,6.0
+2025,Acura,Integra,Large Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AV-S7),30.0,37.0,33.0,269.0,56000,7.7,5.5
+2025,Acura,Integra,Large Cars,Gasoline (Premium Unleaded Recommended),FWD,Manual (M6),21.0,28.0,24.0,371.0,56000,7.7,6.4
+2025,Acura,Integra A-Spec,Large Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AV-S7),29.0,36.0,32.0,277.0,56000,7.7,5.5
+2025,Acura,Integra A-Spec,Large Cars,Gasoline (Premium Unleaded Recommended),FWD,Manual (M6),26.0,36.0,30.0,293.0,56000,7.7,6.2
+2025,Acura,Mdx Awd,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S10),19.0,25.0,21.0,423.0,49000,7.2,5.9
+2025,Acura,Mdx Awd Type-S,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S10),17.0,21.0,19.0,474.0,49000,7.2,5.9
+2025,Acura,Mdx Fwd,Small SUV 2WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S10),19.0,26.0,22.0,411.0,49000,7.2,5.9
+2025,Acura,Rdx Awd,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S10),21.0,27.0,23.0,385.0,49000,7.2,5.9
+2025,Acura,Rdx Awd A-Spec,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S10),21.0,26.0,23.0,386.0,49000,7.2,5.9
+2025,Acura,Tlx Awd A-Spec,Compact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S10),21.0,29.0,24.0,371.0,37800,6.8,5.8
+2025,Acura,Tlx Fwd,Compact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S10),22.0,31.0,25.0,352.0,37800,6.8,5.8
+2025,Acura,Tlx Type-S,Compact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S10),19.0,25.0,21.0,420.0,37800,6.8,5.8
+2025,Alfa Romeo,Giulia,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (A8),24.0,33.0,27.0,330.0,44800,7.3,5.9
+2025,Alfa Romeo,Giulia Awd,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (A8),23.0,31.0,26.0,348.0,44800,7.3,5.9
+2025,Alfa Romeo,Stelvio Awd,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (A8),22.0,28.0,24.0,364.0,49000,7.2,5.9
+2025,Alfa Romeo,Tonale Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A9),21.0,29.0,24.0,372.0,49000,7.2,5.9
+2025,Aston Martin Lagonda Ltd,Db12 V8,Minicompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (A8),15.0,22.0,17.0,507.0,35000,6.5,5.5
+2025,Aston Martin Lagonda Ltd,Dbx 707,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (A9),15.0,20.0,17.0,536.0,35000,6.5,5.5
+2025,Aston Martin Lagonda Ltd,Vanquish,Two Seaters,Gasoline (Premium Unleaded Recommended),FWD,Auto (A8),13.0,21.0,16.0,563.0,45000,4.8,8.2
+2025,Aston Martin Lagonda Ltd,Vantage,Two Seaters,Gasoline (Premium Unleaded Recommended),FWD,Auto (A8),15.0,22.0,18.0,498.0,45000,4.8,8.2
+2025,Audi,A3 Quattro,Subcompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),24.0,34.0,28.0,318.0,32200,6.4,5.6
+2025,Audi,A4 Allroad Quattro,Small Station Wagons,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),23.0,30.0,26.0,346.0,47600,7.3,6.4
+2025,Audi,A4 Quattro,Compact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),26.0,36.0,29.0,301.0,37800,6.8,6.0
+2025,Audi,A4 S Line Quattro,Compact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),23.0,32.0,26.0,339.0,37800,6.8,6.0
+2025,Audi,A5 Quattro,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),22.0,31.0,26.0,349.0,44800,7.3,6.3
+2025,Audi,A5 Sportback Quattro,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),26.0,36.0,29.0,301.0,44800,7.3,6.3
+2025,Audi,A5 Sportback S Line Quattro,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),23.0,32.0,26.0,339.0,44800,7.3,6.3
+2025,Audi,A6 Allroad Quattro,Midsize Station Wagons,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),22.0,30.0,25.0,356.0,50400,7.5,6.8
+2025,Audi,A6 Quattro,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),24.0,31.0,26.0,339.0,44800,7.3,6.3
+2025,Audi,A6 Quattro,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),22.0,30.0,25.0,356.0,44800,7.3,6.5
+2025,Audi,A7 Quattro,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),22.0,30.0,25.0,356.0,44800,7.3,6.5
+2025,Audi,A8 Quattro,Large Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),19.0,27.0,22.0,414.0,56000,7.7,5.7
+2025,Audi,Q3,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),22.0,29.0,25.0,360.0,49000,7.2,5.9
+2025,Audi,Q3 S Line,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),20.0,28.0,23.0,386.0,49000,7.2,5.9
+2025,Audi,Q5 Quattro,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),23.0,29.0,26.0,346.0,49000,7.2,6.1
+2025,Audi,Q5 S Line Quattro,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),22.0,28.0,25.0,363.0,49000,7.2,6.3
+2025,Audi,Q5 Sportback S Line Quattro,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),22.0,28.0,25.0,363.0,49000,7.2,6.3
+2025,Audi,Q5 Sportback Tfsi Quattro,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),22.0,30.0,25.0,358.0,49000,7.2,6.3
+2025,Audi,Q5 Tfsi Quattro,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),22.0,30.0,25.0,358.0,49000,7.2,6.3
+2025,Audi,Q7,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),20.0,26.0,22.0,405.0,49000,7.2,5.9
+2025,Audi,Q7,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),18.0,23.0,20.0,442.0,49000,7.2,5.9
+2025,Audi,Q8 Quattro,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),17.0,23.0,19.0,459.0,49000,7.2,5.9
+2025,Audi,Rs 3,Subcompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),20.0,29.0,23.0,385.0,32200,6.4,5.8
+2025,Audi,Rs 5 Sportback,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),18.0,25.0,20.0,438.0,44800,7.3,6.1
+2025,Audi,Rs 6 Avant,Midsize Station Wagons,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),14.0,21.0,17.0,538.0,50400,7.5,6.4
+2025,Audi,Rs 7,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),14.0,21.0,17.0,538.0,44800,7.3,6.1
+2025,Audi,Rs Q8 Performance,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),14.0,20.0,16.0,547.0,49000,7.2,5.9
+2025,Audi,S3,Subcompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),23.0,31.0,26.0,344.0,32200,6.4,5.6
+2025,Audi,S4,Compact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),20.0,29.0,24.0,377.0,37800,6.8,5.8
+2025,Audi,S5,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),19.0,28.0,22.0,397.0,44800,7.3,6.5
+2025,Audi,S5 Sportback,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),20.0,29.0,23.0,384.0,44800,7.3,6.1
+2025,Audi,S6,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),19.0,27.0,22.0,408.0,44800,7.3,6.1
+2025,Audi,S7,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),19.0,27.0,22.0,408.0,44800,7.3,6.1
+2025,Audi,S8,Large Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),15.0,24.0,18.0,502.0,56000,7.7,5.7
+2025,Audi,Sq5,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),19.0,24.0,21.0,427.0,49000,7.2,5.9
+2025,Audi,Sq5,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),19.0,26.0,22.0,404.0,49000,7.2,6.3
+2025,Audi,Sq5 Sportback,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),19.0,24.0,21.0,427.0,49000,7.2,5.9
+2025,Audi,Sq5 Sportback,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),19.0,26.0,22.0,404.0,49000,7.2,6.3
+2025,Audi,Sq7,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),15.0,21.0,17.0,524.0,49000,7.2,5.9
+2025,Audi,Sq8,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),15.0,21.0,17.0,518.0,49000,7.2,5.9
+2025,Bentley,Bentayga,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),14.0,21.0,16.0,553.0,91000,8.5,6.5
+2025,Bentley,Bentayga Ewb,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),14.0,21.0,16.0,553.0,91000,8.5,6.5
+2025,Bmw,228 Xdrive Gran Coupe,Compact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),26.0,38.0,30.0,288.0,27000,6.1,5.6
+2025,Bmw,230I Coupe,Subcompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),26.0,35.0,30.0,296.0,23000,5.7,4.8
+2025,Bmw,230I Xdrive Coupe,Subcompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),25.0,33.0,28.0,313.0,23000,5.7,4.8
+2025,Bmw,330I Sedan,Compact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),28.0,35.0,31.0,286.0,27000,6.1,5.2
+2025,Bmw,330I Xdrive Sedan,Compact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),26.0,34.0,29.0,298.0,27000,6.1,5.2
+2025,Bmw,430I Convertible,Subcompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),27.0,35.0,30.0,295.0,23000,5.7,4.8
+2025,Bmw,430I Coupe,Subcompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),28.0,36.0,31.0,285.0,23000,5.7,4.8
+2025,Bmw,430I Gran Coupe,Compact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),27.0,35.0,30.0,290.0,27000,6.1,5.2
+2025,Bmw,430I Xdrive Convertible,Subcompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),24.0,33.0,28.0,316.0,23000,5.7,4.8
+2025,Bmw,430I Xdrive Coupe,Subcompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),27.0,34.0,30.0,294.0,23000,5.7,4.8
+2025,Bmw,430I Xdrive Gran Coupe,Compact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),25.0,34.0,29.0,305.0,27000,6.1,5.2
+2025,Bmw,530I Sedan,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),28.0,35.0,31.0,285.0,32000,6.6,5.5
+2025,Bmw,530I Xdrive Sedan,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),27.0,35.0,30.0,292.0,32000,6.6,5.5
+2025,Bmw,540I Xdrive Sedan,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),26.0,33.0,28.0,307.0,32000,6.6,5.5
+2025,Bmw,740I Sedan,Large Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),25.0,31.0,28.0,317.0,40000,7.0,5.1
+2025,Bmw,740I Xdrive Sedan,Large Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),24.0,31.0,27.0,326.0,40000,7.0,5.1
+2025,Bmw,760I Xdrive Sedan,Large Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),18.0,25.0,20.0,427.0,40000,7.0,5.3
+2025,Bmw,840I Convertible,Subcompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),21.0,29.0,24.0,368.0,23000,5.7,5.0
+2025,Bmw,840I Coupe,Subcompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),21.0,29.0,24.0,368.0,23000,5.7,5.0
+2025,Bmw,840I Gran Coupe,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),21.0,29.0,24.0,368.0,32000,6.6,5.7
+2025,Bmw,840I Xdrive Convertible,Subcompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),21.0,29.0,24.0,373.0,23000,5.7,5.0
+2025,Bmw,840I Xdrive Coupe,Subcompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),21.0,29.0,24.0,373.0,23000,5.7,5.0
+2025,Bmw,840I Xdrive Gran Coupe,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),21.0,29.0,24.0,373.0,32000,6.6,5.7
+2025,Bmw,Alpina B8 Gran Coupe,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),17.0,24.0,19.0,458.0,32000,6.6,5.7
+2025,Bmw,M2 Coupe,Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Manual (M6),16.0,23.0,19.0,473.0,23000,5.7,5.7
+2025,Bmw,M2 Coupe,Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S8),16.0,23.0,19.0,466.0,23000,5.7,5.0
+2025,Bmw,M235 Xdrive Gran Coupe,Compact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),24.0,33.0,27.0,321.0,27000,6.1,5.6
+2025,Bmw,M240I Coupe,Subcompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),23.0,32.0,26.0,339.0,23000,5.7,4.8
+2025,Bmw,M240I Xdrive Coupe,Subcompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),23.0,32.0,26.0,336.0,23000,5.7,4.8
+2025,Bmw,M3 Competition M Xdrive Sedan,Compact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S8),16.0,23.0,18.0,477.0,27000,6.1,5.4
+2025,Bmw,M3 Competition Sedan,Compact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S8),16.0,23.0,19.0,470.0,27000,6.1,5.4
+2025,Bmw,M3 Sedan,Compact Cars,Gasoline (Premium Unleaded Required),FWD,Manual (M6),16.0,23.0,19.0,472.0,27000,6.1,6.1
+2025,Bmw,M340I Sedan,Compact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),27.0,33.0,29.0,299.0,27000,6.1,5.2
+2025,Bmw,M340I Xdrive Sedan,Compact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),26.0,33.0,29.0,304.0,27000,6.1,5.2
+2025,Bmw,M4 Competition Coupe,Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S8),16.0,23.0,19.0,470.0,23000,5.7,5.0
+2025,Bmw,M4 Competition M Xdrive Coupe,Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S8),16.0,23.0,18.0,472.0,23000,5.7,5.0
+2025,Bmw,M4 Coupe,Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Manual (M6),16.0,23.0,19.0,472.0,23000,5.7,5.7
+2025,Bmw,M4 Cs Coupe,Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S8),16.0,23.0,18.0,478.0,23000,5.7,5.0
+2025,Bmw,M440I Convertible,Subcompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),27.0,33.0,29.0,301.0,23000,5.7,4.8
+2025,Bmw,M440I Coupe,Subcompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),27.0,34.0,30.0,296.0,23000,5.7,4.8
+2025,Bmw,M440I Gran Coupe,Compact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),26.0,32.0,28.0,312.0,27000,6.1,5.2
+2025,Bmw,M440I Xdrive Convertible,Subcompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),25.0,32.0,28.0,312.0,23000,5.7,4.8
+2025,Bmw,M440I Xdrive Coupe,Subcompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),26.0,33.0,29.0,301.0,23000,5.7,4.8
+2025,Bmw,M440I Xdrive Gran Coupe,Compact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),25.0,31.0,27.0,320.0,27000,6.1,5.2
+2025,Bmw,M4Competitionmxdriveconvertible,Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S8),16.0,22.0,18.0,479.0,23000,5.7,5.0
+2025,Bmw,M8 Competition Convertible,Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S8),15.0,22.0,17.0,517.0,23000,5.7,5.0
+2025,Bmw,M8 Competition Coupe,Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S8),15.0,22.0,17.0,517.0,23000,5.7,5.0
+2025,Bmw,M8 Competition Gran Coupe,Midsize Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S8),15.0,22.0,17.0,517.0,32000,6.6,5.7
+2025,Bmw,M850I Xdrive Convertible,Subcompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),17.0,24.0,19.0,458.0,23000,5.7,5.0
+2025,Bmw,M850I Xdrive Coupe,Subcompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),17.0,24.0,19.0,456.0,23000,5.7,5.0
+2025,Bmw,M850I Xdrive Gran Coupe,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),17.0,24.0,19.0,458.0,32000,6.6,5.7
+2025,Bmw,X1 M35I,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),23.0,31.0,26.0,334.0,35000,6.5,5.7
+2025,Bmw,X1 Xdrive28I,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),24.0,33.0,28.0,318.0,35000,6.5,5.7
+2025,Bmw,X2 M35I,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),23.0,32.0,26.0,332.0,35000,6.5,5.7
+2025,Bmw,X2 Xdrive28I,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),24.0,33.0,28.0,318.0,35000,6.5,5.7
+2025,Bmw,X3 M50I Xdrive,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),25.0,30.0,27.0,320.0,35000,6.5,5.3
+2025,Bmw,X3 Xdrive30I,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),27.0,33.0,29.0,299.0,35000,6.5,5.3
+2025,Bmw,X4 M,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),15.0,20.0,17.0,519.0,35000,6.5,5.5
+2025,Bmw,X4 M Competition,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),15.0,20.0,17.0,519.0,35000,6.5,5.5
+2025,Bmw,X4 M40I,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),22.0,26.0,23.0,377.0,35000,6.5,5.5
+2025,Bmw,X4 Xdrive30I,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),21.0,27.0,24.0,372.0,35000,6.5,5.5
+2025,Bmw,X5 M Competition,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S8),13.0,18.0,15.0,589.0,35000,6.5,5.5
+2025,Bmw,X5 M60I Xdrive,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),17.0,22.0,19.0,458.0,35000,6.5,5.5
+2025,Bmw,X5 Sdrive40I,Standard SUV 2WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),23.0,27.0,25.0,360.0,35000,6.5,5.5
+2025,Bmw,X5 Xdrive40I,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),23.0,27.0,25.0,352.0,35000,6.5,5.5
+2025,Bmw,X6 M Competition,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S8),13.0,18.0,15.0,589.0,35000,6.5,5.5
+2025,Bmw,X6 M60I Xdrive,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),17.0,22.0,19.0,458.0,35000,6.5,5.5
+2025,Bmw,X6 Xdrive40I,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),23.0,26.0,24.0,359.0,35000,6.5,5.5
+2025,Bmw,X7 M60I Xdrive,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),16.0,20.0,18.0,498.0,35000,6.5,5.5
+2025,Bmw,X7 Xdrive40I,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),20.0,24.0,22.0,397.0,35000,6.5,5.5
+2025,Bmw,Z4 M40I,Two Seaters,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),23.0,29.0,25.0,346.0,45000,4.8,8.0
+2025,Bmw,Z4 M40I,Two Seaters,Gasoline (Premium Unleaded Recommended),FWD,Manual (M6),19.0,26.0,22.0,407.0,45000,4.8,8.9
+2025,Bmw,Z4 Sdrive30I,Two Seaters,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),25.0,33.0,28.0,312.0,45000,4.8,8.0
+2025,Bugatti,Mistral,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S7),8.0,12.0,9.0,943.0,45000,4.8,8.6
+2025,Buick,Enclave Awd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),19.0,24.0,21.0,422.0,49000,7.2,5.9
+2025,Buick,Enclave Fwd,Standard SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),20.0,27.0,23.0,387.0,49000,7.2,5.9
+2025,Buick,Encore Gx Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A9),26.0,28.0,27.0,339.0,49000,7.2,5.7
+2025,Buick,Encore Gx Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),29.0,31.0,30.0,297.0,49000,7.2,5.7
+2025,Buick,Encore Gx Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),30.0,31.0,30.0,297.0,49000,7.2,5.7
+2025,Buick,Envision Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S9),22.0,28.0,24.0,371.0,49000,7.2,5.9
+2025,Buick,Envista,Small Station Wagons,Gasoline (Regular Unleaded Recommended),FWD,Auto (A6),28.0,32.0,30.0,296.0,47600,7.3,6.0
+2025,Buick,Envista,Small Station Wagons,Gasoline (Regular Unleaded Recommended),FWD,Auto (A6),28.0,32.0,30.0,297.0,47600,7.3,6.0
+2025,Cadillac,Ct4,Compact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S10),21.0,31.0,25.0,356.0,37800,6.8,5.8
+2025,Cadillac,Ct4 Awd,Compact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S8),21.0,31.0,25.0,357.0,37800,6.8,5.8
+2025,Cadillac,Ct4 Awd,Compact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S10),21.0,29.0,24.0,371.0,37800,6.8,5.8
+2025,Cadillac,Ct4 V,Compact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S10),20.0,29.0,23.0,383.0,37800,6.8,5.8
+2025,Cadillac,Ct4 V,Compact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S10),16.0,24.0,19.0,478.0,37800,6.8,5.8
+2025,Cadillac,Ct4 V,Compact Cars,Gasoline (Premium Unleaded Required),FWD,Manual (M6),15.0,23.0,18.0,493.0,37800,6.8,6.5
+2025,Cadillac,Ct4 V Awd,Compact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S10),20.0,28.0,23.0,387.0,37800,6.8,5.8
+2025,Cadillac,Ct5,Midsize Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S10),19.0,28.0,22.0,399.0,44800,7.3,6.1
+2025,Cadillac,Ct5,Midsize Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S10),23.0,32.0,26.0,341.0,44800,7.3,5.9
+2025,Cadillac,Ct5 Awd,Midsize Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S10),18.0,26.0,21.0,422.0,44800,7.3,6.1
+2025,Cadillac,Ct5 Awd,Midsize Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S10),21.0,30.0,25.0,361.0,44800,7.3,6.1
+2025,Cadillac,Ct5 V,Midsize Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S10),18.0,27.0,21.0,424.0,44800,7.3,6.1
+2025,Cadillac,Ct5 V,Midsize Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S10),13.0,20.0,15.0,579.0,44800,7.3,6.1
+2025,Cadillac,Ct5 V,Midsize Cars,Gasoline (Premium Unleaded Required),FWD,Manual (M6),13.0,20.0,15.0,587.0,44800,7.3,6.8
+2025,Cadillac,Ct5 V Awd,Midsize Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S10),17.0,26.0,20.0,445.0,44800,7.3,6.1
+2025,Cadillac,Escalade 2Wd,Standard SUV 2WD,Gasoline (Premium Unleaded Required),FWD,Auto (A10),15.0,19.0,17.0,537.0,49000,7.2,5.9
+2025,Cadillac,Escalade 4Wd,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A10),14.0,18.0,16.0,572.0,49000,7.2,5.9
+2025,Cadillac,Escalade V Awd,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S10),11.0,17.0,13.0,683.0,49000,7.2,5.9
+2025,Cadillac,Xt4 Awd,Small SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S9),23.0,28.0,25.0,357.0,49000,7.2,5.9
+2025,Cadillac,Xt4 Fwd,Small SUV 2WD,Gasoline (Premium Unleaded Required),FWD,Auto (S9),24.0,29.0,26.0,343.0,49000,7.2,5.7
+2025,Cadillac,Xt5 Awd,Small SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S9),21.0,27.0,23.0,386.0,49000,7.2,5.9
+2025,Cadillac,Xt5 Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S9),18.0,26.0,21.0,424.0,49000,7.2,5.9
+2025,Cadillac,Xt5 Fwd,Small SUV 2WD,Gasoline (Premium Unleaded Required),FWD,Auto (S9),22.0,29.0,24.0,370.0,49000,7.2,5.9
+2025,Cadillac,Xt5 Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S9),19.0,26.0,21.0,418.0,49000,7.2,5.9
+2025,Cadillac,Xt6 Awd,Small SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S9),21.0,26.0,23.0,386.0,49000,7.2,5.9
+2025,Cadillac,Xt6 Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S9),18.0,25.0,20.0,435.0,49000,7.2,5.9
+2025,Cadillac,Xt6 Fwd,Small SUV 2WD,Gasoline (Premium Unleaded Required),FWD,Auto (S9),21.0,27.0,23.0,386.0,49000,7.2,5.9
+2025,Cadillac,Xt6 Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S9),19.0,26.0,21.0,418.0,49000,7.2,5.9
+2025,Chevrolet,Blazer Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A9),22.0,27.0,24.0,368.0,35000,6.5,5.5
+2025,Chevrolet,Blazer Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A9),18.0,26.0,21.0,422.0,35000,6.5,5.5
+2025,Chevrolet,Blazer Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A9),22.0,29.0,25.0,350.0,35000,6.5,5.5
+2025,Chevrolet,Blazer Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A9),19.0,26.0,22.0,411.0,35000,6.5,5.5
+2025,Chevrolet,Colorado 2Wd,Standard Pick-up Trucks 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),19.0,23.0,20.0,434.0,35000,6.5,5.5
+2025,Chevrolet,Colorado 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),17.0,21.0,19.0,487.0,35000,6.5,5.5
+2025,Chevrolet,Colorado 4Wd Mud Terrain Tires,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),17.0,20.0,18.0,494.0,35000,6.5,5.5
+2025,Chevrolet,Colorado Zr2 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),17.0,17.0,17.0,527.0,35000,6.5,5.5
+2025,Chevrolet,Colorado Zr2 Bison 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),16.0,16.0,16.0,564.0,35000,6.5,5.5
+2025,Chevrolet,Corvette,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Auto (S8),16.0,25.0,19.0,471.0,45000,4.8,8.2
+2025,Chevrolet,Corvette E-Ray,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Auto (S8),16.0,24.0,19.0,477.0,45000,4.8,8.2
+2025,Chevrolet,Corvette Z06,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Auto (S8),12.0,20.0,14.0,614.0,45000,4.8,8.2
+2025,Chevrolet,Corvette Z06 Carbon Aero,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Auto (S8),12.0,19.0,14.0,631.0,45000,4.8,8.2
+2025,Chevrolet,Corvette Zr1,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Auto (S8),12.0,18.0,14.0,637.0,45000,4.8,8.2
+2025,Chevrolet,Equinox Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),24.0,29.0,26.0,344.0,35000,6.5,5.3
+2025,Chevrolet,Equinox Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),26.0,28.0,27.0,332.0,35000,6.5,5.3
+2025,Chevrolet,Malibu,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),28.0,36.0,31.0,283.0,32000,6.6,5.5
+2025,Chevrolet,Silverado 2Wd,Standard Pick-up Trucks 2WD,"Diesel, ultra low sulfur (15 ppm, maximum)",FWD,Auto (A10),23.0,29.0,26.0,399.0,35000,6.5,5.5
+2025,Chevrolet,Silverado 2Wd,Standard Pick-up Trucks 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),17.0,21.0,19.0,470.0,35000,6.5,5.5
+2025,Chevrolet,Silverado 2Wd,Standard Pick-up Trucks 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),18.0,21.0,19.0,468.0,35000,6.5,5.5
+2025,Chevrolet,Silverado 2Wd,Standard Pick-up Trucks 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),16.0,21.0,18.0,490.0,35000,6.5,5.5
+2025,Chevrolet,Silverado 2Wd,Standard Pick-up Trucks 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),16.0,21.0,18.0,491.0,35000,6.5,5.5
+2025,Chevrolet,Silverado 2Wd Cab Chassis,Special Purpose Vehicle cab chassis,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),15.0,18.0,16.0,551.0,35000,6.5,5.5
+2025,Chevrolet,Silverado 4Wd,Standard Pick-up Trucks 4WD,"Diesel, ultra low sulfur (15 ppm, maximum)",FWD,Auto (A10),22.0,26.0,24.0,428.0,35000,6.5,5.5
+2025,Chevrolet,Silverado 4Wd,Standard Pick-up Trucks 4WD,"Diesel, ultra low sulfur (15 ppm, maximum)",FWD,Auto (A10),22.0,25.0,23.0,434.0,35000,6.5,5.5
+2025,Chevrolet,Silverado 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),17.0,20.0,18.0,482.0,35000,6.5,5.5
+2025,Chevrolet,Silverado 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),17.0,20.0,18.0,481.0,35000,6.5,5.5
+2025,Chevrolet,Silverado 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),15.0,19.0,17.0,524.0,35000,6.5,5.5
+2025,Chevrolet,Silverado 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A10),15.0,20.0,17.0,528.0,35000,6.5,5.5
+2025,Chevrolet,Silverado 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),15.0,19.0,16.0,546.0,35000,6.5,5.5
+2025,Chevrolet,Silverado 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),16.0,19.0,17.0,520.0,35000,6.5,5.5
+2025,Chevrolet,Silverado 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),16.0,19.0,17.0,525.0,35000,6.5,5.5
+2025,Chevrolet,Silverado 4Wd Cab Chassis,Special Purpose Vehicle cab chassis,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),14.0,16.0,15.0,592.0,35000,6.5,5.5
+2025,Chevrolet,Silverado 4Wd Mud Terrain Tires,Standard Pick-up Trucks 4WD,"Diesel, ultra low sulfur (15 ppm, maximum)",FWD,Auto (A10),21.0,24.0,23.0,450.0,35000,6.5,5.5
+2025,Chevrolet,Silverado 4Wd Mud Terrain Tires,Standard Pick-up Trucks 4WD,"Diesel, ultra low sulfur (15 ppm, maximum)",FWD,Auto (A10),21.0,24.0,22.0,456.0,35000,6.5,5.5
+2025,Chevrolet,Silverado 4Wd Mud Terrain Tires,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),16.0,17.0,16.0,541.0,35000,6.5,5.5
+2025,Chevrolet,Silverado 4Wd Mud Terrain Tires,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),16.0,17.0,16.0,538.0,35000,6.5,5.5
+2025,Chevrolet,Silverado 4Wd Mud Terrain Tires,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),15.0,19.0,17.0,524.0,35000,6.5,5.5
+2025,Chevrolet,Silverado 4Wd Mud Terrain Tires,Standard Pick-up Trucks 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A10),14.0,17.0,15.0,593.0,35000,6.5,5.5
+2025,Chevrolet,Silverado 4Wd Mud Terrain Tires,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),15.0,19.0,16.0,546.0,35000,6.5,5.5
+2025,Chevrolet,Silverado 4Wd Mud Terrain Tires,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),15.0,18.0,16.0,545.0,35000,6.5,5.5
+2025,Chevrolet,Silverado 4Wd Zr2,Standard Pick-up Trucks 4WD,"Diesel, ultra low sulfur (15 ppm, maximum)",FWD,Auto (A10),20.0,23.0,21.0,479.0,35000,6.5,5.5
+2025,Chevrolet,Silverado 4Wd Zr2,Standard Pick-up Trucks 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A10),14.0,17.0,15.0,591.0,35000,6.5,5.5
+2025,Chevrolet,Suburban 2Wd,Standard SUV 2WD,Gasoline (Premium Unleaded Required),FWD,Auto (A10),15.0,19.0,16.0,544.0,35000,6.5,5.5
+2025,Chevrolet,Suburban 2Wd,Standard SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),15.0,20.0,17.0,530.0,35000,6.5,5.5
+2025,Chevrolet,Suburban 2Wd,Standard SUV 2WD,"Diesel, ultra low sulfur (15 ppm, maximum)",FWD,Auto (A10),21.0,26.0,23.0,442.0,35000,6.5,5.5
+2025,Chevrolet,Suburban 4Wd,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A10),14.0,18.0,16.0,572.0,35000,6.5,5.5
+2025,Chevrolet,Suburban 4Wd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),14.0,19.0,16.0,571.0,35000,6.5,5.5
+2025,Chevrolet,Suburban 4Wd,Standard SUV 4WD,"Diesel, ultra low sulfur (15 ppm, maximum)",FWD,Auto (A10),20.0,26.0,22.0,455.0,35000,6.5,5.5
+2025,Chevrolet,Tahoe 2Wd,Standard SUV 2WD,Gasoline (Premium Unleaded Required),FWD,Auto (A10),15.0,20.0,17.0,523.0,35000,6.5,5.5
+2025,Chevrolet,Tahoe 2Wd,Standard SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),15.0,20.0,17.0,530.0,35000,6.5,5.5
+2025,Chevrolet,Tahoe 2Wd,Standard SUV 2WD,"Diesel, ultra low sulfur (15 ppm, maximum)",FWD,Auto (A10),22.0,26.0,24.0,427.0,35000,6.5,5.5
+2025,Chevrolet,Tahoe 4Wd,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A10),14.0,18.0,16.0,572.0,35000,6.5,5.5
+2025,Chevrolet,Tahoe 4Wd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),15.0,19.0,17.0,535.0,35000,6.5,5.5
+2025,Chevrolet,Tahoe 4Wd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),14.0,18.0,16.0,571.0,35000,6.5,5.5
+2025,Chevrolet,Tahoe 4Wd,Standard SUV 4WD,"Diesel, ultra low sulfur (15 ppm, maximum)",FWD,Auto (A10),20.0,26.0,22.0,455.0,35000,6.5,5.5
+2025,Chevrolet,Trailblazer Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A9),26.0,29.0,27.0,329.0,35000,6.5,5.3
+2025,Chevrolet,Trailblazer Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),29.0,33.0,31.0,287.0,35000,6.5,5.3
+2025,Chevrolet,Trailblazer Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),30.0,31.0,30.0,297.0,35000,6.5,5.3
+2025,Chevrolet,Traverse Awd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),19.0,24.0,21.0,422.0,35000,6.5,5.5
+2025,Chevrolet,Traverse Fwd,Standard SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),20.0,27.0,23.0,388.0,35000,6.5,5.5
+2025,Chevrolet,Trax,Small Station Wagons,Gasoline (Regular Unleaded Recommended),FWD,Auto (A6),28.0,32.0,30.0,296.0,34000,6.6,5.6
+2025,Chevrolet,Trax,Small Station Wagons,Gasoline (Regular Unleaded Recommended),FWD,Auto (A6),28.0,31.0,29.0,306.0,34000,6.6,5.6
+2025,Chrysler,Pacifica,"Special Purpose Vehicle, minivan 2WD",Gasoline (Regular Unleaded Recommended),FWD,Auto (A9),19.0,28.0,22.0,401.0,35000,6.5,5.5
+2025,Chrysler,Pacifica Awd,"Special Purpose Vehicle, minivan 4WD",Gasoline (Regular Unleaded Recommended),FWD,Auto (A9),17.0,25.0,20.0,450.0,35000,6.5,5.5
+2025,Chrysler,Voyager,"Special Purpose Vehicle, minivan 2WD",Gasoline (Regular Unleaded Recommended),FWD,Auto (A9),19.0,28.0,22.0,401.0,35000,6.5,5.5
+2025,Dodge,Durango Awd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),17.0,24.0,20.0,450.0,35000,6.5,5.5
+2025,Dodge,Durango Awd,Standard SUV 4WD,Gasoline (Mid Grade Unleaded Recommended),FWD,Auto (A8),14.0,22.0,17.0,533.0,35000,6.5,5.5
+2025,Dodge,Durango Rwd,Standard SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),18.0,25.0,20.0,439.0,35000,6.5,5.5
+2025,Dodge,Durango Rwd,Standard SUV 2WD,Gasoline (Mid Grade Unleaded Recommended),FWD,Auto (A8),14.0,22.0,17.0,525.0,35000,6.5,5.5
+2025,Dodge,Durango Srt Awd,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (A8),12.0,17.0,13.0,659.0,35000,6.5,5.5
+2025,Dodge,Hornet Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A9),21.0,29.0,24.0,372.0,35000,6.5,5.5
+2025,"Ferrari North America, Inc.",F167 Aba,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Auto (AM8),12.0,19.0,14.0,619.0,45000,4.8,8.6
+2025,"Ferrari North America, Inc.",Ferrari Daytona Sp3,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Auto (AM7),12.0,16.0,13.0,660.0,45000,4.8,8.6
+2025,"Ferrari North America, Inc.",Roma Spider,Minicompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (AM8),17.0,22.0,19.0,467.0,35000,6.5,5.9
+2025,Ford,Bronco 4Wd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),18.0,22.0,20.0,464.0,35000,6.5,5.5
+2025,Ford,Bronco 4Wd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),17.0,18.0,18.0,494.0,35000,6.5,5.5
+2025,Ford,Bronco 4Wd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Manual (M7),18.0,21.0,19.0,468.0,35000,6.5,6.2
+2025,Ford,Bronco 4Wd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),17.0,18.0,18.0,506.0,35000,6.5,5.5
+2025,Ford,Bronco Badlands 4Wd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),17.0,19.0,18.0,517.0,35000,6.5,5.5
+2025,Ford,Bronco Badlands 4Wd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Manual (M7),17.0,18.0,17.0,526.0,35000,6.5,6.2
+2025,Ford,Bronco Outer Banks 4Wd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),19.0,21.0,20.0,453.0,35000,6.5,5.5
+2025,Ford,Bronco Raptor 4Wd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),15.0,16.0,15.0,577.0,35000,6.5,5.5
+2025,Ford,Bronco Sasquatch 4Wd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),17.0,19.0,18.0,464.0,35000,6.5,5.5
+2025,Ford,Bronco Sasquatch 4Wd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Manual (M7),17.0,19.0,18.0,468.0,35000,6.5,6.2
+2025,Ford,Bronco Sport 4Wd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),25.0,30.0,27.0,324.0,35000,6.5,5.3
+2025,Ford,Bronco Sport 4Wd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),21.0,27.0,23.0,387.0,35000,6.5,5.5
+2025,Ford,Bronco Sport Sasquatch,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),23.0,26.0,24.0,370.0,35000,6.5,5.5
+2025,Ford,Escape Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),23.0,31.0,26.0,336.0,35000,6.5,5.3
+2025,Ford,Escape Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),26.0,32.0,28.0,316.0,35000,6.5,5.3
+2025,Ford,Escape Awd Hev,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),42.0,36.0,39.0,225.0,35000,6.5,5.3
+2025,Ford,Escape Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),27.0,34.0,30.0,298.0,35000,6.5,5.3
+2025,Ford,Escape Fwd Hev,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),42.0,36.0,39.0,225.0,35000,6.5,5.3
+2025,Ford,Expedition 2Wd,Standard SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),16.0,24.0,19.0,472.0,35000,6.5,5.5
+2025,Ford,Expedition 4Wd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),15.0,22.0,18.0,501.0,35000,6.5,5.5
+2025,Ford,Explorer Awd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),18.0,25.0,20.0,439.0,35000,6.5,5.5
+2025,Ford,Explorer Awd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),18.0,25.0,21.0,428.0,35000,6.5,5.5
+2025,Ford,Explorer Awd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),20.0,27.0,23.0,394.0,35000,6.5,5.5
+2025,Ford,Explorer Rwd,Standard SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),18.0,25.0,21.0,425.0,35000,6.5,5.5
+2025,Ford,Explorer Rwd,Standard SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),18.0,25.0,21.0,420.0,35000,6.5,5.5
+2025,Ford,Explorer Rwd,Standard SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),20.0,29.0,24.0,377.0,35000,6.5,5.5
+2025,Ford,F150 Pickup 2Wd,Standard Pick-up Trucks 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),17.0,25.0,20.0,452.0,35000,6.5,5.5
+2025,Ford,F150 Pickup 2Wd,Standard Pick-up Trucks 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),19.0,25.0,21.0,425.0,35000,6.5,5.5
+2025,Ford,F150 Pickup 2Wd,Standard Pick-up Trucks 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),16.0,24.0,19.0,473.0,35000,6.5,5.5
+2025,Ford,F150 Pickup 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),16.0,24.0,19.0,467.0,35000,6.5,5.5
+2025,Ford,F150 Pickup 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),18.0,23.0,20.0,437.0,35000,6.5,5.5
+2025,Ford,F150 Pickup 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),16.0,24.0,19.0,474.0,35000,6.5,5.5
+2025,Ford,F150 Pickup 4Wd Hev,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),22.0,24.0,23.0,386.0,35000,6.5,5.5
+2025,Ford,F150 Pickup Tremor 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),16.0,21.0,18.0,494.0,35000,6.5,5.5
+2025,Ford,F150 Pickup Tremor 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),15.0,20.0,17.0,523.0,35000,6.5,5.5
+2025,Ford,F150 Raptor 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),14.0,18.0,16.0,559.0,35000,6.5,5.5
+2025,Ford,F150 Raptor R 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S10),10.0,15.0,12.0,741.0,35000,6.5,5.5
+2025,Ford,Maverick Awd,Small Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),22.0,30.0,25.0,355.0,35000,6.5,5.5
+2025,Ford,Maverick Hev Awd,Small Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),40.0,34.0,37.0,240.0,35000,6.5,5.3
+2025,Ford,Maverick Hev Fwd,Small Pick-up Trucks 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),42.0,35.0,38.0,234.0,35000,6.5,5.3
+2025,Ford,Maverick Lobo Awd,Small Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),21.0,30.0,24.0,370.0,35000,6.5,5.5
+2025,Ford,Maverick Tremor Awd,Small Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),21.0,27.0,23.0,387.0,35000,6.5,5.5
+2025,Ford,Mustang,Subcompact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),16.0,24.0,19.0,467.0,23000,5.7,5.0
+2025,Ford,Mustang,Subcompact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),22.0,33.0,26.0,342.0,23000,5.7,4.8
+2025,Ford,Mustang,Subcompact Cars,Gasoline (Regular Unleaded Recommended),FWD,Manual (M6),15.0,23.0,18.0,494.0,23000,5.7,5.7
+2025,Ford,Mustang Dark Horse,Subcompact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),14.0,22.0,17.0,524.0,23000,5.7,5.0
+2025,Ford,Mustang Dark Horse,Subcompact Cars,Gasoline (Regular Unleaded Recommended),FWD,Manual (M6),14.0,22.0,17.0,533.0,23000,5.7,5.7
+2025,Ford,Mustang Gtd,Subcompact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S8),10.0,17.0,12.0,740.0,23000,5.7,5.4
+2025,Ford,Ranger 2Wd,Standard Pick-up Trucks 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),21.0,26.0,23.0,380.0,35000,6.5,5.5
+2025,Ford,Ranger 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),19.0,26.0,22.0,405.0,35000,6.5,5.5
+2025,Ford,Ranger 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),19.0,23.0,20.0,431.0,35000,6.5,5.5
+2025,Ford,Ranger Raptor 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),16.0,18.0,17.0,525.0,35000,6.5,5.5
+2025,Genesis,G70 Awd,Compact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),17.0,23.0,19.0,466.0,37800,6.8,5.8
+2025,Genesis,G70 Awd,Compact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),20.0,28.0,23.0,385.0,37800,6.8,5.8
+2025,Genesis,G70 Rwd,Compact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),17.0,25.0,20.0,449.0,37800,6.8,5.8
+2025,Genesis,G70 Rwd,Compact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),21.0,29.0,24.0,373.0,37800,6.8,5.8
+2025,Genesis,G80 Awd,Large Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),20.0,29.0,24.0,377.0,56000,7.7,5.7
+2025,Genesis,G80 Awd,Large Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),16.0,24.0,19.0,474.0,56000,7.7,5.7
+2025,Genesis,G90 Awd,Large Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),18.0,26.0,21.0,426.0,56000,7.7,5.7
+2025,Genesis,G90 Mhev,Large Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),17.0,24.0,20.0,441.0,56000,7.7,5.7
+2025,Genesis,Gv70 Awd,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),19.0,26.0,22.0,408.0,49000,7.2,5.9
+2025,Genesis,Gv70 Awd,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),22.0,28.0,24.0,369.0,49000,7.2,5.9
+2025,Genesis,Gv70 Awd,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),18.0,24.0,20.0,441.0,49000,7.2,5.9
+2025,Genesis,Gv80 Awd,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),19.0,24.0,21.0,427.0,49000,7.2,5.9
+2025,Genesis,Gv80 Awd,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),16.0,22.0,19.0,480.0,49000,7.2,5.9
+2025,Genesis,Gv80 Mhev,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),18.0,22.0,20.0,455.0,49000,7.2,5.9
+2025,Gmc,Acadia Awd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),19.0,24.0,21.0,422.0,35000,6.5,5.5
+2025,Gmc,Acadia Fwd,Standard SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),20.0,27.0,23.0,387.0,35000,6.5,5.5
+2025,Gmc,Canyon 2Wd,Standard Pick-up Trucks 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),19.0,23.0,20.0,434.0,35000,6.5,5.5
+2025,Gmc,Canyon 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),17.0,21.0,19.0,487.0,35000,6.5,5.5
+2025,Gmc,Canyon At4X 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),17.0,17.0,17.0,527.0,35000,6.5,5.5
+2025,Gmc,Canyon At4X Aev 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),16.0,16.0,16.0,564.0,35000,6.5,5.5
+2025,Gmc,Sierra 2Wd,Standard Pick-up Trucks 2WD,"Diesel, ultra low sulfur (15 ppm, maximum)",FWD,Auto (A10),23.0,29.0,26.0,399.0,35000,6.5,5.5
+2025,Gmc,Sierra 2Wd,Standard Pick-up Trucks 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),18.0,21.0,19.0,468.0,35000,6.5,5.5
+2025,Gmc,Sierra 2Wd,Standard Pick-up Trucks 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),17.0,21.0,19.0,470.0,35000,6.5,5.5
+2025,Gmc,Sierra 2Wd,Standard Pick-up Trucks 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),16.0,21.0,18.0,495.0,35000,6.5,5.5
+2025,Gmc,Sierra 2Wd,Standard Pick-up Trucks 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),16.0,20.0,17.0,507.0,35000,6.5,5.5
+2025,Gmc,Sierra 2Wd Cab Chassis,Special Purpose Vehicle cab chassis,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),15.0,18.0,16.0,551.0,35000,6.5,5.5
+2025,Gmc,Sierra 4Wd,Standard Pick-up Trucks 4WD,"Diesel, ultra low sulfur (15 ppm, maximum)",FWD,Auto (A10),22.0,26.0,24.0,428.0,35000,6.5,5.5
+2025,Gmc,Sierra 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),17.0,18.0,17.0,516.0,35000,6.5,5.5
+2025,Gmc,Sierra 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),17.0,19.0,18.0,496.0,35000,6.5,5.5
+2025,Gmc,Sierra 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),15.0,19.0,17.0,524.0,35000,6.5,5.5
+2025,Gmc,Sierra 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A10),15.0,19.0,16.0,539.0,35000,6.5,5.5
+2025,Gmc,Sierra 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),15.0,19.0,16.0,546.0,35000,6.5,5.5
+2025,Gmc,Sierra 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),15.0,19.0,17.0,526.0,35000,6.5,5.5
+2025,Gmc,Sierra 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),15.0,19.0,17.0,535.0,35000,6.5,5.5
+2025,Gmc,Sierra 4Wd At4X,Standard Pick-up Trucks 4WD,"Diesel, ultra low sulfur (15 ppm, maximum)",FWD,Auto (A10),19.0,20.0,19.0,524.0,35000,6.5,5.5
+2025,Gmc,Sierra 4Wd At4X,Standard Pick-up Trucks 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A10),14.0,16.0,15.0,601.0,35000,6.5,5.5
+2025,Gmc,Sierra 4Wd Cab Chassis,Special Purpose Vehicle cab chassis,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),14.0,16.0,15.0,592.0,35000,6.5,5.5
+2025,Gmc,Sierra 4Wd Mud Terrain Tires,Standard Pick-up Trucks 4WD,"Diesel, ultra low sulfur (15 ppm, maximum)",FWD,Auto (A10),21.0,24.0,23.0,450.0,35000,6.5,5.5
+2025,Gmc,Sierra 4Wd Mud Terrain Tires,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),16.0,17.0,16.0,538.0,35000,6.5,5.5
+2025,Gmc,Sierra 4Wd Mud Terrain Tires,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),15.0,19.0,17.0,524.0,35000,6.5,5.5
+2025,Gmc,Sierra 4Wd Mud Terrain Tires,Standard Pick-up Trucks 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A10),14.0,17.0,15.0,593.0,35000,6.5,5.5
+2025,Gmc,Sierra 4Wd Mud Terrain Tires,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),15.0,19.0,16.0,546.0,35000,6.5,5.5
+2025,Gmc,Sierra 4Wd Mud Terrain Tires,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),15.0,18.0,16.0,549.0,35000,6.5,5.5
+2025,Gmc,Sierra 4Wd Mud Terrain Tires,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),15.0,18.0,16.0,553.0,35000,6.5,5.5
+2025,Gmc,Terrain Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),24.0,28.0,25.0,356.0,35000,6.5,5.5
+2025,Gmc,Terrain Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),26.0,28.0,27.0,332.0,35000,6.5,5.3
+2025,Gmc,Yukon 2Wd,Standard SUV 2WD,Gasoline (Premium Unleaded Required),FWD,Auto (A10),15.0,20.0,17.0,523.0,35000,6.5,5.5
+2025,Gmc,Yukon 2Wd,Standard SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),15.0,20.0,17.0,530.0,35000,6.5,5.5
+2025,Gmc,Yukon 2Wd,Standard SUV 2WD,"Diesel, ultra low sulfur (15 ppm, maximum)",FWD,Auto (A10),21.0,26.0,23.0,442.0,35000,6.5,5.5
+2025,Gmc,Yukon 4Wd,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A10),14.0,18.0,16.0,572.0,35000,6.5,5.5
+2025,Gmc,Yukon 4Wd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),15.0,19.0,17.0,535.0,35000,6.5,5.5
+2025,Gmc,Yukon 4Wd,Standard SUV 4WD,"Diesel, ultra low sulfur (15 ppm, maximum)",FWD,Auto (A10),20.0,26.0,22.0,455.0,35000,6.5,5.5
+2025,Gmc,Yukon Xl 2Wd,Standard SUV 2WD,Gasoline (Premium Unleaded Required),FWD,Auto (A10),15.0,19.0,16.0,544.0,35000,6.5,5.5
+2025,Gmc,Yukon Xl 2Wd,Standard SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),15.0,20.0,17.0,530.0,35000,6.5,5.5
+2025,Gmc,Yukon Xl 2Wd,Standard SUV 2WD,"Diesel, ultra low sulfur (15 ppm, maximum)",FWD,Auto (A10),21.0,26.0,23.0,442.0,35000,6.5,5.5
+2025,Gmc,Yukon Xl 4Wd,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A10),14.0,18.0,16.0,572.0,35000,6.5,5.5
+2025,Gmc,Yukon Xl 4Wd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A10),14.0,19.0,16.0,571.0,35000,6.5,5.5
+2025,Gmc,Yukon Xl 4Wd,Standard SUV 4WD,"Diesel, ultra low sulfur (15 ppm, maximum)",FWD,Auto (A10),20.0,26.0,22.0,455.0,35000,6.5,5.5
+2025,Honda,Accord,Large Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),29.0,37.0,32.0,277.0,40000,7.0,5.1
+2025,Honda,Accord,Large Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),51.0,44.0,48.0,184.0,40000,7.0,4.9
+2025,Honda,Accord Sport/Touring,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),46.0,41.0,44.0,201.0,32000,6.6,5.3
+2025,Honda,Civic 4Dr,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Manual (M6),27.0,37.0,31.0,285.0,32000,6.6,6.2
+2025,Honda,Civic 4Dr,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),32.0,41.0,36.0,248.0,32000,6.6,5.5
+2025,Honda,Civic 4Dr,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S7),31.0,39.0,34.0,260.0,32000,6.6,5.5
+2025,Honda,Civic 4Dr,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),50.0,47.0,49.0,181.0,32000,6.6,5.3
+2025,Honda,Civic 5Dr,Large Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S7),30.0,38.0,34.0,260.0,40000,7.0,5.1
+2025,Honda,Civic 5Dr,Large Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),50.0,45.0,48.0,186.0,40000,7.0,4.9
+2025,Honda,Civic 5Dr,Large Cars,Gasoline (Premium Unleaded Recommended),FWD,Manual (M6),22.0,28.0,24.0,364.0,40000,7.0,6.0
+2025,Honda,Cr-V Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),26.0,31.0,28.0,312.0,35000,6.5,5.3
+2025,Honda,Cr-V Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),40.0,34.0,37.0,237.0,35000,6.5,5.3
+2025,Honda,Cr-V Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),28.0,34.0,30.0,290.0,35000,6.5,5.3
+2025,Honda,Cr-V Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),43.0,36.0,40.0,223.0,35000,6.5,5.1
+2025,Honda,Hr-V Awd,Small Station Wagons,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),25.0,30.0,27.0,326.0,34000,6.6,5.6
+2025,Honda,Hr-V Fwd,Small Station Wagons,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),26.0,32.0,28.0,311.0,34000,6.6,5.6
+2025,Honda,Odyssey Fwd,"Special Purpose Vehicle, minivan 2WD",Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),19.0,28.0,22.0,395.0,35000,6.5,5.5
+2025,Honda,Passport Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S9),19.0,24.0,21.0,416.0,35000,6.5,5.5
+2025,Honda,Pilot Awd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),19.0,25.0,21.0,415.0,35000,6.5,5.5
+2025,Honda,Pilot Awd Touring/Elite/Black,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),19.0,25.0,21.0,422.0,35000,6.5,5.5
+2025,Honda,Pilot Awd Trailsport,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),18.0,23.0,20.0,444.0,35000,6.5,5.5
+2025,Honda,Pilot Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),19.0,27.0,22.0,402.0,35000,6.5,5.5
+2025,Honda,Ridgeline Awd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S9),18.0,24.0,21.0,429.0,35000,6.5,5.5
+2025,Honda,Ridgeline Awd Trailsport,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S9),18.0,23.0,20.0,446.0,35000,6.5,5.5
+2025,Hyundai Motor Company,Elantra,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S1),30.0,39.0,34.0,263.0,32000,6.6,5.5
+2025,Hyundai Motor Company,Elantra,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S1),32.0,41.0,36.0,246.0,32000,6.6,5.5
+2025,Hyundai Motor Company,Elantra,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S7),28.0,35.0,31.0,288.0,32000,6.6,5.9
+2025,Hyundai Motor Company,Elantra Hybrid,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S6),49.0,52.0,50.0,177.0,32000,6.6,5.7
+2025,Hyundai Motor Company,Elantra Hybrid Blue,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S6),51.0,58.0,54.0,165.0,32000,6.6,5.7
+2025,Hyundai Motor Company,Elantra N,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S8),20.0,27.0,23.0,392.0,32000,6.6,6.1
+2025,Hyundai Motor Company,Elantra N,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Manual (M6),21.0,29.0,24.0,366.0,32000,6.6,6.4
+2025,Hyundai Motor Company,Kona Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),24.0,29.0,26.0,339.0,35000,6.5,5.3
+2025,Hyundai Motor Company,Kona Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S1),26.0,29.0,27.0,323.0,35000,6.5,5.3
+2025,Hyundai Motor Company,Kona Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S1),27.0,29.0,28.0,319.0,35000,6.5,5.3
+2025,Hyundai Motor Company,Kona Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),26.0,32.0,28.0,315.0,35000,6.5,5.3
+2025,Hyundai Motor Company,Kona Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S1),28.0,35.0,31.0,288.0,35000,6.5,5.3
+2025,Hyundai Motor Company,Kona Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S1),29.0,34.0,31.0,284.0,35000,6.5,5.3
+2025,Hyundai Motor Company,Palisade Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),19.0,24.0,21.0,420.0,35000,6.5,5.5
+2025,Hyundai Motor Company,Palisade Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),19.0,26.0,22.0,403.0,35000,6.5,5.5
+2025,Hyundai Motor Company,Santa Cruz Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),21.0,29.0,24.0,367.0,35000,6.5,5.5
+2025,Hyundai Motor Company,Santa Cruz Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S8),19.0,27.0,22.0,406.0,35000,6.5,5.9
+2025,Hyundai Motor Company,Santa Cruz Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),22.0,30.0,25.0,356.0,35000,6.5,5.5
+2025,Hyundai Motor Company,Santa Cruz Xrt Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S8),18.0,26.0,21.0,419.0,35000,6.5,5.9
+2025,Hyundai Motor Company,Santa Fe Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S8),20.0,28.0,23.0,390.0,35000,6.5,5.9
+2025,Hyundai Motor Company,Santa Fe Awd Xrt,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S8),19.0,26.0,22.0,409.0,35000,6.5,5.9
+2025,Hyundai Motor Company,Santa Fe Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S8),20.0,29.0,24.0,376.0,35000,6.5,5.9
+2025,Hyundai Motor Company,Santa Fe Hybrid Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S6),35.0,34.0,34.0,258.0,35000,6.5,5.7
+2025,Hyundai Motor Company,Santa Fe Hybrid Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S6),36.0,35.0,36.0,249.0,35000,6.5,5.7
+2025,Hyundai Motor Company,Sonata Awd,Large Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),25.0,34.0,28.0,316.0,40000,7.0,5.1
+2025,Hyundai Motor Company,Sonata Fwd,Large Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),25.0,36.0,29.0,305.0,40000,7.0,5.1
+2025,Hyundai Motor Company,Sonata Fwd,Large Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),28.0,38.0,32.0,281.0,40000,7.0,5.1
+2025,Hyundai Motor Company,Sonata Fwd,Large Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S8),23.0,32.0,27.0,333.0,40000,7.0,5.5
+2025,Hyundai Motor Company,Sonata Hybrid,Large Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S6),44.0,51.0,47.0,188.0,40000,7.0,5.3
+2025,Hyundai Motor Company,Tucson Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),24.0,30.0,26.0,339.0,35000,6.5,5.3
+2025,Hyundai Motor Company,Tucson Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),25.0,33.0,28.0,322.0,35000,6.5,5.3
+2025,Hyundai Motor Company,Tucson Hybrid,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S6),35.0,35.0,35.0,253.0,35000,6.5,5.7
+2025,Hyundai Motor Company,Tucson Hybrid Blue,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S6),38.0,38.0,38.0,234.0,35000,6.5,5.7
+2025,Hyundai Motor Company,Venue,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S1),29.0,32.0,31.0,291.0,35000,6.5,5.3
+2025,Ineos Automotive Limited,Grenadier Station Wagon,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),15.0,15.0,15.0,592.0,35000,6.5,5.5
+2025,Ineos Automotive Limited,Grenadier Trialmaster Edition,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),14.0,14.0,14.0,633.0,35000,6.5,5.5
+2025,Infiniti,Qx50,Small SUV 2WD,Gasoline (Premium Unleaded Required),FWD,Auto (AV-S8),23.0,29.0,26.0,343.0,49000,7.2,5.7
+2025,Infiniti,Qx50 Awd,Small SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (AV-S8),22.0,28.0,25.0,357.0,49000,7.2,5.9
+2025,Infiniti,Qx60 Awd,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S9),22.0,27.0,24.0,377.0,49000,7.2,5.9
+2025,Infiniti,Qx60 Fwd,Standard SUV 2WD,Gasoline (Premium Unleaded Required),FWD,Auto (S9),22.0,28.0,24.0,371.0,49000,7.2,5.9
+2025,Infiniti,Qx80 2Wd,Standard SUV 2WD,Gasoline (Premium Unleaded Required),FWD,Auto (S9),16.0,20.0,18.0,504.0,49000,7.2,5.9
+2025,Infiniti,Qx80 4Wd,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S9),16.0,19.0,17.0,522.0,49000,7.2,5.9
+2025,Jaguar,F-Pace,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),22.0,27.0,24.0,376.0,49000,7.2,5.9
+2025,Jaguar,F-Pace Mhev,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),19.0,25.0,21.0,420.0,49000,7.2,5.9
+2025,Jaguar,F-Pace Svr,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),15.0,21.0,17.0,519.0,49000,7.2,5.9
+2025,Jeep,Compass 4X4,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),24.0,32.0,27.0,330.0,35000,6.5,5.3
+2025,Jeep,Gladiator 4X4,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),17.0,22.0,19.0,466.0,35000,6.5,5.5
+2025,Jeep,Grand Cherokee 4X2,Standard SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),19.0,26.0,22.0,407.0,35000,6.5,5.5
+2025,Jeep,Grand Cherokee 4X4,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),19.0,26.0,22.0,413.0,35000,6.5,5.5
+2025,Jeep,Grand Cherokee L 4X2,Standard SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),19.0,26.0,21.0,416.0,35000,6.5,5.5
+2025,Jeep,Grand Cherokee L 4X4,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),18.0,25.0,21.0,430.0,35000,6.5,5.5
+2025,Jeep,Grand Wagoneer 4X4,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (A8),14.0,20.0,17.0,537.0,35000,6.5,5.5
+2025,Jeep,Grand Wagoneer L 4X4,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (A8),14.0,20.0,17.0,537.0,35000,6.5,5.5
+2025,Jeep,Wagoneer 4X2,Standard SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),17.0,24.0,20.0,453.0,35000,6.5,5.5
+2025,Jeep,Wagoneer 4X4,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),16.0,23.0,19.0,472.0,35000,6.5,5.5
+2025,Jeep,Wagoneer L 4X2,Standard SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),17.0,24.0,20.0,453.0,35000,6.5,5.5
+2025,Jeep,Wagoneer L 4X4,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),16.0,23.0,19.0,476.0,35000,6.5,5.5
+2025,Jeep,Wrangler 2Dr 4X4,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),20.0,23.0,21.0,416.0,35000,6.5,5.5
+2025,Jeep,Wrangler 2Dr 4X4,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Manual (M6),17.0,23.0,19.0,462.0,35000,6.5,6.2
+2025,Jeep,Wrangler 4Dr 4X4,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),20.0,22.0,21.0,426.0,35000,6.5,5.5
+2025,Jeep,Wrangler 4Dr 4X4,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),18.0,23.0,20.0,451.0,35000,6.5,5.5
+2025,Jeep,Wrangler 4Dr 4X4,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Manual (M6),16.0,22.0,19.0,476.0,35000,6.5,6.2
+2025,Jeep,Wrangler 4Dr 4X4,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (A8),13.0,16.0,14.0,635.0,35000,6.5,5.5
+2025,Kia,Carnival,"Special Purpose Vehicle, minivan 2WD",Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),18.0,26.0,21.0,426.0,35000,6.5,5.5
+2025,Kia,Carnival Hybrid,"Special Purpose Vehicle, minivan 2WD",Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S6),34.0,31.0,33.0,274.0,35000,6.5,5.7
+2025,Kia,K4,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S1),29.0,39.0,33.0,273.0,32000,6.6,5.5
+2025,Kia,K4,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S1),30.0,40.0,34.0,264.0,32000,6.6,5.5
+2025,Kia,K4,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),26.0,36.0,29.0,303.0,32000,6.6,5.5
+2025,Kia,K5,Large Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),25.0,36.0,29.0,310.0,40000,7.0,5.1
+2025,Kia,K5,Large Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),26.0,37.0,30.0,298.0,40000,7.0,5.1
+2025,Kia,K5,Large Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S8),23.0,33.0,27.0,331.0,40000,7.0,5.5
+2025,Kia,K5 Awd,Large Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),24.0,33.0,27.0,329.0,40000,7.0,5.1
+2025,Kia,Niro,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S6),53.0,45.0,49.0,181.0,35000,6.5,5.5
+2025,Kia,Niro Fe,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S6),53.0,54.0,53.0,167.0,35000,6.5,5.5
+2025,Kia,Seltos Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),24.0,27.0,25.0,350.0,35000,6.5,5.5
+2025,Kia,Seltos Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),27.0,31.0,29.0,309.0,35000,6.5,5.3
+2025,Kia,Seltos Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),28.0,34.0,31.0,288.0,35000,6.5,5.3
+2025,Kia,Sorento Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),23.0,28.0,25.0,357.0,35000,6.5,5.5
+2025,Kia,Sorento Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S8),20.0,27.0,23.0,389.0,35000,6.5,5.9
+2025,Kia,Sorento Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),23.0,31.0,26.0,339.0,35000,6.5,5.3
+2025,Kia,Sorento Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S8),20.0,29.0,23.0,382.0,35000,6.5,5.9
+2025,Kia,Sorento Hybrid Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S6),34.0,34.0,34.0,263.0,35000,6.5,5.7
+2025,Kia,Sorento Hybrid Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S6),36.0,36.0,36.0,246.0,35000,6.5,5.7
+2025,Kia,Soul,Small Station Wagons,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),27.0,33.0,30.0,302.0,34000,6.6,5.6
+2025,Kia,Soul Eco Dynamics,Small Station Wagons,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),29.0,35.0,31.0,287.0,34000,6.6,5.6
+2025,Kia,Sportage Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),23.0,27.0,25.0,361.0,35000,6.5,5.5
+2025,Kia,Sportage Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),25.0,32.0,28.0,317.0,35000,6.5,5.3
+2025,Kia,Sportage Hybrid Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S6),38.0,38.0,38.0,235.0,35000,6.5,5.7
+2025,Kia,Sportage Hybrid Fwd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S6),42.0,44.0,43.0,206.0,35000,6.5,5.5
+2025,Kia,Sportage X-Pro,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),23.0,30.0,26.0,344.0,35000,6.5,5.3
+2025,Kia,Telluride Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),18.0,23.0,20.0,442.0,35000,6.5,5.5
+2025,Kia,Telluride Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),20.0,26.0,22.0,398.0,35000,6.5,5.5
+2025,Land Rover,Defender 110,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),18.0,20.0,19.0,474.0,49000,7.2,5.9
+2025,Land Rover,Defender 110,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),14.0,18.0,16.0,574.0,49000,7.2,5.9
+2025,Land Rover,Defender 110 Mhev,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),15.0,19.0,17.0,534.0,49000,7.2,5.9
+2025,Land Rover,Defender 130,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),14.0,19.0,16.0,567.0,49000,7.2,5.9
+2025,Land Rover,Defender 130 Outbound,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S8),16.0,19.0,18.0,509.0,49000,7.2,5.9
+2025,Land Rover,Defender 130 P300 Mhev,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),17.0,20.0,18.0,491.0,49000,7.2,5.9
+2025,Land Rover,Defender 130 P400 Mhev,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),18.0,20.0,19.0,474.0,49000,7.2,5.9
+2025,Land Rover,Defender 90,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),18.0,21.0,19.0,465.0,49000,7.2,5.9
+2025,Land Rover,Defender 90,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),15.0,19.0,16.0,550.0,49000,7.2,5.9
+2025,Land Rover,Defender 90 Mhev,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),18.0,21.0,19.0,468.0,49000,7.2,5.9
+2025,Land Rover,Discovery,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),19.0,24.0,21.0,421.0,49000,7.2,5.9
+2025,Land Rover,Discovery Sport,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S9),19.0,23.0,20.0,437.0,49000,7.2,5.9
+2025,Land Rover,Range Rover Evoque,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S9),20.0,27.0,22.0,398.0,49000,7.2,5.9
+2025,Land Rover,Range Rover Lwb Mhev,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),16.0,22.0,18.0,501.0,49000,7.2,5.9
+2025,Land Rover,Range Rover Mhev,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),16.0,23.0,19.0,477.0,49000,7.2,5.9
+2025,Land Rover,Range Rover P400 Lwb Mhev,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),19.0,24.0,21.0,428.0,49000,7.2,5.9
+2025,Land Rover,Range Rover P400 Mhev,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),19.0,24.0,21.0,428.0,49000,7.2,5.9
+2025,Land Rover,Range Rover Sport Mhev,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),16.0,23.0,19.0,477.0,49000,7.2,5.9
+2025,Land Rover,Range Rover Sport P360 Mhev,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),20.0,25.0,22.0,399.0,49000,7.2,5.9
+2025,Land Rover,Range Rover Sport P400 Mhev,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),20.0,25.0,22.0,399.0,49000,7.2,5.9
+2025,Land Rover,Range Rover Sport Svr Mhev,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),16.0,22.0,18.0,497.0,49000,7.2,5.9
+2025,Land Rover,Range Rover Sv Lwb Mhev,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),16.0,22.0,18.0,501.0,49000,7.2,5.9
+2025,Land Rover,Range Rover Sv Mhev,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),16.0,22.0,18.0,501.0,49000,7.2,5.9
+2025,Land Rover,Range Rover Velar,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),22.0,26.0,23.0,381.0,49000,7.2,5.9
+2025,Land Rover,Range Rover Velar P340 Mhev,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),19.0,26.0,22.0,407.0,49000,7.2,5.9
+2025,Land Rover,Range Rover Velar P400 Mhev,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),19.0,25.0,21.0,420.0,49000,7.2,5.9
+2025,Lexus,Es 250 Awd,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),24.0,33.0,28.0,320.0,44800,7.3,5.9
+2025,Lexus,Es 300H,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S6),43.0,44.0,44.0,200.0,44800,7.3,5.7
+2025,Lexus,Es 350,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),22.0,32.0,25.0,347.0,44800,7.3,5.9
+2025,Lexus,Es 350 F Sport,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),22.0,31.0,25.0,352.0,44800,7.3,6.1
+2025,Lexus,Gx 550,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S10),15.0,21.0,17.0,505.0,49000,7.2,5.9
+2025,Lexus,Is 300,Compact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S8),21.0,31.0,25.0,356.0,37800,6.8,5.8
+2025,Lexus,Is 300 Awd,Compact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S6),19.0,26.0,22.0,407.0,37800,6.8,5.8
+2025,Lexus,Is 350,Compact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S8),20.0,28.0,23.0,385.0,37800,6.8,5.8
+2025,Lexus,Is 350 Awd,Compact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S6),19.0,26.0,22.0,407.0,37800,6.8,5.8
+2025,Lexus,Is 500,Compact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S8),17.0,25.0,20.0,451.0,37800,6.8,5.8
+2025,Lexus,Lc 500,Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S10),16.0,24.0,18.0,481.0,32200,6.4,5.4
+2025,Lexus,Lc 500 Convertible,Minicompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S10),15.0,25.0,18.0,489.0,49000,7.2,5.9
+2025,Lexus,Lc 500H,Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (AV-S10),26.0,33.0,29.0,304.0,32200,6.4,5.2
+2025,Lexus,Ls 500,Midsize Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S10),18.0,29.0,22.0,404.0,44800,7.3,6.1
+2025,Lexus,Ls 500 Awd,Midsize Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S10),17.0,27.0,21.0,418.0,44800,7.3,6.1
+2025,Lexus,Ls 500H Awd,Midsize Cars,Gasoline (Premium Unleaded Required),FWD,Auto (AV-S10),22.0,29.0,25.0,353.0,44800,7.3,6.1
+2025,Lexus,Ls 500H Awd,Midsize Cars,Gasoline (Premium Unleaded Required),FWD,Auto (AV-S10),22.0,29.0,25.0,358.0,44800,7.3,6.1
+2025,Lexus,Lx 600,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S10),17.0,22.0,19.0,477.0,49000,7.2,5.9
+2025,Lexus,Lx 700H,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S10),19.0,22.0,20.0,439.0,49000,7.2,5.9
+2025,Lexus,Nx 250,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),26.0,33.0,28.0,311.0,49000,7.2,5.7
+2025,Lexus,Nx 250 Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),25.0,32.0,28.0,318.0,49000,7.2,5.7
+2025,Lexus,Nx 350 Awd,Small SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S8),21.0,28.0,24.0,370.0,49000,7.2,5.9
+2025,Lexus,Nx 350 Awd F Sport,Small SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S8),21.0,28.0,24.0,370.0,49000,7.2,5.9
+2025,Lexus,Nx 350H Awd,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (AV-S6),41.0,37.0,39.0,225.0,49000,7.2,5.7
+2025,Lexus,Rc 300,Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S8),21.0,31.0,25.0,356.0,32200,6.4,5.4
+2025,Lexus,Rc 300 Awd,Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S6),19.0,26.0,22.0,407.0,32200,6.4,5.4
+2025,Lexus,Rc 350,Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S8),20.0,28.0,23.0,385.0,32200,6.4,5.4
+2025,Lexus,Rc 350 Awd,Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S6),19.0,26.0,22.0,407.0,32200,6.4,5.4
+2025,Lexus,Rc F,Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S8),16.0,24.0,19.0,459.0,32200,6.4,5.4
+2025,Lexus,Rx 350,Small SUV 2WD,Gasoline (Premium Unleaded Required),FWD,Auto (S8),22.0,29.0,25.0,354.0,49000,7.2,5.9
+2025,Lexus,Rx 350 Awd,Small SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S8),21.0,28.0,24.0,370.0,49000,7.2,5.9
+2025,Lexus,Rx 350H Awd,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (AV-S6),37.0,34.0,36.0,244.0,49000,7.2,5.7
+2025,Lexus,Rx 500H Awd,Small SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S6),27.0,28.0,27.0,321.0,49000,7.2,5.7
+2025,Lexus,Tx 350,Standard SUV 2WD,Gasoline (Premium Unleaded Required),FWD,Auto (S8),21.0,27.0,23.0,377.0,49000,7.2,5.9
+2025,Lexus,Tx 350 Awd,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S8),20.0,26.0,23.0,387.0,49000,7.2,5.9
+2025,Lexus,Tx 500H Awd,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S6),27.0,28.0,27.0,322.0,49000,7.2,5.7
+2025,Lexus,Ux 300H,Compact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S6),45.0,41.0,43.0,204.0,37800,6.8,5.4
+2025,Lexus,Ux 300H,Compact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),45.0,41.0,43.0,204.0,37800,6.8,5.4
+2025,Lexus,Ux 300H Awd,Compact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S6),44.0,40.0,42.0,209.0,37800,6.8,5.4
+2025,Lexus,Ux 300H Awd,Compact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),44.0,40.0,42.0,209.0,37800,6.8,5.4
+2025,Lincoln,Aviator Awd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),17.0,25.0,20.0,447.0,49000,7.2,5.9
+2025,Lincoln,Aviator Rwd,Standard SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),18.0,25.0,21.0,425.0,49000,7.2,5.9
+2025,Lincoln,Corsair Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),21.0,28.0,24.0,374.0,49000,7.2,5.9
+2025,Lincoln,Corsair Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),22.0,30.0,25.0,357.0,49000,7.2,5.9
+2025,Lincoln,Nautilus Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),21.0,29.0,24.0,366.0,49000,7.2,5.9
+2025,Lincoln,Nautilus Hev Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),30.0,31.0,30.0,290.0,49000,7.2,5.7
+2025,Lincoln,Navigator 4Wd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),15.0,22.0,17.0,510.0,49000,7.2,5.9
+2025,Lotus Cars Ltd,Emira,Two Seaters,Gasoline (Regular Unleaded Recommended),FWD,Manual (M6),16.0,24.0,19.0,460.0,45000,4.8,8.9
+2025,Lotus Cars Ltd,Emira,Two Seaters,Gasoline (Regular Unleaded Recommended),FWD,Auto (S6),18.0,26.0,21.0,413.0,45000,4.8,8.2
+2025,Maserati,Grancabrio,Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (A8),17.0,26.0,20.0,430.0,32200,6.4,5.4
+2025,Maserati,Grancabrio Trofeo,Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (A8),17.0,26.0,20.0,430.0,32200,6.4,5.4
+2025,Maserati,Granturismo,Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (A8),18.0,27.0,21.0,412.0,32200,6.4,5.4
+2025,Maserati,Granturismo Trofeo,Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (A8),18.0,27.0,21.0,412.0,32200,6.4,5.4
+2025,Maserati,Grecale,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (A8),22.0,28.0,24.0,365.0,49000,7.2,5.9
+2025,Maserati,Grecale Modena,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (A8),22.0,28.0,24.0,365.0,49000,7.2,5.9
+2025,Maserati,Grecale Trofeo,Small SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A8),18.0,25.0,20.0,432.0,49000,7.2,5.9
+2025,Maserati,Gt2 Stradale,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Auto (S8),15.0,25.0,18.0,474.0,63000,5.5,8.6
+2025,Maserati,Mc20,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Auto (S8),15.0,25.0,18.0,474.0,63000,5.5,8.6
+2025,Maserati,Mc20 Spyder,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Auto (S8),15.0,25.0,18.0,482.0,63000,5.5,8.6
+2025,Mazda,Cx-30 4Wd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S6),26.0,33.0,29.0,309.0,35000,6.5,5.3
+2025,Mazda,Cx-30 4Wd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S6),22.0,30.0,25.0,353.0,35000,6.5,5.5
+2025,Mazda,Cx-5 4Wd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S6),23.0,29.0,25.0,348.0,35000,6.5,5.3
+2025,Mazda,Cx-5 4Wd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S6),26.0,30.0,28.0,321.0,35000,6.5,5.3
+2025,Mazda,Cx-5 4Wd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S6),22.0,27.0,24.0,370.0,35000,6.5,5.5
+2025,Mazda,Mazda Cx-50 4Wd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S6),25.0,31.0,28.0,322.0,35000,6.5,5.3
+2025,Mazda,Mazda Cx-50 4Wd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S6),23.0,29.0,25.0,355.0,35000,6.5,5.5
+2025,Mazda,Mazda Cx-50 4Wd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),39.0,37.0,38.0,233.0,35000,6.5,5.3
+2025,Mazda,Mazda Cx-70 4Wd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),24.0,28.0,25.0,349.0,35000,6.5,5.3
+2025,Mazda,Mazda Cx-70 4Wd,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),23.0,28.0,25.0,358.0,35000,6.5,5.5
+2025,Mazda,Mazda Cx-90 4Wd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),24.0,28.0,25.0,354.0,35000,6.5,5.5
+2025,Mazda,Mazda Cx-90 4Wd,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),23.0,28.0,25.0,358.0,35000,6.5,5.5
+2025,Mazda,Mazda3 4-Door 2Wd,Compact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (S6),27.0,37.0,31.0,287.0,27000,6.1,5.2
+2025,Mazda,Mazda3 4-Door 4Wd,Compact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (S6),26.0,35.0,30.0,301.0,27000,6.1,5.2
+2025,Mazda,Mazda3 4-Door 4Wd,Compact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (S6),23.0,32.0,27.0,334.0,27000,6.1,5.2
+2025,Mazda,Mazda3 5-Door 2Wd,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Manual (M6),26.0,36.0,30.0,296.0,32000,6.6,6.2
+2025,Mazda,Mazda3 5-Door 2Wd,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (S6),27.0,35.0,30.0,294.0,32000,6.6,5.5
+2025,Mazda,Mazda3 5-Door 4Wd,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (S6),26.0,33.0,29.0,311.0,32000,6.6,5.5
+2025,Mazda,Mazda3 5-Door 4Wd,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (S6),23.0,31.0,26.0,337.0,32000,6.6,5.5
+2025,Mazda,Mx-5,Two Seaters,Gasoline (Premium Unleaded Recommended),FWD,Manual (M6),26.0,34.0,29.0,305.0,45000,4.8,8.7
+2025,Mazda,Mx-5,Two Seaters,Gasoline (Premium Unleaded Recommended),FWD,Auto (S6),26.0,35.0,29.0,301.0,45000,4.8,8.0
+2025,Mercedes-Benz,Amg C 43 4Matic,Compact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (A9),19.0,27.0,22.0,405.0,37800,6.8,5.8
+2025,Mercedes-Benz,Amg Cla 35 4Matic,Compact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (AM8),22.0,29.0,25.0,362.0,37800,6.8,6.2
+2025,Mercedes-Benz,Amg Cla 45 S 4Matic,Compact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (AM8),20.0,28.0,23.0,379.0,37800,6.8,6.2
+2025,Mercedes-Benz,Amg Cle 53 4Matic+ (Convertible),Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (A9),19.0,26.0,22.0,408.0,32200,6.4,5.4
+2025,Mercedes-Benz,Amg Cle 53 4Matic+ (Coupe),Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (A9),20.0,27.0,23.0,391.0,32200,6.4,5.4
+2025,Mercedes-Benz,Amg G 63,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A9),14.0,16.0,15.0,608.0,49000,7.2,5.9
+2025,Mercedes-Benz,Amg Gla 35 4Matic,Small Station Wagons,Gasoline (Premium Unleaded Required),FWD,Auto (AM8),22.0,28.0,24.0,370.0,47600,7.3,6.6
+2025,Mercedes-Benz,Amg Glb 35 4Matic,Midsize Station Wagons,Gasoline (Premium Unleaded Required),FWD,Auto (AM8),21.0,26.0,23.0,390.0,50400,7.5,6.8
+2025,Mercedes-Benz,Amg Glc 43 4Matic,Small Station Wagons,Gasoline (Premium Unleaded Required),FWD,Auto (A9),19.0,25.0,21.0,423.0,47600,7.3,6.2
+2025,Mercedes-Benz,Amg Glc 43 4Matic (Coupe),Small Station Wagons,Gasoline (Premium Unleaded Required),FWD,Auto (A9),18.0,24.0,21.0,433.0,47600,7.3,6.2
+2025,Mercedes-Benz,Amg Gle 53 4Matic+,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A9),18.0,23.0,20.0,439.0,49000,7.2,5.9
+2025,Mercedes-Benz,Amg Gle 53 4Matic+ (Coupe),Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A9),18.0,22.0,20.0,454.0,49000,7.2,5.9
+2025,Mercedes-Benz,Amg Gle 63 S 4Matic+,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A9),14.0,19.0,16.0,554.0,49000,7.2,5.9
+2025,Mercedes-Benz,Amg Gle 63 S 4Matic+ (Coupe),Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A9),14.0,19.0,16.0,554.0,49000,7.2,5.9
+2025,Mercedes-Benz,Amg Gls 63 4Matic+,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A9),14.0,18.0,15.0,578.0,49000,7.2,5.9
+2025,Mercedes-Benz,Amg Gt 43 (Coupe),Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (A9),19.0,27.0,22.0,405.0,32200,6.4,5.4
+2025,Mercedes-Benz,Amg Gt 43 4Matic+,Small Station Wagons,Gasoline (Premium Unleaded Required),FWD,Auto (A9),19.0,24.0,21.0,424.0,47600,7.3,6.2
+2025,Mercedes-Benz,Amg Gt 53 4Matic+,Small Station Wagons,Gasoline (Premium Unleaded Required),FWD,Auto (A9),19.0,24.0,21.0,424.0,47600,7.3,6.2
+2025,Mercedes-Benz,Amg Gt 55 4Matic+ (Coupe),Two Seaters,Gasoline (Premium Unleaded Required),FWD,Auto (A9),12.0,19.0,14.0,623.0,63000,5.5,8.6
+2025,Mercedes-Benz,Amg Gt 63 4Matic+,Compact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (A9),15.0,21.0,17.0,512.0,37800,6.8,5.8
+2025,Mercedes-Benz,Amg Gt 63 4Matic+ (Coupe),Two Seaters,Gasoline (Premium Unleaded Required),FWD,Auto (A9),12.0,19.0,14.0,623.0,63000,5.5,8.6
+2025,Mercedes-Benz,Amg Gt 63 Pro 4Matic+ (Coupe),Two Seaters,Gasoline (Premium Unleaded Required),FWD,Auto (A9),12.0,19.0,14.0,623.0,63000,5.5,8.6
+2025,Mercedes-Benz,Amg Sl 43,Minicompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (A9),19.0,27.0,22.0,400.0,49000,7.2,5.9
+2025,Mercedes-Benz,Amg Sl 55 4Matic+,Minicompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (A9),13.0,21.0,16.0,558.0,49000,7.2,5.9
+2025,Mercedes-Benz,Amg Sl 63 4Matic+,Minicompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (A9),13.0,21.0,16.0,558.0,49000,7.2,5.9
+2025,Mercedes-Benz,C 300,Compact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (A9),25.0,35.0,29.0,307.0,37800,6.8,5.6
+2025,Mercedes-Benz,C 300 4Matic,Compact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (A9),24.0,33.0,27.0,329.0,37800,6.8,5.6
+2025,Mercedes-Benz,Cla 250,Compact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (AM8),26.0,36.0,30.0,298.0,37800,6.8,6.0
+2025,Mercedes-Benz,Cla 250 4Matic,Compact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (AM8),25.0,34.0,29.0,311.0,37800,6.8,6.0
+2025,Mercedes-Benz,Cle 300 4Matic (Convertible),Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (A9),23.0,32.0,26.0,340.0,32200,6.4,5.2
+2025,Mercedes-Benz,Cle 300 4Matic (Coupe),Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (A9),24.0,33.0,27.0,323.0,32200,6.4,5.2
+2025,Mercedes-Benz,Cle 450 4Matic (Convertible),Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (A9),23.0,32.0,26.0,338.0,32200,6.4,5.2
+2025,Mercedes-Benz,Cle 450 4Matic (Coupe),Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (A9),23.0,33.0,26.0,339.0,32200,6.4,5.2
+2025,Mercedes-Benz,E 350,Midsize Cars,Gasoline (Premium Unleaded Required),FWD,Auto (A9),25.0,33.0,28.0,316.0,44800,7.3,5.9
+2025,Mercedes-Benz,E 350 4Matic,Midsize Cars,Gasoline (Premium Unleaded Required),FWD,Auto (A9),24.0,33.0,27.0,327.0,44800,7.3,5.9
+2025,Mercedes-Benz,E 450 4Matic,Midsize Cars,Gasoline (Premium Unleaded Required),FWD,Auto (A9),22.0,31.0,25.0,355.0,44800,7.3,6.1
+2025,Mercedes-Benz,E 450 4Matic All-Terrain Wagon,Midsize Station Wagons,Gasoline (Premium Unleaded Required),FWD,Auto (A9),22.0,31.0,25.0,351.0,50400,7.5,6.4
+2025,Mercedes-Benz,G 550,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A9),17.0,19.0,18.0,490.0,49000,7.2,5.9
+2025,Mercedes-Benz,Gla 250,Special Purpose Vehicle 2WD,Gasoline (Premium Unleaded Required),FWD,Auto (AM8),26.0,34.0,29.0,306.0,49000,7.2,6.1
+2025,Mercedes-Benz,Gla 250 4Matic,Small SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (AM8),25.0,33.0,28.0,315.0,49000,7.2,6.1
+2025,Mercedes-Benz,Glb 250,Special Purpose Vehicle 2WD,Gasoline (Premium Unleaded Required),FWD,Auto (AM8),25.0,33.0,28.0,311.0,49000,7.2,6.1
+2025,Mercedes-Benz,Glb 250 4Matic,Small SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (AM8),24.0,33.0,27.0,324.0,49000,7.2,6.1
+2025,Mercedes-Benz,Glc 300,Small SUV 2WD,Gasoline (Premium Unleaded Required),FWD,Auto (A9),24.0,32.0,27.0,323.0,49000,7.2,5.7
+2025,Mercedes-Benz,Glc 300 4Matic,Small SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A9),23.0,31.0,26.0,338.0,49000,7.2,5.7
+2025,Mercedes-Benz,Glc 300 4Matic (Coupe),Small SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A9),23.0,31.0,26.0,337.0,49000,7.2,5.7
+2025,Mercedes-Benz,Gle 350,Small SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A9),21.0,28.0,23.0,382.0,49000,7.2,5.9
+2025,Mercedes-Benz,Gle 350 4Matic,Small SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A9),19.0,26.0,22.0,410.0,49000,7.2,5.9
+2025,Mercedes-Benz,Gle 450 4Matic,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A9),19.0,25.0,21.0,424.0,49000,7.2,5.9
+2025,Mercedes-Benz,Gle 450 4Matic (Coupe),Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A9),19.0,25.0,21.0,424.0,49000,7.2,5.9
+2025,Mercedes-Benz,Gle 580 4Matic,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A9),15.0,20.0,17.0,527.0,49000,7.2,5.9
+2025,Mercedes-Benz,Gls 450 4Matic,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A9),19.0,24.0,21.0,428.0,49000,7.2,5.9
+2025,Mercedes-Benz,Gls 580 4Matic,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A9),14.0,19.0,16.0,548.0,49000,7.2,5.9
+2025,Mercedes-Benz,Gls 600 4Matic Maybach,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (A9),13.0,18.0,15.0,588.0,49000,7.2,5.9
+2025,Mercedes-Benz,S 500 4Matic,Large Cars,Gasoline (Premium Unleaded Required),FWD,Auto (A9),21.0,31.0,24.0,364.0,56000,7.7,5.7
+2025,Mercedes-Benz,S 580 4Matic,Large Cars,Gasoline (Premium Unleaded Required),FWD,Auto (A9),17.0,25.0,20.0,448.0,56000,7.7,5.7
+2025,Mercedes-Benz,S 580 4Matic Maybach,Large Cars,Gasoline (Premium Unleaded Required),FWD,Auto (A9),16.0,27.0,20.0,451.0,56000,7.7,5.7
+2025,Mercedes-Benz,S 680 4Matic Maybach,Large Cars,Gasoline (Premium Unleaded Required),FWD,Auto (A9),12.0,20.0,15.0,603.0,56000,7.7,5.7
+2025,Mini,Cooper Convertible,Minicompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),27.0,37.0,30.0,287.0,35000,6.5,5.7
+2025,Mini,Cooper Hardtop 2 Door,Subcompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),28.0,39.0,32.0,274.0,23000,5.7,5.2
+2025,Mini,Cooper Hardtop 4 Door,Compact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),28.0,39.0,32.0,276.0,27000,6.1,5.6
+2025,Mini,Cooper S Convertible,Minicompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),26.0,36.0,30.0,292.0,35000,6.5,5.7
+2025,Mini,Cooper S Hardtop 2 Door,Subcompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),28.0,39.0,32.0,275.0,23000,5.7,5.2
+2025,Mini,Cooper S Hardtop 4 Door,Compact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),28.0,39.0,32.0,273.0,27000,6.1,5.6
+2025,Mini,Countryman S All4,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),24.0,32.0,27.0,323.0,35000,6.5,5.7
+2025,Mini,Jcw Convertible,Minicompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),26.0,35.0,30.0,296.0,35000,6.5,5.7
+2025,Mini,Jcw Countryman All4,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),23.0,30.0,26.0,341.0,35000,6.5,5.7
+2025,Mini,Jcw Hardtop 2 Door,Subcompact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),27.0,37.0,30.0,288.0,23000,5.7,5.2
+2025,Mitsubishi Motors,Outlander 2Wd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),24.0,31.0,27.0,333.0,35000,6.5,5.3
+2025,Mitsubishi Motors,Outlander 4Wd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),24.0,30.0,26.0,342.0,35000,6.5,5.3
+2025,Mitsubishi Motors Corporation,Eclipse Cross 2Wd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),25.0,28.0,26.0,339.0,35000,6.5,5.3
+2025,Mitsubishi Motors Corporation,Eclipse Cross 4Wd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),25.0,26.0,25.0,353.0,35000,6.5,5.5
+2025,Mitsubishi Motors Corporation,Eclipse Cross Es 4Wd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),25.0,28.0,26.0,339.0,35000,6.5,5.3
+2025,Mitsubishi Motors Corporation,Outlander Sport 4Wd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S6),23.0,29.0,26.0,343.0,35000,6.5,5.3
+2025,Mitsubishi Motors Corporation,Outlander Sport 4Wd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S6),23.0,28.0,25.0,350.0,35000,6.5,5.5
+2025,Nissan,Altima,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),27.0,39.0,32.0,281.0,32000,6.6,5.5
+2025,Nissan,Altima Awd,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),25.0,34.0,28.0,317.0,32000,6.6,5.5
+2025,Nissan,Altima Sl/Sr,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),27.0,37.0,31.0,287.0,32000,6.6,5.5
+2025,Nissan,Armada 2Wd,Standard SUV 2WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S9),16.0,20.0,18.0,497.0,35000,6.5,5.5
+2025,Nissan,Armada 4Wd,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S9),16.0,19.0,17.0,524.0,35000,6.5,5.5
+2025,Nissan,Armada 4Wd Pro-4X,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S9),15.0,18.0,16.0,556.0,35000,6.5,5.5
+2025,Nissan,Frontier 2Wd,Standard Pick-up Trucks 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S9),19.0,24.0,21.0,432.0,35000,6.5,5.5
+2025,Nissan,Frontier 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S9),17.0,21.0,19.0,470.0,35000,6.5,5.5
+2025,Nissan,Frontier 4Wd Pro-4X,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S9),16.0,20.0,18.0,495.0,35000,6.5,5.5
+2025,Nissan,Kicks,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),28.0,35.0,31.0,287.0,35000,6.5,5.3
+2025,Nissan,Kicks Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),27.0,34.0,30.0,299.0,35000,6.5,5.3
+2025,Nissan,Kicks Play,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),31.0,36.0,33.0,268.0,32000,6.6,5.5
+2025,Nissan,Murano Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S9),21.0,27.0,23.0,387.0,35000,6.5,5.5
+2025,Nissan,Murano Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S9),21.0,27.0,23.0,387.0,35000,6.5,5.5
+2025,Nissan,Pathfinder 2Wd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S9),20.0,27.0,23.0,390.0,35000,6.5,5.5
+2025,Nissan,Pathfinder 4Wd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S9),21.0,27.0,23.0,379.0,35000,6.5,5.5
+2025,Nissan,Pathfinder 4Wd Platinum,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S9),20.0,25.0,22.0,400.0,35000,6.5,5.5
+2025,Nissan,Pathfinder 4Wd Rock Creek,Small SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S9),20.0,23.0,21.0,418.0,35000,6.5,5.5
+2025,Nissan,Rogue Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),28.0,35.0,31.0,287.0,35000,6.5,5.3
+2025,Nissan,Rogue Awd Rock Creek,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),27.0,32.0,29.0,307.0,35000,6.5,5.3
+2025,Nissan,Rogue Awd Sl/Platinum,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),28.0,34.0,31.0,287.0,35000,6.5,5.3
+2025,Nissan,Rogue Fwd,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),30.0,37.0,33.0,269.0,35000,6.5,5.3
+2025,Nissan,Rogue Fwd Sl/Platinum,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),29.0,36.0,32.0,278.0,35000,6.5,5.3
+2025,Nissan,Sentra,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),30.0,40.0,34.0,262.0,32000,6.6,5.5
+2025,Nissan,Sentra Sr,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),30.0,38.0,33.0,270.0,32000,6.6,5.5
+2025,Nissan,Versa,Compact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),32.0,40.0,35.0,253.0,27000,6.1,5.2
+2025,Nissan,Versa,Compact Cars,Gasoline (Regular Unleaded Recommended),FWD,Manual (M5),27.0,35.0,30.0,296.0,27000,6.1,5.9
+2025,Nissan,Z,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Manual (M6),18.0,24.0,20.0,435.0,45000,4.8,8.9
+2025,Nissan,Z,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Auto (S9),19.0,28.0,22.0,405.0,45000,4.8,8.2
+2025,Nissan,Z Nismo,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Auto (S9),17.0,24.0,19.0,469.0,45000,4.8,8.2
+2025,Porsche,718 Boxster,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Manual (M6),20.0,25.0,22.0,409.0,63000,5.5,9.3
+2025,Porsche,718 Boxster,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S7),21.0,27.0,24.0,375.0,63000,5.5,9.0
+2025,Porsche,718 Boxster Gts 4.0,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Manual (M6),17.0,24.0,19.0,458.0,63000,5.5,9.3
+2025,Porsche,718 Boxster Gts 4.0,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S7),19.0,24.0,21.0,418.0,63000,5.5,9.0
+2025,Porsche,718 Boxster S,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Manual (M6),19.0,24.0,21.0,423.0,63000,5.5,9.3
+2025,Porsche,718 Boxster S,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S7),19.0,25.0,22.0,410.0,63000,5.5,9.0
+2025,Porsche,718 Cayman,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Manual (M6),20.0,25.0,22.0,409.0,63000,5.5,9.3
+2025,Porsche,718 Cayman,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S7),21.0,27.0,24.0,375.0,63000,5.5,9.0
+2025,Porsche,718 Cayman Gts 4.0,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Manual (M6),17.0,24.0,19.0,458.0,63000,5.5,9.3
+2025,Porsche,718 Cayman Gts 4.0,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S7),19.0,24.0,21.0,418.0,63000,5.5,9.0
+2025,Porsche,718 Cayman S,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Manual (M6),19.0,24.0,21.0,423.0,63000,5.5,9.3
+2025,Porsche,718 Cayman S,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S7),19.0,25.0,22.0,410.0,63000,5.5,9.0
+2025,Porsche,718 Gt4 Rs,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S7),15.0,19.0,16.0,544.0,63000,5.5,9.0
+2025,Porsche,718 Spyder Rs,Two Seaters,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S7),14.0,19.0,16.0,551.0,63000,5.5,9.0
+2025,Porsche,911 Carrera,Minicompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S8),18.0,25.0,21.0,424.0,49000,7.2,6.3
+2025,Porsche,911 Carrera 4 Gts,Minicompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S8),17.0,23.0,19.0,461.0,49000,7.2,6.3
+2025,Porsche,911 Carrera 4 Gts Cabriolet,Minicompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S8),17.0,23.0,19.0,468.0,49000,7.2,6.3
+2025,Porsche,911 Carrera Cabriolet,Minicompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S8),18.0,25.0,21.0,429.0,49000,7.2,6.3
+2025,Porsche,911 Carrera Gts,Minicompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S8),17.0,24.0,20.0,440.0,49000,7.2,6.3
+2025,Porsche,911 Carrera Gts Cabriolet,Minicompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S8),17.0,23.0,19.0,459.0,49000,7.2,6.3
+2025,Porsche,911 Carrera S,Minicompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S8),17.0,24.0,20.0,432.0,49000,7.2,6.3
+2025,Porsche,911 Carrera S Cabriolet,Minicompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S8),17.0,24.0,20.0,436.0,49000,7.2,6.3
+2025,Porsche,911 Carrera T,Minicompact Cars,Gasoline (Premium Unleaded Required),FWD,Manual (M6),17.0,25.0,20.0,448.0,49000,7.2,6.6
+2025,Porsche,911 Carrera T Cabriolet,Minicompact Cars,Gasoline (Premium Unleaded Required),FWD,Manual (M6),17.0,25.0,19.0,469.0,49000,7.2,6.6
+2025,Porsche,911 Targa 4 Gts,Minicompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S8),17.0,23.0,19.0,468.0,49000,7.2,6.3
+2025,Porsche,911 Turbo,Minicompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S8),14.0,21.0,17.0,534.0,49000,7.2,6.3
+2025,Porsche,911 Turbo Cabriolet,Minicompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S8),14.0,20.0,16.0,546.0,49000,7.2,6.3
+2025,Porsche,911 Turbo S,Minicompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S8),14.0,20.0,16.0,556.0,49000,7.2,6.3
+2025,Porsche,911 Turbo S Cabriolet,Minicompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S8),14.0,20.0,16.0,549.0,49000,7.2,6.3
+2025,Porsche,Cayenne,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S8),17.0,23.0,19.0,469.0,49000,7.2,5.9
+2025,Porsche,Cayenne Coupe,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S8),17.0,23.0,19.0,469.0,49000,7.2,5.9
+2025,Porsche,Cayenne Gts,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S8),15.0,22.0,18.0,498.0,49000,7.2,5.9
+2025,Porsche,Cayenne Gts Coupe,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S8),16.0,22.0,18.0,489.0,49000,7.2,5.9
+2025,Porsche,Cayenne S,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S8),16.0,21.0,18.0,492.0,49000,7.2,5.9
+2025,Porsche,Cayenne S Coupe,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S8),16.0,21.0,18.0,492.0,49000,7.2,5.9
+2025,Porsche,Cayenne Turbo Gt,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S8),15.0,20.0,17.0,521.0,49000,7.2,5.9
+2025,Porsche,Macan,Small SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S7),19.0,25.0,21.0,424.0,49000,7.2,6.3
+2025,Porsche,Macan Gts,Small SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S7),17.0,22.0,19.0,466.0,49000,7.2,6.3
+2025,Porsche,Macan S,Small SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S7),17.0,23.0,19.0,466.0,49000,7.2,6.3
+2025,Porsche,Macan T,Small SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S7),19.0,25.0,21.0,417.0,49000,7.2,6.3
+2025,Porsche,Panamera,Large Cars,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S8),18.0,25.0,21.0,431.0,56000,7.7,6.1
+2025,Porsche,Panamera 4,Large Cars,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S8),18.0,25.0,21.0,425.0,56000,7.7,6.1
+2025,Porsche,Panamera Gts,Large Cars,Gasoline (Premium Unleaded Required),FWD,Auto (AM-S8),16.0,24.0,18.0,495.0,56000,7.7,6.1
+2025,Ram,1500 4X2,Standard Pick-up Trucks 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),18.0,25.0,21.0,433.0,35000,6.5,5.5
+2025,Ram,1500 4X2,Standard Pick-up Trucks 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),20.0,25.0,22.0,407.0,35000,6.5,5.5
+2025,Ram,1500 4X4,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),17.0,24.0,19.0,458.0,35000,6.5,5.5
+2025,Ram,1500 4X4,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),19.0,24.0,21.0,417.0,35000,6.5,5.5
+2025,Ram,1500 Hfe 4X2,Standard Pick-up Trucks 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (A8),20.0,26.0,23.0,394.0,35000,6.5,5.5
+2025,Ram,1500 Ho 4X4,Standard Pick-up Trucks 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (A8),15.0,21.0,17.0,521.0,35000,6.5,5.5
+2025,Ram,1500 Rho 4X4,Standard Pick-up Trucks 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (A8),14.0,16.0,15.0,602.0,35000,6.5,5.5
+2025,Rolls-Royce Motor Cars Limited,Black Badge Cullinan,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),12.0,19.0,14.0,609.0,35000,6.5,5.5
+2025,Rolls-Royce Motor Cars Limited,Black Badge Ghost,Large Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),12.0,19.0,14.0,609.0,40000,7.0,5.3
+2025,Rolls-Royce Motor Cars Limited,Cullinan,Standard SUV 4WD,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),12.0,19.0,14.0,609.0,35000,6.5,5.5
+2025,Rolls-Royce Motor Cars Limited,Ghost,Large Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),12.0,19.0,14.0,609.0,40000,7.0,5.3
+2025,Rolls-Royce Motor Cars Limited,Ghost Extended,Large Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),12.0,19.0,14.0,609.0,40000,7.0,5.3
+2025,Rolls-Royce Motor Cars Limited,Phantom,Large Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),12.0,19.0,14.0,609.0,40000,7.0,5.3
+2025,Rolls-Royce Motor Cars Limited,Phantom Extended,Large Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),12.0,19.0,14.0,609.0,40000,7.0,5.3
+2025,Subaru,Ascent Awd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),20.0,26.0,22.0,398.0,35000,6.5,5.5
+2025,Subaru,Ascent Limited/Touring/Onyx Edition Awd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),19.0,25.0,21.0,419.0,35000,6.5,5.5
+2025,Subaru,Brz,Minicompact Cars,Gasoline (Premium Unleaded Required),FWD,Manual (M6),20.0,27.0,22.0,398.0,35000,6.5,6.2
+2025,Subaru,Brz,Minicompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S6),21.0,30.0,25.0,362.0,35000,6.5,5.5
+2025,Subaru,Crosstrek Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),27.0,34.0,29.0,300.0,35000,6.5,5.3
+2025,Subaru,Crosstrek Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),27.0,33.0,29.0,305.0,35000,6.5,5.3
+2025,Subaru,Crosstrek Wilderness Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),25.0,29.0,27.0,332.0,35000,6.5,5.3
+2025,Subaru,Forester Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),26.0,33.0,29.0,310.0,35000,6.5,5.3
+2025,Subaru,Forester Hybrid Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S6),35.0,34.0,35.0,255.0,35000,6.5,5.3
+2025,Subaru,Forester Sport/Touring Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),25.0,32.0,28.0,317.0,35000,6.5,5.3
+2025,Subaru,Forester Wilderness Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),25.0,28.0,26.0,338.0,35000,6.5,5.3
+2025,Subaru,Impreza,Small Station Wagons,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),27.0,34.0,30.0,297.0,34000,6.6,5.6
+2025,Subaru,Impreza,Small Station Wagons,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),26.0,33.0,29.0,306.0,34000,6.6,5.6
+2025,Subaru,Legacy,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),27.0,35.0,30.0,295.0,32000,6.6,5.5
+2025,Subaru,Legacy,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),23.0,31.0,26.0,337.0,32000,6.6,5.5
+2025,Subaru,Outback Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),26.0,32.0,28.0,314.0,35000,6.5,5.3
+2025,Subaru,Outback Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),22.0,29.0,25.0,356.0,35000,6.5,5.5
+2025,Subaru,Outback Wilderness Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S8),21.0,26.0,23.0,378.0,35000,6.5,5.5
+2025,Subaru,Wrx,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Manual (M6),19.0,26.0,22.0,413.0,32000,6.6,6.4
+2025,Subaru,Wrx,Midsize Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AV-S8),18.0,25.0,21.0,422.0,32000,6.6,5.7
+2025,Toyota,4Runner 2Wd,Standard SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),20.0,26.0,22.0,399.0,35000,6.5,5.5
+2025,Toyota,4Runner 2Wd,Standard SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),20.0,24.0,22.0,404.0,35000,6.5,5.5
+2025,Toyota,4Runner 4Wd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),19.0,25.0,21.0,417.0,35000,6.5,5.5
+2025,Toyota,4Runner 4Wd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),20.0,24.0,21.0,415.0,35000,6.5,5.5
+2025,Toyota,4Runner 4Wd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),23.0,24.0,23.0,380.0,35000,6.5,5.5
+2025,Toyota,Camry Hev Awd Le,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S6),51.0,49.0,50.0,177.0,32000,6.6,5.3
+2025,Toyota,Camry Hev Awd Se/Xle,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S6),46.0,46.0,46.0,189.0,32000,6.6,5.3
+2025,Toyota,Camry Hev Awd Xse,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S6),44.0,43.0,44.0,199.0,32000,6.6,5.3
+2025,Toyota,Camry Hev Ff Le,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S6),53.0,50.0,51.0,173.0,32000,6.6,5.3
+2025,Toyota,Camry Hev Ff Se/Xle/Xse,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S6),48.0,47.0,47.0,186.0,32000,6.6,5.3
+2025,Toyota,Corolla,Compact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),32.0,41.0,35.0,254.0,27000,6.1,5.2
+2025,Toyota,Corolla,Compact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),31.0,40.0,34.0,257.0,27000,6.1,5.2
+2025,Toyota,Corolla,Compact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S10),31.0,38.0,34.0,265.0,27000,6.1,5.2
+2025,Toyota,Corolla Cross,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S10),31.0,33.0,32.0,276.0,35000,6.5,5.3
+2025,Toyota,Corolla Cross Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S10),29.0,31.0,30.0,294.0,35000,6.5,5.3
+2025,Toyota,Corolla Cross Hybrid Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S6),45.0,38.0,42.0,209.0,35000,6.5,5.1
+2025,Toyota,Corolla Fx,Compact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),31.0,39.0,34.0,261.0,27000,6.1,5.2
+2025,Toyota,Corolla Hatchback,Compact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S10),32.0,41.0,35.0,254.0,27000,6.1,5.2
+2025,Toyota,Corolla Hatchback Xse,Compact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S10),30.0,38.0,33.0,266.0,27000,6.1,5.2
+2025,Toyota,Corolla Hybrid,Compact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),53.0,46.0,50.0,173.0,27000,6.1,5.0
+2025,Toyota,Corolla Hybrid,Compact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),50.0,43.0,47.0,186.0,27000,6.1,5.0
+2025,Toyota,Corolla Hybrid Awd,Compact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),51.0,44.0,48.0,179.0,27000,6.1,5.0
+2025,Toyota,Corolla Hybrid Awd,Compact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),47.0,41.0,44.0,199.0,27000,6.1,5.0
+2025,Toyota,Gr Corolla,Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S8),19.0,27.0,22.0,395.0,23000,5.7,5.0
+2025,Toyota,Gr Corolla,Subcompact Cars,Gasoline (Premium Unleaded Required),FWD,Manual (M6),21.0,28.0,24.0,368.0,23000,5.7,5.7
+2025,Toyota,Gr86,Minicompact Cars,Gasoline (Premium Unleaded Required),FWD,Manual (M6),20.0,26.0,22.0,401.0,35000,6.5,6.2
+2025,Toyota,Gr86,Minicompact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S6),21.0,30.0,24.0,366.0,35000,6.5,5.5
+2025,Toyota,Grand Highlander Awd Le/Xle,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),21.0,27.0,23.0,379.0,35000,6.5,5.5
+2025,Toyota,Grand Highlander Awd Limited/Platinum,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),20.0,26.0,22.0,400.0,35000,6.5,5.5
+2025,Toyota,Grand Highlander Hybrid,Standard SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S6),37.0,34.0,36.0,246.0,35000,6.5,5.3
+2025,Toyota,Grand Highlander Hybrid Awd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S6),36.0,32.0,34.0,258.0,35000,6.5,5.3
+2025,Toyota,Grand Highlander Hybrid Awd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S6),26.0,27.0,27.0,332.0,35000,6.5,5.3
+2025,Toyota,Grand Highlander Le/Xle,Standard SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),21.0,28.0,24.0,371.0,35000,6.5,5.5
+2025,Toyota,Grand Highlander Limited,Standard SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),21.0,28.0,24.0,366.0,35000,6.5,5.5
+2025,Toyota,Highlander,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),22.0,29.0,25.0,359.0,35000,6.5,5.5
+2025,Toyota,Highlander,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),21.0,28.0,24.0,370.0,35000,6.5,5.5
+2025,Toyota,Highlander Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),21.0,28.0,24.0,371.0,35000,6.5,5.5
+2025,Toyota,Highlander Hybrid Awd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S6),35.0,35.0,35.0,254.0,35000,6.5,5.3
+2025,Toyota,Highlander Hybrid Awd Ltd/Plat,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S6),35.0,34.0,35.0,253.0,35000,6.5,5.3
+2025,Toyota,Land Cruiser,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S8),22.0,25.0,23.0,381.0,35000,6.5,5.5
+2025,Toyota,Prius,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),57.0,56.0,57.0,155.0,32000,6.6,5.3
+2025,Toyota,Prius Awd,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),53.0,54.0,54.0,163.0,32000,6.6,5.3
+2025,Toyota,Prius Awd Xle/Ltd,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),49.0,50.0,49.0,179.0,32000,6.6,5.3
+2025,Toyota,Prius Xle/Ltd,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),52.0,52.0,52.0,169.0,32000,6.6,5.3
+2025,Toyota,Rav4,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),27.0,35.0,30.0,292.0,35000,6.5,5.3
+2025,Toyota,Rav4 Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),27.0,33.0,29.0,301.0,35000,6.5,5.3
+2025,Toyota,Rav4 Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),25.0,33.0,28.0,320.0,35000,6.5,5.3
+2025,Toyota,Rav4 Awd Le,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),27.0,34.0,30.0,296.0,35000,6.5,5.3
+2025,Toyota,Rav4 Hybrid Awd,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S6),41.0,38.0,39.0,224.0,35000,6.5,5.3
+2025,Toyota,Rav4 Hybrid Awd Woodland Edition,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S6),38.0,35.0,37.0,240.0,35000,6.5,5.3
+2025,Toyota,Sequoia 2Wd,Standard SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),21.0,24.0,22.0,403.0,35000,6.5,5.5
+2025,Toyota,Sequoia 4Wd,Standard SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),19.0,22.0,20.0,439.0,35000,6.5,5.5
+2025,Toyota,Sienna,"Special Purpose Vehicle, minivan 2WD",Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S6),36.0,36.0,36.0,246.0,35000,6.5,5.3
+2025,Toyota,Sienna Awd,"Special Purpose Vehicle, minivan 4WD",Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S6),34.0,36.0,35.0,253.0,35000,6.5,5.3
+2025,Toyota,Supra 2.0,Two Seaters,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),25.0,31.0,27.0,322.0,45000,4.8,8.0
+2025,Toyota,Supra 3.0,Two Seaters,Gasoline (Premium Unleaded Recommended),FWD,Auto (S8),23.0,31.0,26.0,342.0,45000,4.8,8.0
+2025,Toyota,Supra 3.0,Two Seaters,Gasoline (Premium Unleaded Recommended),FWD,Manual (M6),19.0,27.0,21.0,411.0,45000,4.8,8.9
+2025,Toyota,Tacoma 2Wd,Small Pick-up Trucks 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),20.0,26.0,23.0,394.0,35000,6.5,5.5
+2025,Toyota,Tacoma 4Wd,Small Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),19.0,24.0,21.0,424.0,35000,6.5,5.5
+2025,Toyota,Tacoma 4Wd Mt,Small Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Manual (M6),18.0,23.0,20.0,452.0,35000,6.5,6.2
+2025,Toyota,Tacoma Hybrid 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),22.0,24.0,23.0,386.0,35000,6.5,5.5
+2025,Toyota,Tacoma Hybrid 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),23.0,24.0,23.0,380.0,35000,6.5,5.5
+2025,Toyota,Tacoma Sr5/Sport/Offroad/Limited 4Wd,Small Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),19.0,23.0,21.0,433.0,35000,6.5,5.5
+2025,Toyota,Tacoma Sr5/Sport/Offroad/Limited 4Wd,Small Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),20.0,23.0,21.0,420.0,35000,6.5,5.5
+2025,Toyota,Tacoma Sr5/Sport/Offroad/Limited 4Wd,Small Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),19.0,24.0,21.0,424.0,35000,6.5,5.5
+2025,Toyota,Tacoma Sr5/Sport/Prerunner 2Wd,Small Pick-up Trucks 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),20.0,24.0,22.0,404.0,35000,6.5,5.5
+2025,Toyota,Tacoma Sr5/Sport/Prerunner 2Wd,Small Pick-up Trucks 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),21.0,26.0,23.0,393.0,35000,6.5,5.5
+2025,Toyota,Toyota Crown Awd,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV),42.0,41.0,41.0,214.0,32000,6.6,5.3
+2025,Toyota,Toyota Crown Awd,Midsize Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S6),29.0,32.0,30.0,293.0,32000,6.6,5.5
+2025,Toyota,Toyota Crown Signia Awd,Small Station Wagons,Gasoline (Regular Unleaded Recommended),FWD,Auto (AV-S6),39.0,37.0,38.0,231.0,34000,6.6,5.6
+2025,Toyota,Tundra 2Wd,Standard Pick-up Trucks 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),18.0,23.0,20.0,450.0,35000,6.5,5.5
+2025,Toyota,Tundra 2Wd,Standard Pick-up Trucks 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),18.0,23.0,20.0,442.0,35000,6.5,5.5
+2025,Toyota,Tundra 2Wd,Standard Pick-up Trucks 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),20.0,24.0,22.0,409.0,35000,6.5,5.5
+2025,Toyota,Tundra 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),17.0,22.0,19.0,460.0,35000,6.5,5.5
+2025,Toyota,Tundra 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),17.0,22.0,19.0,468.0,35000,6.5,5.5
+2025,Toyota,Tundra 4Wd,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),19.0,22.0,20.0,439.0,35000,6.5,5.5
+2025,Toyota,Tundra 4Wd Pro,Standard Pick-up Trucks 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S10),18.0,20.0,19.0,461.0,35000,6.5,5.5
+2025,Volkswagen,Atlas,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),20.0,26.0,22.0,402.0,35000,6.5,5.5
+2025,Volkswagen,Atlas 4Motion Peak Edition,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),18.0,25.0,20.0,436.0,35000,6.5,5.5
+2025,Volkswagen,Atlas Cross Sport,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),20.0,26.0,23.0,392.0,35000,6.5,5.5
+2025,Volkswagen,Atlas Cross Sport 4Motion,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),19.0,26.0,21.0,420.0,35000,6.5,5.5
+2025,Volkswagen,Atlas Se 4Motion,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),19.0,26.0,21.0,420.0,35000,6.5,5.5
+2025,Volkswagen,Atlas Sel 4Motion,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),18.0,25.0,21.0,428.0,35000,6.5,5.5
+2025,Volkswagen,Gli,Compact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S7),25.0,35.0,29.0,311.0,27000,6.1,5.6
+2025,Volkswagen,Gli,Compact Cars,Gasoline (Regular Unleaded Recommended),FWD,Manual (M6),26.0,36.0,30.0,301.0,27000,6.1,5.9
+2025,Volkswagen,Golf R,Compact Cars,Gasoline (Premium Unleaded Recommended),FWD,Auto (AM-S7),22.0,31.0,25.0,349.0,27000,6.1,5.6
+2025,Volkswagen,Gti,Compact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (AM-S7),24.0,32.0,27.0,326.0,27000,6.1,5.6
+2025,Volkswagen,Jetta,Compact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),29.0,39.0,33.0,271.0,27000,6.1,5.2
+2025,Volkswagen,Jetta Sport/Se/Sel,Compact Cars,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),29.0,40.0,33.0,271.0,27000,6.1,5.2
+2025,Volkswagen,Taos,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),28.0,36.0,31.0,287.0,35000,6.5,5.3
+2025,Volkswagen,Taos 4Motion,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),25.0,33.0,28.0,318.0,35000,6.5,5.3
+2025,Volkswagen,Tiguan,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),25.0,32.0,28.0,320.0,35000,6.5,5.3
+2025,Volkswagen,Tiguan 4Motion,Small SUV 4WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),22.0,30.0,25.0,351.0,35000,6.5,5.5
+2025,Volkswagen,Tiguan S,Small SUV 2WD,Gasoline (Regular Unleaded Recommended),FWD,Auto (S8),26.0,34.0,29.0,307.0,35000,6.5,5.3
+2025,"Volvo Cars Of North America, Llc",S60 B5,Compact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S8),27.0,36.0,30.0,295.0,27000,6.1,5.2
+2025,"Volvo Cars Of North America, Llc",S60 B5 Awd,Compact Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S8),25.0,34.0,28.0,313.0,27000,6.1,5.2
+2025,"Volvo Cars Of North America, Llc",S90 B6 Awd,Midsize Cars,Gasoline (Premium Unleaded Required),FWD,Auto (S8),23.0,31.0,26.0,341.0,32000,6.6,5.5
+2025,"Volvo Cars Of North America, Llc",V90Cc B6 Awd,Midsize Station Wagons,Gasoline (Premium Unleaded Required),FWD,Auto (S8),22.0,29.0,25.0,358.0,36000,6.8,6.0
+2025,"Volvo Cars Of North America, Llc",Xc40 B5 Awd,Small SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S8),23.0,30.0,26.0,343.0,35000,6.5,5.3
+2025,"Volvo Cars Of North America, Llc",Xc60 B5 Awd,Small SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S8),23.0,30.0,26.0,343.0,35000,6.5,5.3
+2025,"Volvo Cars Of North America, Llc",Xc90 B5 Awd,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S8),23.0,30.0,26.0,343.0,35000,6.5,5.3
+2025,"Volvo Cars Of North America, Llc",Xc90 B6 Awd,Standard SUV 4WD,Gasoline (Premium Unleaded Required),FWD,Auto (S8),20.0,26.0,23.0,393.0,35000,6.5,5.5
+2025,Audi,Q8 E-Tron Quattro,Standard SUV 4WD,Electricity,FWD,Auto (A1),77.0,80.0,78.0,0.0,49000,7.4,6.0
+2025,Audi,Q8 E-Tron Quattro,Standard SUV 4WD,Electricity,FWD,Auto (A1),44.0,42.0,43.0,0.0,49000,7.4,6.0
+2025,Audi,Q8 Sportback E-Tron Quattro,Standard SUV 4WD,Electricity,FWD,Auto (A1),77.0,80.0,78.0,0.0,49000,7.4,6.0
+2025,Audi,Q8 Sportback E-Tron Quattro,Standard SUV 4WD,Electricity,FWD,Auto (A1),44.0,42.0,43.0,0.0,49000,7.4,6.0
+2025,Audi,S E-Tron Gt (20In. Wheels),Subcompact Cars,Electricity,FWD,Auto (A1),91.0,88.0,90.0,0.0,32200,6.6,5.5
+2025,Audi,S E-Tron Gt (20In. Wheels),Subcompact Cars,Electricity,FWD,Auto (A1),37.0,38.0,38.0,0.0,32200,6.6,5.7
+2025,Audi,Rs E-Tron Gt Performance,Subcompact Cars,Electricity,FWD,Auto (A1),85.0,82.0,84.0,0.0,32200,6.6,5.5
+2025,Audi,Rs E-Tron Gt Performance,Subcompact Cars,Electricity,FWD,Auto (A1),39.0,41.0,40.0,0.0,32200,6.6,5.5
+2025,Audi,Sq8 E-Tron (20In Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),68.0,72.0,70.0,0.0,49000,7.4,6.0
+2025,Audi,Sq8 E-Tron (20In Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),49.0,47.0,48.0,0.0,49000,7.4,6.0
+2025,Audi,Sq8 Sportback E-Tron (20In Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),68.0,72.0,70.0,0.0,49000,7.4,6.0
+2025,Audi,Sq8 Sportback E-Tron (20In Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),49.0,47.0,48.0,0.0,49000,7.4,6.0
+2025,Audi,Sq8 E-Tron (21/22In Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),59.0,60.0,60.0,0.0,49000,7.4,6.0
+2025,Audi,Sq8 E-Tron (21/22In Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),57.0,56.0,56.0,0.0,49000,7.4,6.0
+2025,Audi,Sq8 Sportback E-Tron (21/22In Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),59.0,60.0,60.0,0.0,49000,7.4,6.0
+2025,Audi,Sq8 Sportback E-Tron (21/22In Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),57.0,56.0,56.0,0.0,49000,7.4,6.0
+2025,Audi,Q4 45 E-Tron,Standard SUV 2WD,Electricity,FWD,Auto (A1),125.0,104.0,115.0,0.0,49000,7.4,6.0
+2025,Audi,Q4 45 E-Tron,Standard SUV 2WD,Electricity,FWD,Auto (A1),27.0,32.0,29.0,0.0,49000,7.4,6.2
+2025,Audi,Q4 55 E-Tron Quattro,Standard SUV 4WD,Electricity,FWD,Auto (A1),107.0,92.0,100.0,0.0,49000,7.4,6.0
+2025,Audi,Q4 55 E-Tron Quattro,Standard SUV 4WD,Electricity,FWD,Auto (A1),31.0,37.0,34.0,0.0,49000,7.4,6.2
+2025,Audi,Q4 Sportback 55 E-Tron Quattro,Standard SUV 4WD,Electricity,FWD,Auto (A1),107.0,92.0,100.0,0.0,49000,7.4,6.0
+2025,Audi,Q4 Sportback 55 E-Tron Quattro,Standard SUV 4WD,Electricity,FWD,Auto (A1),31.0,37.0,34.0,0.0,49000,7.4,6.2
+2025,Audi,Q8 E-Tron Quattro,Standard SUV 4WD,Electricity,FWD,Auto (A1),73.0,75.0,74.0,0.0,49000,7.4,6.0
+2025,Audi,Q8 E-Tron Quattro,Standard SUV 4WD,Electricity,FWD,Auto (A1),46.0,45.0,46.0,0.0,49000,7.4,6.0
+2025,Audi,Q8 Sportback E-Tron Quattro,Standard SUV 4WD,Electricity,FWD,Auto (A1),73.0,75.0,74.0,0.0,49000,7.4,6.0
+2025,Audi,Q8 Sportback E-Tron Quattro,Standard SUV 4WD,Electricity,FWD,Auto (A1),46.0,45.0,46.0,0.0,49000,7.4,6.0
+2025,Audi,S E-Tron Gt (21In. Wheels),Subcompact Cars,Electricity,FWD,Auto (A1),89.0,85.0,88.0,0.0,32200,6.6,5.5
+2025,Audi,S E-Tron Gt (21In. Wheels),Subcompact Cars,Electricity,FWD,Auto (A1),38.0,39.0,38.0,0.0,32200,6.6,5.7
+2025,Audi,Q6 E-Tron,Standard SUV 2WD,Electricity,FWD,Auto (A1),106.0,93.0,100.0,0.0,49000,7.4,6.0
+2025,Audi,Q6 E-Tron,Standard SUV 2WD,Electricity,FWD,Auto (A1),32.0,36.0,34.0,0.0,49000,7.4,6.2
+2025,Audi,Q6 E-Tron Ultra,Standard SUV 2WD,Electricity,FWD,Auto (A1),112.0,96.0,104.0,0.0,49000,7.4,6.0
+2025,Audi,Q6 E-Tron Ultra,Standard SUV 2WD,Electricity,FWD,Auto (A1),30.0,35.0,32.0,0.0,49000,7.4,6.2
+2025,Audi,Q6 E-Tron Quattro,Standard SUV 4WD,Electricity,FWD,Auto (A1),105.0,93.0,99.0,0.0,49000,7.4,6.0
+2025,Audi,Q6 E-Tron Quattro,Standard SUV 4WD,Electricity,FWD,Auto (A1),32.0,36.0,34.0,0.0,49000,7.4,6.2
+2025,Audi,Sq6 E-Tron,Standard SUV 4WD,Electricity,FWD,Auto (A1),96.0,82.0,89.0,0.0,49000,7.4,6.0
+2025,Audi,Sq6 E-Tron,Standard SUV 4WD,Electricity,FWD,Auto (A1),35.0,41.0,38.0,0.0,49000,7.4,6.2
+2025,Audi,Sq6 Sportback E-Tron,Standard SUV 4WD,Electricity,FWD,Auto (A1),97.0,85.0,91.0,0.0,49000,7.4,6.0
+2025,Audi,Sq6 Sportback E-Tron,Standard SUV 4WD,Electricity,FWD,Auto (A1),35.0,40.0,37.0,0.0,49000,7.4,6.2
+2025,Audi,Q6 Sportback E-Tron Quattro,Standard SUV 4WD,Electricity,FWD,Auto (A1),109.0,97.0,103.0,0.0,49000,7.4,6.0
+2025,Audi,Q6 Sportback E-Tron Quattro,Standard SUV 4WD,Electricity,FWD,Auto (A1),31.0,35.0,33.0,0.0,49000,7.4,6.2
+2025,Audi,Q6 E-Tron,Standard SUV 2WD,Electricity,FWD,Auto (A1),103.0,88.0,96.0,0.0,49000,7.4,6.0
+2025,Audi,Q6 E-Tron,Standard SUV 2WD,Electricity,FWD,Auto (A1),33.0,38.0,35.0,0.0,49000,7.4,6.2
+2025,Audi,Q6 E-Tron Quattro,Standard SUV 4WD,Electricity,FWD,Auto (A1),102.0,89.0,95.0,0.0,49000,7.4,6.0
+2025,Audi,Q6 E-Tron Quattro,Standard SUV 4WD,Electricity,FWD,Auto (A1),33.0,38.0,35.0,0.0,49000,7.4,6.2
+2025,Audi,Q6 Sportback E-Tron Quattro,Standard SUV 4WD,Electricity,FWD,Auto (A1),104.0,92.0,98.0,0.0,49000,7.4,6.0
+2025,Audi,Q6 Sportback E-Tron Quattro,Standard SUV 4WD,Electricity,FWD,Auto (A1),32.0,37.0,34.0,0.0,49000,7.4,6.2
+2025,Bmw,Ix Xdrive40 (20'' Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),87.0,85.0,86.0,0.0,35000,6.7,5.6
+2025,Bmw,Ix Xdrive40 (20'' Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),39.0,40.0,39.0,0.0,35000,6.7,5.8
+2025,Bmw,Ix Xdrive40 (21'' Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),84.0,81.0,83.0,0.0,35000,6.7,5.6
+2025,Bmw,Ix Xdrive40 (21'' Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),40.0,41.0,41.0,0.0,35000,6.7,5.6
+2025,Bmw,Ix Xdrive40 (22'' Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),89.0,85.0,87.0,0.0,35000,6.7,5.6
+2025,Bmw,Ix Xdrive40 (22'' Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),38.0,39.0,39.0,0.0,35000,6.7,5.8
+2025,Bmw,Ix Xdrive50 (20'' Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),82.0,84.0,83.0,0.0,35000,6.7,5.6
+2025,Bmw,Ix Xdrive50 (20'' Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),41.0,40.0,41.0,0.0,35000,6.7,5.6
+2025,Bmw,Ix Xdrive50 (21'' Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),82.0,81.0,81.0,0.0,35000,6.7,5.6
+2025,Bmw,Ix Xdrive50 (21'' Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),41.0,42.0,41.0,0.0,35000,6.7,5.6
+2025,Bmw,Ix Xdrive50 (22'' Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),82.0,81.0,81.0,0.0,35000,6.7,5.6
+2025,Bmw,Ix Xdrive50 (22'' Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),41.0,42.0,41.0,0.0,35000,6.7,5.6
+2025,Bmw,Ix M60 (21'' Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),75.0,77.0,76.0,0.0,35000,6.7,5.6
+2025,Bmw,Ix M60 (21'' Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),45.0,44.0,44.0,0.0,35000,6.7,5.6
+2025,Bmw,Ix M60 (22'' Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),75.0,79.0,77.0,0.0,35000,6.7,5.6
+2025,Bmw,Ix M60 (22'' Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),45.0,42.0,44.0,0.0,35000,6.7,5.6
+2025,Bmw,I4 Edrive35 Gran Coupe (18'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),117.0,114.0,116.0,0.0,27000,6.3,5.5
+2025,Bmw,I4 Edrive35 Gran Coupe (18'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),29.0,30.0,29.0,0.0,27000,6.3,5.7
+2025,Bmw,I4 Edrive35 Gran Coupe (19'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),108.0,104.0,106.0,0.0,27000,6.3,5.5
+2025,Bmw,I4 Edrive35 Gran Coupe (19'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),31.0,32.0,32.0,0.0,27000,6.3,5.7
+2025,Bmw,I4 Edrive40 Gran Coupe (18'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),113.0,111.0,112.0,0.0,27000,6.3,5.5
+2025,Bmw,I4 Edrive40 Gran Coupe (18'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),30.0,30.0,30.0,0.0,27000,6.3,5.7
+2025,Bmw,I4 Edrive40 Gran Coupe (19'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),106.0,103.0,104.0,0.0,27000,6.3,5.5
+2025,Bmw,I4 Edrive40 Gran Coupe (19'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),32.0,33.0,32.0,0.0,27000,6.3,5.7
+2025,Bmw,I4 Xdrive40 Gran Coupe (18'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),99.0,103.0,101.0,0.0,27000,6.3,5.5
+2025,Bmw,I4 Xdrive40 Gran Coupe (18'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),34.0,33.0,33.0,0.0,27000,6.3,5.7
+2025,Bmw,I4 Xdrive40 Gran Coupe (19'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),93.0,95.0,94.0,0.0,27000,6.3,5.5
+2025,Bmw,I4 Xdrive40 Gran Coupe (19'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),36.0,36.0,36.0,0.0,27000,6.3,5.7
+2025,Bmw,I4 M50 Gran Coupe (19'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),93.0,96.0,94.0,0.0,27000,6.3,5.5
+2025,Bmw,I4 M50 Gran Coupe (19'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),36.0,35.0,36.0,0.0,27000,6.3,5.7
+2025,Bmw,I4 M50 Gran Coupe (20'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),80.0,80.0,80.0,0.0,27000,6.3,5.5
+2025,Bmw,I4 M50 Gran Coupe (20'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),42.0,42.0,42.0,0.0,27000,6.3,5.5
+2025,Bmw,I5 Edrive40 Sedan (19'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),104.0,105.0,105.0,0.0,27000,6.3,5.5
+2025,Bmw,I5 Edrive40 Sedan (19'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),32.0,32.0,32.0,0.0,27000,6.3,5.7
+2025,Bmw,I5 Edrive40 Sedan (20'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),99.0,98.0,99.0,0.0,27000,6.3,5.5
+2025,Bmw,I5 Edrive40 Sedan (20'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),34.0,35.0,34.0,0.0,27000,6.3,5.7
+2025,Bmw,I5 Edrive40 Sedan (21'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),97.0,94.0,96.0,0.0,27000,6.3,5.5
+2025,Bmw,I5 Edrive40 Sedan (21'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),35.0,36.0,35.0,0.0,27000,6.3,5.7
+2025,Bmw,I5 Xdrive40 Sedan (19'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),92.0,95.0,93.0,0.0,27000,6.3,5.5
+2025,Bmw,I5 Xdrive40 Sedan (19'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),37.0,36.0,36.0,0.0,27000,6.3,5.7
+2025,Bmw,I5 Xdrive40 Sedan (20'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),92.0,94.0,93.0,0.0,27000,6.3,5.5
+2025,Bmw,I5 Xdrive40 Sedan (20'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),37.0,36.0,36.0,0.0,27000,6.3,5.7
+2025,Bmw,I5 Xdrive40 Sedan (21'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),86.0,87.0,87.0,0.0,27000,6.3,5.5
+2025,Bmw,I5 Xdrive40 Sedan (21'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),39.0,39.0,39.0,0.0,27000,6.3,5.7
+2025,Bmw,I5 M60 Xdrive Sedan (19'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),89.0,91.0,90.0,0.0,27000,6.3,5.5
+2025,Bmw,I5 M60 Xdrive Sedan (19'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),38.0,37.0,38.0,0.0,27000,6.3,5.7
+2025,Bmw,I5 M60 Xdrive Sedan (20'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),88.0,88.0,88.0,0.0,27000,6.3,5.5
+2025,Bmw,I5 M60 Xdrive Sedan (20'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),38.0,38.0,38.0,0.0,27000,6.3,5.7
+2025,Bmw,I5 M60 Xdrive Sedan (21'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),83.0,85.0,84.0,0.0,27000,6.3,5.5
+2025,Bmw,I5 M60 Xdrive Sedan (21'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),40.0,40.0,40.0,0.0,27000,6.3,5.5
+2025,Bmw,I7 Edrive50 Sedan (19'' Wheels),Large Cars,Electricity,FWD,Auto (A1),85.0,93.0,88.0,0.0,40000,7.2,5.4
+2025,Bmw,I7 Edrive50 Sedan (19'' Wheels),Large Cars,Electricity,FWD,Auto (A1),40.0,36.0,38.0,0.0,40000,7.2,5.6
+2025,Bmw,I7 Edrive50 Sedan (20'' Wheels),Large Cars,Electricity,FWD,Auto (A1),82.0,88.0,85.0,0.0,40000,7.2,5.4
+2025,Bmw,I7 Edrive50 Sedan (20'' Wheels),Large Cars,Electricity,FWD,Auto (A1),41.0,38.0,40.0,0.0,40000,7.2,5.4
+2025,Bmw,I7 Edrive50 Sedan (21'' Wheels),Large Cars,Electricity,FWD,Auto (A1),84.0,90.0,87.0,0.0,40000,7.2,5.4
+2025,Bmw,I7 Edrive50 Sedan (21'' Wheels),Large Cars,Electricity,FWD,Auto (A1),40.0,37.0,39.0,0.0,40000,7.2,5.6
+2025,Bmw,I7 Xdrive60 Sedan (19'' Wheels),Large Cars,Electricity,FWD,Auto (A1),85.0,91.0,88.0,0.0,40000,7.2,5.4
+2025,Bmw,I7 Xdrive60 Sedan (19'' Wheels),Large Cars,Electricity,FWD,Auto (A1),39.0,37.0,38.0,0.0,40000,7.2,5.6
+2025,Bmw,I7 Xdrive60 Sedan (20'' Wheels),Large Cars,Electricity,FWD,Auto (A1),81.0,85.0,83.0,0.0,40000,7.2,5.4
+2025,Bmw,I7 Xdrive60 Sedan (20'' Wheels),Large Cars,Electricity,FWD,Auto (A1),42.0,39.0,41.0,0.0,40000,7.2,5.4
+2025,Bmw,I7 Xdrive60 Sedan (21'' Wheels),Large Cars,Electricity,FWD,Auto (A1),85.0,89.0,87.0,0.0,40000,7.2,5.4
+2025,Bmw,I7 Xdrive60 Sedan (21'' Wheels),Large Cars,Electricity,FWD,Auto (A1),40.0,38.0,39.0,0.0,40000,7.2,5.6
+2025,Bmw,I7 M70 Xdrive Sedan (20'' Wheels),Large Cars,Electricity,FWD,Auto (A1),72.0,79.0,75.0,0.0,40000,7.2,5.4
+2025,Bmw,I7 M70 Xdrive Sedan (20'' Wheels),Large Cars,Electricity,FWD,Auto (A1),47.0,43.0,45.0,0.0,40000,7.2,5.4
+2025,Bmw,I7 M70 Xdrive Sedan (21'' Wheels),Large Cars,Electricity,FWD,Auto (A1),77.0,83.0,79.0,0.0,40000,7.2,5.4
+2025,Bmw,I7 M70 Xdrive Sedan (21'' Wheels),Large Cars,Electricity,FWD,Auto (A1),44.0,41.0,42.0,0.0,40000,7.2,5.4
+2025,Bugatti Rimac,Nevera R,Two Seaters,Electricity,FWD,Auto (A1),50.0,51.0,51.0,0.0,45000,5.0,8.3
+2025,Bugatti Rimac,Nevera R,Two Seaters,Electricity,FWD,Auto (A1),67.0,66.0,66.0,0.0,45000,5.0,8.3
+2025,Bugatti Rimac,Nevera,Two Seaters,Electricity,FWD,Auto (A1),52.0,54.0,53.0,0.0,45000,5.0,8.3
+2025,Bugatti Rimac,Nevera,Two Seaters,Electricity,FWD,Auto (A1),64.0,62.0,63.0,0.0,45000,5.0,8.3
+2025,Cadillac,Lyriq Rwd,Small SUV 2WD,Electricity,FWD,Auto (A1),100.0,83.0,92.0,0.0,49000,7.4,6.0
+2025,Cadillac,Lyriq Rwd,Small SUV 2WD,Electricity,FWD,Auto (A1),33.0,39.0,36.0,0.0,49000,7.4,6.2
+2025,Cadillac,Lyriq Awd 11Kw Charger,Small SUV 4WD,Electricity,FWD,Auto (A1),98.0,80.0,89.0,0.0,49000,7.4,6.0
+2025,Cadillac,Lyriq Awd 11Kw Charger,Small SUV 4WD,Electricity,FWD,Auto (A1),34.0,42.0,38.0,0.0,49000,7.4,6.2
+2025,Cadillac,Lyriq Awd,Small SUV 4WD,Electricity,FWD,Auto (A1),93.0,77.0,86.0,0.0,49000,7.4,6.0
+2025,Cadillac,Lyriq Awd,Small SUV 4WD,Electricity,FWD,Auto (A1),36.0,44.0,40.0,0.0,49000,7.4,6.0
+2025,Cadillac,Celestiq,Small Station Wagons,Electricity,FWD,Auto (A1),84.0,77.0,81.0,0.0,47600,7.5,6.3
+2025,Cadillac,Celestiq,Small Station Wagons,Electricity,FWD,Auto (A1),40.0,44.0,42.0,0.0,47600,7.5,6.3
+2025,Chevrolet,Blazer Ev Rwd,Small SUV 2WD,Electricity,FWD,Auto (A1),106.0,85.0,95.0,0.0,35000,6.7,5.6
+2025,Chevrolet,Blazer Ev Rwd,Small SUV 2WD,Electricity,FWD,Auto (A1),32.0,40.0,35.0,0.0,35000,6.7,5.8
+2025,Chevrolet,Blazer Ev Awd,Small SUV 4WD,Electricity,FWD,Auto (A1),102.0,87.0,95.0,0.0,35000,6.7,5.6
+2025,Chevrolet,Blazer Ev Awd,Small SUV 4WD,Electricity,FWD,Auto (A1),33.0,39.0,36.0,0.0,35000,6.7,5.8
+2025,Chevrolet,Blazer Ev Fwd,Small SUV 2WD,Electricity,FWD,Auto (A1),114.0,95.0,104.0,0.0,35000,6.7,5.6
+2025,Chevrolet,Blazer Ev Fwd,Small SUV 2WD,Electricity,FWD,Auto (A1),30.0,36.0,32.0,0.0,35000,6.7,5.8
+2025,Chevrolet,"Blazer Ev Fwd, 22 Inch Tire",Small SUV 2WD,Electricity,FWD,Auto (A1),103.0,86.0,95.0,0.0,35000,6.7,5.6
+2025,Chevrolet,"Blazer Ev Fwd, 22 Inch Tire",Small SUV 2WD,Electricity,FWD,Auto (A1),33.0,39.0,36.0,0.0,35000,6.7,5.8
+2025,Chevrolet,Blazer Ev Awd Ss,Small SUV 4WD,Electricity,FWD,Auto (A1),92.0,77.0,85.0,0.0,35000,6.7,5.6
+2025,Chevrolet,Blazer Ev Awd Ss,Small SUV 4WD,Electricity,FWD,Auto (A1),36.0,44.0,40.0,0.0,35000,6.7,5.6
+2025,Chevrolet,Equinox Ev Fwd,Small SUV 2WD,Electricity,FWD,Auto (A1),117.0,100.0,109.0,0.0,35000,6.7,5.6
+2025,Chevrolet,Equinox Ev Fwd,Small SUV 2WD,Electricity,FWD,Auto (A1),29.0,34.0,31.0,0.0,35000,6.7,5.8
+2025,Chevrolet,Equinox Ev Awd,Small SUV 4WD,Electricity,FWD,Auto (A1),112.0,95.0,103.0,0.0,35000,6.7,5.6
+2025,Chevrolet,Equinox Ev Awd,Small SUV 4WD,Electricity,FWD,Auto (A1),30.0,36.0,33.0,0.0,35000,6.7,5.8
+2025,Chevrolet,Equinox Ev Awd,Small SUV 4WD,Electricity,FWD,Auto (A1),103.0,88.0,96.0,0.0,35000,6.7,5.6
+2025,Chevrolet,Equinox Ev Awd,Small SUV 4WD,Electricity,FWD,Auto (A1),33.0,38.0,35.0,0.0,35000,6.7,5.8
+2025,Chevrolet,Silverado Ev 8Wt,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),74.0,61.0,68.0,0.0,35000,6.7,5.6
+2025,Chevrolet,Silverado Ev 8Wt,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),46.0,55.0,50.0,0.0,35000,6.7,5.6
+2025,Chevrolet,Silverado Ev 5Wt,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),77.0,63.0,70.0,0.0,35000,6.7,5.6
+2025,Chevrolet,Silverado Ev 5Wt,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),44.0,54.0,48.0,0.0,35000,6.7,5.6
+2025,Chevrolet,Silverado Ev 11 Kw Charger,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),74.0,61.0,68.0,0.0,35000,6.7,5.6
+2025,Chevrolet,Silverado Ev 11 Kw Charger,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),46.0,55.0,50.0,0.0,35000,6.7,5.6
+2025,Chevrolet,Silverado Ev 19Kw Charger,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),70.0,59.0,64.0,0.0,35000,6.7,5.6
+2025,Chevrolet,Silverado Ev 19Kw Charger,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),48.0,57.0,52.0,0.0,35000,6.7,5.6
+2025,Chevrolet,Silverado Ev 5Wt 11Kw Charger,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),77.0,63.0,70.0,0.0,35000,6.7,5.6
+2025,Chevrolet,Silverado Ev 5Wt 11Kw Charger,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),44.0,54.0,48.0,0.0,35000,6.7,5.6
+2025,Chevrolet,Silverado Ev 2Wt,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),73.0,60.0,66.0,0.0,35000,6.7,5.6
+2025,Chevrolet,Silverado Ev 2Wt,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),46.0,56.0,51.0,0.0,35000,6.7,5.6
+2025,Dodge,Charger Daytona R/T Awd 245/55Zr18,Large Cars,Electricity,FWD,Auto (A1),92.0,81.0,87.0,0.0,40000,7.2,5.4
+2025,Dodge,Charger Daytona R/T Awd 245/55Zr18,Large Cars,Electricity,FWD,Auto (A1),32.0,37.0,35.0,0.0,40000,7.2,5.6
+2025,Dodge,Charger Daytona R/T Awd 255/45R20,Large Cars,Electricity,FWD,Auto (A1),104.0,91.0,98.0,0.0,40000,7.2,5.4
+2025,Dodge,Charger Daytona R/T Awd 255/45R20,Large Cars,Electricity,FWD,Auto (A1),32.0,37.0,35.0,0.0,40000,7.2,5.6
+2025,Dodge,Charger Daytona R/T Awd 275/40R20,Large Cars,Electricity,FWD,Auto (A1),90.0,79.0,85.0,0.0,40000,7.2,5.4
+2025,Dodge,Charger Daytona R/T Awd 275/40R20,Large Cars,Electricity,FWD,Auto (A1),32.0,37.0,35.0,0.0,40000,7.2,5.6
+2025,Dodge,Charger Daytona R/T Awd 305/35Zr20,Large Cars,Electricity,FWD,Auto (A1),94.0,82.0,88.0,0.0,40000,7.2,5.4
+2025,Dodge,Charger Daytona R/T Awd 305/35Zr20,Large Cars,Electricity,FWD,Auto (A1),32.0,37.0,35.0,0.0,40000,7.2,5.6
+2025,Dodge,Charger Daytona Scat Pack Awd 305/35Zr20,Large Cars,Electricity,FWD,Auto (A1),94.0,82.0,88.0,0.0,40000,7.2,5.4
+2025,Dodge,Charger Daytona Scat Pack Awd 305/35Zr20,Large Cars,Electricity,FWD,Auto (A1),32.0,37.0,35.0,0.0,40000,7.2,5.6
+2025,Dodge,Charger Daytona Scat Pack Awd 325/35Zr20 Rear,Large Cars,Electricity,FWD,Auto (A1),74.0,66.0,70.0,0.0,40000,7.2,5.4
+2025,Dodge,Charger Daytona Scat Pack Awd 325/35Zr20 Rear,Large Cars,Electricity,FWD,Auto (A1),41.0,46.0,43.0,0.0,40000,7.2,5.4
+2025,Dodge,Charger Daytona Scat Pack Awd 325/35Zr20 Rear A/S,Large Cars,Electricity,FWD,Auto (A1),82.0,73.0,78.0,0.0,40000,7.2,5.4
+2025,Dodge,Charger Daytona Scat Pack Awd 325/35Zr20 Rear A/S,Large Cars,Electricity,FWD,Auto (A1),41.0,46.0,43.0,0.0,40000,7.2,5.4
+2025,Fiat,500E,Minicompact Cars,Electricity,FWD,Auto (A1),127.0,104.0,116.0,0.0,35000,6.7,5.6
+2025,Fiat,500E,Minicompact Cars,Electricity,FWD,Auto (A1),27.0,32.0,29.0,0.0,35000,6.7,5.8
+2025,Fiat,500E All Season,Minicompact Cars,Electricity,FWD,Auto (A1),121.0,100.0,110.0,0.0,35000,6.7,5.6
+2025,Fiat,500E All Season,Minicompact Cars,Electricity,FWD,Auto (A1),28.0,34.0,31.0,0.0,35000,6.7,5.8
+2025,Ford,F150 Lightning 4Wd Er1,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),78.0,63.0,70.0,0.0,35000,6.7,5.6
+2025,Ford,F150 Lightning 4Wd Er1,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),43.0,54.0,48.0,0.0,35000,6.7,5.6
+2025,Ford,F150 Lightning 4Wd Pro Er1,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),78.0,63.0,70.0,0.0,35000,6.7,5.6
+2025,Ford,F150 Lightning 4Wd Pro Er1,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),43.0,54.0,48.0,0.0,35000,6.7,5.6
+2025,Ford,F150 Lightning Platinum 4Wd,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),73.0,60.0,66.0,0.0,35000,6.7,5.6
+2025,Ford,F150 Lightning Platinum 4Wd,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),46.0,56.0,51.0,0.0,35000,6.7,5.6
+2025,Ford,F150 Lightning 4Wd Sr,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),76.0,61.0,68.0,0.0,35000,6.7,5.6
+2025,Ford,F150 Lightning 4Wd Sr,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),44.0,56.0,49.0,0.0,35000,6.7,5.6
+2025,Ford,Mustang Mach-E Gt,Small SUV 4WD,Electricity,FWD,Auto (A1),95.0,85.0,90.0,0.0,35000,6.7,5.6
+2025,Ford,Mustang Mach-E Gt,Small SUV 4WD,Electricity,FWD,Auto (A1),35.0,40.0,37.0,0.0,35000,6.7,5.8
+2025,Ford,Mustang Mach-E Awd Extended,Small SUV 4WD,Electricity,FWD,Auto (A1),110.0,98.0,104.0,0.0,35000,6.7,5.6
+2025,Ford,Mustang Mach-E Awd Extended,Small SUV 4WD,Electricity,FWD,Auto (A1),31.0,34.0,32.0,0.0,35000,6.7,5.8
+2025,Ford,Mustang Mach-E Awd,Small SUV 4WD,Electricity,FWD,Auto (A1),104.0,96.0,100.0,0.0,35000,6.7,5.6
+2025,Ford,Mustang Mach-E Awd,Small SUV 4WD,Electricity,FWD,Auto (A1),32.0,35.0,34.0,0.0,35000,6.7,5.8
+2025,Ford,Mustang Mach-E Rwd,Small SUV 2WD,Electricity,FWD,Auto (A1),111.0,103.0,107.0,0.0,35000,6.7,5.6
+2025,Ford,Mustang Mach-E Rwd,Small SUV 2WD,Electricity,FWD,Auto (A1),30.0,33.0,31.0,0.0,35000,6.7,5.8
+2025,Ford,Mustang Mach-E Rwd Extended,Small SUV 2WD,Electricity,FWD,Auto (A1),115.0,104.0,110.0,0.0,35000,6.7,5.6
+2025,Ford,Mustang Mach-E Rwd Extended,Small SUV 2WD,Electricity,FWD,Auto (A1),29.0,32.0,31.0,0.0,35000,6.7,5.8
+2025,Ford,Mustang Mach-E Rally,Small SUV 4WD,Electricity,FWD,Auto (A1),90.0,81.0,86.0,0.0,35000,6.7,5.6
+2025,Ford,Mustang Mach-E Rally,Small SUV 4WD,Electricity,FWD,Auto (A1),38.0,42.0,39.0,0.0,35000,6.7,5.8
+2025,Ford,F150 Lightning 4Wd Er2,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),79.0,65.0,72.0,0.0,35000,6.7,5.6
+2025,Ford,F150 Lightning 4Wd Er2,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),43.0,52.0,47.0,0.0,35000,6.7,5.6
+2025,Genesis,Gv60 Rwd,Small SUV 2WD,Electricity,FWD,Auto (A1),125.0,99.0,112.0,0.0,49000,7.4,6.0
+2025,Genesis,Gv60 Rwd,Small SUV 2WD,Electricity,FWD,Auto (A1),27.0,34.0,30.0,0.0,49000,7.4,6.2
+2025,Genesis,Gv60 Awd With 19'',Small SUV 4WD,Electricity,FWD,Auto (A1),110.0,90.0,100.0,0.0,49000,7.4,6.0
+2025,Genesis,Gv60 Awd With 19'',Small SUV 4WD,Electricity,FWD,Auto (A1),31.0,38.0,34.0,0.0,49000,7.4,6.2
+2025,Genesis,Gv60 Awd Advanced With 20'',Small SUV 4WD,Electricity,FWD,Auto (A1),103.0,86.0,95.0,0.0,49000,7.4,6.0
+2025,Genesis,Gv60 Awd Advanced With 20'',Small SUV 4WD,Electricity,FWD,Auto (A1),33.0,39.0,35.0,0.0,49000,7.4,6.2
+2025,Genesis,Gv60 Awd Performance,Small SUV 4WD,Electricity,FWD,Auto (A1),97.0,82.0,90.0,0.0,49000,7.4,6.0
+2025,Genesis,Gv60 Awd Performance,Small SUV 4WD,Electricity,FWD,Auto (A1),35.0,41.0,37.0,0.0,49000,7.4,6.2
+2025,Genesis,Electrified G80,Midsize Cars,Electricity,FWD,Auto (A1),105.0,89.0,97.0,0.0,44800,7.5,6.2
+2025,Genesis,Electrified G80,Midsize Cars,Electricity,FWD,Auto (A1),32.0,38.0,35.0,0.0,44800,7.5,6.4
+2025,Genesis,Electrified Gv70,Small SUV 4WD,Electricity,FWD,Auto (A1),98.0,83.0,91.0,0.0,49000,7.4,6.0
+2025,Genesis,Electrified Gv70,Small SUV 4WD,Electricity,FWD,Auto (A1),34.0,41.0,37.0,0.0,49000,7.4,6.2
+2025,Gmc,Sierra Ev,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),70.0,59.0,64.0,0.0,35000,6.7,5.6
+2025,Gmc,Sierra Ev,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),48.0,57.0,52.0,0.0,35000,6.7,5.6
+2025,Gmc,Hummer Ev Suv,Standard SUV 4WD,Electricity,FWD,Auto (A1),59.0,46.0,53.0,0.0,35000,6.7,5.6
+2025,Gmc,Hummer Ev Suv,Standard SUV 4WD,Electricity,FWD,Auto (A1),57.0,73.0,64.0,0.0,35000,6.7,5.6
+2025,Gmc,Hummer Ev Pickup,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),59.0,47.0,53.0,0.0,35000,6.7,5.6
+2025,Gmc,Hummer Ev Pickup,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),57.0,72.0,64.0,0.0,35000,6.7,5.6
+2025,Gmc,Hummer Ev Suv Mt Tires,Standard SUV 4WD,Electricity,FWD,Auto (A1),52.0,42.0,47.0,0.0,35000,6.7,5.6
+2025,Gmc,Hummer Ev Suv Mt Tires,Standard SUV 4WD,Electricity,FWD,Auto (A1),65.0,80.0,72.0,0.0,35000,6.7,5.6
+2025,Gmc,Hummer Ev Pickup Mt Tires,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),52.0,42.0,47.0,0.0,35000,6.7,5.6
+2025,Gmc,Hummer Ev Pickup Mt Tires,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),65.0,80.0,72.0,0.0,35000,6.7,5.6
+2025,Gmc,Hummer Ev Suv,Standard SUV 4WD,Electricity,FWD,Auto (A1),58.0,46.0,52.0,0.0,35000,6.7,5.6
+2025,Gmc,Hummer Ev Suv,Standard SUV 4WD,Electricity,FWD,Auto (A1),59.0,73.0,65.0,0.0,35000,6.7,5.6
+2025,Gmc,Hummer Ev Pickup,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),58.0,46.0,52.0,0.0,35000,6.7,5.6
+2025,Gmc,Hummer Ev Pickup,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),59.0,73.0,65.0,0.0,35000,6.7,5.6
+2025,Gmc,Hummer Ev Suv Mt Tires,Standard SUV 4WD,Electricity,FWD,Auto (A1),53.0,43.0,48.0,0.0,35000,6.7,5.6
+2025,Gmc,Hummer Ev Suv Mt Tires,Standard SUV 4WD,Electricity,FWD,Auto (A1),64.0,78.0,70.0,0.0,35000,6.7,5.6
+2025,Gmc,Hummer Ev Pickup Mt Tires,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),53.0,43.0,48.0,0.0,35000,6.7,5.6
+2025,Gmc,Hummer Ev Pickup Mt Tires,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),64.0,78.0,70.0,0.0,35000,6.7,5.6
+2025,Hai Phong Manufacturing Plant,Vf 7 Plus,Special Purpose Vehicle 4WD,Electricity,FWD,Auto (A1),80.0,71.0,76.0,0.0,35000,6.7,5.6
+2025,Hai Phong Manufacturing Plant,Vf 7 Plus,Special Purpose Vehicle 4WD,Electricity,FWD,Auto (A1),42.0,47.0,44.0,0.0,35000,6.7,5.6
+2025,Hai Phong Manufacturing Plant,Vf 8 Plus,Special Purpose Vehicle 4WD,Electricity,FWD,Auto (A1),46.0,42.0,44.0,0.0,35000,6.7,5.6
+2025,Hai Phong Manufacturing Plant,Vf 8 Plus,Special Purpose Vehicle 4WD,Electricity,FWD,Auto (A1),73.0,80.0,76.0,0.0,35000,6.7,5.6
+2025,Hai Phong Manufacturing Plant,Vf 8 Eco,Special Purpose Vehicle 4WD,Electricity,FWD,Auto (A1),77.0,69.0,73.0,0.0,35000,6.7,5.6
+2025,Hai Phong Manufacturing Plant,Vf 8 Eco,Special Purpose Vehicle 4WD,Electricity,FWD,Auto (A1),44.0,49.0,46.0,0.0,35000,6.7,5.6
+2025,Hai Phong Manufacturing Plant,Vf 9 Plus,Special Purpose Vehicle 4WD,Electricity,FWD,Auto (A1),70.0,65.0,68.0,0.0,35000,6.7,5.6
+2025,Hai Phong Manufacturing Plant,Vf 9 Plus,Special Purpose Vehicle 4WD,Electricity,FWD,Auto (A1),48.0,52.0,50.0,0.0,35000,6.7,5.6
+2025,Hai Phong Manufacturing Plant,Vf 6 Plus,Special Purpose Vehicle 2WD,Electricity,FWD,Auto (A1),88.0,82.0,85.0,0.0,35000,6.7,5.6
+2025,Hai Phong Manufacturing Plant,Vf 6 Plus,Special Purpose Vehicle 2WD,Electricity,FWD,Auto (A1),38.0,41.0,40.0,0.0,35000,6.7,5.6
+2025,Honda,Prologue Fwd,Standard SUV 2WD,Electricity,FWD,Auto (A1),113.0,94.0,104.0,0.0,35000,6.7,5.6
+2025,Honda,Prologue Fwd,Standard SUV 2WD,Electricity,FWD,Auto (A1),30.0,36.0,33.0,0.0,35000,6.7,5.8
+2025,Honda,Prologue Awd Touring,Standard SUV 4WD,Electricity,FWD,Auto (A1),108.0,90.0,99.0,0.0,35000,6.7,5.6
+2025,Honda,Prologue Awd Touring,Standard SUV 4WD,Electricity,FWD,Auto (A1),31.0,37.0,34.0,0.0,35000,6.7,5.8
+2025,Honda,Prologue Awd Elite,Standard SUV 4WD,Electricity,FWD,Auto (A1),104.0,87.0,95.0,0.0,35000,6.7,5.6
+2025,Honda,Prologue Awd Elite,Standard SUV 4WD,Electricity,FWD,Auto (A1),32.0,39.0,35.0,0.0,35000,6.7,5.8
+2025,Hyundai Motor Company,Ioniq 5 Awd (19Inch Wheels),Small SUV 4WD,Electricity,FWD,Auto (A1),116.0,96.0,106.0,0.0,35000,6.7,5.6
+2025,Hyundai Motor Company,Ioniq 5 Awd (19Inch Wheels),Small SUV 4WD,Electricity,FWD,Auto (A1),29.0,35.0,32.0,0.0,35000,6.7,5.8
+2025,Hyundai Motor Company,Ioniq 5 Rwd,Small SUV 2WD,Electricity,FWD,Auto (A1),129.0,100.0,114.0,0.0,35000,6.7,5.6
+2025,Hyundai Motor Company,Ioniq 5 Rwd,Small SUV 2WD,Electricity,FWD,Auto (A1),26.0,34.0,30.0,0.0,35000,6.7,5.8
+2025,Hyundai Motor Company,Ioniq 5 Standard Range,Small SUV 2WD,Electricity,FWD,Auto (A1),131.0,100.0,115.0,0.0,35000,6.7,5.6
+2025,Hyundai Motor Company,Ioniq 5 Standard Range,Small SUV 2WD,Electricity,FWD,Auto (A1),26.0,34.0,29.0,0.0,35000,6.7,5.8
+2025,Hyundai Motor Company,Ioniq 6 Standard Range,Midsize Cars,Electricity,FWD,Auto (A1),151.0,120.0,135.0,0.0,32000,6.8,5.8
+2025,Hyundai Motor Company,Ioniq 6 Standard Range,Midsize Cars,Electricity,FWD,Auto (A1),22.0,28.0,25.0,0.0,32000,6.8,6.0
+2025,Hyundai Motor Company,Ioniq 6 Rwd (18'' Wheels),Midsize Cars,Electricity,FWD,Auto (A1),144.0,120.0,132.0,0.0,32000,6.8,5.8
+2025,Hyundai Motor Company,Ioniq 6 Rwd (18'' Wheels),Midsize Cars,Electricity,FWD,Auto (A1),23.0,28.0,26.0,0.0,32000,6.8,6.0
+2025,Hyundai Motor Company,Ioniq 6 Rwd (20'' Wheels),Midsize Cars,Electricity,FWD,Auto (A1),123.0,100.0,111.0,0.0,32000,6.8,5.8
+2025,Hyundai Motor Company,Ioniq 6 Rwd (20'' Wheels),Midsize Cars,Electricity,FWD,Auto (A1),27.0,34.0,30.0,0.0,32000,6.8,6.0
+2025,Hyundai Motor Company,Ioniq 6 Awd (18'' Wheels),Midsize Cars,Electricity,FWD,Auto (A1),130.0,111.0,121.0,0.0,32000,6.8,5.8
+2025,Hyundai Motor Company,Ioniq 6 Awd (18'' Wheels),Midsize Cars,Electricity,FWD,Auto (A1),26.0,30.0,28.0,0.0,32000,6.8,6.0
+2025,Hyundai Motor Company,Ioniq6 Awd (20'' Wheels),Midsize Cars,Electricity,FWD,Auto (A1),111.0,94.0,103.0,0.0,32000,6.8,5.8
+2025,Hyundai Motor Company,Ioniq6 Awd (20'' Wheels),Midsize Cars,Electricity,FWD,Auto (A1),31.0,36.0,33.0,0.0,32000,6.8,6.0
+2025,Hyundai Motor Company,Kona Electric Standard Range,Small SUV 2WD,Electricity,FWD,Auto (A1),131.0,105.0,118.0,0.0,35000,6.7,5.6
+2025,Hyundai Motor Company,Kona Electric Standard Range,Small SUV 2WD,Electricity,FWD,Auto (A1),26.0,32.0,29.0,0.0,35000,6.7,5.8
+2025,Hyundai Motor Company,Kona Electric (17Inch Wheels),Small SUV 2WD,Electricity,FWD,Auto (A1),129.0,103.0,116.0,0.0,35000,6.7,5.6
+2025,Hyundai Motor Company,Kona Electric (17Inch Wheels),Small SUV 2WD,Electricity,FWD,Auto (A1),26.0,33.0,29.0,0.0,35000,6.7,5.8
+2025,Hyundai Motor Company,Ioniq 5 N,Small SUV 4WD,Electricity,FWD,Auto (A1),84.0,72.0,78.0,0.0,35000,6.7,5.6
+2025,Hyundai Motor Company,Ioniq 5 N,Small SUV 4WD,Electricity,FWD,Auto (A1),40.0,47.0,43.0,0.0,35000,6.7,5.6
+2025,Hyundai Motor Company,Kona Electric (19Inch Wheels),Small SUV 2WD,Electricity,FWD,Auto (A1),113.0,93.0,103.0,0.0,35000,6.7,5.6
+2025,Hyundai Motor Company,Kona Electric (19Inch Wheels),Small SUV 2WD,Electricity,FWD,Auto (A1),28.0,34.0,31.0,0.0,35000,6.7,5.8
+2025,Hyundai Motor Company,Ioniq 5 Robo Taxi,Small SUV 2WD,Electricity,FWD,Auto (A1),73.0,69.0,71.0,0.0,35000,6.7,5.6
+2025,Hyundai Motor Company,Ioniq 5 Robo Taxi,Small SUV 2WD,Electricity,FWD,Auto (A1),46.0,49.0,48.0,0.0,35000,6.7,5.6
+2025,Hyundai Motor Company,Ioniq 5 Awd Xrt,Small SUV 4WD,Electricity,FWD,Auto (A1),103.0,85.0,94.0,0.0,35000,6.7,5.6
+2025,Hyundai Motor Company,Ioniq 5 Awd Xrt,Small SUV 4WD,Electricity,FWD,Auto (A1),33.0,40.0,36.0,0.0,35000,6.7,5.8
+2025,Hyundai Motor Company,Ioniq 5 Awd (20Inch Wheels),Small SUV 4WD,Electricity,FWD,Auto (A1),108.0,88.0,98.0,0.0,35000,6.7,5.6
+2025,Hyundai Motor Company,Ioniq 5 Awd (20Inch Wheels),Small SUV 4WD,Electricity,FWD,Auto (A1),31.0,39.0,34.0,0.0,35000,6.7,5.8
+2025,Jeep,Wagoneer S Awd (Falken Tire),Standard SUV 4WD,Electricity,FWD,Auto (A1),100.0,85.0,93.0,0.0,35000,6.7,5.6
+2025,Jeep,Wagoneer S Awd (Falken Tire),Standard SUV 4WD,Electricity,FWD,Auto (A1),34.0,39.0,36.0,0.0,35000,6.7,5.8
+2025,Jeep,Wagoneer S Awd (Pirelli Tire),Standard SUV 4WD,Electricity,FWD,Auto (A1),90.0,76.0,83.0,0.0,35000,6.7,5.6
+2025,Jeep,Wagoneer S Awd (Pirelli Tire),Standard SUV 4WD,Electricity,FWD,Auto (A1),38.0,44.0,41.0,0.0,35000,6.7,5.6
+2025,Kia,Niro Electric,Small SUV 2WD,Electricity,FWD,Auto (A1),126.0,101.0,113.0,0.0,35000,6.7,5.6
+2025,Kia,Niro Electric,Small SUV 2WD,Electricity,FWD,Auto (A1),27.0,33.0,30.0,0.0,35000,6.7,5.8
+2025,Kia,Ev6 Awd Gt,Small SUV 4WD,Electricity,FWD,Auto (A1),87.0,79.0,83.0,0.0,35000,6.7,5.6
+2025,Kia,Ev6 Awd Gt,Small SUV 4WD,Electricity,FWD,Auto (A1),38.0,42.0,40.0,0.0,35000,6.7,5.6
+2025,Kia,Ev6 Long Range Awd (19'' Wheels),Small SUV 4WD,Electricity,FWD,Auto (A1),117.0,95.0,106.0,0.0,35000,6.7,5.6
+2025,Kia,Ev6 Long Range Awd (19'' Wheels),Small SUV 4WD,Electricity,FWD,Auto (A1),29.0,35.0,32.0,0.0,35000,6.7,5.8
+2025,Kia,Ev6 Long Range Awd (20'' Wheels),Small SUV 4WD,Electricity,FWD,Auto (A1),106.0,89.0,97.0,0.0,35000,6.7,5.6
+2025,Kia,Ev6 Long Range Awd (20'' Wheels),Small SUV 4WD,Electricity,FWD,Auto (A1),32.0,38.0,35.0,0.0,35000,6.7,5.8
+2025,Kia,Ev6 Standard Range Rwd,Small SUV 2WD,Electricity,FWD,Auto (A1),128.0,103.0,115.0,0.0,35000,6.7,5.6
+2025,Kia,Ev6 Standard Range Rwd,Small SUV 2WD,Electricity,FWD,Auto (A1),26.0,33.0,29.0,0.0,35000,6.7,5.8
+2025,Kia,Ev6 Long Range Rwd,Small SUV 2WD,Electricity,FWD,Auto (A1),128.0,101.0,114.0,0.0,35000,6.7,5.6
+2025,Kia,Ev6 Long Range Rwd,Small SUV 2WD,Electricity,FWD,Auto (A1),26.0,33.0,30.0,0.0,35000,6.7,5.8
+2025,Kia,Ev9 Standard Range Rwd,Standard SUV 2WD,Electricity,FWD,Auto (A1),99.0,77.0,88.0,0.0,35000,6.7,5.6
+2025,Kia,Ev9 Standard Range Rwd,Standard SUV 2WD,Electricity,FWD,Auto (A1),34.0,44.0,38.0,0.0,35000,6.7,5.8
+2025,Kia,Ev9 Long Range Rwd,Standard SUV 2WD,Electricity,FWD,Auto (A1),100.0,78.0,89.0,0.0,35000,6.7,5.6
+2025,Kia,Ev9 Long Range Rwd,Standard SUV 2WD,Electricity,FWD,Auto (A1),34.0,43.0,38.0,0.0,35000,6.7,5.8
+2025,Kia,Ev9 Long Range Awd,Standard SUV 4WD,Electricity,FWD,Auto (A1),91.0,75.0,83.0,0.0,35000,6.7,5.6
+2025,Kia,Ev9 Long Range Awd,Standard SUV 4WD,Electricity,FWD,Auto (A1),37.0,45.0,41.0,0.0,35000,6.7,5.6
+2025,Kia,Ev9 Long Range Awd Gt-Line,Standard SUV 4WD,Electricity,FWD,Auto (A1),88.0,72.0,80.0,0.0,35000,6.7,5.6
+2025,Kia,Ev9 Long Range Awd Gt-Line,Standard SUV 4WD,Electricity,FWD,Auto (A1),38.0,47.0,42.0,0.0,35000,6.7,5.6
+2025,Lexus,Rz 300E (18Inch Wheels),Small SUV 2WD,Electricity,FWD,Auto (A1),137.0,112.0,125.0,0.0,49000,7.4,6.0
+2025,Lexus,Rz 300E (18Inch Wheels),Small SUV 2WD,Electricity,FWD,Auto (A1),24.0,30.0,27.0,0.0,49000,7.4,6.2
+2025,Lexus,Rz 450E Awd (18Inch Wheels),Small SUV 4WD,Electricity,FWD,Auto (A1),115.0,98.0,107.0,0.0,49000,7.4,6.0
+2025,Lexus,Rz 450E Awd (18Inch Wheels),Small SUV 4WD,Electricity,FWD,Auto (A1),29.0,34.0,31.0,0.0,49000,7.4,6.2
+2025,Lexus,Rz 300E (20Inch Wheels),Small SUV 2WD,Electricity,FWD,Auto (A1),114.0,96.0,105.0,0.0,49000,7.4,6.0
+2025,Lexus,Rz 300E (20Inch Wheels),Small SUV 2WD,Electricity,FWD,Auto (A1),29.0,35.0,31.0,0.0,49000,7.4,6.2
+2025,Lexus,Rz 450E Awd (20Inch Wheels),Small SUV 4WD,Electricity,FWD,Auto (A1),102.0,87.0,95.0,0.0,49000,7.4,6.0
+2025,Lexus,Rz 450E Awd (20Inch Wheels),Small SUV 4WD,Electricity,FWD,Auto (A1),32.0,38.0,35.0,0.0,49000,7.4,6.2
+2025,Lucid,"Air G Touring Xr Awd W/19"" Wheels",Large Cars,Electricity,FWD,Auto (A1),129.0,126.0,128.0,0.0,40000,7.2,5.4
+2025,Lucid,"Air G Touring Xr Awd W/19"" Wheels",Large Cars,Electricity,FWD,Auto (A1),26.0,27.0,26.0,0.0,40000,7.2,5.6
+2025,Lucid,"Air G Touring Xr Awd W/20"" Wheels",Large Cars,Electricity,FWD,Auto (A1),122.0,117.0,120.0,0.0,40000,7.2,5.4
+2025,Lucid,"Air G Touring Xr Awd W/20"" Wheels",Large Cars,Electricity,FWD,Auto (A1),28.0,29.0,28.0,0.0,40000,7.2,5.6
+2025,Lucid,"Air G Touring Xr Awd W/21"" Wheels",Large Cars,Electricity,FWD,Auto (A1),114.0,109.0,112.0,0.0,40000,7.2,5.4
+2025,Lucid,"Air G Touring Xr Awd W/21"" Wheels",Large Cars,Electricity,FWD,Auto (A1),30.0,31.0,30.0,0.0,40000,7.2,5.6
+2025,Lucid,"Air Touring Awd W/19"" Wheels",Large Cars,Electricity,FWD,Auto (A1),133.0,130.0,132.0,0.0,40000,7.2,5.4
+2025,Lucid,"Air Touring Awd W/19"" Wheels",Large Cars,Electricity,FWD,Auto (A1),25.0,26.0,26.0,0.0,40000,7.2,5.6
+2025,Lucid,"Air Touring Awd W/20"" Wheels",Large Cars,Electricity,FWD,Auto (A1),124.0,119.0,121.0,0.0,40000,7.2,5.4
+2025,Lucid,"Air Touring Awd W/20"" Wheels",Large Cars,Electricity,FWD,Auto (A1),27.0,28.0,28.0,0.0,40000,7.2,5.6
+2025,Lucid,"Air Touring Awd W/21"" Wheels",Large Cars,Electricity,FWD,Auto (A1),119.0,113.0,116.0,0.0,40000,7.2,5.4
+2025,Lucid,"Air Touring Awd W/21"" Wheels",Large Cars,Electricity,FWD,Auto (A1),28.0,30.0,29.0,0.0,40000,7.2,5.6
+2025,Lucid,"Air Pure Rwd W/19"" Wheels",Large Cars,Electricity,FWD,Auto (A1),149.0,142.0,146.0,0.0,40000,7.2,5.4
+2025,Lucid,"Air Pure Rwd W/19"" Wheels",Large Cars,Electricity,FWD,Auto (A1),23.0,24.0,23.0,0.0,40000,7.2,5.6
+2025,Lucid,"Air Pure Rwd W/20"" Wheels",Large Cars,Electricity,FWD,Auto (A1),132.0,125.0,129.0,0.0,40000,7.2,5.4
+2025,Lucid,"Air Pure Rwd W/20"" Wheels",Large Cars,Electricity,FWD,Auto (A1),25.0,27.0,26.0,0.0,40000,7.2,5.6
+2025,Lucid,Air Sapphire Awd,Large Cars,Electricity,FWD,Auto (A1),108.0,101.0,105.0,0.0,40000,7.2,5.4
+2025,Lucid,Air Sapphire Awd,Large Cars,Electricity,FWD,Auto (A1),31.0,33.0,32.0,0.0,40000,7.2,5.6
+2025,Lucid Usa Inc.,"Air G Touring Xr Awd W/19"" Wheels",Large Cars,Electricity,FWD,Auto (A1),129.0,126.0,128.0,0.0,40000,7.2,5.4
+2025,Lucid Usa Inc.,"Air G Touring Xr Awd W/19"" Wheels",Large Cars,Electricity,FWD,Auto (A1),26.0,27.0,26.0,0.0,40000,7.2,5.6
+2025,Lucid Usa Inc.,"Air G Touring Xr Awd W/20"" Wheels",Large Cars,Electricity,FWD,Auto (A1),122.0,117.0,120.0,0.0,40000,7.2,5.4
+2025,Lucid Usa Inc.,"Air G Touring Xr Awd W/20"" Wheels",Large Cars,Electricity,FWD,Auto (A1),28.0,29.0,28.0,0.0,40000,7.2,5.6
+2025,Lucid Usa Inc.,"Air G Touring Xr Awd W/21"" Wheels",Large Cars,Electricity,FWD,Auto (A1),114.0,109.0,112.0,0.0,40000,7.2,5.4
+2025,Lucid Usa Inc.,"Air G Touring Xr Awd W/21"" Wheels",Large Cars,Electricity,FWD,Auto (A1),30.0,31.0,30.0,0.0,40000,7.2,5.6
+2025,Lucid Usa Inc.,"Air Touring Awd W/19"" Wheels",Large Cars,Electricity,FWD,Auto (A1),133.0,130.0,132.0,0.0,40000,7.2,5.4
+2025,Lucid Usa Inc.,"Air Touring Awd W/19"" Wheels",Large Cars,Electricity,FWD,Auto (A1),25.0,26.0,26.0,0.0,40000,7.2,5.6
+2025,Lucid Usa Inc.,"Air Touring Awd W/20"" Wheels",Large Cars,Electricity,FWD,Auto (A1),124.0,119.0,121.0,0.0,40000,7.2,5.4
+2025,Lucid Usa Inc.,"Air Touring Awd W/20"" Wheels",Large Cars,Electricity,FWD,Auto (A1),27.0,28.0,28.0,0.0,40000,7.2,5.6
+2025,Lucid Usa Inc.,"Air Touring Awd W/21"" Wheels",Large Cars,Electricity,FWD,Auto (A1),119.0,113.0,116.0,0.0,40000,7.2,5.4
+2025,Lucid Usa Inc.,"Air Touring Awd W/21"" Wheels",Large Cars,Electricity,FWD,Auto (A1),28.0,30.0,29.0,0.0,40000,7.2,5.6
+2025,Lucid Usa Inc.,Air Sapphire Awd,Large Cars,Electricity,FWD,Auto (A1),108.0,101.0,105.0,0.0,40000,7.2,5.4
+2025,Lucid Usa Inc.,Air Sapphire Awd,Large Cars,Electricity,FWD,Auto (A1),31.0,33.0,32.0,0.0,40000,7.2,5.6
+2025,Lucid Usa Inc.,Gravity Gt W/20F21R Wheels (2R),Standard SUV 4WD,Electricity,FWD,Auto (A1),113.0,103.0,108.0,0.0,35000,6.7,5.6
+2025,Lucid Usa Inc.,Gravity Gt W/20F21R Wheels (2R),Standard SUV 4WD,Electricity,FWD,Auto (A1),30.0,33.0,31.0,0.0,35000,6.7,5.8
+2025,Lucid Usa Inc.,Gravity Gt W/21F22R Wheels (2R),Standard SUV 4WD,Electricity,FWD,Auto (A1),102.0,94.0,98.0,0.0,35000,6.7,5.6
+2025,Lucid Usa Inc.,Gravity Gt W/21F22R Wheels (2R),Standard SUV 4WD,Electricity,FWD,Auto (A1),33.0,36.0,34.0,0.0,35000,6.7,5.8
+2025,Lucid Usa Inc.,Gravity Gt W/22F23R Wheels (2R),Standard SUV 4WD,Electricity,FWD,Auto (A1),102.0,94.0,98.0,0.0,35000,6.7,5.6
+2025,Lucid Usa Inc.,Gravity Gt W/22F23R Wheels (2R),Standard SUV 4WD,Electricity,FWD,Auto (A1),33.0,36.0,34.0,0.0,35000,6.7,5.8
+2025,Lucid Usa Inc.,Gravity Gt W/20F21R Wheels (3R),Standard SUV 4WD,Electricity,FWD,Auto (A1),108.0,100.0,104.0,0.0,35000,6.7,5.6
+2025,Lucid Usa Inc.,Gravity Gt W/20F21R Wheels (3R),Standard SUV 4WD,Electricity,FWD,Auto (A1),31.0,34.0,32.0,0.0,35000,6.7,5.8
+2025,Lucid Usa Inc.,Gravity Gt W/21F22R Wheels (3R),Standard SUV 4WD,Electricity,FWD,Auto (A1),96.0,89.0,92.0,0.0,35000,6.7,5.6
+2025,Lucid Usa Inc.,Gravity Gt W/21F22R Wheels (3R),Standard SUV 4WD,Electricity,FWD,Auto (A1),35.0,38.0,36.0,0.0,35000,6.7,5.8
+2025,Lucid Usa Inc.,Gravity Gt W/22F23R Wheels (3R),Standard SUV 4WD,Electricity,FWD,Auto (A1),96.0,89.0,92.0,0.0,35000,6.7,5.6
+2025,Lucid Usa Inc.,Gravity Gt W/22F23R Wheels (3R),Standard SUV 4WD,Electricity,FWD,Auto (A1),35.0,38.0,36.0,0.0,35000,6.7,5.8
+2025,Maserati,"Grecale Folgore (20"" Wheel)",Small SUV 4WD,Electricity,FWD,Auto (A1),80.0,70.0,75.0,0.0,49000,7.4,6.0
+2025,Maserati,"Grecale Folgore (20"" Wheel)",Small SUV 4WD,Electricity,FWD,Auto (A1),42.0,48.0,45.0,0.0,49000,7.4,6.0
+2025,Maserati,"Grecale Folgore (21"" Wheel)",Small SUV 4WD,Electricity,FWD,Auto (A1),65.0,59.0,62.0,0.0,49000,7.4,6.0
+2025,Maserati,"Grecale Folgore (21"" Wheel)",Small SUV 4WD,Electricity,FWD,Auto (A1),52.0,57.0,54.0,0.0,49000,7.4,6.0
+2025,Maserati,Granturismo Folgore,Subcompact Cars,Electricity,FWD,Auto (A1),85.0,81.0,83.0,0.0,32200,6.6,5.5
+2025,Maserati,Granturismo Folgore,Subcompact Cars,Electricity,FWD,Auto (A1),40.0,42.0,41.0,0.0,32200,6.6,5.5
+2025,Maserati,Grancabrio Folgore,Subcompact Cars,Electricity,FWD,Auto (A1),83.0,81.0,82.0,0.0,32200,6.6,5.5
+2025,Maserati,Grancabrio Folgore,Subcompact Cars,Electricity,FWD,Auto (A1),41.0,42.0,41.0,0.0,32200,6.6,5.5
+2025,Mercedes-Benz,G 580 With Eq Technology,Standard SUV 4WD,Electricity,FWD,Auto (A2),68.0,56.0,62.0,0.0,49000,7.4,6.0
+2025,Mercedes-Benz,G 580 With Eq Technology,Standard SUV 4WD,Electricity,FWD,Auto (A2),40.0,42.0,41.0,0.0,49000,7.4,6.0
+2025,Mercedes-Benz,Amg Eqs 4Matic+,Large Cars,Electricity,FWD,Auto (A1),76.0,81.0,78.0,0.0,56000,7.9,5.8
+2025,Mercedes-Benz,Amg Eqs 4Matic+,Large Cars,Electricity,FWD,Auto (A1),44.0,41.0,43.0,0.0,56000,7.9,5.8
+2025,Mercedes-Benz,Eqs 450+,Large Cars,Electricity,FWD,Auto (A1),98.0,98.0,98.0,0.0,56000,7.9,5.8
+2025,Mercedes-Benz,Eqs 450+,Large Cars,Electricity,FWD,Auto (A1),34.0,34.0,34.0,0.0,56000,7.9,6.0
+2025,Mercedes-Benz,Eqs 580 4Matic,Large Cars,Electricity,FWD,Auto (A1),93.0,93.0,93.0,0.0,56000,7.9,5.8
+2025,Mercedes-Benz,Eqs 580 4Matic,Large Cars,Electricity,FWD,Auto (A1),36.0,36.0,36.0,0.0,56000,7.9,6.0
+2025,Mercedes-Benz,Eqs 450+ (Suv),Standard SUV 2WD,Electricity,FWD,Auto (A1),84.0,79.0,82.0,0.0,49000,7.4,6.0
+2025,Mercedes-Benz,Eqs 450+ (Suv),Standard SUV 2WD,Electricity,FWD,Auto (A1),40.0,42.0,42.0,0.0,49000,7.4,6.0
+2025,Mercedes-Benz,Eqs 450 4Matic,Large Cars,Electricity,FWD,Auto (A1),91.0,93.0,92.0,0.0,56000,7.9,5.8
+2025,Mercedes-Benz,Eqs 450 4Matic,Large Cars,Electricity,FWD,Auto (A1),36.0,35.0,36.0,0.0,56000,7.9,6.0
+2025,Mercedes-Benz,Eqb 250+,Small SUV 2WD,Electricity,FWD,Auto (A1),114.0,100.0,107.0,0.0,49000,7.4,6.0
+2025,Mercedes-Benz,Eqb 250+,Small SUV 2WD,Electricity,FWD,Auto (A1),30.0,34.0,31.0,0.0,49000,7.4,6.2
+2025,Mercedes-Benz,Eqb 300 4Matic,Small SUV 4WD,Electricity,FWD,Auto (A1),89.0,85.0,87.0,0.0,49000,7.4,6.0
+2025,Mercedes-Benz,Eqb 300 4Matic,Small SUV 4WD,Electricity,FWD,Auto (A1),38.0,40.0,39.0,0.0,49000,7.4,6.2
+2025,Mercedes-Benz,Eqb 350 4Matic,Small SUV 4WD,Electricity,FWD,Auto (A1),89.0,85.0,87.0,0.0,49000,7.4,6.0
+2025,Mercedes-Benz,Eqb 350 4Matic,Small SUV 4WD,Electricity,FWD,Auto (A1),38.0,40.0,39.0,0.0,49000,7.4,6.2
+2025,Mercedes-Benz,Amg Eqe 4Matic+,Midsize Cars,Electricity,FWD,Auto (A1),69.0,71.0,70.0,0.0,44800,7.5,6.2
+2025,Mercedes-Benz,Amg Eqe 4Matic+,Midsize Cars,Electricity,FWD,Auto (A1),48.0,47.0,47.0,0.0,44800,7.5,6.2
+2025,Mercedes-Benz,Eqe 350+,Midsize Cars,Electricity,FWD,Auto (A1),94.0,94.0,94.0,0.0,44800,7.5,6.2
+2025,Mercedes-Benz,Eqe 350+,Midsize Cars,Electricity,FWD,Auto (A1),36.0,36.0,36.0,0.0,44800,7.5,6.4
+2025,Mercedes-Benz,Eqe 350 4Matic,Midsize Cars,Electricity,FWD,Auto (A1),87.0,85.0,86.0,0.0,44800,7.5,6.2
+2025,Mercedes-Benz,Eqe 350 4Matic,Midsize Cars,Electricity,FWD,Auto (A1),38.0,39.0,38.0,0.0,44800,7.5,6.4
+2025,Mercedes-Benz,Eqe 500 4Matic,Midsize Cars,Electricity,FWD,Auto (A1),85.0,84.0,85.0,0.0,44800,7.5,6.2
+2025,Mercedes-Benz,Eqe 500 4Matic,Midsize Cars,Electricity,FWD,Auto (A1),38.0,39.0,39.0,0.0,44800,7.5,6.4
+2025,Mercedes-Benz,Eqe 350+ (Suv),Midsize Station Wagons,Electricity,FWD,Auto (A1),98.0,87.0,93.0,0.0,50400,7.7,6.5
+2025,Mercedes-Benz,Eqe 350+ (Suv),Midsize Station Wagons,Electricity,FWD,Auto (A1),34.0,38.0,36.0,0.0,50400,7.7,6.7
+2025,Mercedes-Benz,Eqe 350 4Matic (Suv),Midsize Station Wagons,Electricity,FWD,Auto (A1),84.0,78.0,81.0,0.0,50400,7.7,6.5
+2025,Mercedes-Benz,Eqe 350 4Matic (Suv),Midsize Station Wagons,Electricity,FWD,Auto (A1),39.0,42.0,40.0,0.0,50400,7.7,6.5
+2025,Mercedes-Benz,Eqs 450 4Matic (Suv),Standard SUV 4WD,Electricity,FWD,Auto (A1),80.0,78.0,79.0,0.0,49000,7.4,6.0
+2025,Mercedes-Benz,Eqs 450 4Matic (Suv),Standard SUV 4WD,Electricity,FWD,Auto (A1),42.0,43.0,42.0,0.0,49000,7.4,6.0
+2025,Mercedes-Benz,Eqs 580 4Matic (Suv),Standard SUV 4WD,Electricity,FWD,Auto (A1),82.0,78.0,80.0,0.0,49000,7.4,6.0
+2025,Mercedes-Benz,Eqs 580 4Matic (Suv),Standard SUV 4WD,Electricity,FWD,Auto (A1),40.0,42.0,41.0,0.0,49000,7.4,6.0
+2025,Mercedes-Benz,Eqe 500 4Matic (Suv),Midsize Station Wagons,Electricity,FWD,Auto (A1),83.0,78.0,81.0,0.0,50400,7.7,6.5
+2025,Mercedes-Benz,Eqe 500 4Matic (Suv),Midsize Station Wagons,Electricity,FWD,Auto (A1),40.0,43.0,41.0,0.0,50400,7.7,6.5
+2025,Mercedes-Benz,Eqs 680 4Matic Maybach (Suv),Standard SUV 4WD,Electricity,FWD,Auto (A1),76.0,76.0,76.0,0.0,49000,7.4,6.0
+2025,Mercedes-Benz,Eqs 680 4Matic Maybach (Suv),Standard SUV 4WD,Electricity,FWD,Auto (A1),44.0,43.0,44.0,0.0,49000,7.4,6.0
+2025,Mercedes-Benz,Amg Eqe 4Matic+ (Suv),Midsize Station Wagons,Electricity,FWD,Auto (A1),76.0,72.0,74.0,0.0,50400,7.7,6.5
+2025,Mercedes-Benz,Amg Eqe 4Matic+ (Suv),Midsize Station Wagons,Electricity,FWD,Auto (A1),44.0,47.0,46.0,0.0,50400,7.7,6.5
+2025,Mini,Countryman Se All4 (18'' Wheels),Small SUV 4WD,Electricity,FWD,Auto (A1),99.0,94.0,96.0,0.0,35000,6.7,5.6
+2025,Mini,Countryman Se All4 (18'' Wheels),Small SUV 4WD,Electricity,FWD,Auto (A1),34.0,36.0,35.0,0.0,35000,6.7,5.8
+2025,Mini,Countryman Se All4 (19'' Wheels),Small SUV 4WD,Electricity,FWD,Auto (A1),94.0,88.0,91.0,0.0,35000,6.7,5.6
+2025,Mini,Countryman Se All4 (19'' Wheels),Small SUV 4WD,Electricity,FWD,Auto (A1),36.0,38.0,37.0,0.0,35000,6.7,5.8
+2025,Nissan,Ariya Engage+/Evolve+ E-4Orce 87Kwh,Small SUV 4WD,Electricity,FWD,Auto (A1),97.0,86.0,92.0,0.0,35000,6.7,5.6
+2025,Nissan,Ariya Engage+/Evolve+ E-4Orce 87Kwh,Small SUV 4WD,Electricity,FWD,Auto (A1),35.0,39.0,37.0,0.0,35000,6.7,5.8
+2025,Nissan,Ariya Platinum+ E-4Orce 87Kwh 19In. Wheels,Small SUV 4WD,Electricity,FWD,Auto (A1),93.0,87.0,90.0,0.0,35000,6.7,5.6
+2025,Nissan,Ariya Platinum+ E-4Orce 87Kwh 19In. Wheels,Small SUV 4WD,Electricity,FWD,Auto (A1),36.0,39.0,37.0,0.0,35000,6.7,5.8
+2025,Nissan,Ariya Platinum+ E-4Orce 87Kwh 20In. Wheels,Small SUV 4WD,Electricity,FWD,Auto (A1),89.0,84.0,87.0,0.0,35000,6.7,5.6
+2025,Nissan,Ariya Platinum+ E-4Orce 87Kwh 20In. Wheels,Small SUV 4WD,Electricity,FWD,Auto (A1),38.0,40.0,39.0,0.0,35000,6.7,5.8
+2025,Nissan,Ariya Evolve+ Fwd 87Kwh,Small SUV 2WD,Electricity,FWD,Auto (A1),105.0,91.0,98.0,0.0,35000,6.7,5.6
+2025,Nissan,Ariya Evolve+ Fwd 87Kwh,Small SUV 2WD,Electricity,FWD,Auto (A1),32.0,37.0,34.0,0.0,35000,6.7,5.8
+2025,Nissan,Ariya Fwd 63Kwh,Small SUV 2WD,Electricity,FWD,Auto (A1),109.0,94.0,101.0,0.0,35000,6.7,5.6
+2025,Nissan,Ariya Fwd 63Kwh,Small SUV 2WD,Electricity,FWD,Auto (A1),31.0,36.0,33.0,0.0,35000,6.7,5.8
+2025,Nissan,Ariya E-4Orce 63Kwh,Small SUV 4WD,Electricity,FWD,Auto (A1),101.0,89.0,95.0,0.0,35000,6.7,5.6
+2025,Nissan,Ariya E-4Orce 63Kwh,Small SUV 4WD,Electricity,FWD,Auto (A1),33.0,38.0,35.0,0.0,35000,6.7,5.8
+2025,Nissan,Leaf,Midsize Cars,Electricity,FWD,Auto (A1),123.0,99.0,111.0,0.0,32000,6.8,5.8
+2025,Nissan,Leaf,Midsize Cars,Electricity,FWD,Auto (A1),27.0,34.0,30.0,0.0,32000,6.8,6.0
+2025,Nissan,Leaf,Midsize Cars,Electricity,FWD,Auto (A1),121.0,98.0,109.0,0.0,32000,6.8,5.8
+2025,Nissan,Leaf,Midsize Cars,Electricity,FWD,Auto (A1),28.0,34.0,31.0,0.0,32000,6.8,6.0
+2025,Polestar Automotive Usa Inc,Polestar 2 Dual Motor (19 Inch Wheels),Midsize Cars,Electricity,FWD,Auto (A1),105.0,95.0,101.0,0.0,32000,6.8,5.8
+2025,Polestar Automotive Usa Inc,Polestar 2 Dual Motor (19 Inch Wheels),Midsize Cars,Electricity,FWD,Auto (A1),32.0,35.0,34.0,0.0,32000,6.8,6.0
+2025,Polestar Automotive Usa Inc,Polestar 2 Single Motor (19 Inch Wheels),Midsize Cars,Electricity,FWD,Auto (A1),123.0,104.0,114.0,0.0,32000,6.8,5.8
+2025,Polestar Automotive Usa Inc,Polestar 2 Single Motor (19 Inch Wheels),Midsize Cars,Electricity,FWD,Auto (A1),27.0,32.0,30.0,0.0,32000,6.8,6.0
+2025,Polestar Automotive Usa Inc,Polestar 3 Long Range Dual Motor (21 Inch Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),92.0,84.0,88.0,0.0,35000,6.7,5.6
+2025,Polestar Automotive Usa Inc,Polestar 3 Long Range Dual Motor (21 Inch Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),37.0,40.0,38.0,0.0,35000,6.7,5.8
+2025,Polestar Automotive Usa Inc,Polestar 3 Long Range Dual Motor (22 Inch Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),84.0,76.0,80.0,0.0,35000,6.7,5.6
+2025,Polestar Automotive Usa Inc,Polestar 3 Long Range Dual Motor (22 Inch Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),40.0,44.0,42.0,0.0,35000,6.7,5.6
+2025,Polestar Automotive Usa Inc,Polestar 2 Dual Motor (20 Inch Wheels),Midsize Cars,Electricity,FWD,Auto (A1),101.0,92.0,97.0,0.0,32000,6.8,5.8
+2025,Polestar Automotive Usa Inc,Polestar 2 Dual Motor (20 Inch Wheels),Midsize Cars,Electricity,FWD,Auto (A1),33.0,37.0,35.0,0.0,32000,6.8,6.0
+2025,Polestar Automotive Usa Inc,Polestar 2 Single Motor (20 Inch Wheels),Midsize Cars,Electricity,FWD,Auto (A1),117.0,101.0,109.0,0.0,32000,6.8,5.8
+2025,Polestar Automotive Usa Inc,Polestar 2 Single Motor (20 Inch Wheels),Midsize Cars,Electricity,FWD,Auto (A1),29.0,33.0,31.0,0.0,32000,6.8,6.0
+2025,Polestar Automotive Usa Inc,Polestar 2 Dual Motor Performance Pack,Midsize Cars,Electricity,FWD,Auto (A1),95.0,87.0,91.0,0.0,32000,6.8,5.8
+2025,Polestar Automotive Usa Inc,Polestar 2 Dual Motor Performance Pack,Midsize Cars,Electricity,FWD,Auto (A1),35.0,39.0,37.0,0.0,32000,6.8,6.0
+2025,Polestar Automotive Usa Inc,Polestar 3 Long Range Dual Motor Performance Pack,Standard SUV 4WD,Electricity,FWD,Auto (A1),81.0,73.0,77.0,0.0,35000,6.7,5.6
+2025,Polestar Automotive Usa Inc,Polestar 3 Long Range Dual Motor Performance Pack,Standard SUV 4WD,Electricity,FWD,Auto (A1),42.0,46.0,44.0,0.0,35000,6.7,5.6
+2025,Polestar Automotive Usa Inc,Polestar 3 Long Range Dual Motor (20 Inch Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),91.0,82.0,87.0,0.0,35000,6.7,5.6
+2025,Polestar Automotive Usa Inc,Polestar 3 Long Range Dual Motor (20 Inch Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),38.0,41.0,39.0,0.0,35000,6.7,5.8
+2025,Polestar Automotive Usa Inc,Polestar 4 Long Range Dual Motor,Standard SUV 4WD,Electricity,FWD,Auto (A1),86.0,80.0,83.0,0.0,35000,6.7,5.6
+2025,Polestar Automotive Usa Inc,Polestar 4 Long Range Dual Motor,Standard SUV 4WD,Electricity,FWD,Auto (A1),39.0,42.0,41.0,0.0,35000,6.7,5.6
+2025,Polestar Automotive Usa Inc,Polestar 4 Long Range Single Motor,Standard SUV 2WD,Electricity,FWD,Auto (A1),93.0,87.0,90.0,0.0,35000,6.7,5.6
+2025,Polestar Automotive Usa Inc,Polestar 4 Long Range Single Motor,Standard SUV 2WD,Electricity,FWD,Auto (A1),35.0,38.0,36.0,0.0,35000,6.7,5.8
+2025,Polestar Automotive Usa Inc,Polestar 3 Long Range Single Motor 20 Inch Wheels,Standard SUV 2WD,Electricity,FWD,Auto (A1),103.0,84.0,94.0,0.0,35000,6.7,5.6
+2025,Polestar Automotive Usa Inc,Polestar 3 Long Range Single Motor 20 Inch Wheels,Standard SUV 2WD,Electricity,FWD,Auto (A1),33.0,40.0,36.0,0.0,35000,6.7,5.8
+2025,Polestar Automotive Usa Inc,Polestar 3 Long Range Single Motor 21 Inch Wheels,Standard SUV 2WD,Electricity,FWD,Auto (A1),105.0,86.0,95.0,0.0,35000,6.7,5.6
+2025,Polestar Automotive Usa Inc,Polestar 3 Long Range Single Motor 21 Inch Wheels,Standard SUV 2WD,Electricity,FWD,Auto (A1),32.0,39.0,35.0,0.0,35000,6.7,5.8
+2025,Polestar Automotive Usa Inc,Polestar 3 Long Range Single Motor 22 Inch Wheels,Standard SUV 2WD,Electricity,FWD,Auto (A1),100.0,82.0,91.0,0.0,35000,6.7,5.6
+2025,Polestar Automotive Usa Inc,Polestar 3 Long Range Single Motor 22 Inch Wheels,Standard SUV 2WD,Electricity,FWD,Auto (A1),34.0,41.0,37.0,0.0,35000,6.7,5.8
+2025,Porsche,Macan Electric,Small SUV 4WD,Electricity,FWD,Auto (A1),108.0,90.0,99.0,0.0,49000,7.4,6.0
+2025,Porsche,Macan Electric,Small SUV 4WD,Electricity,FWD,Auto (A1),31.0,37.0,34.0,0.0,49000,7.4,6.2
+2025,Porsche,Macan 4S Electric,Small SUV 4WD,Electricity,FWD,Auto (A1),98.0,83.0,91.0,0.0,49000,7.4,6.0
+2025,Porsche,Macan 4S Electric,Small SUV 4WD,Electricity,FWD,Auto (A1),34.0,40.0,37.0,0.0,49000,7.4,6.2
+2025,Porsche,Macan 4 Electric,Small SUV 4WD,Electricity,FWD,Auto (A1),107.0,89.0,98.0,0.0,49000,7.4,6.0
+2025,Porsche,Macan 4 Electric,Small SUV 4WD,Electricity,FWD,Auto (A1),32.0,38.0,34.0,0.0,49000,7.4,6.2
+2025,Porsche,Macan Turbo Electric,Small SUV 4WD,Electricity,FWD,Auto (A1),99.0,84.0,91.0,0.0,49000,7.4,6.0
+2025,Porsche,Macan Turbo Electric,Small SUV 4WD,Electricity,FWD,Auto (A1),34.0,40.0,37.0,0.0,49000,7.4,6.2
+2025,Porsche,Taycan Performance Battery,Compact Cars,Electricity,FWD,Auto (A2),94.0,88.0,91.0,0.0,37800,7.0,5.9
+2025,Porsche,Taycan Performance Battery,Compact Cars,Electricity,FWD,Auto (A2),36.0,38.0,37.0,0.0,37800,7.0,6.1
+2025,Porsche,Taycan Perf Battery Plus,Compact Cars,Electricity,FWD,Auto (A2),94.0,90.0,92.0,0.0,37800,7.0,5.9
+2025,Porsche,Taycan Perf Battery Plus,Compact Cars,Electricity,FWD,Auto (A2),36.0,38.0,37.0,0.0,37800,7.0,6.1
+2025,Porsche,Taycan 4 Perf Battery Plus,Compact Cars,Electricity,FWD,Auto (A2),89.0,85.0,87.0,0.0,37800,7.0,5.9
+2025,Porsche,Taycan 4 Perf Battery Plus,Compact Cars,Electricity,FWD,Auto (A2),38.0,40.0,39.0,0.0,37800,7.0,6.1
+2025,Porsche,Taycan 4 Cross Turismo,Midsize Cars,Electricity,FWD,Auto (A2),84.0,79.0,81.0,0.0,44800,7.5,6.2
+2025,Porsche,Taycan 4 Cross Turismo,Midsize Cars,Electricity,FWD,Auto (A2),40.0,43.0,42.0,0.0,44800,7.5,6.2
+2025,Porsche,Taycan 4S Performance Battery,Compact Cars,Electricity,FWD,Auto (A2),90.0,85.0,88.0,0.0,37800,7.0,5.9
+2025,Porsche,Taycan 4S Performance Battery,Compact Cars,Electricity,FWD,Auto (A2),37.0,40.0,38.0,0.0,37800,7.0,6.1
+2025,Porsche,Taycan 4S Perf Battery Plus,Compact Cars,Electricity,FWD,Auto (A2),89.0,85.0,87.0,0.0,37800,7.0,5.9
+2025,Porsche,Taycan 4S Perf Battery Plus,Compact Cars,Electricity,FWD,Auto (A2),38.0,40.0,39.0,0.0,37800,7.0,6.1
+2025,Porsche,Taycan 4S Perf Battery Plus 19In All-Season (M+S),Compact Cars,Electricity,FWD,Auto (A2),94.0,92.0,93.0,0.0,37800,7.0,5.9
+2025,Porsche,Taycan 4S Perf Battery Plus 19In All-Season (M+S),Compact Cars,Electricity,FWD,Auto (A2),36.0,37.0,36.0,0.0,37800,7.0,6.1
+2025,Porsche,Taycan 4S Cross Turismo,Midsize Cars,Electricity,FWD,Auto (A2),82.0,77.0,80.0,0.0,44800,7.5,6.2
+2025,Porsche,Taycan 4S Cross Turismo,Midsize Cars,Electricity,FWD,Auto (A2),41.0,44.0,42.0,0.0,44800,7.5,6.2
+2025,Porsche,Taycan Turbo,Compact Cars,Electricity,FWD,Auto (A2),88.0,83.0,86.0,0.0,37800,7.0,5.9
+2025,Porsche,Taycan Turbo,Compact Cars,Electricity,FWD,Auto (A2),38.0,40.0,39.0,0.0,37800,7.0,6.1
+2025,Porsche,Taycan Turbo 21In Aero-Design Wheel (285/35),Compact Cars,Electricity,FWD,Auto (A2),94.0,92.0,93.0,0.0,37800,7.0,5.9
+2025,Porsche,Taycan Turbo 21In Aero-Design Wheel (285/35),Compact Cars,Electricity,FWD,Auto (A2),36.0,37.0,36.0,0.0,37800,7.0,6.1
+2025,Porsche,Taycan Turbo Cross Turismo,Midsize Cars,Electricity,FWD,Auto (A2),80.0,76.0,78.0,0.0,44800,7.5,6.2
+2025,Porsche,Taycan Turbo Cross Turismo,Midsize Cars,Electricity,FWD,Auto (A2),42.0,44.0,43.0,0.0,44800,7.5,6.2
+2025,Porsche,Taycan Turbo S,Compact Cars,Electricity,FWD,Auto (A2),80.0,78.0,79.0,0.0,37800,7.0,5.9
+2025,Porsche,Taycan Turbo S,Compact Cars,Electricity,FWD,Auto (A2),42.0,43.0,43.0,0.0,37800,7.0,5.9
+2025,Porsche,Taycan Turbo S 21In Aero-Design Wheel (285/35),Compact Cars,Electricity,FWD,Auto (A2),90.0,90.0,90.0,0.0,37800,7.0,5.9
+2025,Porsche,Taycan Turbo S 21In Aero-Design Wheel (285/35),Compact Cars,Electricity,FWD,Auto (A2),38.0,38.0,38.0,0.0,37800,7.0,6.1
+2025,Porsche,Taycan Turbo S Cross Turismo,Midsize Cars,Electricity,FWD,Auto (A2),79.0,75.0,77.0,0.0,44800,7.5,6.2
+2025,Porsche,Taycan Turbo S Cross Turismo,Midsize Cars,Electricity,FWD,Auto (A2),43.0,45.0,44.0,0.0,44800,7.5,6.2
+2025,Porsche,Taycan Turbo Gt,Compact Cars,Electricity,FWD,Auto (A2),86.0,78.0,82.0,0.0,37800,7.0,5.9
+2025,Porsche,Taycan Turbo Gt,Compact Cars,Electricity,FWD,Auto (A2),39.0,43.0,41.0,0.0,37800,7.0,5.9
+2025,Porsche,Taycan Turbo Gt With Weissach Package,Compact Cars,Electricity,FWD,Auto (A2),85.0,76.0,81.0,0.0,37800,7.0,5.9
+2025,Porsche,Taycan Turbo Gt With Weissach Package,Compact Cars,Electricity,FWD,Auto (A2),40.0,44.0,42.0,0.0,37800,7.0,5.9
+2025,Porsche,Taycan Gts,Compact Cars,Electricity,FWD,Auto (A2),88.0,85.0,86.0,0.0,37800,7.0,5.9
+2025,Porsche,Taycan Gts,Compact Cars,Electricity,FWD,Auto (A2),38.0,40.0,39.0,0.0,37800,7.0,6.1
+2025,Porsche,Taycan Gts Sport Turismo,Compact Cars,Electricity,FWD,Auto (A2),84.0,80.0,82.0,0.0,37800,7.0,5.9
+2025,Porsche,Taycan Gts Sport Turismo,Compact Cars,Electricity,FWD,Auto (A2),40.0,42.0,41.0,0.0,37800,7.0,5.9
+2025,Rivian,R1T Dual Standard (22In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),92.0,77.0,85.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Dual Standard (22In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),37.0,44.0,40.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Dual Standard (22In),Standard SUV 4WD,Electricity,FWD,Auto (A1),92.0,77.0,85.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Dual Standard (22In),Standard SUV 4WD,Electricity,FWD,Auto (A1),37.0,44.0,40.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Dual Standard (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),85.0,72.0,79.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Dual Standard (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),40.0,47.0,43.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Dual Standard (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),85.0,72.0,79.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Dual Standard (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),40.0,47.0,43.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Dual Max (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),86.0,74.0,80.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Dual Max (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),39.0,46.0,42.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Dual Max (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),86.0,74.0,80.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Dual Max (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),39.0,46.0,42.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Dual Max (22In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),93.0,80.0,87.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Dual Max (22In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),36.0,42.0,39.0,0.0,35000,6.7,5.8
+2025,Rivian,R1S Dual Max (22In),Standard SUV 4WD,Electricity,FWD,Auto (A1),91.0,77.0,84.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Dual Max (22In),Standard SUV 4WD,Electricity,FWD,Auto (A1),37.0,44.0,40.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T All-Terrain Dual Max (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),82.0,73.0,78.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T All-Terrain Dual Max (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),41.0,46.0,43.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S All-Terrain Dual Max (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),82.0,73.0,78.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S All-Terrain Dual Max (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),41.0,46.0,43.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Performance Dual Max (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),86.0,74.0,80.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Performance Dual Max (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),39.0,46.0,42.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Performance Dual Max (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),86.0,74.0,80.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Performance Dual Max (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),39.0,46.0,42.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Performance Dual Max (22In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),93.0,80.0,87.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Performance Dual Max (22In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),36.0,42.0,39.0,0.0,35000,6.7,5.8
+2025,Rivian,R1S Performance Dual Max (22In),Standard SUV 4WD,Electricity,FWD,Auto (A1),91.0,77.0,84.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Performance Dual Max (22In),Standard SUV 4WD,Electricity,FWD,Auto (A1),37.0,44.0,40.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T All-Terrain Performance Dual Max (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),82.0,73.0,78.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T All-Terrain Performance Dual Max (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),41.0,46.0,43.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S All-Terrain Performance  Dual Max (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),82.0,73.0,78.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S All-Terrain Performance  Dual Max (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),41.0,46.0,43.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Dual Large Plus (22In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),89.0,75.0,82.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Dual Large Plus (22In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),38.0,45.0,41.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Dual Large Plus (22In),Standard SUV 4WD,Electricity,FWD,Auto (A1),89.0,75.0,82.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Dual Large Plus (22In),Standard SUV 4WD,Electricity,FWD,Auto (A1),38.0,45.0,41.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T All-Terrain Dual Large Plus (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),76.0,67.0,72.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T All-Terrain Dual Large Plus (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),44.0,50.0,47.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S All-Terrain Dual Large Plus (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),76.0,67.0,72.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S All-Terrain Dual Large Plus (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),44.0,50.0,47.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Performance Dual Large Plus (22In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),89.0,75.0,82.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Performance Dual Large Plus (22In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),38.0,45.0,41.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Performance Dual Large Plus (22In),Standard SUV 4WD,Electricity,FWD,Auto (A1),89.0,75.0,82.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Performance Dual Large Plus (22In),Standard SUV 4WD,Electricity,FWD,Auto (A1),38.0,45.0,41.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T All-Terrain Performance Dual Large Plus (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),76.0,67.0,72.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T All-Terrain Performance Dual Large Plus (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),44.0,50.0,47.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S All-Terrain Performance Dual Large Plus (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),76.0,67.0,72.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S All-Terrain Performance Dual Large Plus (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),44.0,50.0,47.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Dual Large Plus (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),85.0,72.0,78.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Dual Large Plus (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),40.0,47.0,43.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Dual Large Plus (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),85.0,72.0,78.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Dual Large Plus (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),40.0,47.0,43.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Performance Dual Large Plus (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),85.0,72.0,78.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Performance Dual Large Plus (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),40.0,47.0,43.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Performance Dual Large Plus (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),85.0,72.0,78.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Performance Dual Large Plus (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),40.0,47.0,43.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Tri Max (22In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),81.0,70.0,76.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Tri Max (22In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),42.0,48.0,45.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Tri Max (22In),Standard SUV 4WD,Electricity,FWD,Auto (A1),81.0,70.0,76.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Tri Max (22In),Standard SUV 4WD,Electricity,FWD,Auto (A1),42.0,48.0,45.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T All-Terrain Tri Max (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),72.0,63.0,68.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T All-Terrain Tri Max (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),47.0,53.0,50.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S All-Terrain Tri Max (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),72.0,63.0,68.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S All-Terrain Tri Max (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),47.0,53.0,50.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Dual Large (22In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),94.0,77.0,85.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Dual Large (22In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),36.0,44.0,39.0,0.0,35000,6.7,5.8
+2025,Rivian,R1S Dual Large (22In),Standard SUV 4WD,Electricity,FWD,Auto (A1),94.0,77.0,85.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Dual Large (22In),Standard SUV 4WD,Electricity,FWD,Auto (A1),36.0,44.0,39.0,0.0,35000,6.7,5.8
+2025,Rivian,R1T Dual Large (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),85.0,72.0,79.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Dual Large (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),40.0,47.0,43.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Dual Large (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),85.0,72.0,79.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Dual Large (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),40.0,47.0,43.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T All-Terrain Dual Large (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),82.0,70.0,76.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T All-Terrain Dual Large (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),41.0,48.0,44.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S All-Terrain Dual Large (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),82.0,70.0,76.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S All-Terrain Dual Large (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),41.0,48.0,44.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Performance Dual Large (22In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),94.0,77.0,85.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Performance Dual Large (22In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),36.0,44.0,39.0,0.0,35000,6.7,5.8
+2025,Rivian,R1S Performance Dual Large (22In),Standard SUV 4WD,Electricity,FWD,Auto (A1),94.0,77.0,85.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Performance Dual Large (22In),Standard SUV 4WD,Electricity,FWD,Auto (A1),36.0,44.0,39.0,0.0,35000,6.7,5.8
+2025,Rivian,R1T Performance Dual Large (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),85.0,72.0,79.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T Performance Dual Large (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),40.0,47.0,43.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Performance Dual Large (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),85.0,72.0,79.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S Performance Dual Large (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),40.0,47.0,43.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T All-Terrain Performance Dual Large (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),82.0,70.0,76.0,0.0,35000,6.7,5.6
+2025,Rivian,R1T All-Terrain Performance Dual Large (20In),Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),41.0,48.0,44.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S All-Terrain Performance Dual Large (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),82.0,70.0,76.0,0.0,35000,6.7,5.6
+2025,Rivian,R1S All-Terrain Performance Dual Large (20In),Standard SUV 4WD,Electricity,FWD,Auto (A1),41.0,48.0,44.0,0.0,35000,6.7,5.6
+2025,Rolls-Royce Motor Cars Limited,Spectre (22'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),74.0,82.0,77.0,0.0,27000,6.3,5.5
+2025,Rolls-Royce Motor Cars Limited,Spectre (22'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),46.0,41.0,44.0,0.0,27000,6.3,5.5
+2025,Rolls-Royce Motor Cars Limited,Spectre (23'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),67.0,75.0,70.0,0.0,27000,6.3,5.5
+2025,Rolls-Royce Motor Cars Limited,Spectre (23'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),50.0,45.0,48.0,0.0,27000,6.3,5.5
+2025,Rolls-Royce Motor Cars Limited,Black Badge Spectre (22'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),70.0,80.0,74.0,0.0,27000,6.3,5.5
+2025,Rolls-Royce Motor Cars Limited,Black Badge Spectre (22'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),48.0,42.0,45.0,0.0,27000,6.3,5.5
+2025,Rolls-Royce Motor Cars Limited,Black Badge Spectre (23'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),67.0,74.0,70.0,0.0,27000,6.3,5.5
+2025,Rolls-Royce Motor Cars Limited,Black Badge Spectre (23'' Wheels),Compact Cars,Electricity,FWD,Auto (A1),50.0,46.0,48.0,0.0,27000,6.3,5.5
+2025,Subaru,Solterra Awd,Small SUV 4WD,Electricity,FWD,Auto (A1),114.0,94.0,104.0,0.0,35000,6.7,5.6
+2025,Subaru,Solterra Awd,Small SUV 4WD,Electricity,FWD,Auto (A1),28.0,34.0,31.0,0.0,35000,6.7,5.8
+2025,Subaru,Solterra Limited/Touring Awd,Small SUV 4WD,Electricity,FWD,Auto (A1),111.0,93.0,102.0,0.0,35000,6.7,5.6
+2025,Subaru,Solterra Limited/Touring Awd,Small SUV 4WD,Electricity,FWD,Auto (A1),29.0,35.0,32.0,0.0,35000,6.7,5.8
+2025,Tesla Motors,Cybertruck Long Range,Standard Pick-up Trucks 2WD,Electricity,FWD,Auto (A1),93.0,72.0,82.0,0.0,35000,6.7,5.6
+2025,Tesla Motors,Cybertruck Long Range,Standard Pick-up Trucks 2WD,Electricity,FWD,Auto (A1),36.0,47.0,41.0,0.0,35000,6.7,5.6
+2025,Tesla Motors,"Cybertruck Long Range (20"" Cyber Wheels)",Standard Pick-up Trucks 2WD,Electricity,FWD,Auto (A1),89.0,67.0,78.0,0.0,35000,6.7,5.6
+2025,Tesla Motors,"Cybertruck Long Range (20"" Cyber Wheels)",Standard Pick-up Trucks 2WD,Electricity,FWD,Auto (A1),38.0,50.0,43.0,0.0,35000,6.7,5.6
+2025,Tesla Motors,Cybertruck Awd,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),85.0,72.0,79.0,0.0,35000,6.7,5.6
+2025,Tesla Motors,Cybertruck Awd,Standard Pick-up Trucks 4WD,Electricity,FWD,Auto (A1),40.0,47.0,43.0,0.0,35000,6.7,5.6
+2025,Tesla Motors,Model 3 Long Range Rwd,Midsize Cars,Electricity,FWD,Auto (A1),145.0,128.0,137.0,0.0,32000,6.8,5.8
+2025,Tesla Motors,Model 3 Long Range Rwd,Midsize Cars,Electricity,FWD,Auto (A1),23.0,26.0,25.0,0.0,32000,6.8,6.0
+2025,Tesla Motors,"Model 3 Long Range Rwd-I (19"" Wheels)",Midsize Cars,Electricity,FWD,Auto (A1),140.0,123.0,131.0,0.0,32000,6.8,5.8
+2025,Tesla Motors,"Model 3 Long Range Rwd-I (19"" Wheels)",Midsize Cars,Electricity,FWD,Auto (A1),24.0,27.0,26.0,0.0,32000,6.8,6.0
+2025,Tesla Motors,Model 3 Long Range Awd,Midsize Cars,Electricity,FWD,Auto (A1),133.0,122.0,128.0,0.0,32000,6.8,5.8
+2025,Tesla Motors,Model 3 Long Range Awd,Midsize Cars,Electricity,FWD,Auto (A1),25.0,28.0,26.0,0.0,32000,6.8,6.0
+2025,Tesla Motors,Model 3 Performance Awd,Midsize Cars,Electricity,FWD,Auto (A1),113.0,104.0,109.0,0.0,32000,6.8,5.8
+2025,Tesla Motors,Model 3 Performance Awd,Midsize Cars,Electricity,FWD,Auto (A1),30.0,32.0,31.0,0.0,32000,6.8,6.0
+2025,Tesla Motors,Model Y Long Range Rwd,Small SUV 2WD,Electricity,FWD,Auto (A1),134.0,117.0,125.0,0.0,35000,6.7,5.6
+2025,Tesla Motors,Model Y Long Range Rwd,Small SUV 2WD,Electricity,FWD,Auto (A1),25.0,29.0,27.0,0.0,35000,6.7,5.8
+2025,Tesla Motors,Model Y Long Range Awd,Small SUV 4WD,Electricity,FWD,Auto (A1),123.0,111.0,117.0,0.0,35000,6.7,5.6
+2025,Tesla Motors,Model Y Long Range Awd,Small SUV 4WD,Electricity,FWD,Auto (A1),27.0,30.0,29.0,0.0,35000,6.7,5.8
+2025,Tesla Motors,Model Y Performance Awd,Small SUV 4WD,Electricity,FWD,Auto (A1),110.0,97.0,104.0,0.0,35000,6.7,5.6
+2025,Tesla Motors,Model Y Performance Awd,Small SUV 4WD,Electricity,FWD,Auto (A1),31.0,35.0,32.0,0.0,35000,6.7,5.8
+2025,Tesla Motors,Model S,Large Cars,Electricity,FWD,Auto (A1),132.0,116.0,124.0,0.0,40000,7.2,5.4
+2025,Tesla Motors,Model S,Large Cars,Electricity,FWD,Auto (A1),26.0,29.0,27.0,0.0,40000,7.2,5.6
+2025,Tesla Motors,Model S Plaid (21In Wheels),Large Cars,Electricity,FWD,Auto (A1),97.0,89.0,93.0,0.0,40000,7.2,5.4
+2025,Tesla Motors,Model S Plaid (21In Wheels),Large Cars,Electricity,FWD,Auto (A1),35.0,38.0,36.0,0.0,40000,7.2,5.6
+2025,Tesla Motors,Model S Plaid (19In Wheels),Large Cars,Electricity,FWD,Auto (A1),108.0,99.0,104.0,0.0,40000,7.2,5.4
+2025,Tesla Motors,Model S Plaid (19In Wheels),Large Cars,Electricity,FWD,Auto (A1),31.0,34.0,32.0,0.0,40000,7.2,5.6
+2025,Tesla Motors,Model X,Standard SUV 4WD,Electricity,FWD,Auto (A1),103.0,94.0,98.0,0.0,35000,6.7,5.6
+2025,Tesla Motors,Model X,Standard SUV 4WD,Electricity,FWD,Auto (A1),33.0,36.0,34.0,0.0,35000,6.7,5.8
+2025,Tesla Motors,Model X Plaid (22In Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),92.0,84.0,88.0,0.0,35000,6.7,5.6
+2025,Tesla Motors,Model X Plaid (22In Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),37.0,40.0,38.0,0.0,35000,6.7,5.8
+2025,Tesla Motors,Model X Plaid (20In Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),98.0,89.0,94.0,0.0,35000,6.7,5.6
+2025,Tesla Motors,Model X Plaid (20In Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),34.0,38.0,36.0,0.0,35000,6.7,5.8
+2025,Toyota,Bz4X,Small SUV 2WD,Electricity,FWD,Auto (A1),131.0,107.0,119.0,0.0,35000,6.7,5.6
+2025,Toyota,Bz4X,Small SUV 2WD,Electricity,FWD,Auto (A1),26.0,31.0,28.0,0.0,35000,6.7,5.8
+2025,Toyota,Bz4X Limited Awd,Small SUV 4WD,Electricity,FWD,Auto (A1),112.0,92.0,102.0,0.0,35000,6.7,5.6
+2025,Toyota,Bz4X Limited Awd,Small SUV 4WD,Electricity,FWD,Auto (A1),29.0,35.0,32.0,0.0,35000,6.7,5.8
+2025,Toyota,Bz4X Limited,Small SUV 2WD,Electricity,FWD,Auto (A1),121.0,102.0,112.0,0.0,35000,6.7,5.6
+2025,Toyota,Bz4X Limited,Small SUV 2WD,Electricity,FWD,Auto (A1),28.0,33.0,30.0,0.0,35000,6.7,5.8
+2025,Toyota,Bz4X Awd (18Inch Wheels),Small SUV 4WD,Electricity,FWD,Auto (A1),114.0,94.0,104.0,0.0,35000,6.7,5.6
+2025,Toyota,Bz4X Awd (18Inch Wheels),Small SUV 4WD,Electricity,FWD,Auto (A1),28.0,34.0,31.0,0.0,35000,6.7,5.8
+2025,Toyota,Bz4X Awd (20Inch Wheels),Small SUV 4WD,Electricity,FWD,Auto (A1),112.0,92.0,102.0,0.0,35000,6.7,5.6
+2025,Toyota,Bz4X Awd (20Inch Wheels),Small SUV 4WD,Electricity,FWD,Auto (A1),29.0,35.0,32.0,0.0,35000,6.7,5.8
+2025,Volkswagen,Id.4 Awd Pro S,Small SUV 4WD,Electricity,FWD,Auto (A1),108.0,96.0,102.0,0.0,35000,6.7,5.6
+2025,Volkswagen,Id.4 Awd Pro S,Small SUV 4WD,Electricity,FWD,Auto (A1),31.0,35.0,33.0,0.0,35000,6.7,5.8
+2025,Volkswagen,Id.4 Pro S,Small SUV 2WD,Electricity,FWD,Auto (A1),122.0,104.0,113.0,0.0,35000,6.7,5.6
+2025,Volkswagen,Id.4 Pro S,Small SUV 2WD,Electricity,FWD,Auto (A1),28.0,33.0,30.0,0.0,35000,6.7,5.8
+2025,Volkswagen,Id.4 Awd Pro,Small SUV 4WD,Electricity,FWD,Auto (A1),108.0,96.0,102.0,0.0,35000,6.7,5.6
+2025,Volkswagen,Id.4 Awd Pro,Small SUV 4WD,Electricity,FWD,Auto (A1),31.0,35.0,33.0,0.0,35000,6.7,5.8
+2025,Volkswagen,Id.4 Pro,Small SUV 2WD,Electricity,FWD,Auto (A1),122.0,104.0,113.0,0.0,35000,6.7,5.6
+2025,Volkswagen,Id.4 Pro,Small SUV 2WD,Electricity,FWD,Auto (A1),28.0,33.0,30.0,0.0,35000,6.7,5.8
+2025,Volkswagen,Id.4 S,Small SUV 2WD,Electricity,FWD,Auto (A1),115.0,98.0,107.0,0.0,35000,6.7,5.6
+2025,Volkswagen,Id.4 S,Small SUV 2WD,Electricity,FWD,Auto (A1),29.0,34.0,32.0,0.0,35000,6.7,5.8
+2025,Volkswagen,Id.4,Small SUV 2WD,Electricity,FWD,Auto (A1),115.0,98.0,107.0,0.0,35000,6.7,5.6
+2025,Volkswagen,Id.4,Small SUV 2WD,Electricity,FWD,Auto (A1),29.0,34.0,32.0,0.0,35000,6.7,5.8
+2025,Volkswagen,Id. Buzz,"Special Purpose Vehicle, minivan 2WD",Electricity,FWD,Auto (A1),90.0,75.0,83.0,0.0,35000,6.7,5.6
+2025,Volkswagen,Id. Buzz,"Special Purpose Vehicle, minivan 2WD",Electricity,FWD,Auto (A1),37.0,45.0,41.0,0.0,35000,6.7,5.6
+2025,Volkswagen,Id. Buzz 4Motion,"Special Purpose Vehicle, minivan 4WD",Electricity,FWD,Auto (A1),87.0,74.0,80.0,0.0,35000,6.7,5.6
+2025,Volkswagen,Id. Buzz 4Motion,"Special Purpose Vehicle, minivan 4WD",Electricity,FWD,Auto (A1),39.0,46.0,42.0,0.0,35000,6.7,5.6
+2025,"Volvo Cars Of North America, Llc",Ex90 Twin Motor Performance (21 Inch Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),86.0,82.0,84.0,0.0,35000,6.7,5.6
+2025,"Volvo Cars Of North America, Llc",Ex90 Twin Motor Performance (21 Inch Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),39.0,41.0,40.0,0.0,35000,6.7,5.6
+2025,"Volvo Cars Of North America, Llc",Ex90 Twin Motor (21 Inch Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),86.0,82.0,84.0,0.0,35000,6.7,5.6
+2025,"Volvo Cars Of North America, Llc",Ex90 Twin Motor (21 Inch Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),39.0,41.0,40.0,0.0,35000,6.7,5.6
+2025,"Volvo Cars Of North America, Llc",Ex40 Twin,Small SUV 4WD,Electricity,FWD,Auto (A1),103.0,85.0,94.0,0.0,35000,6.7,5.6
+2025,"Volvo Cars Of North America, Llc",Ex40 Twin,Small SUV 4WD,Electricity,FWD,Auto (A1),33.0,40.0,36.0,0.0,35000,6.7,5.8
+2025,"Volvo Cars Of North America, Llc",Ec40 Twin,Small SUV 4WD,Electricity,FWD,Auto (A1),105.0,88.0,97.0,0.0,35000,6.7,5.6
+2025,"Volvo Cars Of North America, Llc",Ec40 Twin,Small SUV 4WD,Electricity,FWD,Auto (A1),32.0,38.0,35.0,0.0,35000,6.7,5.8
+2025,"Volvo Cars Of North America, Llc",Ex30 Twin Performance (19 Inch Wheels),Small SUV 4WD,Electricity,FWD,Auto (A1),116.0,100.0,109.0,0.0,35000,6.7,5.6
+2025,"Volvo Cars Of North America, Llc",Ex30 Twin Performance (19 Inch Wheels),Small SUV 4WD,Electricity,FWD,Auto (A1),29.0,34.0,31.0,0.0,35000,6.7,5.8
+2025,"Volvo Cars Of North America, Llc",Ex30 Single Motor Extended Range (18 Inch Wheels),Small SUV 2WD,Electricity,FWD,Auto (A1),124.0,103.0,114.0,0.0,35000,6.7,5.6
+2025,"Volvo Cars Of North America, Llc",Ex30 Single Motor Extended Range (18 Inch Wheels),Small SUV 2WD,Electricity,FWD,Auto (A1),27.0,33.0,30.0,0.0,35000,6.7,5.8
+2025,"Volvo Cars Of North America, Llc",Ex40,Small SUV 2WD,Electricity,FWD,Auto (A1),118.0,94.0,106.0,0.0,35000,6.7,5.6
+2025,"Volvo Cars Of North America, Llc",Ex40,Small SUV 2WD,Electricity,FWD,Auto (A1),28.0,36.0,32.0,0.0,35000,6.7,5.8
+2025,"Volvo Cars Of North America, Llc",Ec40,Small SUV 2WD,Electricity,FWD,Auto (A1),118.0,95.0,106.0,0.0,35000,6.7,5.6
+2025,"Volvo Cars Of North America, Llc",Ec40,Small SUV 2WD,Electricity,FWD,Auto (A1),29.0,35.0,32.0,0.0,35000,6.7,5.8
+2025,"Volvo Cars Of North America, Llc",Ex90 Twin Motor Performance 20 And 22 Inch Wheels,Standard SUV 4WD,Electricity,FWD,Auto (A1),83.0,78.0,81.0,0.0,35000,6.7,5.6
+2025,"Volvo Cars Of North America, Llc",Ex90 Twin Motor Performance 20 And 22 Inch Wheels,Standard SUV 4WD,Electricity,FWD,Auto (A1),41.0,43.0,42.0,0.0,35000,6.7,5.6
+2025,"Volvo Cars Of North America, Llc",Ex90 Twin Motor (20 And 22 Inch Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),83.0,78.0,81.0,0.0,35000,6.7,5.6
+2025,"Volvo Cars Of North America, Llc",Ex90 Twin Motor (20 And 22 Inch Wheels),Standard SUV 4WD,Electricity,FWD,Auto (A1),41.0,43.0,42.0,0.0,35000,6.7,5.6
+2025,"Volvo Cars Of North America, Llc",Ex30 Single Motor Extended Range(19_20 Inch Wheel),Small SUV 2WD,Electricity,FWD,Auto (A1),127.0,104.0,116.0,0.0,35000,6.7,5.6
+2025,"Volvo Cars Of North America, Llc",Ex30 Single Motor Extended Range(19_20 Inch Wheel),Small SUV 2WD,Electricity,FWD,Auto (A1),27.0,32.0,29.0,0.0,35000,6.7,5.8
+2025,"Volvo Cars Of North America, Llc",Ex30 Twin Performance (20 Inch Wheels),Small SUV 4WD,Electricity,FWD,Auto (A1),118.0,99.0,109.0,0.0,35000,6.7,5.6
+2025,"Volvo Cars Of North America, Llc",Ex30 Twin Performance (20 Inch Wheels),Small SUV 4WD,Electricity,FWD,Auto (A1),29.0,34.0,31.0,0.0,35000,6.7,5.8
+2025,Toyota,Mirai Xle,Compact Cars,Hydrogen,FWD,Auto (AV),76.0,71.0,74.0,0.0,27000,6.1,5.0
+2025,Toyota,Mirai Xle,Compact Cars,Hydrogen,FWD,Auto (AV),74.0,70.0,72.0,0.0,27000,6.1,5.0
+2025,Hyundai Motor Company,Nexo,Small SUV 2WD,Hydrogen,FWD,Auto (A1),59.0,54.0,57.0,0.0,35000,6.5,5.1
+2025,Hyundai Motor Company,Nexo,Small SUV 2WD,Hydrogen,FWD,Auto (A1),58.0,53.0,56.0,0.0,35000,6.5,5.1
+2025,Hyundai Motor Company,Nexo Blue,Small SUV 2WD,Hydrogen,FWD,Auto (A1),65.0,58.0,61.0,0.0,35000,6.5,5.1
+2025,Hyundai Motor Company,Nexo Blue,Small SUV 2WD,Hydrogen,FWD,Auto (A1),64.0,56.0,60.0,0.0,35000,6.5,5.1
