@@ -8,3 +8,6 @@ verify_jwt = false
 
 [functions.car-image-proxy]
 verify_jwt = false
+
+[functions.import-cars-csv]
+verify_jwt = false
