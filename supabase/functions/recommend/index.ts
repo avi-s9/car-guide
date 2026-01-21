@@ -12,6 +12,9 @@ interface Preferences {
   budgetHigh: number;
   bodyStyle: string | null;
   priorities: string[];
+  comfort_weight: number;
+  sportiness_weight: number;
+  price_weight: number;
 }
 
 interface CarRow {
@@ -27,6 +30,9 @@ interface CarRow {
   highway_mpg: number | null;
   combined_mpg: number | null;
   co2_gpm: number | null;
+  msrp: number | null;
+  comfortScore: number | null;
+  sportinessScore: number | null;
 }
 
 interface ScoredCar {
@@ -40,15 +46,157 @@ interface ScoredCar {
   score: number;
   reasons: string[];
   aiExplanation?: string;
+  msrp?: number | null;
+  comfortScore?: number | null;
+  sportinessScore?: number | null;
+  transmission?: string | null;
+  cityMpg?: number | null;
+  highwayMpg?: number | null;
+  combinedMpg?: number | null;
+  co2Gpm?: number | null;
 }
 
 type CandidateCar = ScoredCar & {
   drive?: string | null;
   fuelType?: string | null;
   tags: string[];
+  vehicleClass?: string | null;
 };
 
+interface ScoreWeights {
+  comfort_weight: number;
+  sportiness_weight: number;
+  price_weight: number;
+}
+
+interface NormalizationBounds {
+  minComfort: number;
+  maxComfort: number;
+  minSportiness: number;
+  maxSportiness: number;
+  minMsrp: number;
+  maxMsrp: number;
+}
+
 const normalizeValue = (value: string) => value.toLowerCase().replace(/\s+/g, "-");
+
+const DEFAULT_WEIGHTS: ScoreWeights = {
+  comfort_weight: 0.33,
+  sportiness_weight: 0.33,
+  price_weight: 0.34,
+};
+
+const resolveWeights = (prefs: Preferences): ScoreWeights => {
+  const comfort = prefs.comfort_weight ?? DEFAULT_WEIGHTS.comfort_weight;
+  const sportiness = prefs.sportiness_weight ?? DEFAULT_WEIGHTS.sportiness_weight;
+  const price = prefs.price_weight ?? DEFAULT_WEIGHTS.price_weight;
+  const total = comfort + sportiness + price;
+
+  if (!Number.isFinite(total) || total <= 0) {
+    return { ...DEFAULT_WEIGHTS };
+  }
+
+  return {
+    comfort_weight: comfort / total,
+    sportiness_weight: sportiness / total,
+    price_weight: price / total,
+  };
+};
+
+const getNormalizationBounds = (cars: CandidateCar[]): NormalizationBounds => {
+  const comfortValues = cars
+    .map((car) => car.comfortScore)
+    .filter((value): value is number => typeof value === "number");
+  const sportinessValues = cars
+    .map((car) => car.sportinessScore)
+    .filter((value): value is number => typeof value === "number");
+  const msrpValues = cars
+    .map((car) => car.msrp)
+    .filter((value): value is number => typeof value === "number");
+
+  const minComfort = comfortValues.length ? Math.min(...comfortValues) : 1;
+  const maxComfort = comfortValues.length ? Math.max(...comfortValues) : 10;
+  const minSportiness = sportinessValues.length ? Math.min(...sportinessValues) : 1;
+  const maxSportiness = sportinessValues.length ? Math.max(...sportinessValues) : 10;
+  const minMsrp = msrpValues.length ? Math.min(...msrpValues) : 0;
+  const maxMsrp = msrpValues.length ? Math.max(...msrpValues) : 0;
+
+  return {
+    minComfort,
+    maxComfort,
+    minSportiness,
+    maxSportiness,
+    minMsrp,
+    maxMsrp,
+  };
+};
+
+const normalizeRange = (value: number, min: number, max: number, fallback = 0.5) => {
+  if (!Number.isFinite(value) || !Number.isFinite(min) || !Number.isFinite(max)) {
+    return fallback;
+  }
+  if (max === min) {
+    return fallback;
+  }
+  return (value - min) / (max - min);
+};
+
+const computeNormalizedScores = (
+  car: CandidateCar,
+  bounds: NormalizationBounds,
+) => {
+  const normalizedComfort =
+    typeof car.comfortScore === "number"
+      ? normalizeRange(car.comfortScore, bounds.minComfort, bounds.maxComfort)
+      : 0.5;
+  const normalizedSportiness =
+    typeof car.sportinessScore === "number"
+      ? normalizeRange(
+        car.sportinessScore,
+        bounds.minSportiness,
+        bounds.maxSportiness,
+      )
+      : 0.5;
+
+  let normalizedAffordability = 0.5;
+  if (typeof car.msrp === "number") {
+    const normalizedPrice = normalizeRange(car.msrp, bounds.minMsrp, bounds.maxMsrp);
+    normalizedAffordability = 1 - normalizedPrice;
+  }
+
+  return {
+    normalizedComfort,
+    normalizedSportiness,
+    normalizedAffordability,
+  };
+};
+
+const computeCompositeScore = (
+  car: CandidateCar,
+  bounds: NormalizationBounds,
+  weights: ScoreWeights,
+) => {
+  const {
+    normalizedComfort,
+    normalizedSportiness,
+    normalizedAffordability,
+  } = computeNormalizedScores(car, bounds);
+
+  return (
+    weights.comfort_weight * normalizedComfort +
+    weights.sportiness_weight * normalizedSportiness +
+    weights.price_weight * normalizedAffordability
+  );
+};
+
+export {
+  DEFAULT_WEIGHTS,
+  computeCompositeScore,
+  computeNormalizedScores,
+  getNormalizationBounds,
+  normalizeRange,
+  resolveWeights,
+};
 
 const formatFuelEconomy = (row: CarRow) => {
   if (row.city_mpg && row.highway_mpg) {
@@ -91,8 +239,14 @@ const addReason = (reasons: string[], reason: string) => {
   }
 };
 
-const scoreCar = (car: CandidateCar, prefs: Preferences): ScoredCar => {
-  let score = 50;
+const scoreCar = (
+  car: CandidateCar,
+  prefs: Preferences,
+  bounds: NormalizationBounds,
+  weights: ScoreWeights,
+): ScoredCar => {
+  const compositeScore = computeCompositeScore(car, bounds, weights);
+  const score = Math.round(compositeScore * 100);
   const reasons: string[] = [];
 
   let bodyStyleMatches = false;
@@ -103,7 +257,6 @@ const scoreCar = (car: CandidateCar, prefs: Preferences): ScoredCar => {
       normalizedCarType.includes(normalizedPrefType) ||
       normalizedPrefType.includes(normalizedCarType)
     ) {
-      score += 20;
       bodyStyleMatches = true;
       addReason(reasons, `${car.type} body style matches your preference`);
     }
@@ -112,9 +265,6 @@ const scoreCar = (car: CandidateCar, prefs: Preferences): ScoredCar => {
   const matchedPriorities = prefs.priorities.filter((priority) =>
     car.tags.includes(priority)
   );
-  matchedPriorities.forEach(() => {
-    score += 15;
-  });
   if (matchedPriorities.length > 0) {
     addReason(reasons, `Strong in: ${matchedPriorities.join(", ")}`);
   }
@@ -171,9 +321,17 @@ const scoreCar = (car: CandidateCar, prefs: Preferences): ScoredCar => {
     type: car.type,
     priceRange: car.priceRange,
     fuelEconomy: car.fuelEconomy,
-    score: Math.round(score),
+    score,
     reasons: reasons.slice(0, 3),
     safetyRating: null,
+    msrp: car.msrp,
+    comfortScore: car.comfortScore,
+    sportinessScore: car.sportinessScore,
+    transmission: car.transmission,
+    cityMpg: car.cityMpg,
+    highwayMpg: car.highwayMpg,
+    combinedMpg: car.combinedMpg,
+    co2Gpm: car.co2Gpm,
   };
 };
 
@@ -201,7 +359,15 @@ User's description:
 Recommended car:
 - ${car.year} ${car.make} ${car.model}
 - Vehicle class: ${car.vehicleClass ?? "Unknown"}
-- Fuel economy: ${car.fuelEconomy}
+- MSRP: ${typeof car.msrp === "number" ? `$${car.msrp.toLocaleString()}` : "Unknown"}
+- Comfort score: ${car.comfortScore ?? "Unknown"}
+- Sportiness score: ${car.sportinessScore ?? "Unknown"}
+- Transmission: ${car.transmission ?? "Unknown"}
+- City MPG: ${car.cityMpg ?? "Unknown"}
+- Highway MPG: ${car.highwayMpg ?? "Unknown"}
+- Combined MPG: ${car.combinedMpg ?? "Unknown"}
+- CO2 g/mi: ${car.co2Gpm ?? "Unknown"}
+- Fuel economy summary: ${car.fuelEconomy}
 - Drive: ${car.drive ?? "Unknown"}
 - Fuel type: ${car.fuelType ?? "Unknown"}
 - Match reasons: ${car.reasons.join("; ")}
@@ -265,6 +431,9 @@ serve(async (req) => {
       priorities: Array.isArray(preferences?.priorities)
         ? preferences.priorities
         : [],
+      comfort_weight: preferences?.comfort_weight ?? DEFAULT_WEIGHTS.comfort_weight,
+      sportiness_weight: preferences?.sportiness_weight ?? DEFAULT_WEIGHTS.sportiness_weight,
+      price_weight: preferences?.price_weight ?? DEFAULT_WEIGHTS.price_weight,
     };
 
     console.log("Finding recommendations for preferences:", prefs);
@@ -282,7 +451,7 @@ serve(async (req) => {
     let query = supabase
       .from("cars")
       .select(
-        "id, year, make, model, vehicle_class, fuel_type, drive, transmission, city_mpg, highway_mpg, combined_mpg, co2_gpm",
+        "id, year, make, model, vehicle_class, fuel_type, drive, transmission, city_mpg, highway_mpg, combined_mpg, co2_gpm, msrp, comfortScore, sportinessScore",
       )
       .eq("year", 2025)
       .limit(2000);
@@ -299,25 +468,40 @@ serve(async (req) => {
     const candidates: CandidateCar[] = (data ?? []).map((row) => {
       const fuelEconomy = formatFuelEconomy(row);
       const tags = deriveTags(row);
+      const priceRange = typeof row.msrp === "number"
+        ? `$${row.msrp.toLocaleString()} MSRP`
+        : "Check local pricing";
 
       return {
         make: row.make,
         model: row.model,
         year: row.year,
         type: row.vehicle_class ?? "Unknown",
-        priceRange: "Check local pricing",
+        priceRange,
         fuelEconomy,
         score: 0,
         reasons: [],
         tags,
         drive: row.drive,
         fuelType: row.fuel_type,
+        msrp: row.msrp,
+        comfortScore: row.comfortScore,
+        sportinessScore: row.sportinessScore,
+        transmission: row.transmission,
+        cityMpg: row.city_mpg,
+        highwayMpg: row.highway_mpg,
+        combinedMpg: row.combined_mpg,
+        co2Gpm: row.co2_gpm,
+        vehicleClass: row.vehicle_class,
       };
     });
 
+    const bounds = getNormalizationBounds(candidates);
+    const weights = resolveWeights(prefs);
+
     const scoredCars = candidates.map((car) => ({
       candidate: car,
-      scored: scoreCar(car, prefs),
+      scored: scoreCar(car, prefs, bounds, weights),
     }));
 
     const topRecommendationsWithDetails: (ScoredCar & {
@@ -331,7 +515,7 @@ serve(async (req) => {
         ...scored,
         drive: candidate.drive,
         fuelType: candidate.fuelType,
-        vehicleClass: candidate.type,
+        vehicleClass: candidate.vehicleClass ?? candidate.type,
       }));
 
     const inputText = typeof userInput === "string" ? userInput : "";
