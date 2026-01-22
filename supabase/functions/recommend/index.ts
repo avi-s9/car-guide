@@ -15,6 +15,12 @@ interface Preferences {
   comfort_weight: number;
   sportiness_weight: number;
   price_weight: number;
+  budget_weight?: number;
+  fuel_type_weight?: number;
+  drive_weight?: number;
+  transmission_weight?: number;
+  mpg_weight?: number;
+  emissions_weight?: number;
   fuelTypeHint: string | null;
   drivetrainHint: string | null;
   transmissionHint: string | null;
@@ -72,6 +78,12 @@ interface ScoreWeights {
   comfort_weight: number;
   sportiness_weight: number;
   price_weight: number;
+  budget_weight: number;
+  fuel_type_weight: number;
+  drive_weight: number;
+  transmission_weight: number;
+  mpg_weight: number;
+  emissions_weight: number;
 }
 
 interface NormalizationBounds {
@@ -81,6 +93,18 @@ interface NormalizationBounds {
   maxSportiness: number;
   minMsrp: number;
   maxMsrp: number;
+  minCombinedMpg: number;
+  maxCombinedMpg: number;
+  minCo2Gpm: number;
+  maxCo2Gpm: number;
+}
+
+interface DerivedPreferences {
+  preferredFuelTypes: string[];
+  preferredDrives: string[];
+  preferredTransmissions: string[];
+  wantsFuelEconomy: boolean;
+  wantsLowerEmissions: boolean;
 }
 
 const normalizeValue = (value: string) => value.toLowerCase().replace(/\s+/g, "-");
@@ -204,16 +228,37 @@ const parseUserInputHints = (userInput: string): ParsedHints => {
 };
 
 const DEFAULT_WEIGHTS: ScoreWeights = {
-  comfort_weight: 0.33,
-  sportiness_weight: 0.33,
-  price_weight: 0.34,
+  comfort_weight: 0.2,
+  sportiness_weight: 0.2,
+  price_weight: 0.15,
+  budget_weight: 0.1,
+  fuel_type_weight: 0.1,
+  drive_weight: 0.1,
+  transmission_weight: 0.05,
+  mpg_weight: 0.05,
+  emissions_weight: 0.05,
 };
 
 const resolveWeights = (prefs: Preferences): ScoreWeights => {
   const comfort = prefs.comfort_weight ?? DEFAULT_WEIGHTS.comfort_weight;
   const sportiness = prefs.sportiness_weight ?? DEFAULT_WEIGHTS.sportiness_weight;
   const price = prefs.price_weight ?? DEFAULT_WEIGHTS.price_weight;
-  const total = comfort + sportiness + price;
+  const budget = prefs.budget_weight ?? DEFAULT_WEIGHTS.budget_weight;
+  const fuelType = prefs.fuel_type_weight ?? DEFAULT_WEIGHTS.fuel_type_weight;
+  const drive = prefs.drive_weight ?? DEFAULT_WEIGHTS.drive_weight;
+  const transmission = prefs.transmission_weight ?? DEFAULT_WEIGHTS.transmission_weight;
+  const mpg = prefs.mpg_weight ?? DEFAULT_WEIGHTS.mpg_weight;
+  const emissions = prefs.emissions_weight ?? DEFAULT_WEIGHTS.emissions_weight;
+  const total =
+    comfort +
+    sportiness +
+    price +
+    budget +
+    fuelType +
+    drive +
+    transmission +
+    mpg +
+    emissions;
 
   if (!Number.isFinite(total) || total <= 0) {
     return { ...DEFAULT_WEIGHTS };
@@ -223,6 +268,12 @@ const resolveWeights = (prefs: Preferences): ScoreWeights => {
     comfort_weight: comfort / total,
     sportiness_weight: sportiness / total,
     price_weight: price / total,
+    budget_weight: budget / total,
+    fuel_type_weight: fuelType / total,
+    drive_weight: drive / total,
+    transmission_weight: transmission / total,
+    mpg_weight: mpg / total,
+    emissions_weight: emissions / total,
   };
 };
 
@@ -236,6 +287,12 @@ const getNormalizationBounds = (cars: CandidateCar[]): NormalizationBounds => {
   const msrpValues = cars
     .map((car) => car.msrp)
     .filter((value): value is number => typeof value === "number");
+  const combinedMpgValues = cars
+    .map((car) => car.combinedMpg)
+    .filter((value): value is number => typeof value === "number");
+  const co2Values = cars
+    .map((car) => car.co2Gpm)
+    .filter((value): value is number => typeof value === "number");
 
   const minComfort = comfortValues.length ? Math.min(...comfortValues) : 1;
   const maxComfort = comfortValues.length ? Math.max(...comfortValues) : 10;
@@ -243,6 +300,10 @@ const getNormalizationBounds = (cars: CandidateCar[]): NormalizationBounds => {
   const maxSportiness = sportinessValues.length ? Math.max(...sportinessValues) : 10;
   const minMsrp = msrpValues.length ? Math.min(...msrpValues) : 0;
   const maxMsrp = msrpValues.length ? Math.max(...msrpValues) : 0;
+  const minCombinedMpg = combinedMpgValues.length ? Math.min(...combinedMpgValues) : 0;
+  const maxCombinedMpg = combinedMpgValues.length ? Math.max(...combinedMpgValues) : 0;
+  const minCo2Gpm = co2Values.length ? Math.min(...co2Values) : 0;
+  const maxCo2Gpm = co2Values.length ? Math.max(...co2Values) : 0;
 
   return {
     minComfort,
@@ -251,6 +312,10 @@ const getNormalizationBounds = (cars: CandidateCar[]): NormalizationBounds => {
     maxSportiness,
     minMsrp,
     maxMsrp,
+    minCombinedMpg,
+    maxCombinedMpg,
+    minCo2Gpm,
+    maxCo2Gpm,
   };
 };
 
@@ -264,9 +329,105 @@ const normalizeRange = (value: number, min: number, max: number, fallback = 0.5)
   return (value - min) / (max - min);
 };
 
+const clampScore = (value: number) => Math.min(1, Math.max(0, value));
+
+const deriveUserPreferences = (prefs: Preferences): DerivedPreferences => {
+  const priorities = new Set(prefs.priorities.map((priority) => normalizeValue(priority)));
+  const wantsFuelEconomy =
+    priorities.has("fuel-economy") || priorities.has("ev") || priorities.has("hybrid");
+  const wantsLowerEmissions = wantsFuelEconomy;
+
+  const preferredFuelTypes: string[] = [];
+  if (priorities.has("ev")) {
+    preferredFuelTypes.push("electricity", "electric");
+  }
+  if (priorities.has("hybrid") || priorities.has("fuel-economy")) {
+    preferredFuelTypes.push("hybrid");
+  }
+  if (wantsFuelEconomy && preferredFuelTypes.length === 0) {
+    preferredFuelTypes.push("hybrid", "electricity", "electric");
+  }
+
+  const preferredDrives: string[] = [];
+  if (priorities.has("all-wheel-drive")) {
+    preferredDrives.push("awd", "4wd", "4x4");
+  }
+
+  const preferredTransmissions: string[] = [];
+  if (priorities.has("fun-to-drive")) {
+    preferredTransmissions.push("manual", "automated manual", "dual-clutch");
+  }
+
+  return {
+    preferredFuelTypes,
+    preferredDrives,
+    preferredTransmissions,
+    wantsFuelEconomy,
+    wantsLowerEmissions,
+  };
+};
+
+const scoreFieldMatch = (
+  value: string | null | undefined,
+  preferredValues: string[],
+  fallback = 0.5,
+) => {
+  if (preferredValues.length === 0) {
+    return fallback;
+  }
+  if (!value) {
+    return 0.35;
+  }
+  const normalized = normalizeValue(value);
+  const matched = preferredValues.some((preferred) => normalized.includes(preferred));
+  return matched ? 1 : 0;
+};
+
+const scoreBudgetFit = (msrp: number | null | undefined, prefs: Preferences) => {
+  const budgetLow = prefs.budgetLow ?? 0;
+  const budgetHigh = prefs.budgetHigh ?? 0;
+
+  if (!budgetLow && !budgetHigh) {
+    return 0.5;
+  }
+  if (typeof msrp !== "number" || !Number.isFinite(msrp)) {
+    return 0.4;
+  }
+
+  const low = Math.min(budgetLow, budgetHigh || budgetLow);
+  const high = Math.max(budgetLow, budgetHigh || budgetLow);
+
+  if (low > 0 && high > 0) {
+    if (msrp >= low && msrp <= high) {
+      return 1;
+    }
+    const range = Math.max(high - low, low || high || 1);
+    const distance = msrp < low ? low - msrp : msrp - high;
+    return clampScore(1 - distance / range);
+  }
+
+  if (low > 0) {
+    if (msrp >= low) {
+      return 1;
+    }
+    return clampScore(1 - (low - msrp) / low);
+  }
+
+  if (high > 0) {
+    if (msrp <= high) {
+      return 1;
+    }
+    return clampScore(1 - (msrp - high) / high);
+  }
+
+  return 0.5;
+};
+
 const computeNormalizedScores = (
   car: CandidateCar,
   bounds: NormalizationBounds,
+  prefs: Preferences,
+  derivedPreferences: DerivedPreferences,
 ) => {
   const normalizedComfort =
     typeof car.comfortScore === "number"
@@ -287,10 +448,40 @@ const computeNormalizedScores = (
     normalizedAffordability = 1 - normalizedPrice;
   }
 
+  const normalizedBudgetFit = scoreBudgetFit(car.msrp, prefs);
+  const normalizedFuelType = scoreFieldMatch(
+    car.fuelType,
+    derivedPreferences.preferredFuelTypes,
+  );
+  const normalizedDrive = scoreFieldMatch(
+    car.drive,
+    derivedPreferences.preferredDrives,
+  );
+  const normalizedTransmission = scoreFieldMatch(
+    car.transmission,
+    derivedPreferences.preferredTransmissions,
+  );
+  const normalizedCombinedMpg = derivedPreferences.wantsFuelEconomy
+    ? typeof car.combinedMpg === "number"
+      ? normalizeRange(car.combinedMpg, bounds.minCombinedMpg, bounds.maxCombinedMpg)
+      : 0.35
+    : 0.5;
+  const normalizedCo2Gpm = derivedPreferences.wantsLowerEmissions
+    ? typeof car.co2Gpm === "number"
+      ? 1 - normalizeRange(car.co2Gpm, bounds.minCo2Gpm, bounds.maxCo2Gpm)
+      : 0.35
+    : 0.5;
+
   return {
     normalizedComfort,
     normalizedSportiness,
     normalizedAffordability,
+    normalizedBudgetFit,
+    normalizedFuelType,
+    normalizedDrive,
+    normalizedTransmission,
+    normalizedCombinedMpg,
+    normalizedCo2Gpm,
   };
 };
 
@@ -298,17 +489,31 @@ const computeCompositeScore = (
   car: CandidateCar,
   bounds: NormalizationBounds,
   weights: ScoreWeights,
+  prefs: Preferences,
+  derivedPreferences: DerivedPreferences,
 ) => {
   const {
     normalizedComfort,
     normalizedSportiness,
     normalizedAffordability,
-  } = computeNormalizedScores(car, bounds);
+    normalizedBudgetFit,
+    normalizedFuelType,
+    normalizedDrive,
+    normalizedTransmission,
+    normalizedCombinedMpg,
+    normalizedCo2Gpm,
+  } = computeNormalizedScores(car, bounds, prefs, derivedPreferences);
 
   return (
     weights.comfort_weight * normalizedComfort +
     weights.sportiness_weight * normalizedSportiness +
-    weights.price_weight * normalizedAffordability
+    weights.price_weight * normalizedAffordability +
+    weights.budget_weight * normalizedBudgetFit +
+    weights.fuel_type_weight * normalizedFuelType +
+    weights.drive_weight * normalizedDrive +
+    weights.transmission_weight * normalizedTransmission +
+    weights.mpg_weight * normalizedCombinedMpg +
+    weights.emissions_weight * normalizedCo2Gpm
   );
 };
 
@@ -551,7 +756,16 @@ const scoreCar = (
   prefs: Preferences,
   bounds: NormalizationBounds,
   weights: ScoreWeights,
+  derivedPreferences: DerivedPreferences,
 ): ScoredCar => {
+  const compositeScore = computeCompositeScore(
+    car,
+    bounds,
+    weights,
+    prefs,
+    derivedPreferences,
+  );
+  const score = Math.round(compositeScore * 100);
   const compositeScore = computeCompositeScore(car, bounds, weights);
   const reasons: string[] = [];
   let scoreBonus = 0;
@@ -801,6 +1015,13 @@ serve(async (req) => {
       comfort_weight: preferences?.comfort_weight ?? DEFAULT_WEIGHTS.comfort_weight,
       sportiness_weight: preferences?.sportiness_weight ?? DEFAULT_WEIGHTS.sportiness_weight,
       price_weight: preferences?.price_weight ?? DEFAULT_WEIGHTS.price_weight,
+      budget_weight: preferences?.budget_weight ?? DEFAULT_WEIGHTS.budget_weight,
+      fuel_type_weight: preferences?.fuel_type_weight ?? DEFAULT_WEIGHTS.fuel_type_weight,
+      drive_weight: preferences?.drive_weight ?? DEFAULT_WEIGHTS.drive_weight,
+      transmission_weight:
+        preferences?.transmission_weight ?? DEFAULT_WEIGHTS.transmission_weight,
+      mpg_weight: preferences?.mpg_weight ?? DEFAULT_WEIGHTS.mpg_weight,
+      emissions_weight: preferences?.emissions_weight ?? DEFAULT_WEIGHTS.emissions_weight,
       fuelTypeHint: null,
       drivetrainHint: null,
       transmissionHint: null,
@@ -885,6 +1106,12 @@ serve(async (req) => {
     });
 
     const bounds = getNormalizationBounds(candidates);
+    const weights = resolveWeights(prefs);
+    const derivedPreferences = deriveUserPreferences(prefs);
+
+    const scoredCars = candidates.map((car) => ({
+      candidate: car,
+      scored: scoreCar(car, prefs, bounds, weights, derivedPreferences),
     const weights = resolveWeights(mergedPrefs);
 
     const scoredCars = candidates.map((car) => ({
