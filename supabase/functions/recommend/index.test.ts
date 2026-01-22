@@ -10,15 +10,28 @@ const basePrefs = {
   budgetLow: 0,
   budgetHigh: 0,
   bodyStyle: null,
-  priorities: [],
+  priorities: [] as string[],
   comfort_weight: 0,
   sportiness_weight: 0,
   price_weight: 0,
+  fuelTypeHint: null,
+  drivetrainHint: null,
+  transmissionHint: null,
+  efficiencyHint: null as "high" | null,
+};
+
+const baseDerivedPreferences = {
+  preferredFuelTypes: [] as string[],
+  preferredDrives: [] as string[],
+  preferredTransmissions: [] as string[],
+  wantsFuelEconomy: false,
+  wantsLowerEmissions: false,
 };
 
 Deno.test("comfort weighting favors more comfortable cars", () => {
   const cars = [
     {
+      id: "comfy-a",
       make: "Comfy",
       model: "A",
       year: 2025,
@@ -31,8 +44,12 @@ Deno.test("comfort weighting favors more comfortable cars", () => {
       comfortScore: 9,
       sportinessScore: 3,
       msrp: 40000,
+      drive: null,
+      fuelType: null,
+      vehicleClass: null,
     },
     {
+      id: "sporty-b",
       make: "Sporty",
       model: "B",
       year: 2025,
@@ -45,18 +62,22 @@ Deno.test("comfort weighting favors more comfortable cars", () => {
       comfortScore: 4,
       sportinessScore: 9,
       msrp: 45000,
+      drive: null,
+      fuelType: null,
+      vehicleClass: null,
     },
   ];
   const bounds = getNormalizationBounds(cars);
-  const weights = resolveWeights({
+  const prefs = {
     ...basePrefs,
     comfort_weight: 1,
     sportiness_weight: 0,
     price_weight: 0,
-  });
+  };
+  const weights = resolveWeights(prefs);
 
-  const comfyScore = computeCompositeScore(cars[0], bounds, weights);
-  const sportyScore = computeCompositeScore(cars[1], bounds, weights);
+  const comfyScore = computeCompositeScore(cars[0], bounds, weights, prefs, baseDerivedPreferences);
+  const sportyScore = computeCompositeScore(cars[1], bounds, weights, prefs, baseDerivedPreferences);
 
   assert(comfyScore > sportyScore);
 });
@@ -64,6 +85,7 @@ Deno.test("comfort weighting favors more comfortable cars", () => {
 Deno.test("sportiness weighting favors sportier cars", () => {
   const cars = [
     {
+      id: "comfy-a",
       make: "Comfy",
       model: "A",
       year: 2025,
@@ -76,8 +98,12 @@ Deno.test("sportiness weighting favors sportier cars", () => {
       comfortScore: 9,
       sportinessScore: 3,
       msrp: 40000,
+      drive: null,
+      fuelType: null,
+      vehicleClass: null,
     },
     {
+      id: "sporty-b",
       make: "Sporty",
       model: "B",
       year: 2025,
@@ -90,18 +116,22 @@ Deno.test("sportiness weighting favors sportier cars", () => {
       comfortScore: 4,
       sportinessScore: 9,
       msrp: 45000,
+      drive: null,
+      fuelType: null,
+      vehicleClass: null,
     },
   ];
   const bounds = getNormalizationBounds(cars);
-  const weights = resolveWeights({
+  const prefs = {
     ...basePrefs,
     comfort_weight: 0,
     sportiness_weight: 1,
     price_weight: 0,
-  });
+  };
+  const weights = resolveWeights(prefs);
 
-  const comfyScore = computeCompositeScore(cars[0], bounds, weights);
-  const sportyScore = computeCompositeScore(cars[1], bounds, weights);
+  const comfyScore = computeCompositeScore(cars[0], bounds, weights, prefs, baseDerivedPreferences);
+  const sportyScore = computeCompositeScore(cars[1], bounds, weights, prefs, baseDerivedPreferences);
 
   assert(sportyScore > comfyScore);
 });
@@ -109,6 +139,7 @@ Deno.test("sportiness weighting favors sportier cars", () => {
 Deno.test("price weighting favors more affordable cars", () => {
   const cars = [
     {
+      id: "budget-c",
       make: "Budget",
       model: "C",
       year: 2025,
@@ -121,8 +152,12 @@ Deno.test("price weighting favors more affordable cars", () => {
       comfortScore: 5,
       sportinessScore: 5,
       msrp: 20000,
+      drive: null,
+      fuelType: null,
+      vehicleClass: null,
     },
     {
+      id: "premium-d",
       make: "Premium",
       model: "D",
       year: 2025,
@@ -135,18 +170,22 @@ Deno.test("price weighting favors more affordable cars", () => {
       comfortScore: 7,
       sportinessScore: 6,
       msrp: 50000,
+      drive: null,
+      fuelType: null,
+      vehicleClass: null,
     },
   ];
   const bounds = getNormalizationBounds(cars);
-  const weights = resolveWeights({
+  const prefs = {
     ...basePrefs,
     comfort_weight: 0,
     sportiness_weight: 0,
     price_weight: 1,
-  });
+  };
+  const weights = resolveWeights(prefs);
 
-  const budgetScore = computeCompositeScore(cars[0], bounds, weights);
-  const premiumScore = computeCompositeScore(cars[1], bounds, weights);
+  const budgetScore = computeCompositeScore(cars[0], bounds, weights, prefs, baseDerivedPreferences);
+  const premiumScore = computeCompositeScore(cars[1], bounds, weights, prefs, baseDerivedPreferences);
 
   assert(budgetScore > premiumScore);
 });

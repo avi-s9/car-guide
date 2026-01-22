@@ -222,7 +222,7 @@ const parseUserInputHints = (userInput: string): ParsedHints => {
     fuelTypeHint: fuelTypeMatch?.value,
     drivetrainHint: drivetrainMatch?.value,
     transmissionHint: transmissionMatch?.value,
-    efficiencyHint: efficiencyMatch?.value,
+    efficiencyHint: efficiencyMatch?.value === "high" ? "high" : undefined,
     priorityTags,
   };
 };
@@ -693,6 +693,8 @@ const selectDiverseTopCars = (
   }
 
   return selected;
+};
+
 const matchesDrivetrainHint = (hint: string | null, drive: string | null) => {
   if (!hint || !drive) {
     return false;
@@ -765,22 +767,20 @@ const scoreCar = (
     prefs,
     derivedPreferences,
   );
-  const score = Math.round(compositeScore * 100);
-  const compositeScore = computeCompositeScore(car, bounds, weights);
   const reasons: string[] = [];
   let scoreBonus = 0;
 
-  if (matchesDrivetrainHint(prefs.drivetrainHint, car.drive)) {
+  if (matchesDrivetrainHint(prefs.drivetrainHint ?? null, car.drive ?? null)) {
     scoreBonus += 5;
     addReason(reasons, "Drivetrain matches your traction needs");
   }
 
-  if (matchesFuelTypeHint(prefs.fuelTypeHint, car.fuelType)) {
+  if (matchesFuelTypeHint(prefs.fuelTypeHint ?? null, car.fuelType ?? null)) {
     scoreBonus += 4;
     addReason(reasons, "Powertrain aligns with your fuel preference");
   }
 
-  if (matchesTransmissionHint(prefs.transmissionHint, car.transmission)) {
+  if (matchesTransmissionHint(prefs.transmissionHint ?? null, car.transmission ?? null)) {
     scoreBonus += 3;
     addReason(reasons, "Transmission matches what you asked for");
   }
@@ -790,7 +790,7 @@ const scoreCar = (
     addReason(reasons, "Efficiency-focused option");
   }
 
-  const score = Math.min(100, Math.round(compositeScore * 100 + scoreBonus));
+  let matchBonus = scoreBonus;
 
   let bodyStyleMatches = false;
   if (prefs.bodyStyle && car.type !== "Unknown") {
@@ -822,7 +822,7 @@ const scoreCar = (
   const priorityMatchRatio = priorityMatches.length
     ? matchScore / priorityMatches.length
     : 0;
-  const matchBonus = Math.round(priorityMatchRatio * 12);
+  matchBonus += Math.round(priorityMatchRatio * 12);
   const score = Math.min(100, Math.round(compositeScore * 100 + matchBonus));
 
   if (matchedPriorityTags.length > 0) {
@@ -1112,11 +1112,6 @@ serve(async (req) => {
     const scoredCars = candidates.map((car) => ({
       candidate: car,
       scored: scoreCar(car, prefs, bounds, weights, derivedPreferences),
-    const weights = resolveWeights(mergedPrefs);
-
-    const scoredCars = candidates.map((car) => ({
-      candidate: car,
-      scored: scoreCar(car, mergedPrefs, bounds, weights),
     }));
 
     const diverseTopCars = selectDiverseTopCars(scoredCars, 3, 1);
