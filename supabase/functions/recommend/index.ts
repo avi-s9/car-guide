@@ -330,14 +330,43 @@ const formatFuelEconomy = (row: CarRow) => {
   return "Fuel economy unavailable";
 };
 
+const PRIORITY_TAG_MAP: Record<string, string[]> = {
+  "eco-friendly": ["ev", "hybrid", "low-co2", "high-mpg"],
+  "fuel-economy": ["fuel-economy", "high-mpg", "low-co2"],
+  efficiency: ["fuel-economy", "high-mpg", "low-co2"],
+  electric: ["ev"],
+  hybrid: ["hybrid"],
+  awd: ["all-wheel-drive"],
+  "all-wheel-drive": ["all-wheel-drive"],
+  "front-wheel-drive": ["fwd"],
+  "rear-wheel-drive": ["rwd"],
+  fwd: ["fwd"],
+  rwd: ["rwd"],
+  manual: ["manual"],
+  automatic: ["automatic"],
+  cvt: ["cvt"],
+};
+
+const resolvePriorityTags = (priority: string) => {
+  const normalized = normalizeValue(priority);
+  return PRIORITY_TAG_MAP[normalized] ?? [normalized];
+};
+
 const deriveTags = (row: CarRow) => {
   const tags: string[] = [];
   const fuelType = row.fuel_type?.toLowerCase() ?? "";
   const vehicleClass = row.vehicle_class?.toLowerCase() ?? "";
   const drive = row.drive?.toLowerCase() ?? "";
+  const transmission = row.transmission?.toLowerCase() ?? "";
 
   if (row.combined_mpg && row.combined_mpg >= 35) {
     tags.push("fuel-economy");
+  }
+  if (row.combined_mpg && row.combined_mpg >= 40) {
+    tags.push("high-mpg");
+  }
+  if (row.co2_gpm && row.co2_gpm <= 200) {
+    tags.push("low-co2");
   }
   if (fuelType.includes("electricity") || fuelType.includes("electric")) {
     tags.push("ev");
@@ -348,8 +377,23 @@ const deriveTags = (row: CarRow) => {
   if (vehicleClass.includes("suv") || vehicleClass.includes("van") || vehicleClass.includes("wagon")) {
     tags.push("spacious");
   }
+  if (transmission.includes("manual")) {
+    tags.push("manual");
+  }
+  if (transmission.includes("automatic")) {
+    tags.push("automatic");
+  }
+  if (transmission.includes("cvt") || transmission.includes("continuously variable")) {
+    tags.push("cvt");
+  }
   if (drive.includes("awd") || drive.includes("4wd")) {
     tags.push("all-wheel-drive");
+  }
+  if (drive.includes("fwd") || drive.includes("front")) {
+    tags.push("fwd");
+  }
+  if (drive.includes("rwd") || drive.includes("rear")) {
+    tags.push("rwd");
   }
 
   return tags;
@@ -464,11 +508,28 @@ const scoreCar = (
     }
   }
 
-  const matchedPriorities = prefs.priorities.filter((priority) =>
-    car.tags.includes(priority)
+  const priorityMatches = prefs.priorities.map((priority) => {
+    const tags = resolvePriorityTags(priority);
+    const matchedTags = tags.filter((tag) => car.tags.includes(tag));
+    return { priority, tags, matchedTags };
+  });
+  const matchedPriorityTags = Array.from(
+    new Set(priorityMatches.flatMap((match) => match.matchedTags)),
   );
-  if (matchedPriorities.length > 0) {
-    addReason(reasons, `Strong in: ${matchedPriorities.join(", ")}`);
+  const matchScore = priorityMatches.reduce((total, match) => {
+    if (match.tags.length === 0) {
+      return total;
+    }
+    return total + match.matchedTags.length / match.tags.length;
+  }, 0);
+  const priorityMatchRatio = priorityMatches.length
+    ? matchScore / priorityMatches.length
+    : 0;
+  const matchBonus = Math.round(priorityMatchRatio * 12);
+  const score = Math.min(100, Math.round(compositeScore * 100 + matchBonus));
+
+  if (matchedPriorityTags.length > 0) {
+    addReason(reasons, `Matches priorities: ${matchedPriorityTags.join(", ")}`);
   }
 
   if (car.tags.includes("fuel-economy")) {
@@ -485,6 +546,27 @@ const scoreCar = (
   }
   if (car.tags.includes("all-wheel-drive")) {
     addReason(reasons, "All-wheel drive available for added traction");
+  }
+  if (car.tags.includes("fwd")) {
+    addReason(reasons, "Front-wheel drive for efficient packaging and traction");
+  }
+  if (car.tags.includes("rwd")) {
+    addReason(reasons, "Rear-wheel drive for balanced handling feel");
+  }
+  if (car.tags.includes("manual")) {
+    addReason(reasons, "Manual transmission for driver involvement");
+  }
+  if (car.tags.includes("automatic")) {
+    addReason(reasons, "Automatic transmission for easy driving");
+  }
+  if (car.tags.includes("cvt")) {
+    addReason(reasons, "CVT transmission tuned for smooth efficiency");
+  }
+  if (car.tags.includes("high-mpg")) {
+    addReason(reasons, "High MPG rating for fuel savings");
+  }
+  if (car.tags.includes("low-co2")) {
+    addReason(reasons, "Lower CO2 output for reduced emissions");
   }
 
   if (prefs.budgetLow || prefs.budgetHigh) {
