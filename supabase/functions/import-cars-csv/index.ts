@@ -139,15 +139,30 @@ const parseCsv = (csvText: string): Record<string, string>[] => {
   return records;
 };
 
+// Helper to get value case-insensitively
+const getField = (row: Record<string, string>, ...keys: string[]): string => {
+  for (const key of keys) {
+    if (row[key] !== undefined) return row[key];
+    // Try lowercase
+    const lower = key.toLowerCase();
+    if (row[lower] !== undefined) return row[lower];
+    // Try exact match with common variations
+    for (const rowKey of Object.keys(row)) {
+      if (rowKey.toLowerCase() === lower) return row[rowKey];
+    }
+  }
+  return "";
+};
+
 const transformRows = (rows: Record<string, string>[]): CarRow[] => {
   const cars: CarRow[] = [];
 
   for (const row of rows) {
-    const year = toInt(row.year) ?? 2025;
-    const make = row.make?.trim() ?? "";
-    const model = row.model?.trim() ?? "";
-    const transmission = row.transmission?.trim() || null;
-    const drive = row.drive?.trim() || null;
+    const year = toInt(getField(row, "year")) ?? 2025;
+    const make = getField(row, "make").trim();
+    const model = getField(row, "model").trim();
+    const transmission = getField(row, "transmission").trim() || null;
+    const drive = getField(row, "drive").trim() || null;
 
     if (!make || !model) {
       continue;
@@ -158,17 +173,17 @@ const transformRows = (rows: Record<string, string>[]): CarRow[] => {
       year,
       make,
       model,
-      vehicle_class: row.vehicleClass?.trim() || null,
-      fuel_type: row.fuelType?.trim() || null,
+      vehicle_class: getField(row, "vehicleClass", "vehicle_class").trim() || null,
+      fuel_type: getField(row, "fuelType", "fuel_type").trim() || null,
       drive,
       transmission,
-      city_mpg: toInt(row.cityMpg),
-      highway_mpg: toInt(row.highwayMpg),
-      combined_mpg: toInt(row.combinedMpg),
-      co2_gpm: toInt(row.co2),
-      msrp: toInt(row.msrp),
-      comfort_score: toNumber(row.comfortScore),
-      sportiness_score: toNumber(row.sportinessScore),
+      city_mpg: toInt(getField(row, "cityMpg", "city_mpg")),
+      highway_mpg: toInt(getField(row, "highwayMpg", "highway_mpg")),
+      combined_mpg: toInt(getField(row, "combinedMpg", "combined_mpg")),
+      co2_gpm: toInt(getField(row, "co2", "co2_gpm")),
+      msrp: toInt(getField(row, "msrp")),
+      comfort_score: toNumber(getField(row, "comfortScore", "comfort_score")),
+      sportiness_score: toNumber(getField(row, "sportinessScore", "sportiness_score")),
     });
   }
 
