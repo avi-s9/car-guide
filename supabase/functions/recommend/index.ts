@@ -57,6 +57,7 @@ interface ScoredCar {
 }
 
 type CandidateCar = ScoredCar & {
+  id: string;
   drive?: string | null;
   fuelType?: string | null;
   tags: string[];
@@ -237,6 +238,90 @@ const addReason = (reasons: string[], reason: string) => {
   if (!reasons.includes(reason) && reasons.length < 3) {
     reasons.push(reason);
   }
+};
+
+const compareScoredCars = (
+  a: { candidate: CandidateCar; scored: ScoredCar },
+  b: { candidate: CandidateCar; scored: ScoredCar },
+) => {
+  if (a.scored.score !== b.scored.score) {
+    return b.scored.score - a.scored.score;
+  }
+
+  const mpgA = typeof a.candidate.combinedMpg === "number"
+    ? a.candidate.combinedMpg
+    : -1;
+  const mpgB = typeof b.candidate.combinedMpg === "number"
+    ? b.candidate.combinedMpg
+    : -1;
+  if (mpgA !== mpgB) {
+    return mpgB - mpgA;
+  }
+
+  const co2A = typeof a.candidate.co2Gpm === "number"
+    ? a.candidate.co2Gpm
+    : Number.POSITIVE_INFINITY;
+  const co2B = typeof b.candidate.co2Gpm === "number"
+    ? b.candidate.co2Gpm
+    : Number.POSITIVE_INFINITY;
+  if (co2A !== co2B) {
+    return co2A - co2B;
+  }
+
+  const msrpA = typeof a.candidate.msrp === "number"
+    ? a.candidate.msrp
+    : Number.POSITIVE_INFINITY;
+  const msrpB = typeof b.candidate.msrp === "number"
+    ? b.candidate.msrp
+    : Number.POSITIVE_INFINITY;
+  if (msrpA !== msrpB) {
+    return msrpA - msrpB;
+  }
+
+  const makeComparison = a.candidate.make.localeCompare(b.candidate.make);
+  if (makeComparison !== 0) {
+    return makeComparison;
+  }
+  return a.candidate.model.localeCompare(b.candidate.model);
+};
+
+const selectDiverseTopCars = (
+  scoredCars: { candidate: CandidateCar; scored: ScoredCar }[],
+  limit: number,
+  maxPerMake: number,
+) => {
+  const sorted = [...scoredCars].sort(compareScoredCars);
+  const selected: typeof scoredCars = [];
+  const selectedKeys = new Set<string>();
+  const makeCounts = new Map<string, number>();
+
+  for (const item of sorted) {
+    if (selected.length >= limit) {
+      break;
+    }
+    const count = makeCounts.get(item.candidate.make) ?? 0;
+    if (count >= maxPerMake) {
+      continue;
+    }
+    selected.push(item);
+    selectedKeys.add(item.candidate.id);
+    makeCounts.set(item.candidate.make, count + 1);
+  }
+
+  if (selected.length < limit) {
+    for (const item of sorted) {
+      if (selected.length >= limit) {
+        break;
+      }
+      if (selectedKeys.has(item.candidate.id)) {
+        continue;
+      }
+      selected.push(item);
+      selectedKeys.add(item.candidate.id);
+    }
+  }
+
+  return selected;
 };
 
 const scoreCar = (
@@ -473,6 +558,7 @@ serve(async (req) => {
         : "Check local pricing";
 
       return {
+        id: row.id,
         make: row.make,
         model: row.model,
         year: row.year,
@@ -504,14 +590,12 @@ serve(async (req) => {
       scored: scoreCar(car, prefs, bounds, weights),
     }));
 
+    const diverseTopCars = selectDiverseTopCars(scoredCars, 3, 1);
     const topRecommendationsWithDetails: (ScoredCar & {
       drive?: string | null;
       fuelType?: string | null;
       vehicleClass?: string | null;
-    })[] = scoredCars
-      .sort((a, b) => b.scored.score - a.scored.score)
-      .slice(0, 3)
-      .map(({ candidate, scored }) => ({
+    })[] = diverseTopCars.map(({ candidate, scored }) => ({
         ...scored,
         drive: candidate.drive,
         fuelType: candidate.fuelType,
