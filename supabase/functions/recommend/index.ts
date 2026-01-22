@@ -21,6 +21,10 @@ interface Preferences {
   transmission_weight?: number;
   mpg_weight?: number;
   emissions_weight?: number;
+  fuelTypeHint: string | null;
+  drivetrainHint: string | null;
+  transmissionHint: string | null;
+  efficiencyHint: "high" | null;
 }
 
 interface CarRow {
@@ -63,6 +67,7 @@ interface ScoredCar {
 }
 
 type CandidateCar = ScoredCar & {
+  id: string;
   drive?: string | null;
   fuelType?: string | null;
   tags: string[];
@@ -103,6 +108,124 @@ interface DerivedPreferences {
 }
 
 const normalizeValue = (value: string) => value.toLowerCase().replace(/\s+/g, "-");
+
+type ParsedHints = {
+  bodyStyle?: string;
+  fuelTypeHint?: string;
+  drivetrainHint?: string;
+  transmissionHint?: string;
+  efficiencyHint?: "high";
+  priorityTags: string[];
+};
+
+// Keyword mappings for lightweight parsing (extend as needed).
+const USER_INPUT_HINT_MAPPINGS = {
+  bodyStyle: [
+    { keywords: ["suv", "sport utility", "crossover"], value: "SUV", tags: ["spacious"] },
+    { keywords: ["truck", "pickup"], value: "Truck", tags: [] },
+    { keywords: ["minivan", "van"], value: "Van", tags: ["spacious"] },
+    { keywords: ["wagon", "estate"], value: "Wagon", tags: ["spacious"] },
+    { keywords: ["sedan", "saloon"], value: "Sedan", tags: [] },
+    { keywords: ["coupe", "convertible", "roadster"], value: "Coupe", tags: [] },
+    { keywords: ["hatchback"], value: "Hatchback", tags: [] },
+  ],
+  fuelType: [
+    { keywords: ["electric", "ev", "battery"], value: "Electric", tags: ["ev"] },
+    { keywords: ["hybrid", "plug-in", "phev"], value: "Hybrid", tags: ["hybrid", "fuel-economy"] },
+    { keywords: ["diesel"], value: "Diesel", tags: [] },
+    { keywords: ["gas", "gasoline", "petrol"], value: "Gasoline", tags: [] },
+  ],
+  drivetrain: [
+    {
+      keywords: [
+        "awd",
+        "all wheel",
+        "all-wheel",
+        "4wd",
+        "4x4",
+        "four wheel",
+        "snow",
+        "ice",
+        "icy",
+        "blizzard",
+        "mountain",
+        "mud",
+        "off-road",
+        "off road",
+        "trail",
+      ],
+      value: "AWD/4WD",
+      tags: ["all-wheel-drive"],
+    },
+    { keywords: ["fwd", "front wheel", "front-wheel"], value: "FWD", tags: [] },
+    { keywords: ["rwd", "rear wheel", "rear-wheel"], value: "RWD", tags: [] },
+  ],
+  transmission: [
+    { keywords: ["manual", "stick shift", "stick"], value: "Manual", tags: [] },
+    { keywords: ["automatic", "auto"], value: "Automatic", tags: [] },
+    { keywords: ["cvt"], value: "CVT", tags: [] },
+  ],
+  efficiency: [
+    {
+      keywords: [
+        "mpg",
+        "fuel efficient",
+        "fuel-efficient",
+        "economy",
+        "efficient",
+        "save gas",
+        "low emissions",
+        "co2",
+        "range",
+        "charging",
+      ],
+      value: "high",
+      tags: ["fuel-economy"],
+    },
+  ],
+};
+
+const parseUserInputHints = (userInput: string): ParsedHints => {
+  const input = userInput.toLowerCase();
+  const priorityTags: string[] = [];
+
+  const matchFirst = <T extends { keywords: string[] }>(items: T[]) =>
+    items.find((item) => item.keywords.some((keyword) => input.includes(keyword)));
+
+  const bodyStyleMatch = matchFirst(USER_INPUT_HINT_MAPPINGS.bodyStyle);
+  if (bodyStyleMatch) {
+    priorityTags.push(...bodyStyleMatch.tags);
+  }
+
+  const fuelTypeMatch = matchFirst(USER_INPUT_HINT_MAPPINGS.fuelType);
+  if (fuelTypeMatch) {
+    priorityTags.push(...fuelTypeMatch.tags);
+  }
+
+  const drivetrainMatch = matchFirst(USER_INPUT_HINT_MAPPINGS.drivetrain);
+  if (drivetrainMatch) {
+    priorityTags.push(...drivetrainMatch.tags);
+  }
+
+  const transmissionMatch = matchFirst(USER_INPUT_HINT_MAPPINGS.transmission);
+  if (transmissionMatch) {
+    priorityTags.push(...transmissionMatch.tags);
+  }
+
+  const efficiencyMatch = matchFirst(USER_INPUT_HINT_MAPPINGS.efficiency);
+  if (efficiencyMatch) {
+    priorityTags.push(...efficiencyMatch.tags);
+  }
+
+  return {
+    bodyStyle: bodyStyleMatch?.value,
+    fuelTypeHint: fuelTypeMatch?.value,
+    drivetrainHint: drivetrainMatch?.value,
+    transmissionHint: transmissionMatch?.value,
+    efficiencyHint: efficiencyMatch?.value,
+    priorityTags,
+  };
+};
 
 const DEFAULT_WEIGHTS: ScoreWeights = {
   comfort_weight: 0.2,
@@ -413,14 +536,43 @@ const formatFuelEconomy = (row: CarRow) => {
   return "Fuel economy unavailable";
 };
 
+const PRIORITY_TAG_MAP: Record<string, string[]> = {
+  "eco-friendly": ["ev", "hybrid", "low-co2", "high-mpg"],
+  "fuel-economy": ["fuel-economy", "high-mpg", "low-co2"],
+  efficiency: ["fuel-economy", "high-mpg", "low-co2"],
+  electric: ["ev"],
+  hybrid: ["hybrid"],
+  awd: ["all-wheel-drive"],
+  "all-wheel-drive": ["all-wheel-drive"],
+  "front-wheel-drive": ["fwd"],
+  "rear-wheel-drive": ["rwd"],
+  fwd: ["fwd"],
+  rwd: ["rwd"],
+  manual: ["manual"],
+  automatic: ["automatic"],
+  cvt: ["cvt"],
+};
+
+const resolvePriorityTags = (priority: string) => {
+  const normalized = normalizeValue(priority);
+  return PRIORITY_TAG_MAP[normalized] ?? [normalized];
+};
+
 const deriveTags = (row: CarRow) => {
   const tags: string[] = [];
   const fuelType = row.fuel_type?.toLowerCase() ?? "";
   const vehicleClass = row.vehicle_class?.toLowerCase() ?? "";
   const drive = row.drive?.toLowerCase() ?? "";
+  const transmission = row.transmission?.toLowerCase() ?? "";
 
   if (row.combined_mpg && row.combined_mpg >= 35) {
     tags.push("fuel-economy");
+  }
+  if (row.combined_mpg && row.combined_mpg >= 40) {
+    tags.push("high-mpg");
+  }
+  if (row.co2_gpm && row.co2_gpm <= 200) {
+    tags.push("low-co2");
   }
   if (fuelType.includes("electricity") || fuelType.includes("electric")) {
     tags.push("ev");
@@ -431,8 +583,23 @@ const deriveTags = (row: CarRow) => {
   if (vehicleClass.includes("suv") || vehicleClass.includes("van") || vehicleClass.includes("wagon")) {
     tags.push("spacious");
   }
+  if (transmission.includes("manual")) {
+    tags.push("manual");
+  }
+  if (transmission.includes("automatic")) {
+    tags.push("automatic");
+  }
+  if (transmission.includes("cvt") || transmission.includes("continuously variable")) {
+    tags.push("cvt");
+  }
   if (drive.includes("awd") || drive.includes("4wd")) {
     tags.push("all-wheel-drive");
+  }
+  if (drive.includes("fwd") || drive.includes("front")) {
+    tags.push("fwd");
+  }
+  if (drive.includes("rwd") || drive.includes("rear")) {
+    tags.push("rwd");
   }
 
   return tags;
@@ -442,6 +609,146 @@ const addReason = (reasons: string[], reason: string) => {
   if (!reasons.includes(reason) && reasons.length < 3) {
     reasons.push(reason);
   }
+};
+
+const compareScoredCars = (
+  a: { candidate: CandidateCar; scored: ScoredCar },
+  b: { candidate: CandidateCar; scored: ScoredCar },
+) => {
+  if (a.scored.score !== b.scored.score) {
+    return b.scored.score - a.scored.score;
+  }
+
+  const mpgA = typeof a.candidate.combinedMpg === "number"
+    ? a.candidate.combinedMpg
+    : -1;
+  const mpgB = typeof b.candidate.combinedMpg === "number"
+    ? b.candidate.combinedMpg
+    : -1;
+  if (mpgA !== mpgB) {
+    return mpgB - mpgA;
+  }
+
+  const co2A = typeof a.candidate.co2Gpm === "number"
+    ? a.candidate.co2Gpm
+    : Number.POSITIVE_INFINITY;
+  const co2B = typeof b.candidate.co2Gpm === "number"
+    ? b.candidate.co2Gpm
+    : Number.POSITIVE_INFINITY;
+  if (co2A !== co2B) {
+    return co2A - co2B;
+  }
+
+  const msrpA = typeof a.candidate.msrp === "number"
+    ? a.candidate.msrp
+    : Number.POSITIVE_INFINITY;
+  const msrpB = typeof b.candidate.msrp === "number"
+    ? b.candidate.msrp
+    : Number.POSITIVE_INFINITY;
+  if (msrpA !== msrpB) {
+    return msrpA - msrpB;
+  }
+
+  const makeComparison = a.candidate.make.localeCompare(b.candidate.make);
+  if (makeComparison !== 0) {
+    return makeComparison;
+  }
+  return a.candidate.model.localeCompare(b.candidate.model);
+};
+
+const selectDiverseTopCars = (
+  scoredCars: { candidate: CandidateCar; scored: ScoredCar }[],
+  limit: number,
+  maxPerMake: number,
+) => {
+  const sorted = [...scoredCars].sort(compareScoredCars);
+  const selected: typeof scoredCars = [];
+  const selectedKeys = new Set<string>();
+  const makeCounts = new Map<string, number>();
+
+  for (const item of sorted) {
+    if (selected.length >= limit) {
+      break;
+    }
+    const count = makeCounts.get(item.candidate.make) ?? 0;
+    if (count >= maxPerMake) {
+      continue;
+    }
+    selected.push(item);
+    selectedKeys.add(item.candidate.id);
+    makeCounts.set(item.candidate.make, count + 1);
+  }
+
+  if (selected.length < limit) {
+    for (const item of sorted) {
+      if (selected.length >= limit) {
+        break;
+      }
+      if (selectedKeys.has(item.candidate.id)) {
+        continue;
+      }
+      selected.push(item);
+      selectedKeys.add(item.candidate.id);
+    }
+  }
+
+  return selected;
+const matchesDrivetrainHint = (hint: string | null, drive: string | null) => {
+  if (!hint || !drive) {
+    return false;
+  }
+  const normalizedDrive = drive.toLowerCase();
+  const normalizedHint = hint.toLowerCase();
+  if (normalizedHint === "awd/4wd") {
+    return normalizedDrive.includes("awd") || normalizedDrive.includes("4wd");
+  }
+  if (normalizedHint === "fwd") {
+    return normalizedDrive.includes("fwd") || normalizedDrive.includes("front");
+  }
+  if (normalizedHint === "rwd") {
+    return normalizedDrive.includes("rwd") || normalizedDrive.includes("rear");
+  }
+  return normalizedDrive.includes(normalizedHint);
+};
+
+const matchesFuelTypeHint = (hint: string | null, fuelType: string | null) => {
+  if (!hint || !fuelType) {
+    return false;
+  }
+  const normalizedFuel = fuelType.toLowerCase();
+  const normalizedHint = hint.toLowerCase();
+  if (normalizedHint === "electric") {
+    return normalizedFuel.includes("electric");
+  }
+  if (normalizedHint === "hybrid") {
+    return normalizedFuel.includes("hybrid");
+  }
+  if (normalizedHint === "diesel") {
+    return normalizedFuel.includes("diesel");
+  }
+  if (normalizedHint === "gasoline") {
+    return normalizedFuel.includes("gas");
+  }
+  return normalizedFuel.includes(normalizedHint);
+};
+
+const matchesTransmissionHint = (hint: string | null, transmission: string | null) => {
+  if (!hint || !transmission) {
+    return false;
+  }
+  const normalizedTransmission = transmission.toLowerCase();
+  const normalizedHint = hint.toLowerCase();
+  if (normalizedHint === "manual") {
+    return normalizedTransmission.includes("manual");
+  }
+  if (normalizedHint === "automatic") {
+    return normalizedTransmission.includes("automatic") ||
+      normalizedTransmission.includes("auto");
+  }
+  if (normalizedHint === "cvt") {
+    return normalizedTransmission.includes("cvt");
+  }
+  return normalizedTransmission.includes(normalizedHint);
 };
 
 const scoreCar = (
@@ -459,7 +766,31 @@ const scoreCar = (
     derivedPreferences,
   );
   const score = Math.round(compositeScore * 100);
+  const compositeScore = computeCompositeScore(car, bounds, weights);
   const reasons: string[] = [];
+  let scoreBonus = 0;
+
+  if (matchesDrivetrainHint(prefs.drivetrainHint, car.drive)) {
+    scoreBonus += 5;
+    addReason(reasons, "Drivetrain matches your traction needs");
+  }
+
+  if (matchesFuelTypeHint(prefs.fuelTypeHint, car.fuelType)) {
+    scoreBonus += 4;
+    addReason(reasons, "Powertrain aligns with your fuel preference");
+  }
+
+  if (matchesTransmissionHint(prefs.transmissionHint, car.transmission)) {
+    scoreBonus += 3;
+    addReason(reasons, "Transmission matches what you asked for");
+  }
+
+  if (prefs.efficiencyHint === "high" && car.tags.includes("fuel-economy")) {
+    scoreBonus += 4;
+    addReason(reasons, "Efficiency-focused option");
+  }
+
+  const score = Math.min(100, Math.round(compositeScore * 100 + scoreBonus));
 
   let bodyStyleMatches = false;
   if (prefs.bodyStyle && car.type !== "Unknown") {
@@ -474,11 +805,28 @@ const scoreCar = (
     }
   }
 
-  const matchedPriorities = prefs.priorities.filter((priority) =>
-    car.tags.includes(priority)
+  const priorityMatches = prefs.priorities.map((priority) => {
+    const tags = resolvePriorityTags(priority);
+    const matchedTags = tags.filter((tag) => car.tags.includes(tag));
+    return { priority, tags, matchedTags };
+  });
+  const matchedPriorityTags = Array.from(
+    new Set(priorityMatches.flatMap((match) => match.matchedTags)),
   );
-  if (matchedPriorities.length > 0) {
-    addReason(reasons, `Strong in: ${matchedPriorities.join(", ")}`);
+  const matchScore = priorityMatches.reduce((total, match) => {
+    if (match.tags.length === 0) {
+      return total;
+    }
+    return total + match.matchedTags.length / match.tags.length;
+  }, 0);
+  const priorityMatchRatio = priorityMatches.length
+    ? matchScore / priorityMatches.length
+    : 0;
+  const matchBonus = Math.round(priorityMatchRatio * 12);
+  const score = Math.min(100, Math.round(compositeScore * 100 + matchBonus));
+
+  if (matchedPriorityTags.length > 0) {
+    addReason(reasons, `Matches priorities: ${matchedPriorityTags.join(", ")}`);
   }
 
   if (car.tags.includes("fuel-economy")) {
@@ -495,6 +843,27 @@ const scoreCar = (
   }
   if (car.tags.includes("all-wheel-drive")) {
     addReason(reasons, "All-wheel drive available for added traction");
+  }
+  if (car.tags.includes("fwd")) {
+    addReason(reasons, "Front-wheel drive for efficient packaging and traction");
+  }
+  if (car.tags.includes("rwd")) {
+    addReason(reasons, "Rear-wheel drive for balanced handling feel");
+  }
+  if (car.tags.includes("manual")) {
+    addReason(reasons, "Manual transmission for driver involvement");
+  }
+  if (car.tags.includes("automatic")) {
+    addReason(reasons, "Automatic transmission for easy driving");
+  }
+  if (car.tags.includes("cvt")) {
+    addReason(reasons, "CVT transmission tuned for smooth efficiency");
+  }
+  if (car.tags.includes("high-mpg")) {
+    addReason(reasons, "High MPG rating for fuel savings");
+  }
+  if (car.tags.includes("low-co2")) {
+    addReason(reasons, "Lower CO2 output for reduced emissions");
   }
 
   if (prefs.budgetLow || prefs.budgetHigh) {
@@ -653,9 +1022,29 @@ serve(async (req) => {
         preferences?.transmission_weight ?? DEFAULT_WEIGHTS.transmission_weight,
       mpg_weight: preferences?.mpg_weight ?? DEFAULT_WEIGHTS.mpg_weight,
       emissions_weight: preferences?.emissions_weight ?? DEFAULT_WEIGHTS.emissions_weight,
+      fuelTypeHint: null,
+      drivetrainHint: null,
+      transmissionHint: null,
+      efficiencyHint: null,
     };
 
-    console.log("Finding recommendations for preferences:", prefs);
+    const inputText = typeof userInput === "string" ? userInput : "";
+    const parsedHints = parseUserInputHints(inputText);
+    const mergedPriorities = new Set([
+      ...prefs.priorities,
+      ...parsedHints.priorityTags,
+    ]);
+    const mergedPrefs: Preferences = {
+      ...prefs,
+      bodyStyle: prefs.bodyStyle ?? parsedHints.bodyStyle ?? null,
+      priorities: Array.from(mergedPriorities),
+      fuelTypeHint: parsedHints.fuelTypeHint ?? null,
+      drivetrainHint: parsedHints.drivetrainHint ?? null,
+      transmissionHint: parsedHints.transmissionHint ?? null,
+      efficiencyHint: parsedHints.efficiencyHint ?? null,
+    };
+
+    console.log("Finding recommendations for preferences:", mergedPrefs);
     console.log("User input for explanations:", userInput);
 
     const supabaseUrl = Deno.env.get("SUPABASE_URL");
@@ -675,8 +1064,8 @@ serve(async (req) => {
       .eq("year", 2025)
       .limit(2000);
 
-    if (prefs.bodyStyle) {
-      query = query.ilike("vehicle_class", `%${prefs.bodyStyle}%`);
+    if (mergedPrefs.bodyStyle) {
+      query = query.ilike("vehicle_class", `%${mergedPrefs.bodyStyle}%`);
     }
 
     const { data, error } = await query;
@@ -692,6 +1081,7 @@ serve(async (req) => {
         : "Check local pricing";
 
       return {
+        id: row.id,
         make: row.make,
         model: row.model,
         year: row.year,
@@ -722,23 +1112,25 @@ serve(async (req) => {
     const scoredCars = candidates.map((car) => ({
       candidate: car,
       scored: scoreCar(car, prefs, bounds, weights, derivedPreferences),
+    const weights = resolveWeights(mergedPrefs);
+
+    const scoredCars = candidates.map((car) => ({
+      candidate: car,
+      scored: scoreCar(car, mergedPrefs, bounds, weights),
     }));
 
+    const diverseTopCars = selectDiverseTopCars(scoredCars, 3, 1);
     const topRecommendationsWithDetails: (ScoredCar & {
       drive?: string | null;
       fuelType?: string | null;
       vehicleClass?: string | null;
-    })[] = scoredCars
-      .sort((a, b) => b.scored.score - a.scored.score)
-      .slice(0, 3)
-      .map(({ candidate, scored }) => ({
+    })[] = diverseTopCars.map(({ candidate, scored }) => ({
         ...scored,
         drive: candidate.drive,
         fuelType: candidate.fuelType,
         vehicleClass: candidate.vehicleClass ?? candidate.type,
       }));
 
-    const inputText = typeof userInput === "string" ? userInput : "";
     for (let i = 0; i < topRecommendationsWithDetails.length; i++) {
       try {
         topRecommendationsWithDetails[i].aiExplanation = await getExplanation(
