@@ -228,8 +228,16 @@ serve(async (req: Request) => {
     const rows = parseCsv(csvData);
     console.log(`Parsed ${rows.length} rows from CSV`);
 
-    const cars = transformRows(rows);
-    console.log(`Transformed ${cars.length} car records`);
+    const allCars = transformRows(rows);
+    console.log(`Transformed ${allCars.length} car records`);
+
+    // Deduplicate by ID, keeping the last occurrence
+    const carMap = new Map<string, CarRow>();
+    for (const car of allCars) {
+      carMap.set(car.id, car);
+    }
+    const cars = Array.from(carMap.values());
+    console.log(`Deduplicated to ${cars.length} unique car records`);
 
     if (cars.length === 0) {
       return new Response(JSON.stringify({ error: "No valid car records found." }), {
