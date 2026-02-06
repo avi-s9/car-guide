@@ -1059,7 +1059,7 @@ serve(async (req) => {
     let query = supabase
       .from("cars")
       .select(
-        "id, year, make, model, vehicle_class, fuel_type, drive, transmission, city_mpg, highway_mpg, combined_mpg, co2_gpm, msrp, comfortScore, sportinessScore",
+        "id, year, make, model, vehicle_class, fuel_type, drive, transmission, city_mpg, highway_mpg, combined_mpg, co2_gpm, msrp, comfort_score, sportiness_score",
       )
       .eq("year", 2025)
       .limit(2000);
@@ -1094,8 +1094,8 @@ serve(async (req) => {
         drive: row.drive,
         fuelType: row.fuel_type,
         msrp: row.msrp,
-        comfortScore: row.comfortScore,
-        sportinessScore: row.sportinessScore,
+        comfortScore: row.comfort_score,
+        sportinessScore: row.sportiness_score,
         transmission: row.transmission,
         cityMpg: row.city_mpg,
         highwayMpg: row.highway_mpg,
