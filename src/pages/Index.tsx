@@ -57,27 +57,39 @@ const Index = () => {
         ? `${preferences}\n\n[Location context: ${locationContext}]`
         : preferences;
 
-      const { data: parseData, error: parseError } =
-        await supabase.functions.invoke("parse-preferences", {
-          body: {
-            userInput: enrichedInput,
-          },
-        });
-
-      if (parseError) {
-        const message = parseError.message ?? "Unknown parse-preferences error.";
-        console.error("parse-preferences failed:", parseError);
-        setDebugError({ stage: "parse-preferences", message });
-        toast.error("Failed to get recommendations. Please try again.");
-        return;
-      }
-
-      const preferencesPayload = {
-        budgetLow: parseData?.budgetLow ?? 20000,
-        budgetHigh: parseData?.budgetHigh ?? 30000,
-        bodyStyle: parseData?.bodyStyle ?? null,
-        priorities: parseData?.priorities ?? [],
+      const defaultPreferences = {
+        budgetLow: 20000,
+        budgetHigh: 30000,
+        bodyStyle: null,
+        priorities: [],
       };
+      let preferencesPayload = defaultPreferences;
+
+      try {
+        const { data: parseData, error: parseError } =
+          await supabase.functions.invoke("parse-preferences", {
+            body: {
+              userInput: enrichedInput,
+            },
+          });
+
+        if (parseError) {
+          const message = parseError.message ?? "Unknown parse-preferences error.";
+          console.error("parse-preferences failed:", parseError);
+          setDebugError({ stage: "parse-preferences", message });
+        } else {
+          preferencesPayload = {
+            budgetLow: parseData?.budgetLow ?? defaultPreferences.budgetLow,
+            budgetHigh: parseData?.budgetHigh ?? defaultPreferences.budgetHigh,
+            bodyStyle: parseData?.bodyStyle ?? defaultPreferences.bodyStyle,
+            priorities: parseData?.priorities ?? defaultPreferences.priorities,
+          };
+        }
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        console.error("parse-preferences threw:", error);
+        setDebugError({ stage: "parse-preferences", message });
+      }
 
       const { data: recData, error: recError } =
         await supabase.functions.invoke("recommend", {
