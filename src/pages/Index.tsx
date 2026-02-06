@@ -23,6 +23,10 @@ const Index = () => {
   const [preferences, setPreferences] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [inputMode, setInputMode] = useState<"describe" | "quiz">("describe");
+  const [debugError, setDebugError] = useState<{
+    stage: "parse-preferences" | "recommend" | "unknown";
+    message: string;
+  } | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -42,6 +46,7 @@ const Index = () => {
     }
 
     setIsLoading(true);
+    setDebugError(null);
     try {
       // Include location context in the request
       const locationContext = location.city 
@@ -59,7 +64,13 @@ const Index = () => {
           },
         });
 
-      if (parseError) throw parseError;
+      if (parseError) {
+        const message = parseError.message ?? "Unknown parse-preferences error.";
+        console.error("parse-preferences failed:", parseError);
+        setDebugError({ stage: "parse-preferences", message });
+        toast.error("Failed to get recommendations. Please try again.");
+        return;
+      }
 
       const preferencesPayload = {
         budgetLow: parseData?.budgetLow ?? 20000,
@@ -76,7 +87,13 @@ const Index = () => {
           },
         });
 
-      if (recError) throw recError;
+      if (recError) {
+        const message = recError.message ?? "Unknown recommend error.";
+        console.error("recommend failed:", recError);
+        setDebugError({ stage: "recommend", message });
+        toast.error("Failed to get recommendations. Please try again.");
+        return;
+      }
 
       navigate("/results", {
         state: {
@@ -85,7 +102,9 @@ const Index = () => {
         },
       });
     } catch (error) {
-      console.error("Error in handleSubmit:", error);
+      const message = error instanceof Error ? error.message : String(error);
+      console.error("Unexpected error in handleSubmit:", error);
+      setDebugError({ stage: "unknown", message });
       toast.error("Failed to get recommendations. Please try again.");
     } finally {
       setIsLoading(false);
@@ -94,6 +113,7 @@ const Index = () => {
 
   const handleLuckyClick = async () => {
     setIsLoading(true);
+    setDebugError(null);
     try {
       const preferencesPayload = {
         budgetLow: 15000,
@@ -110,7 +130,13 @@ const Index = () => {
           },
         });
 
-      if (recError) throw recError;
+      if (recError) {
+        const message = recError.message ?? "Unknown recommend error.";
+        console.error("recommend failed:", recError);
+        setDebugError({ stage: "recommend", message });
+        toast.error("Failed to get recommendation. Please try again.");
+        return;
+      }
 
       navigate("/results", {
         state: {
@@ -119,7 +145,9 @@ const Index = () => {
         },
       });
     } catch (error) {
-      console.error("Error in handleLuckyClick:", error);
+      const message = error instanceof Error ? error.message : String(error);
+      console.error("Unexpected error in handleLuckyClick:", error);
+      setDebugError({ stage: "unknown", message });
       toast.error("Failed to get recommendation. Please try again.");
     } finally {
       setIsLoading(false);
@@ -128,6 +156,14 @@ const Index = () => {
 
   const drivingContext = location.getDrivingContext();
   const locationBadge = location.city && !location.isLoading;
+
+  const debugLabel = debugError
+    ? debugError.stage === "parse-preferences"
+      ? "parse-preferences failed"
+      : debugError.stage === "recommend"
+        ? "recommend failed"
+        : "unexpected error"
+    : null;
 
   return (
     <>
@@ -257,6 +293,19 @@ const Index = () => {
                   className="min-h-[140px] text-base resize-none"
                   aria-label="Describe your car needs and preferences"
                 />
+                {debugError && debugLabel && (
+                  <div
+                    className="rounded-lg border border-destructive/30 bg-destructive/5 p-3 text-sm text-foreground"
+                    role="alert"
+                  >
+                    <p className="font-medium text-destructive">
+                      We hit an issue while processing your request ({debugLabel}).
+                    </p>
+                    <p className="mt-1 text-xs text-muted-foreground break-words">
+                      Debug: {debugError.message}
+                    </p>
+                  </div>
+                )}
 
                 {/* CTA Section */}
                 <div className="space-y-4">
