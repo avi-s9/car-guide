@@ -107,6 +107,11 @@ interface DerivedPreferences {
   wantsLowerEmissions: boolean;
 }
 
+interface HardRequirements {
+  requireFuelTypeHint: string | null;
+  requireDrivetrainHint: string | null;
+}
+
 const normalizeValue = (value: string) => value.toLowerCase().replace(/\s+/g, "-");
 
 type ParsedHints = {
@@ -117,6 +122,17 @@ type ParsedHints = {
   efficiencyHint?: "high";
   priorityTags: string[];
 };
+
+const STRONG_INTENT_PATTERNS = [
+  /\bmust\b/,
+  /\bneed\b/,
+  /\brequire(?:d)?\b/,
+  /\bonly\b/,
+  /\bnon[-\s]?negotiable\b/,
+  /\bdeal[-\s]?breaker\b/,
+  /\bhas to\b/,
+  /\bhave to\b/,
+];
 
 // Keyword mappings for lightweight parsing (extend as needed).
 const USER_INPUT_HINT_MAPPINGS = {
@@ -367,6 +383,47 @@ const deriveUserPreferences = (prefs: Preferences): DerivedPreferences => {
   };
 };
 
+const containsStrongIntent = (input: string) =>
+  STRONG_INTENT_PATTERNS.some((pattern) => pattern.test(input));
+
+const deriveHardRequirements = (prefs: Preferences, userInput: string): HardRequirements => {
+  const normalizedInput = userInput.toLowerCase();
+  if (!containsStrongIntent(normalizedInput)) {
+    return {
+      requireFuelTypeHint: null,
+      requireDrivetrainHint: null,
+    };
+  }
+
+  return {
+    requireFuelTypeHint: prefs.fuelTypeHint,
+    requireDrivetrainHint: prefs.drivetrainHint,
+  };
+};
+
+const filterCarsByHardRequirements = (
+  cars: CandidateCar[],
+  hardRequirements: HardRequirements,
+) => {
+  return cars.filter((car) => {
+    if (
+      hardRequirements.requireFuelTypeHint &&
+      !matchesFuelTypeHint(hardRequirements.requireFuelTypeHint, car.fuelType ?? null)
+    ) {
+      return false;
+    }
+
+    if (
+      hardRequirements.requireDrivetrainHint &&
+      !matchesDrivetrainHint(hardRequirements.requireDrivetrainHint, car.drive ?? null)
+    ) {
+      return false;
+    }
+
+    return true;
+  });
+};
+
 const scoreFieldMatch = (
   value: string | null | undefined,
   preferredValues: string[],
@@ -518,9 +575,11 @@ const computeCompositeScore = (
 };
 
 export {
+  deriveHardRequirements,
   DEFAULT_WEIGHTS,
   computeCompositeScore,
   computeNormalizedScores,
+  filterCarsByHardRequirements,
   getNormalizationBounds,
   normalizeRange,
   resolveWeights,
@@ -1105,13 +1164,16 @@ serve(async (req) => {
       };
     });
 
-    const bounds = getNormalizationBounds(candidates);
-    const weights = resolveWeights(prefs);
-    const derivedPreferences = deriveUserPreferences(prefs);
+    const hardRequirements = deriveHardRequirements(mergedPrefs, inputText);
+    const filteredCandidates = filterCarsByHardRequirements(candidates, hardRequirements);
 
-    const scoredCars = candidates.map((car) => ({
+    const bounds = getNormalizationBounds(filteredCandidates);
+    const weights = resolveWeights(mergedPrefs);
+    const derivedPreferences = deriveUserPreferences(mergedPrefs);
+
+    const scoredCars = filteredCandidates.map((car) => ({
       candidate: car,
-      scored: scoreCar(car, prefs, bounds, weights, derivedPreferences),
+      scored: scoreCar(car, mergedPrefs, bounds, weights, derivedPreferences),
     }));
 
     const diverseTopCars = selectDiverseTopCars(scoredCars, 3, 1);
