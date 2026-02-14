@@ -105,6 +105,10 @@ interface DerivedPreferences {
   preferredTransmissions: string[];
   wantsFuelEconomy: boolean;
   wantsLowerEmissions: boolean;
+  wantsFunToDrive: boolean;
+  wantsEvOrHybrid: boolean;
+  wantsEvOnly: boolean;
+  wantsSafety: boolean;
 }
 
 const normalizeValue = (value: string) => value.toLowerCase().replace(/\s+/g, "-");
@@ -239,7 +243,7 @@ const DEFAULT_WEIGHTS: ScoreWeights = {
   emissions_weight: 0.05,
 };
 
-const resolveWeights = (prefs: Preferences): ScoreWeights => {
+const resolveWeights = (prefs: Preferences, derivedPreferences?: DerivedPreferences): ScoreWeights => {
   const comfort = prefs.comfort_weight ?? DEFAULT_WEIGHTS.comfort_weight;
   const sportiness = prefs.sportiness_weight ?? DEFAULT_WEIGHTS.sportiness_weight;
   const price = prefs.price_weight ?? DEFAULT_WEIGHTS.price_weight;
@@ -249,31 +253,64 @@ const resolveWeights = (prefs: Preferences): ScoreWeights => {
   const transmission = prefs.transmission_weight ?? DEFAULT_WEIGHTS.transmission_weight;
   const mpg = prefs.mpg_weight ?? DEFAULT_WEIGHTS.mpg_weight;
   const emissions = prefs.emissions_weight ?? DEFAULT_WEIGHTS.emissions_weight;
+
+  let adjustedComfort = comfort;
+  let adjustedSportiness = sportiness;
+  const adjustedPrice = price;
+  const adjustedBudget = budget;
+  let adjustedFuelType = fuelType;
+  let adjustedDrive = drive;
+  let adjustedTransmission = transmission;
+  let adjustedMpg = mpg;
+  let adjustedEmissions = emissions;
+
+  if (derivedPreferences?.wantsFunToDrive) {
+    adjustedSportiness *= 1.8;
+    adjustedTransmission *= 1.3;
+  }
+
+  if (derivedPreferences?.wantsFuelEconomy) {
+    adjustedMpg *= 1.6;
+    adjustedEmissions *= 1.5;
+    adjustedFuelType *= 1.3;
+  }
+
+  if (derivedPreferences?.wantsEvOrHybrid) {
+    adjustedFuelType *= 1.8;
+    adjustedMpg *= 1.4;
+    adjustedEmissions *= 1.6;
+  }
+
+  if (derivedPreferences?.wantsSafety) {
+    adjustedComfort *= 1.4;
+    adjustedDrive *= 1.2;
+  }
+
   const total =
-    comfort +
-    sportiness +
-    price +
-    budget +
-    fuelType +
-    drive +
-    transmission +
-    mpg +
-    emissions;
+    adjustedComfort +
+    adjustedSportiness +
+    adjustedPrice +
+    adjustedBudget +
+    adjustedFuelType +
+    adjustedDrive +
+    adjustedTransmission +
+    adjustedMpg +
+    adjustedEmissions;
 
   if (!Number.isFinite(total) || total <= 0) {
     return { ...DEFAULT_WEIGHTS };
   }
 
   return {
-    comfort_weight: comfort / total,
-    sportiness_weight: sportiness / total,
-    price_weight: price / total,
-    budget_weight: budget / total,
-    fuel_type_weight: fuelType / total,
-    drive_weight: drive / total,
-    transmission_weight: transmission / total,
-    mpg_weight: mpg / total,
-    emissions_weight: emissions / total,
+    comfort_weight: adjustedComfort / total,
+    sportiness_weight: adjustedSportiness / total,
+    price_weight: adjustedPrice / total,
+    budget_weight: adjustedBudget / total,
+    fuel_type_weight: adjustedFuelType / total,
+    drive_weight: adjustedDrive / total,
+    transmission_weight: adjustedTransmission / total,
+    mpg_weight: adjustedMpg / total,
+    emissions_weight: adjustedEmissions / total,
   };
 };
 
@@ -333,6 +370,10 @@ const clampScore = (value: number) => Math.min(1, Math.max(0, value));
 
 const deriveUserPreferences = (prefs: Preferences): DerivedPreferences => {
   const priorities = new Set(prefs.priorities.map((priority) => normalizeValue(priority)));
+  const wantsFunToDrive = priorities.has("fun-to-drive");
+  const wantsEvOnly = priorities.has("ev");
+  const wantsEvOrHybrid = wantsEvOnly || priorities.has("hybrid");
+  const wantsSafety = priorities.has("safe") || priorities.has("safety");
   const wantsFuelEconomy =
     priorities.has("fuel-economy") || priorities.has("ev") || priorities.has("hybrid");
   const wantsLowerEmissions = wantsFuelEconomy;
@@ -354,7 +395,7 @@ const deriveUserPreferences = (prefs: Preferences): DerivedPreferences => {
   }
 
   const preferredTransmissions: string[] = [];
-  if (priorities.has("fun-to-drive")) {
+  if (wantsFunToDrive) {
     preferredTransmissions.push("manual", "automated manual", "dual-clutch");
   }
 
@@ -364,7 +405,22 @@ const deriveUserPreferences = (prefs: Preferences): DerivedPreferences => {
     preferredTransmissions,
     wantsFuelEconomy,
     wantsLowerEmissions,
+    wantsFunToDrive,
+    wantsEvOrHybrid,
+    wantsEvOnly,
+    wantsSafety,
   };
+};
+
+const isGasOnlyVehicle = (fuelType: string | null | undefined) => {
+  if (!fuelType) {
+    return false;
+  }
+  const normalizedFuelType = fuelType.toLowerCase();
+  const hasElectric = normalizedFuelType.includes("electric");
+  const hasHybrid = normalizedFuelType.includes("hybrid");
+  const hasGas = normalizedFuelType.includes("gas") || normalizedFuelType.includes("petrol");
+  return hasGas && !hasElectric && !hasHybrid;
 };
 
 const scoreFieldMatch = (
@@ -537,6 +593,9 @@ const formatFuelEconomy = (row: CarRow) => {
 };
 
 const PRIORITY_TAG_MAP: Record<string, string[]> = {
+  safe: ["safe"],
+  safety: ["safe"],
+  "fun-to-drive": ["fun-to-drive"],
   "eco-friendly": ["ev", "hybrid", "low-co2", "high-mpg"],
   "fuel-economy": ["fuel-economy", "high-mpg", "low-co2"],
   efficiency: ["fuel-economy", "high-mpg", "low-co2"],
@@ -574,6 +633,9 @@ const deriveTags = (row: CarRow) => {
   if (row.co2_gpm && row.co2_gpm <= 200) {
     tags.push("low-co2");
   }
+  if (row.sportiness_score && row.sportiness_score >= 7) {
+    tags.push("fun-to-drive");
+  }
   if (fuelType.includes("electricity") || fuelType.includes("electric")) {
     tags.push("ev");
   }
@@ -594,6 +656,9 @@ const deriveTags = (row: CarRow) => {
   }
   if (drive.includes("awd") || drive.includes("4wd")) {
     tags.push("all-wheel-drive");
+  }
+  if (drive.includes("awd") || drive.includes("4wd") || vehicleClass.includes("suv")) {
+    tags.push("safe");
   }
   if (drive.includes("fwd") || drive.includes("front")) {
     tags.push("fwd");
@@ -822,7 +887,14 @@ const scoreCar = (
   const priorityMatchRatio = priorityMatches.length
     ? matchScore / priorityMatches.length
     : 0;
-  matchBonus += Math.round(priorityMatchRatio * 12);
+  const exactPriorityMatches = prefs.priorities.filter((priority) => {
+    const normalizedPriority = normalizeValue(priority);
+    return car.tags.includes(normalizedPriority);
+  });
+  matchBonus += Math.round(priorityMatchRatio * 12) + exactPriorityMatches.length * 3;
+  if (derivedPreferences.wantsEvOrHybrid && isGasOnlyVehicle(car.fuelType)) {
+    matchBonus -= 8;
+  }
   const score = Math.min(100, Math.round(compositeScore * 100 + matchBonus));
 
   if (matchedPriorityTags.length > 0) {
@@ -1106,12 +1178,34 @@ serve(async (req) => {
     });
 
     const bounds = getNormalizationBounds(candidates);
-    const weights = resolveWeights(prefs);
-    const derivedPreferences = deriveUserPreferences(prefs);
+    const derivedPreferences = deriveUserPreferences(mergedPrefs);
 
-    const scoredCars = candidates.map((car) => ({
+    let filteredCandidates = candidates;
+    if (derivedPreferences.wantsFunToDrive) {
+      filteredCandidates = filteredCandidates.filter((car) => {
+        const normalizedSportiness = typeof car.sportinessScore === "number"
+          ? normalizeRange(car.sportinessScore, bounds.minSportiness, bounds.maxSportiness)
+          : 0.5;
+        return normalizedSportiness >= 0.4;
+      });
+    }
+
+    if (derivedPreferences.wantsEvOrHybrid) {
+      const electrifiedCandidates = filteredCandidates.filter((car) => !isGasOnlyVehicle(car.fuelType));
+      if (electrifiedCandidates.length > 0) {
+        filteredCandidates = derivedPreferences.wantsEvOnly
+          ? electrifiedCandidates.filter((car) => car.tags.includes("ev"))
+          : electrifiedCandidates;
+      }
+    }
+
+    const scoringCandidates = filteredCandidates.length > 0 ? filteredCandidates : candidates;
+    const scoringBounds = getNormalizationBounds(scoringCandidates);
+    const weights = resolveWeights(mergedPrefs, derivedPreferences);
+
+    const scoredCars = scoringCandidates.map((car) => ({
       candidate: car,
-      scored: scoreCar(car, prefs, bounds, weights, derivedPreferences),
+      scored: scoreCar(car, mergedPrefs, scoringBounds, weights, derivedPreferences),
     }));
 
     const diverseTopCars = selectDiverseTopCars(scoredCars, 3, 1);
