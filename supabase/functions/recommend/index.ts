@@ -407,6 +407,16 @@ const hasStrongIntentForHint = (input: string, tokens: readonly string[]) => {
 
   const tokenPattern = tokens.map(escapeForRegex).join("|");
   const cuePattern = STRONG_INTENT_CUES.map(escapeForRegex).join("|");
+  const negationPattern = [
+    "don't",
+    "dont",
+    "do not",
+    "doesn't",
+    "does not",
+    "not",
+    "no",
+    "never",
+  ].map(escapeForRegex).join("|");
 
   const cueBeforeToken = new RegExp(
     `\\b(?:${cuePattern})\\b(?:\\s+\\w+){0,3}\\s+(?:${tokenPattern})\\b`,
@@ -416,6 +426,19 @@ const hasStrongIntentForHint = (input: string, tokens: readonly string[]) => {
     `\\b(?:${tokenPattern})\\b(?:\\s+\\w+){0,3}\\s+\\bonly\\b`,
     "i",
   );
+
+  const negatedCueBeforeToken = new RegExp(
+    `\\b(?:${negationPattern})\\b(?:\\s+\\w+){0,2}\\s+(?:need|require|required|must|have\\s+to|has\\s+to)\\b(?:\\s+\\w+){0,3}\\s+(?:${tokenPattern})\\b`,
+    "i",
+  );
+  const tokenBeforeNegatedNeed = new RegExp(
+    `\\b(?:${tokenPattern})\\b(?:\\s+\\w+){0,3}\\s+(?:is\\s+)?(?:not\\s+required|not\\s+needed|optional)\\b`,
+    "i",
+  );
+
+  if (negatedCueBeforeToken.test(input) || tokenBeforeNegatedNeed.test(input)) {
+    return false;
+  }
 
   return cueBeforeToken.test(input) || tokenBeforeOnlyCue.test(input);
 };
