@@ -213,6 +213,23 @@ Deno.test("deriveHardRequirements sets AWD and electric as required with strong 
   });
 });
 
+
+Deno.test("deriveHardRequirements ignores generic strong words not tied to AWD/electric hint", () => {
+  const hardRequirements = deriveHardRequirements(
+    {
+      ...basePrefs,
+      drivetrainHint: "AWD/4WD",
+      fuelTypeHint: "Electric",
+    },
+    "I need a car for commuting in the city with good range.",
+  );
+
+  assertEquals(hardRequirements, {
+    requireFuelTypeHint: null,
+    requireDrivetrainHint: null,
+  });
+});
+
 Deno.test("filterCarsByHardRequirements removes cars that fail required hints", () => {
   const cars = [
     {

@@ -123,16 +123,31 @@ type ParsedHints = {
   priorityTags: string[];
 };
 
-const STRONG_INTENT_PATTERNS = [
-  /\bmust\b/,
-  /\bneed\b/,
-  /\brequire(?:d)?\b/,
-  /\bonly\b/,
-  /\bnon[-\s]?negotiable\b/,
-  /\bdeal[-\s]?breaker\b/,
-  /\bhas to\b/,
-  /\bhave to\b/,
-];
+const STRONG_INTENT_CUES = [
+  "must",
+  "need",
+  "required",
+  "require",
+  "only",
+  "non-negotiable",
+  "deal-breaker",
+  "has to",
+  "have to",
+] as const;
+
+const HARD_REQUIREMENT_TOKENS = {
+  fuelType: {
+    electric: ["electric", "ev", "battery"],
+    hybrid: ["hybrid", "plug-in", "phev"],
+    diesel: ["diesel"],
+    gasoline: ["gas", "gasoline", "petrol"],
+  },
+  drivetrain: {
+    "awd/4wd": ["awd", "4wd", "4x4", "all wheel", "all-wheel", "four wheel"],
+    fwd: ["fwd", "front wheel", "front-wheel"],
+    rwd: ["rwd", "rear wheel", "rear-wheel"],
+  },
+} as const;
 
 // Keyword mappings for lightweight parsing (extend as needed).
 const USER_INPUT_HINT_MAPPINGS = {
@@ -383,21 +398,47 @@ const deriveUserPreferences = (prefs: Preferences): DerivedPreferences => {
   };
 };
 
-const containsStrongIntent = (input: string) =>
-  STRONG_INTENT_PATTERNS.some((pattern) => pattern.test(input));
+const escapeForRegex = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+const hasStrongIntentForHint = (input: string, tokens: readonly string[]) => {
+  if (!tokens.length) {
+    return false;
+  }
+
+  const tokenPattern = tokens.map(escapeForRegex).join("|");
+  const cuePattern = STRONG_INTENT_CUES.map(escapeForRegex).join("|");
+
+  const cueBeforeToken = new RegExp(
+    `\\b(?:${cuePattern})\\b(?:\\s+\\w+){0,3}\\s+(?:${tokenPattern})\\b`,
+    "i",
+  );
+  const tokenBeforeOnlyCue = new RegExp(
+    `\\b(?:${tokenPattern})\\b(?:\\s+\\w+){0,3}\\s+\\bonly\\b`,
+    "i",
+  );
+
+  return cueBeforeToken.test(input) || tokenBeforeOnlyCue.test(input);
+};
 
 const deriveHardRequirements = (prefs: Preferences, userInput: string): HardRequirements => {
   const normalizedInput = userInput.toLowerCase();
-  if (!containsStrongIntent(normalizedInput)) {
-    return {
-      requireFuelTypeHint: null,
-      requireDrivetrainHint: null,
-    };
-  }
+
+  const fuelHintKey = prefs.fuelTypeHint?.toLowerCase() as keyof typeof HARD_REQUIREMENT_TOKENS.fuelType | undefined;
+  const driveHintKey = prefs.drivetrainHint?.toLowerCase() as keyof typeof HARD_REQUIREMENT_TOKENS.drivetrain | undefined;
+
+  const requireFuelTypeHint = fuelHintKey &&
+      hasStrongIntentForHint(normalizedInput, HARD_REQUIREMENT_TOKENS.fuelType[fuelHintKey])
+    ? prefs.fuelTypeHint
+    : null;
+
+  const requireDrivetrainHint = driveHintKey &&
+      hasStrongIntentForHint(normalizedInput, HARD_REQUIREMENT_TOKENS.drivetrain[driveHintKey])
+    ? prefs.drivetrainHint
+    : null;
 
   return {
-    requireFuelTypeHint: prefs.fuelTypeHint,
-    requireDrivetrainHint: prefs.drivetrainHint,
+    requireFuelTypeHint,
+    requireDrivetrainHint,
   };
 };
 
