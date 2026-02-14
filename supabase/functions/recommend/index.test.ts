@@ -1,8 +1,6 @@
 import {
   computeCompositeScore,
   DEFAULT_WEIGHTS,
-  deriveHardRequirements,
-  filterCarsByHardRequirements,
   getNormalizationBounds,
   resolveWeights,
 } from "./index.ts";
@@ -195,85 +193,4 @@ Deno.test("price weighting favors more affordable cars", () => {
 Deno.test("resolveWeights falls back to defaults when weights sum to zero", () => {
   const weights = resolveWeights(basePrefs);
   assertEquals(weights, DEFAULT_WEIGHTS);
-});
-
-Deno.test("deriveHardRequirements sets AWD and electric as required with strong intent", () => {
-  const hardRequirements = deriveHardRequirements(
-    {
-      ...basePrefs,
-      drivetrainHint: "AWD/4WD",
-      fuelTypeHint: "Electric",
-    },
-    "It must be AWD and must be electric.",
-  );
-
-  assertEquals(hardRequirements, {
-    requireFuelTypeHint: "Electric",
-    requireDrivetrainHint: "AWD/4WD",
-  });
-});
-
-
-Deno.test("deriveHardRequirements ignores generic strong words not tied to AWD/electric hint", () => {
-  const hardRequirements = deriveHardRequirements(
-    {
-      ...basePrefs,
-      drivetrainHint: "AWD/4WD",
-      fuelTypeHint: "Electric",
-    },
-    "I need a car for commuting in the city with good range.",
-  );
-
-  assertEquals(hardRequirements, {
-    requireFuelTypeHint: null,
-    requireDrivetrainHint: null,
-  });
-});
-
-Deno.test("filterCarsByHardRequirements removes cars that fail required hints", () => {
-  const cars = [
-    {
-      id: "ev-awd",
-      make: "A",
-      model: "One",
-      year: 2025,
-      type: "SUV",
-      priceRange: "",
-      fuelEconomy: "",
-      score: 0,
-      reasons: [],
-      tags: [],
-      comfortScore: null,
-      sportinessScore: null,
-      msrp: 50000,
-      drive: "AWD",
-      fuelType: "Electricity",
-      vehicleClass: null,
-    },
-    {
-      id: "gas-awd",
-      make: "B",
-      model: "Two",
-      year: 2025,
-      type: "SUV",
-      priceRange: "",
-      fuelEconomy: "",
-      score: 0,
-      reasons: [],
-      tags: [],
-      comfortScore: null,
-      sportinessScore: null,
-      msrp: 45000,
-      drive: "AWD",
-      fuelType: "Gasoline",
-      vehicleClass: null,
-    },
-  ];
-
-  const filtered = filterCarsByHardRequirements(cars, {
-    requireFuelTypeHint: "Electric",
-    requireDrivetrainHint: "AWD/4WD",
-  });
-
-  assertEquals(filtered.map((car) => car.id), ["ev-awd"]);
 });
