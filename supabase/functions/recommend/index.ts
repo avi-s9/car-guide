@@ -504,11 +504,31 @@ const computeCompositeScore = (
     normalizedCo2Gpm,
   } = computeNormalizedScores(car, bounds, prefs, derivedPreferences);
 
+  const hasHighBudget = (prefs.budgetHigh ?? 0) >= 75000;
+  let affordabilityWeight = weights.price_weight;
+  let budgetFitWeight = weights.budget_weight;
+  let comfortWeight = weights.comfort_weight;
+  let sportinessWeight = weights.sportiness_weight;
+
+  if (hasHighBudget) {
+    const affordabilityReductionFactor = 0.35;
+    const reducedAffordabilityWeight =
+      (affordabilityWeight + budgetFitWeight) * affordabilityReductionFactor;
+    const redistributedWeight =
+      affordabilityWeight + budgetFitWeight - reducedAffordabilityWeight;
+
+    affordabilityWeight = reducedAffordabilityWeight * 0.55;
+    budgetFitWeight = reducedAffordabilityWeight * 0.45;
+
+    comfortWeight += redistributedWeight * 0.5;
+    sportinessWeight += redistributedWeight * 0.5;
+  }
+
   return (
-    weights.comfort_weight * normalizedComfort +
-    weights.sportiness_weight * normalizedSportiness +
-    weights.price_weight * normalizedAffordability +
-    weights.budget_weight * normalizedBudgetFit +
+    comfortWeight * normalizedComfort +
+    sportinessWeight * normalizedSportiness +
+    affordabilityWeight * normalizedAffordability +
+    budgetFitWeight * normalizedBudgetFit +
     weights.fuel_type_weight * normalizedFuelType +
     weights.drive_weight * normalizedDrive +
     weights.transmission_weight * normalizedTransmission +

@@ -194,3 +194,99 @@ Deno.test("resolveWeights falls back to defaults when weights sum to zero", () =
   const weights = resolveWeights(basePrefs);
   assertEquals(weights, DEFAULT_WEIGHTS);
 });
+
+Deno.test("high-budget users are less price-penalized and favor premium comfort/performance", () => {
+  const cars = [
+    {
+      id: "value-e",
+      make: "Value",
+      model: "E",
+      year: 2025,
+      type: "Sedan",
+      priceRange: "",
+      fuelEconomy: "",
+      score: 0,
+      reasons: [],
+      tags: [],
+      comfortScore: 4,
+      sportinessScore: 4,
+      msrp: 45000,
+      drive: null,
+      fuelType: null,
+      vehicleClass: null,
+    },
+    {
+      id: "premium-f",
+      make: "Premium",
+      model: "F",
+      year: 2025,
+      type: "Sedan",
+      priceRange: "",
+      fuelEconomy: "",
+      score: 0,
+      reasons: [],
+      tags: [],
+      comfortScore: 9,
+      sportinessScore: 9,
+      msrp: 90000,
+      drive: null,
+      fuelType: null,
+      vehicleClass: null,
+    },
+  ];
+  const bounds = getNormalizationBounds(cars);
+
+  const lowBudgetPrefs = {
+    ...basePrefs,
+    budgetLow: 30000,
+    budgetHigh: 45000,
+    comfort_weight: 0.2,
+    sportiness_weight: 0.2,
+    price_weight: 0.4,
+    budget_weight: 0.2,
+  };
+  const highBudgetPrefs = {
+    ...basePrefs,
+    budgetLow: 60000,
+    budgetHigh: 90000,
+    comfort_weight: 0.2,
+    sportiness_weight: 0.2,
+    price_weight: 0.4,
+    budget_weight: 0.2,
+  };
+
+  const lowBudgetWeights = resolveWeights(lowBudgetPrefs);
+  const highBudgetWeights = resolveWeights(highBudgetPrefs);
+
+  const lowBudgetValueScore = computeCompositeScore(
+    cars[0],
+    bounds,
+    lowBudgetWeights,
+    lowBudgetPrefs,
+    baseDerivedPreferences,
+  );
+  const lowBudgetPremiumScore = computeCompositeScore(
+    cars[1],
+    bounds,
+    lowBudgetWeights,
+    lowBudgetPrefs,
+    baseDerivedPreferences,
+  );
+  assert(lowBudgetValueScore > lowBudgetPremiumScore);
+
+  const highBudgetValueScore = computeCompositeScore(
+    cars[0],
+    bounds,
+    highBudgetWeights,
+    highBudgetPrefs,
+    baseDerivedPreferences,
+  );
+  const highBudgetPremiumScore = computeCompositeScore(
+    cars[1],
+    bounds,
+    highBudgetWeights,
+    highBudgetPrefs,
+    baseDerivedPreferences,
+  );
+  assert(highBudgetPremiumScore > highBudgetValueScore);
+});
