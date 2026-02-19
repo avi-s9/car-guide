@@ -111,6 +111,11 @@ interface DerivedPreferences {
   wantsSafety: boolean;
 }
 
+interface HardRequirements {
+  requireFuelTypeHint: string | null;
+  requireDrivetrainHint: string | null;
+}
+
 const normalizeValue = (value: string) => value.toLowerCase().replace(/\s+/g, "-");
 
 type ParsedHints = {
@@ -121,6 +126,32 @@ type ParsedHints = {
   efficiencyHint?: "high";
   priorityTags: string[];
 };
+
+const STRONG_INTENT_CUES = [
+  "must",
+  "need",
+  "required",
+  "require",
+  "only",
+  "non-negotiable",
+  "deal-breaker",
+  "has to",
+  "have to",
+] as const;
+
+const HARD_REQUIREMENT_TOKENS = {
+  fuelType: {
+    electric: ["electric", "ev", "battery"],
+    hybrid: ["hybrid", "plug-in", "phev"],
+    diesel: ["diesel"],
+    gasoline: ["gas", "gasoline", "petrol"],
+  },
+  drivetrain: {
+    "awd/4wd": ["awd", "4wd", "4x4", "all wheel", "all-wheel", "four wheel"],
+    fwd: ["fwd", "front wheel", "front-wheel"],
+    rwd: ["rwd", "rear wheel", "rear-wheel"],
+  },
+} as const;
 
 // Keyword mappings for lightweight parsing (extend as needed).
 const USER_INPUT_HINT_MAPPINGS = {
@@ -412,6 +443,102 @@ const deriveUserPreferences = (prefs: Preferences): DerivedPreferences => {
   };
 };
 
+const escapeForRegex = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+const hasStrongIntentForHint = (input: string, tokens: readonly string[]) => {
+  if (!tokens.length) {
+    return false;
+  }
+
+  const tokenPattern = tokens.map(escapeForRegex).join("|");
+  const cuePattern = STRONG_INTENT_CUES.map(escapeForRegex).join("|");
+  const negationPattern = [
+    "don't",
+    "dont",
+    "do not",
+    "doesn't",
+    "does not",
+    "not",
+    "no",
+    "never",
+  ].map(escapeForRegex).join("|");
+
+  const cueBeforeToken = new RegExp(
+    `\\b(?:${cuePattern})\\b(?:\\s+\\w+){0,3}\\s+(?:${tokenPattern})\\b`,
+    "i",
+  );
+  const tokenBeforeOnlyCue = new RegExp(
+    `\\b(?:${tokenPattern})\\b(?:\\s+\\w+){0,3}\\s+\\bonly\\b`,
+    "i",
+  );
+  const tokenBeforeRequiredCue = new RegExp(
+    `\\b(?:${tokenPattern})\\b(?:\\s+\\w+){0,3}\\s+(?:is\\s+)?(?:required|mandatory|must-have|non-negotiable)\\b`,
+    "i",
+  );
+
+  const negatedCueBeforeToken = new RegExp(
+    `\\b(?:${negationPattern})\\b(?:\\s+\\w+){0,2}\\s+(?:need|require|required|must|have\\s+to|has\\s+to)\\b(?:\\s+\\w+){0,3}\\s+(?:${tokenPattern})\\b`,
+    "i",
+  );
+  const tokenBeforeNegatedNeed = new RegExp(
+    `\\b(?:${tokenPattern})\\b(?:\\s+\\w+){0,3}\\s+(?:is\\s+)?(?:not\\s+required|not\\s+needed|optional)\\b`,
+    "i",
+  );
+
+  if (negatedCueBeforeToken.test(input) || tokenBeforeNegatedNeed.test(input)) {
+    return false;
+  }
+
+  return cueBeforeToken.test(input) ||
+    tokenBeforeOnlyCue.test(input) ||
+    tokenBeforeRequiredCue.test(input);
+};
+
+const deriveHardRequirements = (prefs: Preferences, userInput: string): HardRequirements => {
+  const normalizedInput = userInput.toLowerCase();
+
+  const fuelHintKey = prefs.fuelTypeHint?.toLowerCase() as keyof typeof HARD_REQUIREMENT_TOKENS.fuelType | undefined;
+  const driveHintKey = prefs.drivetrainHint?.toLowerCase() as keyof typeof HARD_REQUIREMENT_TOKENS.drivetrain | undefined;
+
+  const requireFuelTypeHint = fuelHintKey &&
+      hasStrongIntentForHint(normalizedInput, HARD_REQUIREMENT_TOKENS.fuelType[fuelHintKey])
+    ? prefs.fuelTypeHint
+    : null;
+
+  const requireDrivetrainHint = driveHintKey &&
+      hasStrongIntentForHint(normalizedInput, HARD_REQUIREMENT_TOKENS.drivetrain[driveHintKey])
+    ? prefs.drivetrainHint
+    : null;
+
+  return {
+    requireFuelTypeHint,
+    requireDrivetrainHint,
+  };
+};
+
+const filterCarsByHardRequirements = (
+  cars: CandidateCar[],
+  hardRequirements: HardRequirements,
+) => {
+  return cars.filter((car) => {
+    if (
+      hardRequirements.requireFuelTypeHint &&
+      !matchesFuelTypeHint(hardRequirements.requireFuelTypeHint, car.fuelType ?? null)
+    ) {
+      return false;
+    }
+
+    if (
+      hardRequirements.requireDrivetrainHint &&
+      !matchesDrivetrainHint(hardRequirements.requireDrivetrainHint, car.drive ?? null)
+    ) {
+      return false;
+    }
+
+    return true;
+  });
+};
+
 const isGasOnlyVehicle = (fuelType: string | null | undefined) => {
   if (!fuelType) {
     return false;
@@ -594,9 +721,11 @@ const computeCompositeScore = (
 };
 
 export {
+  deriveHardRequirements,
   DEFAULT_WEIGHTS,
   computeCompositeScore,
   computeNormalizedScores,
+  filterCarsByHardRequirements,
   getNormalizationBounds,
   normalizeRange,
   resolveWeights,
@@ -1197,10 +1326,13 @@ serve(async (req) => {
       };
     });
 
-    const bounds = getNormalizationBounds(candidates);
+    const hardRequirements = deriveHardRequirements(mergedPrefs, inputText);
+    const hardFilteredCandidates = filterCarsByHardRequirements(candidates, hardRequirements);
+
+    const bounds = getNormalizationBounds(hardFilteredCandidates);
     const derivedPreferences = deriveUserPreferences(mergedPrefs);
 
-    let filteredCandidates = candidates;
+    let filteredCandidates = hardFilteredCandidates;
     if (derivedPreferences.wantsFunToDrive) {
       filteredCandidates = filteredCandidates.filter((car) => {
         const normalizedSportiness = typeof car.sportinessScore === "number"
@@ -1219,7 +1351,7 @@ serve(async (req) => {
       }
     }
 
-    const scoringCandidates = filteredCandidates.length > 0 ? filteredCandidates : candidates;
+    const scoringCandidates = filteredCandidates;
     const scoringBounds = getNormalizationBounds(scoringCandidates);
     const weights = resolveWeights(mergedPrefs, derivedPreferences);
 
