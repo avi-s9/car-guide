@@ -51,6 +51,37 @@ Deno.test("deriveHardRequirements ignores generic strong words not tied to AWD/e
 });
 
 
+
+Deno.test("deriveHardRequirements enforces drivetrain when token is before required cue", () => {
+  const hardRequirements = deriveHardRequirements(
+    {
+      ...basePrefs,
+      drivetrainHint: "AWD/4WD",
+    },
+    "AWD is required for winter driving.",
+  );
+
+  assertEquals(hardRequirements, {
+    requireFuelTypeHint: null,
+    requireDrivetrainHint: "AWD/4WD",
+  });
+});
+
+Deno.test("deriveHardRequirements enforces fuel type when token is before required cue", () => {
+  const hardRequirements = deriveHardRequirements(
+    {
+      ...basePrefs,
+      fuelTypeHint: "Electric",
+    },
+    "Electric is required for my next car.",
+  );
+
+  assertEquals(hardRequirements, {
+    requireFuelTypeHint: "Electric",
+    requireDrivetrainHint: null,
+  });
+});
+
 Deno.test("deriveHardRequirements does not enforce drivetrain for negated need", () => {
   const hardRequirements = deriveHardRequirements(
     {

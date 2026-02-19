@@ -426,6 +426,10 @@ const hasStrongIntentForHint = (input: string, tokens: readonly string[]) => {
     `\\b(?:${tokenPattern})\\b(?:\\s+\\w+){0,3}\\s+\\bonly\\b`,
     "i",
   );
+  const tokenBeforeRequiredCue = new RegExp(
+    `\\b(?:${tokenPattern})\\b(?:\\s+\\w+){0,3}\\s+(?:is\\s+)?(?:required|mandatory|must-have|non-negotiable)\\b`,
+    "i",
+  );
 
   const negatedCueBeforeToken = new RegExp(
     `\\b(?:${negationPattern})\\b(?:\\s+\\w+){0,2}\\s+(?:need|require|required|must|have\\s+to|has\\s+to)\\b(?:\\s+\\w+){0,3}\\s+(?:${tokenPattern})\\b`,
@@ -440,7 +444,9 @@ const hasStrongIntentForHint = (input: string, tokens: readonly string[]) => {
     return false;
   }
 
-  return cueBeforeToken.test(input) || tokenBeforeOnlyCue.test(input);
+  return cueBeforeToken.test(input) ||
+    tokenBeforeOnlyCue.test(input) ||
+    tokenBeforeRequiredCue.test(input);
 };
 
 const deriveHardRequirements = (prefs: Preferences, userInput: string): HardRequirements => {
