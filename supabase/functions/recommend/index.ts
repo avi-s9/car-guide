@@ -537,6 +537,8 @@ const filterCarsByHardRequirements = (
 
     return true;
   });
+};
+
 const isGasOnlyVehicle = (fuelType: string | null | undefined) => {
   if (!fuelType) {
     return false;
@@ -1325,19 +1327,12 @@ serve(async (req) => {
     });
 
     const hardRequirements = deriveHardRequirements(mergedPrefs, inputText);
-    const filteredCandidates = filterCarsByHardRequirements(candidates, hardRequirements);
+    const hardFilteredCandidates = filterCarsByHardRequirements(candidates, hardRequirements);
 
-    const bounds = getNormalizationBounds(filteredCandidates);
-    const weights = resolveWeights(mergedPrefs);
+    const bounds = getNormalizationBounds(hardFilteredCandidates);
     const derivedPreferences = deriveUserPreferences(mergedPrefs);
 
-    const scoredCars = filteredCandidates.map((car) => ({
-      candidate: car,
-      scored: scoreCar(car, mergedPrefs, bounds, weights, derivedPreferences),
-    const bounds = getNormalizationBounds(candidates);
-    const derivedPreferences = deriveUserPreferences(mergedPrefs);
-
-    let filteredCandidates = candidates;
+    let filteredCandidates = hardFilteredCandidates;
     if (derivedPreferences.wantsFunToDrive) {
       filteredCandidates = filteredCandidates.filter((car) => {
         const normalizedSportiness = typeof car.sportinessScore === "number"
@@ -1356,7 +1351,7 @@ serve(async (req) => {
       }
     }
 
-    const scoringCandidates = filteredCandidates.length > 0 ? filteredCandidates : candidates;
+    const scoringCandidates = filteredCandidates;
     const scoringBounds = getNormalizationBounds(scoringCandidates);
     const weights = resolveWeights(mergedPrefs, derivedPreferences);
 
