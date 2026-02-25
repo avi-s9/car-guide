@@ -26,6 +26,10 @@ const baseDerivedPreferences = {
   preferredTransmissions: [] as string[],
   wantsFuelEconomy: false,
   wantsLowerEmissions: false,
+  wantsFunToDrive: false,
+  wantsEvOrHybrid: false,
+  wantsEvOnly: false,
+  wantsSafety: false,
 };
 
 Deno.test("comfort weighting favors more comfortable cars", () => {

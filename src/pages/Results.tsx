@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, RotateCcw } from "lucide-react";
 import { useEffect } from "react";
 import { CarCard } from "@/components/CarCard";
 
@@ -33,18 +33,13 @@ const Results = () => {
     return null;
   }
 
-    // Normalize scores so they land between 70–100 for display
   const rawScores = recommendations.map((car: CarRecommendation) => car.score);
   const minScore = Math.min(...rawScores);
   const maxScore = Math.max(...rawScores);
-  
+
   const normalizeScore = (score: number) => {
-    if (maxScore === minScore) {
-      // all scores are equal, just pick a nice mid-high number
-      return 90;
-    }
+    if (maxScore === minScore) return 90;
     const ratio = (score - minScore) / (maxScore - minScore);
-    // map to [70, 100]
     return Math.round(70 + ratio * 30);
   };
 
@@ -58,7 +53,6 @@ const Results = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
       <div className="container mx-auto px-4 py-12 max-w-6xl">
-        {/* Header */}
         <div className="mb-8">
           <Button
             variant="ghost"
@@ -66,21 +60,21 @@ const Results = () => {
             className="mb-4"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Search
+            Home
           </Button>
           <h1 className="text-4xl font-bold mb-3 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
             Your Top Matches
           </h1>
-          <p className="text-muted-foreground">
-            Based on your preferences: "{userInput?.substring(0, 100)}..."
-          </p>
+          {userInput && (
+            <p className="text-muted-foreground text-sm">
+              Based on: {userInput.substring(0, 120)}
+            </p>
+          )}
         </div>
 
-        {/* Results Grid */}
         <div className="grid gap-6">
           {recommendations.map((car: CarRecommendation, index: number) => {
             const displayScore = normalizeScore(car.score);
-
             return (
               <CarCard
                 key={index}
@@ -93,16 +87,15 @@ const Results = () => {
           })}
         </div>
 
-        {/* CTA */}
-        <Card className="mt-8 p-6 text-center bg-gradient-to-r from-primary/10 to-accent/10 border-2">
-          <p className="text-lg mb-4">Want to refine your search?</p>
+        <Card className="mt-8 p-6 text-center bg-gradient-to-r from-primary/10 to-accent/10 border border-border/60">
+          <p className="text-lg mb-4 font-medium">Want different results?</p>
           <Button
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/quiz")}
             size="lg"
-            variant="outline"
-            className="border-primary/50 hover:border-primary"
+            className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity"
           >
-            Start New Search
+            <RotateCcw className="w-4 h-4 mr-2" />
+            Refine answers
           </Button>
         </Card>
       </div>

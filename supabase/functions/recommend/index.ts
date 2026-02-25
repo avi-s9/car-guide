@@ -782,7 +782,7 @@ const deriveTags = (row: CarRow) => {
   if (row.co2_gpm && row.co2_gpm <= 200) {
     tags.push("low-co2");
   }
-  if (row.sportiness_score && row.sportiness_score >= 7) {
+  if (row.sportinessScore && row.sportinessScore >= 7) {
     tags.push("fun-to-drive");
   }
   if (fuelType.includes("electricity") || fuelType.includes("electric")) {
@@ -1295,8 +1295,25 @@ serve(async (req) => {
     }
 
     const candidates: CandidateCar[] = (data ?? []).map((row) => {
-      const fuelEconomy = formatFuelEconomy(row);
-      const tags = deriveTags(row);
+      const mapped: CarRow = {
+        id: row.id,
+        year: row.year,
+        make: row.make,
+        model: row.model,
+        vehicle_class: row.vehicle_class,
+        fuel_type: row.fuel_type,
+        drive: row.drive,
+        transmission: row.transmission,
+        city_mpg: row.city_mpg,
+        highway_mpg: row.highway_mpg,
+        combined_mpg: row.combined_mpg,
+        co2_gpm: row.co2_gpm,
+        msrp: row.msrp,
+        comfortScore: row.comfort_score,
+        sportinessScore: row.sportiness_score,
+      };
+      const fuelEconomy = formatFuelEconomy(mapped);
+      const tags = deriveTags(mapped);
       const priceRange = typeof row.msrp === "number"
         ? `$${row.msrp.toLocaleString()} MSRP`
         : "Check local pricing";
