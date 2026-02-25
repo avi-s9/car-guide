@@ -382,7 +382,7 @@ const Index = () => {
               </div>
               <h2 className="text-2xl font-semibold mb-2">Answer a few quick questions</h2>
               <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-                Not sure what to say? Our guided quiz walks you through the key decisions — budget, body style, and priorities.
+                Not sure what to say? Try the guided quiz for a single-screen filter + ranking flow.
               </p>
               <Button
                 onClick={() => navigate("/quiz")}

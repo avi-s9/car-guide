@@ -69,7 +69,7 @@ const Results = () => {
             Back to Search
           </Button>
           <h1 className="text-4xl font-bold mb-3 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            Your Top 3 Matches
+            Your Top Matches
           </h1>
           <p className="text-muted-foreground">
             Based on your preferences: "{userInput?.substring(0, 100)}..."
