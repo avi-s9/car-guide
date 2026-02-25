@@ -21,6 +21,7 @@ import {
   rankCars,
 } from "@/lib/quizEngine";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const priorityOptions: Priority[] = [
   "Balanced",
@@ -100,7 +101,7 @@ const Quiz = () => {
     setCurrentStep(0);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setHasSubmitted(true);
     if (!filteredCars.length) {
       return;
@@ -125,13 +126,33 @@ const Quiz = () => {
             ? "Strong overall balance across price, MPG, comfort and sportiness"
             : `Ranked high for ${priority.toLowerCase()}`,
         ],
-        aiExplanation: `High match for ${priority.toLowerCase()} with strong ${mpgMetric.label.toLowerCase()} and fit in your selected budget.`,
       };
     });
 
     const userInput = `Guided quiz: ${formatCurrency(budgetMin)}-${formatCurrency(budgetMax)}, vehicle type ${selectedVehicleTypes.length ? selectedVehicleTypes.join(", ") : "No preference"}, fuel ${selectedFuelTypes.length ? selectedFuelTypes.join(", ") : "No preference"}, driving ${drivingMix}, priority ${priority}`;
 
-    navigate("/results", { state: { recommendations, userInput } });
+    let recommendationsWithAi = recommendations;
+
+    try {
+      const { data, error } = await supabase.functions.invoke("explain", {
+        body: {
+          userInput,
+          recommendations,
+        },
+      });
+
+      if (error) {
+        console.error("Failed to generate AI explanations", error);
+        toast.warning("We couldn't generate AI explanations right now.");
+      } else if (Array.isArray(data?.recommendations)) {
+        recommendationsWithAi = data.recommendations;
+      }
+    } catch (error) {
+      console.error("Unexpected error calling explain function", error);
+      toast.warning("We couldn't generate AI explanations right now.");
+    }
+
+    navigate("/results", { state: { recommendations: recommendationsWithAi, userInput } });
   };
 
   const progress = ((currentStep + 1) / STEPS.length) * 100;
