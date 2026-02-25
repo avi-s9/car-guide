@@ -16,10 +16,21 @@ import {
   getAvailableFuelTypes,
   getAvailableVehicleTypes,
   getBudgetDefaults,
+  getMpgMetric,
   parseCarsCsv,
   rankCars,
 } from "@/lib/quizEngine";
 import { toast } from "sonner";
+
+const priorityOptions: Priority[] = [
+  "Balanced",
+  "Lowest price",
+  "Best fuel economy",
+  "Most comfortable",
+  "Sportiest",
+];
+
+const drivingMixOptions: DrivingMix[] = ["Mostly city", "Mostly highway", "Mix"];
 
 const Quiz = () => {
   const navigate = useNavigate();
@@ -99,29 +110,28 @@ const Quiz = () => {
     }
 
     const rankedCars = rankCars(filteredCars, drivingMix, priority).slice(0, 10);
-    const mpgLabel =
-      drivingMix === "Mostly city"
-        ? "city MPG"
-        : drivingMix === "Mostly highway"
-          ? "highway MPG"
-          : "combined MPG";
+    const recommendations = rankedCars.map((car) => {
+      const mpgMetric = getMpgMetric(car, drivingMix);
 
-    const recommendations = rankedCars.map((car) => ({
-      make: car.make,
-      model: car.model,
-      year: car.year,
-      type: car.vehicleClass,
-      priceRange: formatCurrency(car.msrp),
-      score: car.finalScore,
-      fuelEconomy: `${Math.round(car.combinedMpg)} MPG combined`,
-      safetyRating: null,
-      reasons: [
-        `Within your ${formatCurrency(budgetMin)}–${formatCurrency(budgetMax)} budget`,
-        `${Math.round(drivingMix === "Mostly city" ? car.cityMpg : drivingMix === "Mostly highway" ? car.highwayMpg : car.combinedMpg)} ${mpgLabel}`,
-        priority === "Balanced" ? "Strong overall balance across price, MPG, comfort and sportiness" : `Ranked high for ${priority.toLowerCase()}`,
-      ],
-      aiExplanation: `High match for ${priority.toLowerCase()} with strong ${mpgLabel.toLowerCase()} and fit in your selected budget.`,
-    }));
+      return {
+        make: car.make,
+        model: car.model,
+        year: car.year,
+        type: car.vehicleClass,
+        priceRange: formatCurrency(car.msrp),
+        score: car.finalScore,
+        fuelEconomy: `${Math.round(mpgMetric.value)} ${mpgMetric.label}`,
+        safetyRating: null,
+        reasons: [
+          `Within your ${formatCurrency(budgetMin)}–${formatCurrency(budgetMax)} budget`,
+          `${Math.round(mpgMetric.value)} ${mpgMetric.label}`,
+          priority === "Balanced"
+            ? "Strong overall balance across price, MPG, comfort and sportiness"
+            : `Ranked high for ${priority.toLowerCase()}`,
+        ],
+        aiExplanation: `High match for ${priority.toLowerCase()} with strong ${mpgMetric.label.toLowerCase()} and fit in your selected budget.`,
+      };
+    });
 
     const userInput = `Guided quiz: ${formatCurrency(budgetMin)}-${formatCurrency(budgetMax)}, vehicle type ${selectedVehicleTypes.length ? selectedVehicleTypes.join(", ") : "No preference"}, fuel ${selectedFuelTypes.length ? selectedFuelTypes.join(", ") : "No preference"}, driving ${drivingMix}, priority ${priority}`;
 
@@ -245,7 +255,7 @@ const Quiz = () => {
           <section className="space-y-3">
             <Label className="text-base font-semibold">Driving mix</Label>
             <div className="inline-flex rounded-lg border-2 border-border p-1 bg-muted/50" role="radiogroup" aria-label="Driving mix">
-              {(["Mostly city", "Mostly highway", "Mix"] as DrivingMix[]).map((option) => (
+              {drivingMixOptions.map((option) => (
                 <button
                   key={option}
                   type="button"
@@ -265,7 +275,7 @@ const Quiz = () => {
           <section className="space-y-3">
             <Label className="text-base font-semibold">Priority</Label>
             <RadioGroup value={priority} onValueChange={(value) => setPriority(value as Priority)} className="grid md:grid-cols-2 gap-3">
-              {(["Balanced", "Lowest price", "Best fuel economy", "Most comfortable", "Sportiest"] as Priority[]).map((option) => (
+              {priorityOptions.map((option) => (
                 <label key={option} htmlFor={`priority-${option.replace(/\s+/g, "-").toLowerCase()}`} className="flex items-center gap-3 rounded-lg border px-4 py-3 cursor-pointer hover:border-primary/50">
                   <RadioGroupItem value={option} id={`priority-${option.replace(/\s+/g, "-").toLowerCase()}`} />
                   <span className="text-sm font-medium">{option}</span>

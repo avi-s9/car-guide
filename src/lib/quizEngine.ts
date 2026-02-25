@@ -195,6 +195,16 @@ const fieldValueByMix = (car: CarRow, drivingMix: DrivingMix) => {
   return car.combinedMpg;
 };
 
+export const getMpgMetric = (car: CarRow, drivingMix: DrivingMix) => ({
+  label:
+    drivingMix === "Mostly city"
+      ? "city MPG"
+      : drivingMix === "Mostly highway"
+        ? "highway MPG"
+        : "combined MPG",
+  value: fieldValueByMix(car, drivingMix),
+});
+
 export const filterCars = (
   cars: CarRow[],
   budgetMin: number,
@@ -213,10 +223,6 @@ export const filterCars = (
     }
 
     if (normalizedFuelSet.size > 0 && !normalizedFuelSet.has(normalizeString(car.fuelType))) {
-      return false;
-    }
-
-    if (vehicleTypeSet.size === 0 && car.vehicleTypeBucket === "Other") {
       return false;
     }
 
