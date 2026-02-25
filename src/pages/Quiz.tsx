@@ -1,175 +1,151 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { ArrowLeft, Car, RotateCcw } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Progress } from "@/components/ui/progress";
-import { supabase } from "@/integrations/supabase/client";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Badge } from "@/components/ui/badge";
+import {
+  DrivingMix,
+  Priority,
+  VehicleType,
+  filterCars,
+  formatCurrency,
+  getAvailableFuelTypes,
+  getAvailableVehicleTypes,
+  getBudgetDefaults,
+  parseCarsCsv,
+  rankCars,
+} from "@/lib/quizEngine";
 import { toast } from "sonner";
-import { ArrowLeft, Car } from "lucide-react";
 
 const Quiz = () => {
   const navigate = useNavigate();
-  const [step, setStep] = useState(0);
-  const [minBudget, setMinBudget] = useState<number | "">(20000);
-  const [maxBudget, setMaxBudget] = useState<number | "">(30000);
-  const [newUsed, setNewUsed] = useState("");
-  const [bodyStyle, setBodyStyle] = useState("no-preference");
-  const [people, setPeople] = useState("");
-  const [cargo, setCargo] = useState("");
-  const [driving, setDriving] = useState("");
-  const [weather, setWeather] = useState("");
-  const [priorities, setPriorities] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [cars, setCars] = useState<ReturnType<typeof parseCarsCsv>>([]);
+  const [budgetMin, setBudgetMin] = useState(0);
+  const [budgetMax, setBudgetMax] = useState(0);
+  const [selectedVehicleTypes, setSelectedVehicleTypes] = useState<VehicleType[]>([]);
+  const [selectedFuelTypes, setSelectedFuelTypes] = useState<string[]>([]);
+  const [drivingMix, setDrivingMix] = useState<DrivingMix>("Mix");
+  const [priority, setPriority] = useState<Priority>("Balanced");
 
-  const totalSteps = 6;
-  const progressValue = ((step + 1) / totalSteps) * 100;
+  useEffect(() => {
+    const loadCars = async () => {
+      try {
+        const response = await fetch("/data/cars_2025_enriched_complete.csv");
+        if (!response.ok) throw new Error(`Failed to load data: ${response.status}`);
 
-  const togglePriority = (value: string) => {
-    setPriorities((prev) =>
-      prev.includes(value)
-        ? prev.filter((p) => p !== value)
-        : [...prev, value]
+        const csvText = await response.text();
+        const parsedCars = parseCarsCsv(csvText);
+        const defaults = getBudgetDefaults(parsedCars);
+
+        setCars(parsedCars);
+        setBudgetMin(defaults.defaultMin);
+        setBudgetMax(defaults.defaultMax);
+      } catch (error) {
+        console.error("Failed loading quiz dataset", error);
+        toast.error("Unable to load car dataset. Please try again.");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadCars();
+  }, []);
+
+  const budgetBounds = useMemo(() => getBudgetDefaults(cars), [cars]);
+  const availableVehicleTypes = useMemo(() => getAvailableVehicleTypes(cars), [cars]);
+  const availableFuelTypes = useMemo(() => getAvailableFuelTypes(cars), [cars]);
+
+  const filteredCars = useMemo(
+    () => filterCars(cars, budgetMin, budgetMax, selectedVehicleTypes, selectedFuelTypes),
+    [cars, budgetMin, budgetMax, selectedVehicleTypes, selectedFuelTypes],
+  );
+
+  const noMatches = hasSubmitted && filteredCars.length === 0;
+
+  const toggleVehicleType = (type: VehicleType) => {
+    setSelectedVehicleTypes((prev) =>
+      prev.includes(type) ? prev.filter((item) => item !== type) : [...prev, type],
     );
   };
 
-  const bodyStyleOptions = [
-    { value: "no-preference", label: "No preference" },
-    { value: "sedan", label: "Sedan" },
-    { value: "compact suv", label: "Compact SUV" },
-    { value: "hatchback", label: "Hatchback" },
-  ];
+  const toggleFuelType = (fuelType: string) => {
+    setSelectedFuelTypes((prev) =>
+      prev.includes(fuelType)
+        ? prev.filter((item) => item !== fuelType)
+        : [...prev, fuelType],
+    );
+  };
 
-  const priorityOptions = [
-    { value: "fuel-economy", label: "Great fuel economy" },
-    { value: "safe", label: "Top safety ratings" },
-    { value: "spacious", label: "Space for family / cargo" },
-    { value: "reliable", label: "Long-term reliability" },
-    { value: "fun-to-drive", label: "Fun to drive" },
-    { value: "premium", label: "Modern tech & features" },
-  ];
+  const handleReset = () => {
+    setBudgetMin(budgetBounds.defaultMin);
+    setBudgetMax(budgetBounds.defaultMax);
+    setSelectedVehicleTypes([]);
+    setSelectedFuelTypes([]);
+    setDrivingMix("Mix");
+    setPriority("Balanced");
+    setHasSubmitted(false);
+  };
 
-  const bodyStyleLabel = useMemo(
-    () =>
-      bodyStyleOptions.find((option) => option.value === bodyStyle)?.label ??
-      "No preference",
-    [bodyStyle, bodyStyleOptions]
-  );
-
-  const isStepValid = useMemo(() => {
-    if (step === 0) {
-      const minValue =
-        typeof minBudget === "number" && !Number.isNaN(minBudget)
-          ? minBudget
-          : 0;
-      const maxValue =
-        typeof maxBudget === "number" && !Number.isNaN(maxBudget)
-          ? maxBudget
-          : 0;
-      return minValue >= 0 && maxValue > minValue;
-    }
-    if (step === 1) {
-      return Boolean(newUsed);
-    }
-    if (step === 2) {
-      return true;
-    }
-    if (step === 3) {
-      return Boolean(people) && Boolean(cargo);
-    }
-    if (step === 4) {
-      return Boolean(driving) && Boolean(weather);
-    }
-    return true;
-  }, [step, minBudget, maxBudget, newUsed, people, cargo, driving, weather]);
-
-  const handleNext = () => {
-    if (!isStepValid) {
+  const handleSubmit = () => {
+    setHasSubmitted(true);
+    if (!filteredCars.length) {
       return;
     }
-    setStep((prev) => Math.min(prev + 1, totalSteps - 1));
+
+    const rankedCars = rankCars(filteredCars, drivingMix, priority).slice(0, 10);
+    const mpgLabel =
+      drivingMix === "Mostly city"
+        ? "city MPG"
+        : drivingMix === "Mostly highway"
+          ? "highway MPG"
+          : "combined MPG";
+
+    const recommendations = rankedCars.map((car) => ({
+      make: car.make,
+      model: car.model,
+      year: car.year,
+      type: car.vehicleClass,
+      priceRange: formatCurrency(car.msrp),
+      score: car.finalScore,
+      fuelEconomy: `${Math.round(car.combinedMpg)} MPG combined`,
+      safetyRating: null,
+      reasons: [
+        `Within your ${formatCurrency(budgetMin)}–${formatCurrency(budgetMax)} budget`,
+        `${Math.round(drivingMix === "Mostly city" ? car.cityMpg : drivingMix === "Mostly highway" ? car.highwayMpg : car.combinedMpg)} ${mpgLabel}`,
+        priority === "Balanced" ? "Strong overall balance across price, MPG, comfort and sportiness" : `Ranked high for ${priority.toLowerCase()}`,
+      ],
+      aiExplanation: `High match for ${priority.toLowerCase()} with strong ${mpgLabel.toLowerCase()} and fit in your selected budget.`,
+    }));
+
+    const userInput = `Guided quiz: ${formatCurrency(budgetMin)}-${formatCurrency(budgetMax)}, vehicle type ${selectedVehicleTypes.length ? selectedVehicleTypes.join(", ") : "No preference"}, fuel ${selectedFuelTypes.length ? selectedFuelTypes.join(", ") : "No preference"}, driving ${drivingMix}, priority ${priority}`;
+
+    navigate("/results", {
+      state: {
+        recommendations,
+        userInput,
+      },
+    });
   };
 
-  const handleBack = () => {
-    setStep((prev) => Math.max(prev - 1, 0));
-  };
-
-  const handleSkip = () => {
-    handleNext();
-  };
-
-  const buildPriorities = () => {
-    const prioritySet = new Set(priorities);
-    if (people === "4–5 people" || people === "Often more than 5") {
-      prioritySet.add("family");
-    }
-    if (cargo === "Very important") {
-      prioritySet.add("spacious");
-    }
-    if (weather === "Yes, often") {
-      prioritySet.add("all-wheel-drive");
-    }
-    if (driving === "Mostly city") {
-      prioritySet.add("fuel-economy");
-    }
-    return Array.from(prioritySet);
-  };
-
-  const handleSubmit = async () => {
-    const budgetLow =
-      typeof minBudget === "number" && !Number.isNaN(minBudget)
-        ? minBudget
-        : 20000;
-    const budgetHigh =
-      typeof maxBudget === "number" && !Number.isNaN(maxBudget)
-        ? maxBudget
-        : 30000;
-
-    const preferencesPayload = {
-      budgetLow,
-      budgetHigh,
-      bodyStyle: bodyStyle === "no-preference" ? null : bodyStyle,
-      priorities: buildPriorities(),
-    };
-
-    const descriptionForAI = `From quiz: budget $${budgetLow.toLocaleString()}–$${budgetHigh.toLocaleString()}, new/used: ${newUsed}, preferred body style: ${bodyStyleLabel}, people: ${people}, cargo: ${cargo}, driving: ${driving}, weather: ${weather}, priorities: ${
-      preferencesPayload.priorities.length
-        ? preferencesPayload.priorities.join(", ")
-        : "none specified"
-    }`;
-
-    setIsLoading(true);
-    try {
-      const { data: recData, error: recError } =
-        await supabase.functions.invoke("recommend", {
-          body: {
-            preferences: preferencesPayload,
-            userInput: descriptionForAI,
-          },
-        });
-
-      if (recError) throw recError;
-
-      navigate("/results", {
-        state: {
-          recommendations: recData.recommendations,
-          userInput: descriptionForAI,
-        },
-      });
-    } catch (error) {
-      console.error("Error in handleSubmit:", error);
-      toast.error("Failed to get recommendations. Please try again.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
+        <div className="container mx-auto px-4 py-12 max-w-4xl">
+          <Card className="p-8 text-center">Loading guided quiz…</Card>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
-      <div className="container mx-auto px-4 py-12 max-w-3xl">
-        {/* Back Link */}
+      <div className="container mx-auto px-4 py-12 max-w-4xl">
         <button
           onClick={() => navigate("/")}
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-6"
@@ -178,7 +154,6 @@ const Quiz = () => {
           Back to free text input
         </button>
 
-        {/* Header */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
             <Car className="w-8 h-8 text-primary" />
@@ -186,294 +161,151 @@ const Quiz = () => {
           <h1 className="text-4xl font-bold mb-3 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
             Guided Car Quiz
           </h1>
-          <p className="text-lg text-muted-foreground">
-            Answer a few quick questions and we'll recommend the best matches.
-          </p>
+          <p className="text-lg text-muted-foreground">One quick screen to narrow options and rank the best matches.</p>
         </div>
 
-        {/* Quiz Card */}
         <Card className="p-8 shadow-lg space-y-8">
-          <div className="space-y-3">
-            <div className="flex items-center justify-between text-sm text-muted-foreground">
-              <span>Step {step + 1} of {totalSteps}</span>
-              <span>{Math.round(progressValue)}%</span>
-            </div>
-            <Progress value={progressValue} />
-          </div>
-
-          {step === 0 && (
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold">What's your budget range?</h3>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="minBudget">Minimum budget ($)</Label>
-                  <Input
-                    id="minBudget"
-                    type="number"
-                    min={0}
-                    value={minBudget}
-                    onChange={(e) =>
-                      setMinBudget(e.target.value ? Number(e.target.value) : "")
-                    }
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="maxBudget">Maximum budget ($)</Label>
-                  <Input
-                    id="maxBudget"
-                    type="number"
-                    min={0}
-                    value={maxBudget}
-                    onChange={(e) =>
-                      setMaxBudget(e.target.value ? Number(e.target.value) : "")
-                    }
-                  />
-                </div>
+          <section className="space-y-4">
+            <Label className="text-base font-semibold">Budget range</Label>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <Label htmlFor="budget-min" className="text-sm text-muted-foreground">Minimum</Label>
+                <Slider
+                  id="budget-min"
+                  min={budgetBounds.min}
+                  max={budgetBounds.max}
+                  step={500}
+                  value={[budgetMin]}
+                  onValueChange={([value]) => setBudgetMin(Math.min(value, budgetMax))}
+                  aria-label="Budget minimum"
+                />
               </div>
-              {!isStepValid && (
-                <p className="text-sm text-destructive">
-                  Enter a valid range where max is greater than min.
-                </p>
-              )}
-            </div>
-          )}
-
-          {step === 1 && (
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold">Are you shopping for:</h3>
-              <div className="space-y-3">
-                {["New only", "Used / certified pre-owned", "Either is fine"].map(
-                  (option) => (
-                    <label
-                      key={option}
-                      className={`flex items-center gap-3 rounded-lg border px-4 py-3 cursor-pointer transition-colors ${
-                        newUsed === option
-                          ? "border-primary bg-primary/5"
-                          : "border-border hover:border-primary/50"
-                      }`}
-                    >
-                      <input
-                        type="radio"
-                        name="newUsed"
-                        value={option}
-                        checked={newUsed === option}
-                        onChange={() => setNewUsed(option)}
-                        className="accent-primary"
-                      />
-                      <span className="text-sm font-medium">{option}</span>
-                    </label>
-                  )
-                )}
+              <div>
+                <Label htmlFor="budget-max" className="text-sm text-muted-foreground">Maximum</Label>
+                <Slider
+                  id="budget-max"
+                  min={budgetBounds.min}
+                  max={budgetBounds.max}
+                  step={500}
+                  value={[budgetMax]}
+                  onValueChange={([value]) => setBudgetMax(Math.max(value, budgetMin))}
+                  aria-label="Budget maximum"
+                />
               </div>
             </div>
-          )}
+            <div className="text-sm text-muted-foreground">
+              Selected: <span className="font-medium text-foreground">{formatCurrency(budgetMin)}</span> to <span className="font-medium text-foreground">{formatCurrency(budgetMax)}</span>
+            </div>
+          </section>
 
-          {step === 2 && (
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold">
-                What body style do you prefer?
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                {bodyStyleOptions.map((option) => (
-                  <button
-                    key={option.value}
-                    onClick={() => setBodyStyle(option.value)}
-                    className={`px-4 py-2 rounded-full border-2 transition-all ${
-                      bodyStyle === option.value
-                        ? "bg-primary text-primary-foreground border-primary"
-                        : "bg-background text-foreground border-muted hover:border-primary/50"
-                    }`}
+          <section className="space-y-3">
+            <Label className="text-base font-semibold">Vehicle type</Label>
+            <p className="text-sm text-muted-foreground">Leave empty for no preference.</p>
+            <div className="flex flex-wrap gap-2">
+              {availableVehicleTypes.map((type) => {
+                const selected = selectedVehicleTypes.includes(type);
+                return (
+                  <Button
+                    key={type}
+                    type="button"
+                    variant={selected ? "default" : "outline"}
+                    onClick={() => toggleVehicleType(type)}
+                    aria-pressed={selected}
+                    className="rounded-full"
                   >
-                    {option.label}
-                  </button>
-                ))}
-              </div>
+                    {type}
+                  </Button>
+                );
+              })}
             </div>
-          )}
+          </section>
 
-          {step === 3 && (
-            <div className="space-y-6">
-              <div className="space-y-3">
-                <h3 className="text-lg font-semibold">
-                  How many people do you regularly drive?
-                </h3>
-                {["Just me", "2–3 people", "4–5 people", "Often more than 5"].map(
-                  (option) => (
-                    <label
-                      key={option}
-                      className={`flex items-center gap-3 rounded-lg border px-4 py-3 cursor-pointer transition-colors ${
-                        people === option
-                          ? "border-primary bg-primary/5"
-                          : "border-border hover:border-primary/50"
-                      }`}
-                    >
-                      <input
-                        type="radio"
-                        name="people"
-                        value={option}
-                        checked={people === option}
-                        onChange={() => setPeople(option)}
-                        className="accent-primary"
-                      />
-                      <span className="text-sm font-medium">{option}</span>
-                    </label>
-                  )
-                )}
-              </div>
-              <div className="space-y-3">
-                <h3 className="text-lg font-semibold">
-                  How important is cargo space?
-                </h3>
-                {["Not important", "Nice to have", "Very important"].map(
-                  (option) => (
-                    <label
-                      key={option}
-                      className={`flex items-center gap-3 rounded-lg border px-4 py-3 cursor-pointer transition-colors ${
-                        cargo === option
-                          ? "border-primary bg-primary/5"
-                          : "border-border hover:border-primary/50"
-                      }`}
-                    >
-                      <input
-                        type="radio"
-                        name="cargo"
-                        value={option}
-                        checked={cargo === option}
-                        onChange={() => setCargo(option)}
-                        className="accent-primary"
-                      />
-                      <span className="text-sm font-medium">{option}</span>
-                    </label>
-                  )
-                )}
-              </div>
+          <section className="space-y-3">
+            <Label className="text-base font-semibold">Fuel type</Label>
+            <p className="text-sm text-muted-foreground">Leave empty for no preference.</p>
+            <div className="flex flex-wrap gap-2">
+              {availableFuelTypes.map((fuelType) => {
+                const selected = selectedFuelTypes.includes(fuelType);
+                return (
+                  <Button
+                    key={fuelType}
+                    type="button"
+                    variant={selected ? "default" : "outline"}
+                    onClick={() => toggleFuelType(fuelType)}
+                    aria-pressed={selected}
+                    className="rounded-full"
+                  >
+                    {fuelType}
+                  </Button>
+                );
+              })}
             </div>
-          )}
+          </section>
 
-          {step === 4 && (
-            <div className="space-y-6">
-              <div className="space-y-3">
-                <h3 className="text-lg font-semibold">
-                  Where do you mostly drive?
-                </h3>
-                {["Mostly city", "Mostly highway", "A mix of both"].map(
-                  (option) => (
-                    <label
-                      key={option}
-                      className={`flex items-center gap-3 rounded-lg border px-4 py-3 cursor-pointer transition-colors ${
-                        driving === option
-                          ? "border-primary bg-primary/5"
-                          : "border-border hover:border-primary/50"
-                      }`}
-                    >
-                      <input
-                        type="radio"
-                        name="driving"
-                        value={option}
-                        checked={driving === option}
-                        onChange={() => setDriving(option)}
-                        className="accent-primary"
-                      />
-                      <span className="text-sm font-medium">{option}</span>
-                    </label>
-                  )
-                )}
-              </div>
-              <div className="space-y-3">
-                <h3 className="text-lg font-semibold">
-                  Do you regularly deal with snow, hills, or rough weather?
-                </h3>
-                {["Yes, often", "Occasionally", "Rarely / never"].map(
-                  (option) => (
-                    <label
-                      key={option}
-                      className={`flex items-center gap-3 rounded-lg border px-4 py-3 cursor-pointer transition-colors ${
-                        weather === option
-                          ? "border-primary bg-primary/5"
-                          : "border-border hover:border-primary/50"
-                      }`}
-                    >
-                      <input
-                        type="radio"
-                        name="weather"
-                        value={option}
-                        checked={weather === option}
-                        onChange={() => setWeather(option)}
-                        className="accent-primary"
-                      />
-                      <span className="text-sm font-medium">{option}</span>
-                    </label>
-                  )
-                )}
-              </div>
-            </div>
-          )}
-
-          {step === 5 && (
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold">
-                What matters most to you? (Select all that apply)
-              </h3>
-              <div className="space-y-3">
-                {priorityOptions.map((option) => (
-                  <div key={option.value} className="flex items-center space-x-3">
-                    <Checkbox
-                      id={option.value}
-                      checked={priorities.includes(option.value)}
-                      onCheckedChange={() => togglePriority(option.value)}
-                    />
-                    <Label
-                      htmlFor={option.value}
-                      className="text-base cursor-pointer"
-                    >
-                      {option.label}
-                    </Label>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
-            <Button
-              type="button"
-              variant="ghost"
-              onClick={handleBack}
-              disabled={step === 0 || isLoading}
-            >
-              Back
-            </Button>
-            <div className="flex items-center gap-3">
-              {(step === 2 || step === 5) && (
-                <Button
+          <section className="space-y-3">
+            <Label className="text-base font-semibold">Driving mix</Label>
+            <div className="inline-flex rounded-lg border-2 border-border p-1 bg-muted/50" role="radiogroup" aria-label="Driving mix">
+              {(["Mostly city", "Mostly highway", "Mix"] as DrivingMix[]).map((option) => (
+                <button
+                  key={option}
                   type="button"
-                  variant="outline"
-                  onClick={handleSkip}
-                  disabled={isLoading}
+                  role="radio"
+                  aria-checked={drivingMix === option}
+                  onClick={() => setDrivingMix(option)}
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                    drivingMix === option ? "bg-background text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"
+                  }`}
                 >
-                  Skip
-                </Button>
-              )}
-              {step < totalSteps - 1 ? (
-                <Button
-                  onClick={handleNext}
-                  disabled={!isStepValid || isLoading}
-                  className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity"
-                >
-                  Next
-                </Button>
-              ) : (
-                <Button
-                  onClick={handleSubmit}
-                  disabled={isLoading}
-                  size="lg"
-                  className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity"
-                >
-                  {isLoading ? "Finding matches..." : "See my recommendations"}
-                </Button>
-              )}
+                  {option}
+                </button>
+              ))}
             </div>
-          </div>
+          </section>
+
+          <section className="space-y-3">
+            <Label className="text-base font-semibold">Priority</Label>
+            <RadioGroup value={priority} onValueChange={(value) => setPriority(value as Priority)} className="grid md:grid-cols-2 gap-3">
+              {(["Balanced", "Lowest price", "Best fuel economy", "Most comfortable", "Sportiest"] as Priority[]).map((option) => (
+                <label key={option} htmlFor={`priority-${option.replace(/\s+/g, "-").toLowerCase()}`} className="flex items-center gap-3 rounded-lg border px-4 py-3 cursor-pointer hover:border-primary/50">
+                  <RadioGroupItem value={option} id={`priority-${option.replace(/\s+/g, "-").toLowerCase()}`} />
+                  <span className="text-sm font-medium">{option}</span>
+                </label>
+              ))}
+            </RadioGroup>
+          </section>
+
+          <section className="flex flex-wrap items-center justify-between gap-3 pt-2">
+            <div className="text-sm text-muted-foreground">
+              {filteredCars.length > 0 ? <span>{filteredCars.length} matching vehicles before ranking</span> : <span>No current matches</span>}
+            </div>
+            <div className="flex gap-2">
+              <Button type="button" variant="outline" onClick={handleReset}>
+                <RotateCcw className="w-4 h-4 mr-2" />
+                Reset
+              </Button>
+              <Button type="button" onClick={handleSubmit} className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity">
+                Get recommendations
+              </Button>
+            </div>
+          </section>
+
+          {noMatches && (
+            <Card className="p-4 border-destructive/50 bg-destructive/5">
+              <p className="font-medium mb-2">No cars match those hard filters.</p>
+              <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
+                <li>Widen your budget range.</li>
+                <li>Select fewer vehicle types.</li>
+                <li>Clear fuel-type filters or choose no preference.</li>
+              </ul>
+            </Card>
+          )}
+
+          {!noMatches && hasSubmitted && (
+            <div className="flex flex-wrap gap-2 pt-1">
+              <Badge variant="secondary">Top results are ranked by {priority.toLowerCase()}</Badge>
+              <Badge variant="secondary">MPG metric: {drivingMix === "Mix" ? "combined" : drivingMix === "Mostly city" ? "city" : "highway"}</Badge>
+            </div>
+          )}
         </Card>
       </div>
     </div>
