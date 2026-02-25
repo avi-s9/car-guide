@@ -1,116 +1,112 @@
-# Welcome to your Lovable project
+# Car Guide
 
-## Project info
+A lightweight React app that helps users find cars that fit their budget, driving habits, and priorities in under a minute.
 
-**URL**: https://lovable.dev/projects/a3be71b9-ccf6-4e82-83bd-7088223d270a
+## What this app does
 
-## How can I edit this code?
+- Guides users through a 4-step quiz (budget, vehicle/fuel preferences, driving mix, and priority).
+- Filters a 2025 vehicle dataset by user constraints.
+- Ranks matching vehicles using weighted scoring for price, fuel economy, comfort, and sportiness.
+- Shows top recommendations with reasons and a match score.
 
-There are several ways of editing your application.
+## Tech stack
 
-**Use Lovable**
+- Vite + React + TypeScript
+- Tailwind CSS + shadcn/ui components
+- React Router for multi-page flow
+- TanStack Query (provider wired in app)
+- Supabase client + import script support
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a3be71b9-ccf6-4e82-83bd-7088223d270a) and start prompting.
+## Getting started
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+- Node.js 18+
+- npm
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Install and run
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app will start on Vite's default local URL (usually `http://localhost:5173`).
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Available scripts
 
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/a3be71b9-ccf6-4e82-83bd-7088223d270a) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
-
-## Importing FuelEconomy.gov 2025 data into Supabase
-
-This project includes a one-time import script to load 2025 model-year vehicles into Supabase.
-
-**Run the import**
-
-```sh
-npx ts-node scripts/import_fueleconomy_2025.ts
+```bash
+npm run dev         # Start development server
+npm run build       # Production build
+npm run build:dev   # Development-mode build
+npm run preview     # Preview built app
+npm run lint        # Run ESLint
+npm run import-cars # Run FuelEconomy import script
 ```
 
-**Required environment variables**
+## Project structure
 
-```sh
+```text
+src/
+  pages/            # Route pages (home, quiz, results)
+  components/       # UI and domain components
+  lib/quizEngine.ts # CSV parsing, filtering, ranking logic
+  integrations/     # Supabase client/types
+public/data/        # Static car dataset used by the quiz
+scripts/            # One-off data import scripts
+```
+
+## Data and ranking notes
+
+- Quiz data is loaded from `public/data/cars_2025_enriched_complete.csv`.
+- Ranking is based on weighted scoring. Weights change depending on selected priority:
+  - Balanced
+  - Lowest price
+  - Best fuel economy
+  - Most comfortable
+  - Sportiest
+
+## Environment variables
+
+### Frontend (optional, if using Supabase from the app)
+
+Set in a local `.env` file:
+
+```bash
+VITE_SUPABASE_URL="https://your-project.supabase.co"
+VITE_SUPABASE_PUBLISHABLE_KEY="your-publishable-anon-key"
+```
+
+### Import script (`scripts/import_fueleconomy_2025.ts`)
+
+Use one of the following setups:
+
+1. **Service role key flow**
+
+```bash
 export SUPABASE_URL="https://your-project.supabase.co"
 export SUPABASE_SERVICE_ROLE_KEY="your-service-role-key"
+npm run import-cars
 ```
 
-**Option B (no service role key): use the Edge Function**
+2. **Edge Function flow (no direct service role key in local shell)**
 
-If you cannot access the service role key (e.g., Lovable Cloud projects), deploy the
-`import-cars` Edge Function and run the script with your anon key instead:
-
-```sh
+```bash
 npx supabase@latest functions deploy import-cars
-supabase functions deploy import-cars
-```
 
-```sh
 export SUPABASE_URL="https://your-project.supabase.co"
 export SUPABASE_ANON_KEY="your-anon-key"
+npm run import-cars
 ```
 
-Make sure the `import-cars` function has access to `SUPABASE_SERVICE_ROLE_KEY`
-via your Supabase project secrets. If you don't have the CLI installed globally,
-using `npx supabase@latest` avoids the unsupported `npm install -g supabase` path.
-via your Supabase project secrets.
+Make sure the `import-cars` Edge Function has `SUPABASE_SERVICE_ROLE_KEY` configured in Supabase project secrets.
 
-**Verify the imported row count**
+## Verifying imported data
 
 ```sql
-select count(*) from cars where year=2025;
+select count(*) from cars where year = 2025;
 ```
+
+## Notes
+
+- This repository appears to have been bootstrapped from Lovable, but the README is now tailored for local development and repository maintenance.
