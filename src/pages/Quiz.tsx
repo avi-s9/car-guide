@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, RotateCcw } from "lucide-react";
 import { Card } from "@/components/ui/card";
@@ -47,6 +47,8 @@ const Quiz = () => {
   const [selectedFuelTypes, setSelectedFuelTypes] = useState<string[]>([]);
   const [drivingMix, setDrivingMix] = useState<DrivingMix>("Mix");
   const [priority, setPriority] = useState<Priority>("Balanced");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const submitInFlightRef = useRef(false);
 
   useEffect(() => {
     const loadCars = async () => {
@@ -102,10 +104,17 @@ const Quiz = () => {
   };
 
   const handleSubmit = async () => {
+    if (submitInFlightRef.current) {
+      return;
+    }
+
     setHasSubmitted(true);
     if (!filteredCars.length) {
       return;
     }
+
+    submitInFlightRef.current = true;
+    setIsSubmitting(true);
 
     const rankedCars = rankCars(filteredCars, drivingMix, priority).slice(0, 10);
     const recommendations = rankedCars.map((car) => {
@@ -150,6 +159,9 @@ const Quiz = () => {
     } catch (error) {
       console.error("Unexpected error calling explain function", error);
       toast.warning("We couldn't generate AI explanations right now.");
+    } finally {
+      submitInFlightRef.current = false;
+      setIsSubmitting(false);
     }
 
     navigate("/results", { state: { recommendations: recommendationsWithAi, userInput } });
@@ -375,8 +387,9 @@ const Quiz = () => {
               )}
               {currentStep === STEPS.length - 1 && (
                 <Button onClick={handleSubmit}
+                  disabled={isSubmitting}
                   className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity px-8">
-                  Get recommendations
+                  {isSubmitting ? "Generating..." : "Get recommendations"}
                 </Button>
               )}
             </div>
