@@ -21,6 +21,7 @@ import {
   rankCars,
 } from "@/lib/quizEngine";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const priorityOptions: Priority[] = [
   "Balanced",
@@ -39,6 +40,7 @@ const Quiz = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [currentStep, setCurrentStep] = useState(0);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [cars, setCars] = useState<ReturnType<typeof parseCarsCsv>>([]);
   const [budgetMin, setBudgetMin] = useState(0);
   const [budgetMax, setBudgetMax] = useState(0);
@@ -100,10 +102,60 @@ const Quiz = () => {
     setCurrentStep(0);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setHasSubmitted(true);
     if (!filteredCars.length) {
       return;
+    }
+
+    setIsSubmitting(true);
+
+    const userInput = `Guided quiz: ${formatCurrency(budgetMin)}-${formatCurrency(budgetMax)}, vehicle type ${selectedVehicleTypes.length ? selectedVehicleTypes.join(", ") : "No preference"}, fuel ${selectedFuelTypes.length ? selectedFuelTypes.join(", ") : "No preference"}, driving ${drivingMix}, priority ${priority}`;
+
+    const selectedPrimaryBodyStyle = selectedVehicleTypes.length === 1
+      ? selectedVehicleTypes[0]
+      : null;
+
+    const priorityTags: string[] = [];
+    if (priority !== "Balanced") {
+      priorityTags.push(priority);
+    }
+    if (drivingMix === "Mostly city") {
+      priorityTags.push("Fuel economy", "City driving");
+    }
+    if (drivingMix === "Mostly highway") {
+      priorityTags.push("Highway driving");
+    }
+
+    try {
+      const { data, error } = await supabase.functions.invoke("recommend", {
+        body: {
+          preferences: {
+            budgetLow: budgetMin,
+            budgetHigh: budgetMax,
+            bodyStyle: selectedPrimaryBodyStyle,
+            priorities: priorityTags,
+          },
+          userInput,
+        },
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      const recommendations = data?.recommendations;
+      if (!Array.isArray(recommendations) || recommendations.length === 0) {
+        throw new Error("No recommendations returned from backend");
+      }
+
+      navigate("/results", { state: { recommendations, userInput } });
+      return;
+    } catch (error) {
+      console.error("Recommend function failed, falling back to local ranking:", error);
+      toast.warning("Live AI explanations are temporarily unavailable. Showing local matches.");
+    } finally {
+      setIsSubmitting(false);
     }
 
     const rankedCars = rankCars(filteredCars, drivingMix, priority).slice(0, 10);
@@ -125,11 +177,8 @@ const Quiz = () => {
             ? "Strong overall balance across price, MPG, comfort and sportiness"
             : `Ranked high for ${priority.toLowerCase()}`,
         ],
-        aiExplanation: `High match for ${priority.toLowerCase()} with strong ${mpgMetric.label.toLowerCase()} and fit in your selected budget.`,
       };
     });
-
-    const userInput = `Guided quiz: ${formatCurrency(budgetMin)}-${formatCurrency(budgetMax)}, vehicle type ${selectedVehicleTypes.length ? selectedVehicleTypes.join(", ") : "No preference"}, fuel ${selectedFuelTypes.length ? selectedFuelTypes.join(", ") : "No preference"}, driving ${drivingMix}, priority ${priority}`;
 
     navigate("/results", { state: { recommendations, userInput } });
   };
@@ -354,8 +403,9 @@ const Quiz = () => {
               )}
               {currentStep === STEPS.length - 1 && (
                 <Button onClick={handleSubmit}
+                  disabled={isSubmitting}
                   className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity px-8">
-                  Get recommendations
+                  {isSubmitting ? "Getting recommendations..." : "Get recommendations"}
                 </Button>
               )}
             </div>
