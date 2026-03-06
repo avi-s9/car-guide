@@ -40,6 +40,17 @@ interface ParsedCsv {
 
 const normalizeString = (value: string) => value.trim().toLowerCase();
 
+const getFuelTypeCategory = (fuelType: string): string => {
+  const value = normalizeString(fuelType);
+
+  if (value.includes("gasoline")) return "Gasoline";
+  if (value.includes("hydrogen")) return "Hydrogen";
+  if (value.includes("diesel")) return "Diesel";
+  if (value.includes("electric")) return "Electric";
+
+  return fuelType.trim();
+};
+
 export const bucketVehicleClass = (vehicleClass: string): VehicleType => {
   const value = normalizeString(vehicleClass);
 
@@ -178,15 +189,10 @@ export const getAvailableVehicleTypes = (cars: CarRow[]): VehicleType[] => {
 };
 
 export const getAvailableFuelTypes = (cars: CarRow[]): string[] => {
-  const map = new Map<string, string>();
+  const orderedCategories = ["Gasoline", "Hydrogen", "Diesel", "Electric"] as const;
+  const available = new Set(cars.map((car) => getFuelTypeCategory(car.fuelType)));
 
-  for (const car of cars) {
-    const key = normalizeString(car.fuelType);
-    if (!key || map.has(key)) continue;
-    map.set(key, car.fuelType.trim());
-  }
-
-  return Array.from(map.values()).sort((a, b) => a.localeCompare(b));
+  return orderedCategories.filter((category) => available.has(category));
 };
 
 const fieldValueByMix = (car: CarRow, drivingMix: DrivingMix) => {
@@ -212,7 +218,7 @@ export const filterCars = (
   selectedVehicleTypes: VehicleType[],
   selectedFuelTypes: string[],
 ) => {
-  const normalizedFuelSet = new Set(selectedFuelTypes.map(normalizeString));
+  const normalizedFuelSet = new Set(selectedFuelTypes.map((fuelType) => normalizeString(getFuelTypeCategory(fuelType))));
   const vehicleTypeSet = new Set(selectedVehicleTypes);
 
   return cars.filter((car) => {
@@ -222,7 +228,7 @@ export const filterCars = (
       return false;
     }
 
-    if (normalizedFuelSet.size > 0 && !normalizedFuelSet.has(normalizeString(car.fuelType))) {
+    if (normalizedFuelSet.size > 0 && !normalizedFuelSet.has(normalizeString(getFuelTypeCategory(car.fuelType)))) {
       return false;
     }
 
