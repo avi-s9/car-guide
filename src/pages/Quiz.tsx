@@ -146,6 +146,7 @@ const Quiz = () => {
             budgetLow: budgetMin,
             budgetHigh: budgetMax,
             bodyStyle: selectedPrimaryBodyStyle,
+            bodyStyles: selectedVehicleTypes,
             priorities: priorityTags,
             comfort_weight: selectedWeights.comfort,
             sportiness_weight: selectedWeights.sporty,
@@ -165,7 +166,24 @@ const Quiz = () => {
         throw new Error("No recommendations returned from backend");
       }
 
-      navigate("/results", { state: { recommendations, userInput } });
+      const filteredRecommendations = selectedVehicleTypes.length
+        ? recommendations.filter((recommendation) => {
+          const recommendationType = typeof recommendation?.type === "string"
+            ? recommendation.type.toLowerCase()
+            : "";
+          return selectedVehicleTypes.some((selectedType) => {
+            const normalizedSelectedType = selectedType.toLowerCase();
+            return recommendationType.includes(normalizedSelectedType) ||
+              normalizedSelectedType.includes(recommendationType);
+          });
+        })
+        : recommendations;
+
+      if (!filteredRecommendations.length) {
+        throw new Error("No backend recommendations matched selected vehicle types");
+      }
+
+      navigate("/results", { state: { recommendations: filteredRecommendations, userInput } });
       return;
     } catch (error) {
       console.error("Recommend function failed, falling back to local ranking:", error);
