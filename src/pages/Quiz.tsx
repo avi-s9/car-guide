@@ -31,6 +31,22 @@ const priorityOptions: Priority[] = [
   "Sportiest",
 ];
 
+const priorityTagMap: Record<Priority, string[]> = {
+  Balanced: [],
+  "Lowest price": [],
+  "Best fuel economy": ["fuel-economy"],
+  "Most comfortable": ["safe"],
+  Sportiest: ["fun-to-drive"],
+};
+
+const priorityWeightMap: Record<Priority, { price: number; mpg: number; comfort: number; sporty: number }> = {
+  Balanced: { price: 0.3, mpg: 0.25, comfort: 0.25, sporty: 0.2 },
+  "Lowest price": { price: 0.6, mpg: 0.15, comfort: 0.15, sporty: 0.1 },
+  "Best fuel economy": { price: 0.15, mpg: 0.6, comfort: 0.15, sporty: 0.1 },
+  "Most comfortable": { price: 0.15, mpg: 0.15, comfort: 0.6, sporty: 0.1 },
+  Sportiest: { price: 0.15, mpg: 0.15, comfort: 0.1, sporty: 0.6 },
+};
+
 const drivingMixOptions: DrivingMix[] = ["Mostly city", "Mostly highway", "Mix"];
 
 const STEPS = ["Budget", "Vehicle & Fuel", "Driving", "Priority"] as const;
@@ -116,16 +132,12 @@ const Quiz = () => {
       ? selectedVehicleTypes[0]
       : null;
 
-    const priorityTags: string[] = [];
-    if (priority !== "Balanced") {
-      priorityTags.push(priority);
-    }
+    const priorityTags: string[] = [...priorityTagMap[priority]];
     if (drivingMix === "Mostly city") {
-      priorityTags.push("Fuel economy", "City driving");
+      priorityTags.push("fuel-economy");
     }
-    if (drivingMix === "Mostly highway") {
-      priorityTags.push("Highway driving");
-    }
+
+    const selectedWeights = priorityWeightMap[priority];
 
     try {
       const { data, error } = await supabase.functions.invoke("recommend", {
@@ -135,6 +147,10 @@ const Quiz = () => {
             budgetHigh: budgetMax,
             bodyStyle: selectedPrimaryBodyStyle,
             priorities: priorityTags,
+            comfort_weight: selectedWeights.comfort,
+            sportiness_weight: selectedWeights.sporty,
+            price_weight: selectedWeights.price,
+            mpg_weight: selectedWeights.mpg,
           },
           userInput,
         },
