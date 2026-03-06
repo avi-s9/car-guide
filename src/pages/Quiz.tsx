@@ -11,7 +11,9 @@ import {
   DrivingMix,
   Priority,
   VehicleType,
+  bucketVehicleClass,
   filterCars,
+  getFuelTypeCategory,
   formatCurrency,
   getAvailableFuelTypes,
   getAvailableVehicleTypes,
@@ -21,6 +23,7 @@ import {
   rankCars,
 } from "@/lib/quizEngine";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const priorityOptions: Priority[] = [
   "Balanced",
@@ -30,15 +33,54 @@ const priorityOptions: Priority[] = [
   "Sportiest",
 ];
 
+const priorityTagMap: Record<Priority, string[]> = {
+  Balanced: [],
+  "Lowest price": [],
+  "Best fuel economy": ["fuel-economy"],
+  "Most comfortable": ["safe"],
+  Sportiest: ["fun-to-drive"],
+};
+
+const priorityWeightMap: Record<Priority, { price: number; mpg: number; comfort: number; sporty: number }> = {
+  Balanced: { price: 0.3, mpg: 0.25, comfort: 0.25, sporty: 0.2 },
+  "Lowest price": { price: 0.6, mpg: 0.15, comfort: 0.15, sporty: 0.1 },
+  "Best fuel economy": { price: 0.15, mpg: 0.6, comfort: 0.15, sporty: 0.1 },
+  "Most comfortable": { price: 0.15, mpg: 0.15, comfort: 0.6, sporty: 0.1 },
+  Sportiest: { price: 0.15, mpg: 0.15, comfort: 0.1, sporty: 0.6 },
+};
+
 const drivingMixOptions: DrivingMix[] = ["Mostly city", "Mostly highway", "Mix"];
 
+const backendBodyStyleMap: Record<VehicleType, string[]> = {
+  Sedan: ["Cars", "Sedan", "Wagons"],
+  SUV: ["SUV"],
+  Hatchback: ["Hatchback", "Subcompact Cars", "Compact Cars"],
+  Coupe: ["Two Seaters", "Coupe"],
+  Truck: ["Pick-up Trucks", "Truck"],
+  Other: [],
+};
+
 const STEPS = ["Budget", "Vehicle & Fuel", "Driving", "Priority"] as const;
+
+const extractRecommendationMsrp = (recommendation: { msrp?: unknown; priceRange?: unknown }) => {
+  if (typeof recommendation.msrp === "number" && Number.isFinite(recommendation.msrp)) {
+    return recommendation.msrp;
+  }
+
+  if (typeof recommendation.priceRange !== "string") {
+    return null;
+  }
+
+  const numericPrice = Number(recommendation.priceRange.replace(/[^\d.]/g, ""));
+  return Number.isFinite(numericPrice) && numericPrice > 0 ? numericPrice : null;
+};
 
 const Quiz = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [currentStep, setCurrentStep] = useState(0);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [cars, setCars] = useState<ReturnType<typeof parseCarsCsv>>([]);
   const [budgetMin, setBudgetMin] = useState(0);
   const [budgetMax, setBudgetMax] = useState(0);
@@ -100,10 +142,85 @@ const Quiz = () => {
     setCurrentStep(0);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setHasSubmitted(true);
     if (!filteredCars.length) {
       return;
+    }
+
+    setIsSubmitting(true);
+
+    const userInput = `Guided quiz: ${formatCurrency(budgetMin)}-${formatCurrency(budgetMax)}, vehicle type ${selectedVehicleTypes.length ? selectedVehicleTypes.join(", ") : "No preference"}, fuel ${selectedFuelTypes.length ? selectedFuelTypes.join(", ") : "No preference"}, driving ${drivingMix}, priority ${priority}`;
+
+    const selectedPrimaryBodyStyle = selectedVehicleTypes.length === 1
+      ? backendBodyStyleMap[selectedVehicleTypes[0]][0] ?? null
+      : null;
+
+    const translatedBodyStyles = selectedVehicleTypes.flatMap((type) => backendBodyStyleMap[type]);
+
+    const priorityTags: string[] = [...priorityTagMap[priority]];
+    if (drivingMix === "Mostly city") {
+      priorityTags.push("fuel-economy");
+    }
+
+    const selectedWeights = priorityWeightMap[priority];
+
+    try {
+      const { data, error } = await supabase.functions.invoke("recommend", {
+        body: {
+          preferences: {
+            budgetLow: budgetMin,
+            budgetHigh: budgetMax,
+            bodyStyle: selectedPrimaryBodyStyle,
+            bodyStyles: translatedBodyStyles,
+            priorities: priorityTags,
+            comfort_weight: selectedWeights.comfort,
+            sportiness_weight: selectedWeights.sporty,
+            price_weight: selectedWeights.price,
+            mpg_weight: selectedWeights.mpg,
+          },
+          userInput,
+        },
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      const recommendations = data?.recommendations;
+      if (!Array.isArray(recommendations) || recommendations.length === 0) {
+        throw new Error("No recommendations returned from backend");
+      }
+
+      const filteredRecommendations = recommendations.filter((recommendation) => {
+        const recommendationType = typeof recommendation?.type === "string" ? recommendation.type : "";
+        const recommendationBucket = bucketVehicleClass(recommendationType);
+        const recommendationFuelType = typeof recommendation?.fuelType === "string" ? recommendation.fuelType : "";
+        const recommendationFuelCategory = getFuelTypeCategory(recommendationFuelType);
+        const recommendationMsrp = extractRecommendationMsrp(recommendation);
+
+        const vehicleTypeMatches = selectedVehicleTypes.length === 0 ||
+          selectedVehicleTypes.includes(recommendationBucket);
+        const fuelTypeMatches = selectedFuelTypes.length === 0 ||
+          selectedFuelTypes.includes(recommendationFuelCategory);
+        const budgetMatches = recommendationMsrp !== null &&
+          recommendationMsrp >= budgetMin &&
+          recommendationMsrp <= budgetMax;
+
+        return vehicleTypeMatches && fuelTypeMatches && budgetMatches;
+      });
+
+      if (!filteredRecommendations.length) {
+        throw new Error("No backend recommendations matched selected budget, vehicle, or fuel-type filters");
+      }
+
+      navigate("/results", { state: { recommendations: filteredRecommendations, userInput } });
+      return;
+    } catch (error) {
+      console.error("Recommend function failed, falling back to local ranking:", error);
+      toast.warning("Live AI explanations are temporarily unavailable. Showing local matches.");
+    } finally {
+      setIsSubmitting(false);
     }
 
     const rankedCars = rankCars(filteredCars, drivingMix, priority).slice(0, 10);
@@ -125,11 +242,8 @@ const Quiz = () => {
             ? "Strong overall balance across price, MPG, comfort and sportiness"
             : `Ranked high for ${priority.toLowerCase()}`,
         ],
-        aiExplanation: `High match for ${priority.toLowerCase()} with strong ${mpgMetric.label.toLowerCase()} and fit in your selected budget.`,
       };
     });
-
-    const userInput = `Guided quiz: ${formatCurrency(budgetMin)}-${formatCurrency(budgetMax)}, vehicle type ${selectedVehicleTypes.length ? selectedVehicleTypes.join(", ") : "No preference"}, fuel ${selectedFuelTypes.length ? selectedFuelTypes.join(", ") : "No preference"}, driving ${drivingMix}, priority ${priority}`;
 
     navigate("/results", { state: { recommendations, userInput } });
   };
@@ -354,8 +468,9 @@ const Quiz = () => {
               )}
               {currentStep === STEPS.length - 1 && (
                 <Button onClick={handleSubmit}
+                  disabled={isSubmitting}
                   className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity px-8">
-                  Get recommendations
+                  {isSubmitting ? "Getting recommendations..." : "Get recommendations"}
                 </Button>
               )}
             </div>

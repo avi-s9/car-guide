@@ -40,7 +40,7 @@ interface ParsedCsv {
 
 const normalizeString = (value: string) => value.trim().toLowerCase();
 
-const getFuelTypeCategory = (fuelType: string): string => {
+export const getFuelTypeCategory = (fuelType: string): string => {
   const value = normalizeString(fuelType);
 
   if (value.includes("gasoline")) return "Gasoline";
