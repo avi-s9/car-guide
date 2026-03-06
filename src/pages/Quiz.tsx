@@ -62,6 +62,19 @@ const backendBodyStyleMap: Record<VehicleType, string[]> = {
 
 const STEPS = ["Budget", "Vehicle & Fuel", "Driving", "Priority"] as const;
 
+const extractRecommendationMsrp = (recommendation: { msrp?: unknown; priceRange?: unknown }) => {
+  if (typeof recommendation.msrp === "number" && Number.isFinite(recommendation.msrp)) {
+    return recommendation.msrp;
+  }
+
+  if (typeof recommendation.priceRange !== "string") {
+    return null;
+  }
+
+  const numericPrice = Number(recommendation.priceRange.replace(/[^\d.]/g, ""));
+  return Number.isFinite(numericPrice) && numericPrice > 0 ? numericPrice : null;
+};
+
 const Quiz = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
@@ -184,17 +197,21 @@ const Quiz = () => {
         const recommendationBucket = bucketVehicleClass(recommendationType);
         const recommendationFuelType = typeof recommendation?.fuelType === "string" ? recommendation.fuelType : "";
         const recommendationFuelCategory = getFuelTypeCategory(recommendationFuelType);
+        const recommendationMsrp = extractRecommendationMsrp(recommendation);
 
         const vehicleTypeMatches = selectedVehicleTypes.length === 0 ||
           selectedVehicleTypes.includes(recommendationBucket);
         const fuelTypeMatches = selectedFuelTypes.length === 0 ||
           selectedFuelTypes.includes(recommendationFuelCategory);
+        const budgetMatches = recommendationMsrp !== null &&
+          recommendationMsrp >= budgetMin &&
+          recommendationMsrp <= budgetMax;
 
-        return vehicleTypeMatches && fuelTypeMatches;
+        return vehicleTypeMatches && fuelTypeMatches && budgetMatches;
       });
 
       if (!filteredRecommendations.length) {
-        throw new Error("No backend recommendations matched selected vehicle or fuel-type filters");
+        throw new Error("No backend recommendations matched selected budget, vehicle, or fuel-type filters");
       }
 
       navigate("/results", { state: { recommendations: filteredRecommendations, userInput } });
