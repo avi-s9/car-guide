@@ -11,6 +11,7 @@ import {
   DrivingMix,
   Priority,
   VehicleType,
+  bucketVehicleClass,
   filterCars,
   formatCurrency,
   getAvailableFuelTypes,
@@ -179,14 +180,10 @@ const Quiz = () => {
 
       const filteredRecommendations = selectedVehicleTypes.length
         ? recommendations.filter((recommendation) => {
-          const recommendationType = typeof recommendation?.type === "string"
-            ? recommendation.type.toLowerCase()
-            : "";
-          return selectedVehicleTypes.some((selectedType) => {
-            const normalizedSelectedType = selectedType.toLowerCase();
-            return recommendationType.includes(normalizedSelectedType) ||
-              normalizedSelectedType.includes(recommendationType);
-          });
+          const recommendationType = typeof recommendation?.type === "string" ? recommendation.type : "";
+          const recommendationBucket = bucketVehicleClass(recommendationType);
+
+          return selectedVehicleTypes.includes(recommendationBucket);
         })
         : recommendations;
 
