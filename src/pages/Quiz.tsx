@@ -49,6 +49,15 @@ const priorityWeightMap: Record<Priority, { price: number; mpg: number; comfort:
 
 const drivingMixOptions: DrivingMix[] = ["Mostly city", "Mostly highway", "Mix"];
 
+const backendBodyStyleMap: Record<VehicleType, string[]> = {
+  Sedan: ["Cars", "Sedan", "Wagons"],
+  SUV: ["SUV"],
+  Hatchback: ["Hatchback", "Subcompact Cars", "Compact Cars"],
+  Coupe: ["Two Seaters", "Coupe"],
+  Truck: ["Pick-up Trucks", "Truck"],
+  Other: [],
+};
+
 const STEPS = ["Budget", "Vehicle & Fuel", "Driving", "Priority"] as const;
 
 const Quiz = () => {
@@ -129,8 +138,10 @@ const Quiz = () => {
     const userInput = `Guided quiz: ${formatCurrency(budgetMin)}-${formatCurrency(budgetMax)}, vehicle type ${selectedVehicleTypes.length ? selectedVehicleTypes.join(", ") : "No preference"}, fuel ${selectedFuelTypes.length ? selectedFuelTypes.join(", ") : "No preference"}, driving ${drivingMix}, priority ${priority}`;
 
     const selectedPrimaryBodyStyle = selectedVehicleTypes.length === 1
-      ? selectedVehicleTypes[0]
+      ? backendBodyStyleMap[selectedVehicleTypes[0]][0] ?? null
       : null;
+
+    const translatedBodyStyles = selectedVehicleTypes.flatMap((type) => backendBodyStyleMap[type]);
 
     const priorityTags: string[] = [...priorityTagMap[priority]];
     if (drivingMix === "Mostly city") {
@@ -146,7 +157,7 @@ const Quiz = () => {
             budgetLow: budgetMin,
             budgetHigh: budgetMax,
             bodyStyle: selectedPrimaryBodyStyle,
-            bodyStyles: selectedVehicleTypes,
+            bodyStyles: translatedBodyStyles,
             priorities: priorityTags,
             comfort_weight: selectedWeights.comfort,
             sportiness_weight: selectedWeights.sporty,
