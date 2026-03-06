@@ -1402,7 +1402,7 @@ serve(async (req) => {
     }
 
     const topRecommendations = topRecommendationsWithDetails.map(
-      ({ drive, fuelType, vehicleClass, ...rest }) => rest,
+      ({ drive, vehicleClass, ...rest }) => rest,
     );
 
     console.log("Top recommendations:", topRecommendations);

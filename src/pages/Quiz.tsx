@@ -13,6 +13,7 @@ import {
   VehicleType,
   bucketVehicleClass,
   filterCars,
+  getFuelTypeCategory,
   formatCurrency,
   getAvailableFuelTypes,
   getAvailableVehicleTypes,
@@ -178,17 +179,22 @@ const Quiz = () => {
         throw new Error("No recommendations returned from backend");
       }
 
-      const filteredRecommendations = selectedVehicleTypes.length
-        ? recommendations.filter((recommendation) => {
-          const recommendationType = typeof recommendation?.type === "string" ? recommendation.type : "";
-          const recommendationBucket = bucketVehicleClass(recommendationType);
+      const filteredRecommendations = recommendations.filter((recommendation) => {
+        const recommendationType = typeof recommendation?.type === "string" ? recommendation.type : "";
+        const recommendationBucket = bucketVehicleClass(recommendationType);
+        const recommendationFuelType = typeof recommendation?.fuelType === "string" ? recommendation.fuelType : "";
+        const recommendationFuelCategory = getFuelTypeCategory(recommendationFuelType);
 
-          return selectedVehicleTypes.includes(recommendationBucket);
-        })
-        : recommendations;
+        const vehicleTypeMatches = selectedVehicleTypes.length === 0 ||
+          selectedVehicleTypes.includes(recommendationBucket);
+        const fuelTypeMatches = selectedFuelTypes.length === 0 ||
+          selectedFuelTypes.includes(recommendationFuelCategory);
+
+        return vehicleTypeMatches && fuelTypeMatches;
+      });
 
       if (!filteredRecommendations.length) {
-        throw new Error("No backend recommendations matched selected vehicle types");
+        throw new Error("No backend recommendations matched selected vehicle or fuel-type filters");
       }
 
       navigate("/results", { state: { recommendations: filteredRecommendations, userInput } });
