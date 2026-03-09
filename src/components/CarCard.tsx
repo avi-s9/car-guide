@@ -1,19 +1,8 @@
 import { useState, useEffect } from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  DollarSign,
-  Gauge,
-  Shield,
-  Droplets,
-} from "lucide-react";
+import { DollarSign, Gauge, Fuel, Car, Trophy, Star } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface CarRecommendation {
   make: string;
@@ -33,9 +22,10 @@ interface CarCardProps {
   index: number;
   displayScore: number;
   getScoreColor: (score: number) => string;
+  badge?: string;
 }
 
-export const CarCard = ({ car, index, displayScore, getScoreColor }: CarCardProps) => {
+export const CarCard = ({ car, index, displayScore, getScoreColor, badge }: CarCardProps) => {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [imageLoading, setImageLoading] = useState(true);
 
@@ -43,23 +33,17 @@ export const CarCard = ({ car, index, displayScore, getScoreColor }: CarCardProp
     const fetchCarImage = async () => {
       try {
         const { data, error } = await supabase.functions.invoke("car-image-proxy", {
-          body: {
-            make: car.make,
-            model: car.model,
-            year: car.year,
-          },
+          body: { make: car.make, model: car.model, year: car.year },
         });
 
         if (error) {
-          console.error("Error fetching car image:", error);
           setImageUrl(null);
         } else if (data?.imageUrl) {
           setImageUrl(data.imageUrl);
         } else {
           setImageUrl(null);
         }
-      } catch (err) {
-        console.error("Error in fetchCarImage:", err);
+      } catch {
         setImageUrl(null);
       } finally {
         setImageLoading(false);
@@ -70,125 +54,93 @@ export const CarCard = ({ car, index, displayScore, getScoreColor }: CarCardProp
   }, [car.make, car.model, car.year]);
 
   return (
-    <Card className="border-2 hover:border-primary/50 transition-all shadow-lg overflow-hidden">
-      <div className="flex">
-        {/* Ranking Badge */}
-        <div className="w-20 bg-gradient-to-b from-primary to-accent flex items-center justify-center">
-          <div className="text-center">
-            <div className="text-4xl font-bold text-white">
-              #{index + 1}
-            </div>
-            <div className="text-xs text-white/80">Match</div>
+    <div className="group rounded-2xl border border-border bg-card shadow-card hover:shadow-card-hover transition-all overflow-hidden animate-fade-in"
+      style={{ animationDelay: `${index * 80}ms` }}
+    >
+      {/* Image */}
+      <div className="relative aspect-[16/9] bg-muted overflow-hidden">
+        {imageLoading ? (
+          <Skeleton className="w-full h-full" />
+        ) : imageUrl ? (
+          <img
+            src={imageUrl}
+            alt={`${car.year} ${car.make} ${car.model}`}
+            className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
+            onError={() => setImageUrl(null)}
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-muted">
+            <Car className="h-12 w-12 text-muted-foreground/30" />
           </div>
+        )}
+
+        {/* Rank badge */}
+        <div className="absolute top-3 left-3 flex items-center gap-2">
+          <div className="w-8 h-8 rounded-full bg-background/90 backdrop-blur-sm border border-border flex items-center justify-center text-sm font-bold text-foreground">
+            {index + 1}
+          </div>
+          {badge && (
+            <Badge className="bg-primary text-primary-foreground border-0 shadow-card text-xs">
+              <Trophy className="w-3 h-3 mr-1" />
+              {badge}
+            </Badge>
+          )}
         </div>
 
-        {/* Content */}
-        <div className="flex-1">
-          {/* Car Image */}
-          <div className="w-full h-64 bg-muted relative overflow-hidden">
-            {imageLoading ? (
-              <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-muted to-muted/50">
-                <div className="animate-pulse text-muted-foreground">Loading image...</div>
-              </div>
-            ) : imageUrl ? (
-              <img
-                src={imageUrl}
-                alt={`${car.year} ${car.make} ${car.model}`}
-                className="w-full h-full object-cover"
-                onError={() => setImageUrl(null)}
-              />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-muted to-muted/50">
-                <div className="text-center text-muted-foreground">
-                  <div className="text-4xl mb-2">🚗</div>
-                  <div className="text-sm">Image not available</div>
-                </div>
-              </div>
-            )}
+        {/* Score */}
+        <div className="absolute top-3 right-3">
+          <div className={`${getScoreColor(displayScore)} text-primary-foreground px-2.5 py-1 rounded-full text-xs font-semibold shadow-card`}>
+            {displayScore}% match
           </div>
-
-          <CardHeader>
-            <div className="flex items-start justify-between">
-              <div>
-                <CardTitle className="text-2xl mb-1">
-                  {car.year} {car.make} {car.model}
-                </CardTitle>
-                <CardDescription className="text-base">
-                  {car.type}
-                </CardDescription>
-              </div>
-              <Badge className={`${getScoreColor(displayScore)} text-white px-3 py-1`}>
-                {displayScore}/100
-              </Badge>
-            </div>
-          </CardHeader>
-
-          <CardContent>
-            {/* Key Stats */}
-            <div className="grid grid-cols-2 gap-4 mb-6">
-              <div className="flex items-center gap-2">
-                <DollarSign className="w-5 h-5 text-primary" />
-                <div>
-                  <div className="text-xs text-muted-foreground">Price Range</div>
-                  <div className="font-semibold">{car.priceRange}</div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <Droplets className="w-5 h-5 text-primary" />
-                <div>
-                  <div className="text-xs text-muted-foreground">Fuel Economy</div>
-                  <div className="font-semibold">{car.fuelEconomy}</div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <Shield className="w-5 h-5 text-primary" />
-                <div>
-                  <div className="text-xs text-muted-foreground">Safety Rating</div>
-                  <div className="font-semibold">
-                    {car.safetyRating == null ? "N/A" : `${car.safetyRating}/5 ⭐`}
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <Gauge className="w-5 h-5 text-primary" />
-                <div>
-                  <div className="text-xs text-muted-foreground">Match Score</div>
-                  <div className="font-semibold">{displayScore}/100</div>
-                </div>
-              </div>
-            </div>
-
-            {/* AI Explanation */}
-            {car.aiExplanation && (
-              <div className="mb-6 p-4 bg-muted/50 rounded-lg border border-border">
-                <h4 className="font-semibold mb-2 text-sm">Why this car?</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {car.aiExplanation}
-                </p>
-              </div>
-            )}
-
-            {/* Matching Reasons */}
-            <div>
-              <h4 className="font-semibold mb-3 text-sm">Key Matches:</h4>
-              <div className="flex flex-wrap gap-2">
-                {car.reasons.map((reason, idx) => (
-                  <Badge
-                    key={idx}
-                    variant="secondary"
-                    className="text-xs"
-                  >
-                    ✓ {reason}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-          </CardContent>
         </div>
       </div>
-    </Card>
+
+      {/* Content */}
+      <div className="p-5 md:p-6">
+        <div className="mb-4">
+          <h3 className="text-lg font-bold text-foreground mb-0.5">
+            {car.year} {car.make} {car.model}
+          </h3>
+          <p className="text-sm text-muted-foreground">{car.type}</p>
+        </div>
+
+        {/* Stats row */}
+        <div className="flex flex-wrap gap-4 mb-4 text-sm">
+          <div className="flex items-center gap-1.5 text-muted-foreground">
+            <DollarSign className="w-4 h-4 text-primary" />
+            <span className="font-medium text-foreground">{car.priceRange}</span>
+          </div>
+          <div className="flex items-center gap-1.5 text-muted-foreground">
+            <Fuel className="w-4 h-4 text-primary" />
+            <span className="font-medium text-foreground">{car.fuelEconomy}</span>
+          </div>
+          {car.safetyRating != null && (
+            <div className="flex items-center gap-1.5 text-muted-foreground">
+              <Star className="w-4 h-4 text-primary" />
+              <span className="font-medium text-foreground">{car.safetyRating}/5</span>
+            </div>
+          )}
+        </div>
+
+        {/* Why this match */}
+        {car.aiExplanation && (
+          <div className="p-3 rounded-xl bg-muted/50 border border-border mb-4">
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              <span className="font-medium text-foreground">Why this car: </span>
+              {car.aiExplanation}
+            </p>
+          </div>
+        )}
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-1.5">
+          {car.reasons.map((reason, idx) => (
+            <Badge key={idx} variant="secondary" className="text-xs font-normal">
+              {reason}
+            </Badge>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };

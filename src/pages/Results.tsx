@@ -1,7 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { ArrowLeft, RotateCcw } from "lucide-react";
+import { ArrowLeft, RotateCcw, Sparkles } from "lucide-react";
 import { useEffect } from "react";
 import { CarCard } from "@/components/CarCard";
 
@@ -44,35 +43,57 @@ const Results = () => {
   };
 
   const getScoreColor = (score: number) => {
-    if (score >= 90) return "bg-green-500";
-    if (score >= 80) return "bg-blue-500";
-    if (score >= 70) return "bg-yellow-500";
-    return "bg-gray-500";
+    if (score >= 90) return "bg-success";
+    if (score >= 80) return "bg-primary";
+    return "bg-muted-foreground";
+  };
+
+  const getBadge = (index: number) => {
+    if (index === 0) return "Best overall";
+    if (recommendations.length > 2 && index === 1) return "Runner-up";
+    return undefined;
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
-      <div className="container mx-auto px-4 py-12 max-w-6xl">
-        <div className="mb-8">
-          <Button
-            variant="ghost"
+    <div className="min-h-screen bg-background">
+      <div className="container mx-auto px-4 md:px-6 py-8 md:py-12 max-w-4xl">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-2">
+          <button
             onClick={() => navigate("/")}
-            className="mb-4"
+            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            <ArrowLeft className="w-4 h-4 mr-2" />
+            <ArrowLeft className="w-4 h-4" />
             Home
+          </button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => navigate("/quiz")}
+          >
+            <RotateCcw className="w-3.5 h-3.5 mr-1.5" />
+            Refine answers
           </Button>
-          <h1 className="text-4xl font-bold mb-3 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            Your Top Matches
+        </div>
+
+        {/* Summary */}
+        <div className="mb-10 mt-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-medium mb-4">
+            <Sparkles className="h-3.5 w-3.5" />
+            {recommendations.length} matches found
+          </div>
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
+            Your top matches
           </h1>
           {userInput && (
-            <p className="text-muted-foreground text-sm">
-              Based on: {userInput.substring(0, 120)}
+            <p className="text-muted-foreground text-sm max-w-xl">
+              Based on your preferences, these cars are the best fit for you.
             </p>
           )}
         </div>
 
-        <div className="grid gap-6">
+        {/* Cards */}
+        <div className="grid gap-6 md:grid-cols-2">
           {recommendations.map((car: CarRecommendation, index: number) => {
             const displayScore = normalizeScore(car.score);
             return (
@@ -82,22 +103,24 @@ const Results = () => {
                 index={index}
                 displayScore={displayScore}
                 getScoreColor={getScoreColor}
+                badge={getBadge(index)}
               />
             );
           })}
         </div>
 
-        <Card className="mt-8 p-6 text-center bg-gradient-to-r from-primary/10 to-accent/10 border border-border/60">
-          <p className="text-lg mb-4 font-medium">Want different results?</p>
+        {/* Bottom CTA */}
+        <div className="mt-12 text-center">
+          <p className="text-muted-foreground text-sm mb-4">Not quite right?</p>
           <Button
             onClick={() => navigate("/quiz")}
+            variant="outline"
             size="lg"
-            className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity"
           >
             <RotateCcw className="w-4 h-4 mr-2" />
-            Refine answers
+            Adjust your preferences
           </Button>
-        </Card>
+        </div>
       </div>
     </div>
   );
