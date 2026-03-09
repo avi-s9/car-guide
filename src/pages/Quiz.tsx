@@ -1,11 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, RotateCcw } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import { ArrowLeft, ArrowRight, RotateCcw, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Progress } from "@/components/ui/progress";
 import {
   DrivingMix,
@@ -22,15 +19,19 @@ import {
 } from "@/lib/quizEngine";
 import { toast } from "sonner";
 
-const priorityOptions: Priority[] = [
-  "Balanced",
-  "Lowest price",
-  "Best fuel economy",
-  "Most comfortable",
-  "Sportiest",
+const priorityOptions: { value: Priority; label: string; desc: string }[] = [
+  { value: "Balanced", label: "Balanced", desc: "Best overall mix of price, MPG, comfort & performance" },
+  { value: "Lowest price", label: "Lowest price", desc: "Prioritize the most affordable options" },
+  { value: "Best fuel economy", label: "Best fuel economy", desc: "Maximize miles per gallon" },
+  { value: "Most comfortable", label: "Most comfortable", desc: "Emphasize ride quality and comfort features" },
+  { value: "Sportiest", label: "Sportiest", desc: "Emphasize driving dynamics and performance" },
 ];
 
-const drivingMixOptions: DrivingMix[] = ["Mostly city", "Mostly highway", "Mix"];
+const drivingMixOptions: { value: DrivingMix; label: string; desc: string }[] = [
+  { value: "Mostly city", label: "Mostly city", desc: "Stop-and-go, short trips, urban driving" },
+  { value: "Mostly highway", label: "Mostly highway", desc: "Long commutes, road trips, steady speed" },
+  { value: "Mix", label: "Mix of both", desc: "A balanced blend of city and highway" },
+];
 
 const STEPS = ["Budget", "Vehicle & Fuel", "Driving", "Priority"] as const;
 
@@ -102,9 +103,7 @@ const Quiz = () => {
 
   const handleSubmit = () => {
     setHasSubmitted(true);
-    if (!filteredCars.length) {
-      return;
-    }
+    if (!filteredCars.length) return;
 
     const rankedCars = rankCars(filteredCars, drivingMix, priority).slice(0, 10);
     const recommendations = rankedCars.map((car) => {
@@ -138,10 +137,11 @@ const Quiz = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background flex items-center justify-center">
-        <Card className="p-8 text-center max-w-md w-full">
-          <p className="text-muted-foreground">Loading quiz…</p>
-        </Card>
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center space-y-3">
+          <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto" />
+          <p className="text-sm text-muted-foreground">Loading quiz…</p>
+        </div>
       </div>
     );
   }
@@ -149,38 +149,50 @@ const Quiz = () => {
   const noMatches = hasSubmitted && filteredCars.length === 0;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
-      <div className="container mx-auto px-4 py-12 max-w-2xl">
-        <button
-          onClick={() => navigate("/")}
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Back
-        </button>
-
-        {/* Progress */}
-        <div className="mb-8">
-          <div className="flex items-center justify-between text-xs text-muted-foreground mb-2">
-            <span>Step {currentStep + 1} of {STEPS.length}</span>
-            <span>{STEPS[currentStep]}</span>
-          </div>
-          <Progress value={progress} className="h-2" />
+    <div className="min-h-screen bg-background">
+      <div className="container mx-auto px-4 md:px-6 py-8 md:py-12 max-w-xl">
+        {/* Top bar */}
+        <div className="flex items-center justify-between mb-8">
+          <button
+            onClick={() => currentStep > 0 ? setCurrentStep((s) => s - 1) : navigate("/")}
+            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            {currentStep > 0 ? "Back" : "Home"}
+          </button>
+          <button
+            onClick={handleReset}
+            className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <RotateCcw className="w-3 h-3" />
+            Reset
+          </button>
         </div>
 
-        <Card className="p-8 md:p-10 shadow-lg border-border/60">
+        {/* Progress */}
+        <div className="mb-10">
+          <div className="flex items-center justify-between text-xs text-muted-foreground mb-2.5">
+            <span className="font-medium">Step {currentStep + 1} of {STEPS.length}</span>
+            <span>{STEPS[currentStep]}</span>
+          </div>
+          <Progress value={progress} className="h-1.5" />
+        </div>
+
+        {/* Steps */}
+        <div className="animate-fade-in" key={currentStep}>
           {/* Step 0: Budget */}
           {currentStep === 0 && (
-            <section className="space-y-6">
+            <section className="space-y-8">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-2">What's your budget?</h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-2 text-foreground">What's your budget?</h2>
                 <p className="text-muted-foreground">Set your comfortable price range.</p>
               </div>
-              <div className="space-y-6">
+              <div className="space-y-8">
                 <div>
-                  <Label className="text-sm text-muted-foreground mb-3 block">
-                    Minimum: <span className="font-semibold text-foreground">{formatCurrency(budgetMin)}</span>
-                  </Label>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-sm text-muted-foreground">Minimum</span>
+                    <span className="text-lg font-semibold text-foreground">{formatCurrency(budgetMin)}</span>
+                  </div>
                   <Slider
                     min={budgetBounds.min}
                     max={budgetBounds.max}
@@ -191,9 +203,10 @@ const Quiz = () => {
                   />
                 </div>
                 <div>
-                  <Label className="text-sm text-muted-foreground mb-3 block">
-                    Maximum: <span className="font-semibold text-foreground">{formatCurrency(budgetMax)}</span>
-                  </Label>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-sm text-muted-foreground">Maximum</span>
+                    <span className="text-lg font-semibold text-foreground">{formatCurrency(budgetMax)}</span>
+                  </div>
                   <Slider
                     min={budgetBounds.min}
                     max={budgetBounds.max}
@@ -204,6 +217,9 @@ const Quiz = () => {
                   />
                 </div>
               </div>
+              <div className="text-center text-sm text-muted-foreground pt-2">
+                {filteredCars.length} cars in this range
+              </div>
             </section>
           )}
 
@@ -211,72 +227,86 @@ const Quiz = () => {
           {currentStep === 1 && (
             <section className="space-y-8">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-2">Vehicle & fuel type</h2>
-                <p className="text-muted-foreground">Select any that interest you, or skip for no preference.</p>
+                <h2 className="text-2xl md:text-3xl font-bold mb-2 text-foreground">What type of car?</h2>
+                <p className="text-muted-foreground">Select any that interest you, or skip for all.</p>
               </div>
-              <div className="space-y-3">
-                <Label className="text-sm font-semibold">Vehicle type</Label>
-                <div className="flex flex-wrap gap-2">
-                  {availableVehicleTypes.map((type) => {
-                    const selected = selectedVehicleTypes.includes(type);
-                    return (
-                      <Button
-                        key={type}
-                        type="button"
-                        variant={selected ? "default" : "outline"}
-                        onClick={() => toggleVehicleType(type)}
-                        aria-pressed={selected}
-                        className="rounded-full px-5 py-2.5 text-sm"
-                      >
-                        {type}
-                      </Button>
-                    );
-                  })}
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-sm font-medium text-muted-foreground mb-3">Vehicle type</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {availableVehicleTypes.map((type) => {
+                      const selected = selectedVehicleTypes.includes(type);
+                      return (
+                        <button
+                          key={type}
+                          type="button"
+                          onClick={() => toggleVehicleType(type)}
+                          aria-pressed={selected}
+                          className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2.5 text-sm font-medium border transition-all ${
+                            selected
+                              ? "bg-primary text-primary-foreground border-primary shadow-card"
+                              : "bg-card text-foreground border-border hover:border-primary/40"
+                          }`}
+                        >
+                          {selected && <Check className="w-3.5 h-3.5" />}
+                          {type}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-sm font-medium text-muted-foreground mb-3">Fuel type</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {availableFuelTypes.map((fuelType) => {
+                      const selected = selectedFuelTypes.includes(fuelType);
+                      return (
+                        <button
+                          key={fuelType}
+                          type="button"
+                          onClick={() => toggleFuelType(fuelType)}
+                          aria-pressed={selected}
+                          className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2.5 text-sm font-medium border transition-all ${
+                            selected
+                              ? "bg-primary text-primary-foreground border-primary shadow-card"
+                              : "bg-card text-foreground border-border hover:border-primary/40"
+                          }`}
+                        >
+                          {selected && <Check className="w-3.5 h-3.5" />}
+                          {fuelType}
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
-              <div className="space-y-3">
-                <Label className="text-sm font-semibold">Fuel type</Label>
-                <div className="flex flex-wrap gap-2">
-                  {availableFuelTypes.map((fuelType) => {
-                    const selected = selectedFuelTypes.includes(fuelType);
-                    return (
-                      <Button
-                        key={fuelType}
-                        type="button"
-                        variant={selected ? "default" : "outline"}
-                        onClick={() => toggleFuelType(fuelType)}
-                        aria-pressed={selected}
-                        className="rounded-full px-5 py-2.5 text-sm"
-                      >
-                        {fuelType}
-                      </Button>
-                    );
-                  })}
-                </div>
+              <div className="text-center text-sm text-muted-foreground pt-2">
+                {filteredCars.length} matches
               </div>
             </section>
           )}
 
           {/* Step 2: Driving */}
           {currentStep === 2 && (
-            <section className="space-y-6">
+            <section className="space-y-8">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-2">How do you drive?</h2>
-                <p className="text-muted-foreground">This helps us pick the right MPG metric.</p>
+                <h2 className="text-2xl md:text-3xl font-bold mb-2 text-foreground">How do you drive?</h2>
+                <p className="text-muted-foreground">This helps us pick the right efficiency metric.</p>
               </div>
-              <div className="flex flex-col gap-3">
+              <div className="space-y-3">
                 {drivingMixOptions.map((option) => (
                   <button
-                    key={option}
+                    key={option.value}
                     type="button"
-                    onClick={() => setDrivingMix(option)}
-                    className={`w-full text-left px-5 py-4 rounded-xl border-2 text-sm font-medium transition-all ${
-                      drivingMix === option
-                        ? "border-primary bg-primary/5 text-foreground"
-                        : "border-border hover:border-primary/40 text-muted-foreground"
+                    onClick={() => setDrivingMix(option.value)}
+                    className={`w-full text-left p-4 rounded-xl border-2 transition-all ${
+                      drivingMix === option.value
+                        ? "border-primary bg-primary/5"
+                        : "border-border hover:border-primary/30 bg-card"
                     }`}
                   >
-                    {option}
+                    <div className="font-medium text-foreground">{option.label}</div>
+                    <div className="text-sm text-muted-foreground mt-0.5">{option.desc}</div>
                   </button>
                 ))}
               </div>
@@ -285,82 +315,65 @@ const Quiz = () => {
 
           {/* Step 3: Priority */}
           {currentStep === 3 && (
-            <section className="space-y-6">
+            <section className="space-y-8">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-2">What matters most?</h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-2 text-foreground">What matters most?</h2>
                 <p className="text-muted-foreground">We'll weight your results accordingly.</p>
               </div>
-              <RadioGroup
-                value={priority}
-                onValueChange={(value) => setPriority(value as Priority)}
-                className="flex flex-col gap-3"
-              >
+              <div className="space-y-3">
                 {priorityOptions.map((option) => (
-                  <label
-                    key={option}
-                    htmlFor={`priority-${option.replace(/\s+/g, "-").toLowerCase()}`}
-                    className={`flex items-center gap-3 rounded-xl border-2 px-5 py-4 cursor-pointer transition-all ${
-                      priority === option
+                  <button
+                    key={option.value}
+                    type="button"
+                    onClick={() => setPriority(option.value)}
+                    className={`w-full text-left p-4 rounded-xl border-2 transition-all ${
+                      priority === option.value
                         ? "border-primary bg-primary/5"
-                        : "border-border hover:border-primary/40"
+                        : "border-border hover:border-primary/30 bg-card"
                     }`}
                   >
-                    <RadioGroupItem
-                      value={option}
-                      id={`priority-${option.replace(/\s+/g, "-").toLowerCase()}`}
-                    />
-                    <span className="text-sm font-medium">{option}</span>
-                  </label>
+                    <div className="font-medium text-foreground">{option.label}</div>
+                    <div className="text-sm text-muted-foreground mt-0.5">{option.desc}</div>
+                  </button>
                 ))}
-              </RadioGroup>
+              </div>
             </section>
           )}
+        </div>
 
-          {/* No matches warning */}
-          {noMatches && currentStep === 3 && (
-            <Card className="mt-6 p-4 border-destructive/50 bg-destructive/5">
-              <p className="font-medium mb-2">No cars match those filters.</p>
-              <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
-                <li>Widen your budget range.</li>
-                <li>Select fewer vehicle types.</li>
-                <li>Clear fuel-type filters.</li>
-              </ul>
-            </Card>
-          )}
-
-          {/* Navigation */}
-          <div className="flex items-center justify-between mt-8 pt-6 border-t border-border/60">
-            <div className="flex gap-2">
-              {currentStep > 0 && (
-                <Button variant="outline" onClick={() => setCurrentStep((s) => s - 1)}>
-                  Back
-                </Button>
-              )}
-              <Button variant="ghost" size="sm" onClick={handleReset} className="text-muted-foreground">
-                <RotateCcw className="w-3.5 h-3.5 mr-1.5" />
-                Reset
-              </Button>
-            </div>
-
-            <div className="flex items-center gap-3">
-              {currentStep < STEPS.length - 1 && (
-                <>
-                  <span className="text-xs text-muted-foreground">{filteredCars.length} matches</span>
-                  <Button onClick={() => setCurrentStep((s) => s + 1)}
-                    className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity px-6">
-                    Next
-                  </Button>
-                </>
-              )}
-              {currentStep === STEPS.length - 1 && (
-                <Button onClick={handleSubmit}
-                  className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity px-8">
-                  Get recommendations
-                </Button>
-              )}
-            </div>
+        {/* No matches warning */}
+        {noMatches && currentStep === 3 && (
+          <div className="mt-6 p-4 rounded-xl border border-destructive/30 bg-destructive/5 animate-fade-in">
+            <p className="font-medium text-foreground mb-2">No cars match those filters.</p>
+            <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
+              <li>Widen your budget range</li>
+              <li>Select fewer vehicle types</li>
+              <li>Clear fuel-type filters</li>
+            </ul>
           </div>
-        </Card>
+        )}
+
+        {/* Navigation */}
+        <div className="flex items-center justify-end mt-10 pt-6 border-t border-border">
+          {currentStep < STEPS.length - 1 ? (
+            <Button
+              onClick={() => setCurrentStep((s) => s + 1)}
+              className="px-6"
+            >
+              Next
+              <ArrowRight className="ml-2 w-4 h-4" />
+            </Button>
+          ) : (
+            <Button
+              onClick={handleSubmit}
+              className="px-8"
+              size="lg"
+            >
+              Get recommendations
+              <ArrowRight className="ml-2 w-4 h-4" />
+            </Button>
+          )}
+        </div>
       </div>
     </div>
   );
