@@ -161,7 +161,6 @@ const Quiz = () => {
       ? backendBodyStyleMap[selectedVehicleTypes[0]][0] ?? null
       : null;
 
-    const translatedBodyStyles = selectedVehicleTypes.flatMap((type) => backendBodyStyleMap[type]);
 
     const priorityTags: string[] = [...priorityTagMap[priority]];
     if (drivingMix === "Mostly city") {
@@ -177,7 +176,6 @@ const Quiz = () => {
             budgetLow: budgetMin,
             budgetHigh: budgetMax,
             bodyStyle: selectedPrimaryBodyStyle,
-            bodyStyles: translatedBodyStyles,
             priorities: priorityTags,
             comfort_weight: selectedWeights.comfort,
             sportiness_weight: selectedWeights.sporty,
