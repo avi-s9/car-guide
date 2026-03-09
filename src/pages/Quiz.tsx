@@ -71,7 +71,12 @@ const extractRecommendationMsrp = (recommendation: { msrp?: unknown; priceRange?
     return null;
   }
 
-  const numericPrice = Number(recommendation.priceRange.replace(/[^\d.]/g, ""));
+  const firstMoneyLikeValue = recommendation.priceRange.match(/\d[\d,]*(?:\.\d+)?/);
+  if (!firstMoneyLikeValue) {
+    return null;
+  }
+
+  const numericPrice = Number(firstMoneyLikeValue[0].replace(/,/g, ""));
   return Number.isFinite(numericPrice) && numericPrice > 0 ? numericPrice : null;
 };
 
