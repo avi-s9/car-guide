@@ -49,7 +49,11 @@ const priorityWeightMap: Record<Priority, { price: number; mpg: number; comfort:
   Sportiest: { price: 0.15, mpg: 0.15, comfort: 0.1, sporty: 0.6 },
 };
 
-const drivingMixOptions: DrivingMix[] = ["Mostly city", "Mostly highway", "Mix"];
+const drivingMixOptions: { value: DrivingMix; label: string; desc: string }[] = [
+  { value: "Mostly city", label: "Mostly city", desc: "Stop-and-go, short trips, urban driving" },
+  { value: "Mostly highway", label: "Mostly highway", desc: "Long commutes, road trips, steady speed" },
+  { value: "Mix", label: "Mix of both", desc: "A balanced blend of city and highway" },
+];
 
 const backendBodyStyleMap: Record<VehicleType, string[]> = {
   Sedan: ["Cars", "Sedan", "Wagons"],
@@ -384,16 +388,17 @@ const Quiz = () => {
               <div className="flex flex-col gap-3">
                 {drivingMixOptions.map((option) => (
                   <button
-                    key={option}
+                    key={option.value}
                     type="button"
-                    onClick={() => setDrivingMix(option)}
-                    className={`w-full text-left px-5 py-4 rounded-xl border-2 text-sm font-medium transition-all ${
-                      drivingMix === option
+                    onClick={() => setDrivingMix(option.value)}
+                    className={`w-full text-left px-5 py-4 rounded-xl border-2 transition-all ${
+                      drivingMix === option.value
                         ? "border-primary bg-primary/5 text-foreground"
                         : "border-border hover:border-primary/40 text-muted-foreground"
                     }`}
                   >
-                    {option}
+                    <p className="text-sm font-semibold">{option.label}</p>
+                    <p className="text-xs text-muted-foreground mt-1">{option.desc}</p>
                   </button>
                 ))}
               </div>
@@ -435,8 +440,8 @@ const Quiz = () => {
 
           {/* No matches warning */}
           {noMatches && currentStep === 3 && (
-            <Card className="mt-6 p-4 border-destructive/50 bg-destructive/5">
-              <p className="font-medium mb-2">No cars match those filters.</p>
+            <Card className="mt-6 p-4 rounded-xl border border-destructive/30 bg-destructive/5 animate-fade-in">
+              <p className="font-medium text-foreground mb-2">No cars match those filters.</p>
               <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
                 <li>Widen your budget range.</li>
                 <li>Select fewer vehicle types.</li>
