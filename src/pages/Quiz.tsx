@@ -34,6 +34,21 @@ const drivingMixOptions: { value: DrivingMix; label: string; desc: string }[] = 
 
 const STEPS = ["Budget", "Vehicle & Fuel", "Driving", "Priority"] as const;
 
+const QUIZ_VEHICLE_TYPE_BODY_STYLE_MAP: Record<VehicleType, string[]> = {
+  Sedan: ["sedan", "compact car", "midsize car", "subcompact car", "wagon"],
+  SUV: ["suv", "sport utility", "crossover"],
+  Hatchback: ["hatchback"],
+  Coupe: ["coupe", "two seater", "convertible", "roadster"],
+  Truck: ["truck", "pickup", "pick-up"],
+  Other: [],
+};
+
+const getBodyStyleHints = (vehicleTypes: VehicleType[]) => {
+  return Array.from(
+    new Set(vehicleTypes.flatMap((vehicleType) => QUIZ_VEHICLE_TYPE_BODY_STYLE_MAP[vehicleType] ?? [])),
+  );
+};
+
 const Quiz = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
@@ -105,7 +120,10 @@ const Quiz = () => {
     setHasSubmitted(true);
     if (!filteredCars.length) return;
 
-    const userInput = `Guided quiz: ${formatCurrency(budgetMin)}-${formatCurrency(budgetMax)}, vehicle type ${selectedVehicleTypes.length ? selectedVehicleTypes.join(", ") : "No preference"}, fuel ${selectedFuelTypes.length ? selectedFuelTypes.join(", ") : "No preference"}, driving ${drivingMix}, priority ${priority}`;
+    const bodyStyles = getBodyStyleHints(selectedVehicleTypes);
+    const vehicleTypeSummary = selectedVehicleTypes.length ? selectedVehicleTypes.join(", ") : "No preference";
+    const bodyStyleSummary = bodyStyles.length ? ` (${bodyStyles.join(", ")})` : "";
+    const userInput = `Guided quiz: ${formatCurrency(budgetMin)}-${formatCurrency(budgetMax)}, vehicle type ${vehicleTypeSummary}${bodyStyleSummary}, fuel ${selectedFuelTypes.length ? selectedFuelTypes.join(", ") : "No preference"}, driving ${drivingMix}, priority ${priority}`;
 
     const priorities = [priority.toLowerCase()];
     if (drivingMix !== "Mix") {
@@ -120,7 +138,8 @@ const Quiz = () => {
           preferences: {
             budgetLow: budgetMin,
             budgetHigh: budgetMax,
-            bodyStyle: selectedVehicleTypes[0] ?? null,
+            bodyStyle: bodyStyles[0] ?? null,
+            bodyStyles,
             priorities,
             comfort_weight: priority === "Most comfortable" ? 2 : 1,
             sportiness_weight: priority === "Sportiest" ? 2 : 1,

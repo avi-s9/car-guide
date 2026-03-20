@@ -10,6 +10,7 @@ const basePrefs = {
   budgetLow: 0,
   budgetHigh: 0,
   bodyStyle: null,
+  bodyStyles: [],
   priorities: [] as string[],
   comfort_weight: 0,
   sportiness_weight: 0,
