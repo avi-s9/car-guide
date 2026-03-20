@@ -11,6 +11,7 @@ interface Preferences {
   budgetLow: number;
   budgetHigh: number;
   bodyStyle: string | null;
+  bodyStyles?: string[];
   priorities: string[];
   comfort_weight: number;
   sportiness_weight: number;
@@ -1007,13 +1008,20 @@ const scoreCar = (
   let matchBonus = scoreBonus;
 
   let bodyStyleMatches = false;
-  if (prefs.bodyStyle && car.type !== "Unknown") {
+  const preferredBodyStyles = Array.from(new Set([
+    ...(prefs.bodyStyles ?? []),
+    ...(prefs.bodyStyle ? [prefs.bodyStyle] : []),
+  ]));
+  if (preferredBodyStyles.length > 0 && car.type !== "Unknown") {
     const normalizedCarType = normalizeValue(car.type);
-    const normalizedPrefType = normalizeValue(prefs.bodyStyle);
-    if (
-      normalizedCarType.includes(normalizedPrefType) ||
-      normalizedPrefType.includes(normalizedCarType)
-    ) {
+    const matchingBodyStyle = preferredBodyStyles.find((bodyStyle) => {
+      const normalizedPrefType = normalizeValue(bodyStyle);
+      return (
+        normalizedCarType.includes(normalizedPrefType) ||
+        normalizedPrefType.includes(normalizedCarType)
+      );
+    });
+    if (matchingBodyStyle) {
       bodyStyleMatches = true;
       addReason(reasons, `${car.type} body style matches your preference`);
     }
@@ -1230,6 +1238,9 @@ serve(async (req) => {
       budgetLow: preferences?.budgetLow ?? 0,
       budgetHigh: preferences?.budgetHigh ?? 0,
       bodyStyle: preferences?.bodyStyle ?? null,
+      bodyStyles: Array.isArray(preferences?.bodyStyles)
+        ? preferences.bodyStyles.filter((bodyStyle: unknown): bodyStyle is string => typeof bodyStyle === "string")
+        : [],
       priorities: Array.isArray(preferences?.priorities)
         ? preferences.priorities
         : [],
@@ -1258,6 +1269,11 @@ serve(async (req) => {
     const mergedPrefs: Preferences = {
       ...prefs,
       bodyStyle: prefs.bodyStyle ?? parsedHints.bodyStyle ?? null,
+      bodyStyles: Array.from(new Set([
+        ...(prefs.bodyStyles ?? []),
+        ...(prefs.bodyStyle ? [prefs.bodyStyle] : []),
+        ...(parsedHints.bodyStyle ? [parsedHints.bodyStyle] : []),
+      ])),
       priorities: Array.from(mergedPriorities),
       fuelTypeHint: parsedHints.fuelTypeHint ?? null,
       drivetrainHint: parsedHints.drivetrainHint ?? null,
@@ -1285,8 +1301,17 @@ serve(async (req) => {
       .eq("year", 2025)
       .limit(2000);
 
-    if (mergedPrefs.bodyStyle) {
-      query = query.ilike("vehicle_class", `%${mergedPrefs.bodyStyle}%`);
+    const preferredBodyStyles = mergedPrefs.bodyStyles?.length
+      ? mergedPrefs.bodyStyles
+      : mergedPrefs.bodyStyle
+        ? [mergedPrefs.bodyStyle]
+        : [];
+
+    if (preferredBodyStyles.length > 0) {
+      const vehicleClassFilter = preferredBodyStyles
+        .map((bodyStyle) => `vehicle_class.ilike.%${bodyStyle}%`)
+        .join(",");
+      query = query.or(vehicleClassFilter);
     }
 
     const { data, error } = await query;
