@@ -13,11 +13,10 @@ import {
   getAvailableFuelTypes,
   getAvailableVehicleTypes,
   getBudgetDefaults,
-  getMpgMetric,
   parseCarsCsv,
-  rankCars,
 } from "@/lib/quizEngine";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const priorityOptions: { value: Priority; label: string; desc: string }[] = [
   { value: "Balanced", label: "Balanced", desc: "Best overall mix of price, MPG, comfort & performance" },
@@ -40,6 +39,7 @@ const Quiz = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [currentStep, setCurrentStep] = useState(0);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [cars, setCars] = useState<ReturnType<typeof parseCarsCsv>>([]);
   const [budgetMin, setBudgetMin] = useState(0);
   const [budgetMax, setBudgetMax] = useState(0);
@@ -101,36 +101,54 @@ const Quiz = () => {
     setCurrentStep(0);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setHasSubmitted(true);
     if (!filteredCars.length) return;
 
-    const rankedCars = rankCars(filteredCars, drivingMix, priority).slice(0, 10);
-    const recommendations = rankedCars.map((car) => {
-      const mpgMetric = getMpgMetric(car, drivingMix);
-      return {
-        make: car.make,
-        model: car.model,
-        year: car.year,
-        type: car.vehicleClass,
-        priceRange: formatCurrency(car.msrp),
-        score: car.finalScore,
-        fuelEconomy: `${Math.round(mpgMetric.value)} ${mpgMetric.label}`,
-        safetyRating: null,
-        reasons: [
-          `Within your ${formatCurrency(budgetMin)}–${formatCurrency(budgetMax)} budget`,
-          `${Math.round(mpgMetric.value)} ${mpgMetric.label}`,
-          priority === "Balanced"
-            ? "Strong overall balance across price, MPG, comfort and sportiness"
-            : `Ranked high for ${priority.toLowerCase()}`,
-        ],
-        aiExplanation: `High match for ${priority.toLowerCase()} with strong ${mpgMetric.label.toLowerCase()} and fit in your selected budget.`,
-      };
-    });
-
     const userInput = `Guided quiz: ${formatCurrency(budgetMin)}-${formatCurrency(budgetMax)}, vehicle type ${selectedVehicleTypes.length ? selectedVehicleTypes.join(", ") : "No preference"}, fuel ${selectedFuelTypes.length ? selectedFuelTypes.join(", ") : "No preference"}, driving ${drivingMix}, priority ${priority}`;
 
-    navigate("/results", { state: { recommendations, userInput } });
+    const priorities = [priority.toLowerCase()];
+    if (drivingMix !== "Mix") {
+      priorities.push("fuel economy");
+    }
+
+    try {
+      setIsSubmitting(true);
+      const { data, error } = await supabase.functions.invoke("recommend", {
+        body: {
+          userInput,
+          preferences: {
+            budgetLow: budgetMin,
+            budgetHigh: budgetMax,
+            bodyStyle: selectedVehicleTypes[0] ?? null,
+            priorities,
+            comfort_weight: priority === "Most comfortable" ? 2 : 1,
+            sportiness_weight: priority === "Sportiest" ? 2 : 1,
+            price_weight: priority === "Lowest price" ? 2 : 1,
+            fuelTypeHint: selectedFuelTypes[0] ?? null,
+            drivetrainHint: null,
+            transmissionHint: null,
+            efficiencyHint: priority === "Best fuel economy" ? "high" : null,
+          },
+        },
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      const recommendations = data?.recommendations;
+      if (!Array.isArray(recommendations) || recommendations.length === 0) {
+        throw new Error("No recommendations returned");
+      }
+
+      navigate("/results", { state: { recommendations, userInput } });
+    } catch (error) {
+      console.error("Failed to fetch recommendations", error);
+      toast.error("Couldn't fetch AI recommendations. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const progress = ((currentStep + 1) / STEPS.length) * 100;
@@ -368,9 +386,10 @@ const Quiz = () => {
               onClick={handleSubmit}
               className="px-8"
               size="lg"
+              disabled={isSubmitting}
             >
-              Get recommendations
-              <ArrowRight className="ml-2 w-4 h-4" />
+              {isSubmitting ? "Generating recommendations..." : "Get recommendations"}
+              {!isSubmitting && <ArrowRight className="ml-2 w-4 h-4" />}
             </Button>
           )}
         </div>
