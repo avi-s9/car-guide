@@ -11,9 +11,11 @@ import {
   filterCars,
   formatCurrency,
   getAvailableFuelTypes,
+  getMpgMetric,
   getAvailableVehicleTypes,
   getBudgetDefaults,
   parseCarsCsv,
+  rankCars,
 } from "@/lib/quizEngine";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
@@ -47,6 +49,108 @@ const getBodyStyleHints = (vehicleTypes: VehicleType[]) => {
   return Array.from(
     new Set(vehicleTypes.flatMap((vehicleType) => QUIZ_VEHICLE_TYPE_BODY_STYLE_MAP[vehicleType] ?? [])),
   );
+};
+
+const getPriorityReason = (priority: Priority, vehicle: string) => {
+  switch (priority) {
+    case "Lowest price":
+      return `Keeps costs down with a competitive MSRP for a ${vehicle.toLowerCase()}`;
+    case "Best fuel economy":
+      return "Delivers strong fuel economy for daily driving";
+    case "Most comfortable":
+      return "Stands out for ride comfort and everyday refinement";
+    case "Sportiest":
+      return "Feels more engaging and responsive than most alternatives";
+    case "Balanced":
+    default:
+      return "Balances price, efficiency, comfort, and performance well";
+  }
+};
+
+const normalizeCarIdentity = (value: string) => value.trim().toLowerCase();
+
+const selectDiverseLocalCars = (
+  rankedCars: ReturnType<typeof rankCars>,
+  limit: number,
+  maxPerMake: number,
+) => {
+  const selected: ReturnType<typeof rankCars> = [];
+  const selectedVariants = new Set<string>();
+  const makeCounts = new Map<string, number>();
+
+  for (const car of rankedCars) {
+    if (selected.length >= limit) {
+      break;
+    }
+
+    const variantKey = [
+      normalizeCarIdentity(car.make),
+      normalizeCarIdentity(car.model),
+      car.year,
+    ].join("|");
+    if (selectedVariants.has(variantKey)) {
+      continue;
+    }
+
+    const normalizedMake = normalizeCarIdentity(car.make);
+    const makeCount = makeCounts.get(normalizedMake) ?? 0;
+    if (makeCount >= maxPerMake) {
+      continue;
+    }
+
+    selected.push(car);
+    selectedVariants.add(variantKey);
+    makeCounts.set(normalizedMake, makeCount + 1);
+  }
+
+  if (selected.length < limit) {
+    for (const car of rankedCars) {
+      if (selected.length >= limit) {
+        break;
+      }
+      const variantKey = [
+        normalizeCarIdentity(car.make),
+        normalizeCarIdentity(car.model),
+        car.year,
+      ].join("|");
+      if (selectedVariants.has(variantKey)) {
+        continue;
+      }
+      selected.push(car);
+      selectedVariants.add(variantKey);
+    }
+  }
+
+  return selected;
+};
+
+const buildLocalRecommendations = (
+  cars: ReturnType<typeof parseCarsCsv>,
+  drivingMix: DrivingMix,
+  priority: Priority,
+) => {
+  const rankedCars = rankCars(cars, drivingMix, priority);
+  return selectDiverseLocalCars(rankedCars, 3, 1)
+    .map((car) => {
+      const mpgMetric = getMpgMetric(car, drivingMix);
+      const reasons = [
+        getPriorityReason(priority, car.vehicleTypeBucket),
+        `${formatCurrency(car.msrp)} MSRP`,
+        `${Math.round(mpgMetric.value)} ${mpgMetric.label}`,
+      ];
+
+      return {
+        make: car.make,
+        model: car.model,
+        year: car.year,
+        priceRange: `${formatCurrency(car.msrp)} MSRP`,
+        reasons,
+        score: car.finalScore,
+        fuelEconomy: `${Math.round(car.combinedMpg)} combined MPG`,
+        type: car.vehicleClass || car.vehicleTypeBucket,
+        aiExplanation: undefined,
+      };
+    });
 };
 
 const Quiz = () => {
@@ -164,7 +268,15 @@ const Quiz = () => {
       navigate("/results", { state: { recommendations, userInput } });
     } catch (error) {
       console.error("Failed to fetch recommendations", error);
-      toast.error("Couldn't fetch AI recommendations. Please try again.");
+
+      const fallbackRecommendations = buildLocalRecommendations(filteredCars, drivingMix, priority);
+      if (!fallbackRecommendations.length) {
+        toast.error("Couldn't fetch AI recommendations. Please try again.");
+        return;
+      }
+
+      toast.warning("AI recommendations are unavailable right now, so we showed the best local matches instead.");
+      navigate("/results", { state: { recommendations: fallbackRecommendations, userInput } });
     } finally {
       setIsSubmitting(false);
     }
