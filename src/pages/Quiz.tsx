@@ -67,13 +67,70 @@ const getPriorityReason = (priority: Priority, vehicle: string) => {
   }
 };
 
+const normalizeCarIdentity = (value: string) => value.trim().toLowerCase();
+
+const selectDiverseLocalCars = (
+  rankedCars: ReturnType<typeof rankCars>,
+  limit: number,
+  maxPerMake: number,
+) => {
+  const selected: ReturnType<typeof rankCars> = [];
+  const selectedVariants = new Set<string>();
+  const makeCounts = new Map<string, number>();
+
+  for (const car of rankedCars) {
+    if (selected.length >= limit) {
+      break;
+    }
+
+    const variantKey = [
+      normalizeCarIdentity(car.make),
+      normalizeCarIdentity(car.model),
+      car.year,
+    ].join("|");
+    if (selectedVariants.has(variantKey)) {
+      continue;
+    }
+
+    const normalizedMake = normalizeCarIdentity(car.make);
+    const makeCount = makeCounts.get(normalizedMake) ?? 0;
+    if (makeCount >= maxPerMake) {
+      continue;
+    }
+
+    selected.push(car);
+    selectedVariants.add(variantKey);
+    makeCounts.set(normalizedMake, makeCount + 1);
+  }
+
+  if (selected.length < limit) {
+    for (const car of rankedCars) {
+      if (selected.length >= limit) {
+        break;
+      }
+      const variantKey = [
+        normalizeCarIdentity(car.make),
+        normalizeCarIdentity(car.model),
+        car.year,
+      ].join("|");
+      if (selectedVariants.has(variantKey)) {
+        continue;
+      }
+      selected.push(car);
+      selectedVariants.add(variantKey);
+    }
+  }
+
+  return selected;
+};
+
 const buildLocalRecommendations = (
   cars: ReturnType<typeof parseCarsCsv>,
   drivingMix: DrivingMix,
   priority: Priority,
 ) => {
-  return rankCars(cars, drivingMix, priority)
-    .slice(0, 3)
+  const rankedCars = rankCars(cars, drivingMix, priority);
+  return selectDiverseLocalCars(rankedCars, 3, 1)
     .map((car) => {
       const mpgMetric = getMpgMetric(car, drivingMix);
       const reasons = [
