@@ -117,6 +117,8 @@ interface HardRequirements {
   requireDrivetrainHint: string | null;
 }
 
+const RECOMMENDATION_LIMIT = 10;
+
 const normalizeValue = (value: string) => value.toLowerCase().replace(/\s+/g, "-");
 
 type ParsedHints = {
@@ -1226,6 +1228,9 @@ Only mention tradeoffs if they are important.
   return content;
 }
 
+const buildFallbackExplanation = (car: ScoredCar): string =>
+  `The ${car.year} ${car.make} ${car.model} is a strong match for your needs: ${car.reasons.join(" ")}.`;
+
 serve(async (req) => {
   // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
@@ -1402,7 +1407,7 @@ serve(async (req) => {
       scored: scoreCar(car, mergedPrefs, scoringBounds, weights, derivedPreferences),
     }));
 
-    const diverseTopCars = selectDiverseTopCars(scoredCars, 3, 1);
+    const diverseTopCars = selectDiverseTopCars(scoredCars, RECOMMENDATION_LIMIT, 1);
     const topRecommendationsWithDetails: (ScoredCar & {
       drive?: string | null;
       fuelType?: string | null;
@@ -1422,7 +1427,9 @@ serve(async (req) => {
         );
       } catch (e) {
         console.error("Error generating explanation for car:", e);
-        topRecommendationsWithDetails[i].aiExplanation = undefined;
+        topRecommendationsWithDetails[i].aiExplanation = buildFallbackExplanation(
+          topRecommendationsWithDetails[i],
+        );
       }
     }
 

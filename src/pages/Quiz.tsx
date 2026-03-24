@@ -35,6 +35,7 @@ const drivingMixOptions: { value: DrivingMix; label: string; desc: string }[] = 
 ];
 
 const STEPS = ["Budget", "Vehicle & Fuel", "Driving", "Priority"] as const;
+const RECOMMENDATION_LIMIT = 10;
 
 const QUIZ_VEHICLE_TYPE_BODY_STYLE_MAP: Record<VehicleType, string[]> = {
   Sedan: ["sedan", "compact car", "midsize car", "subcompact car", "wagon"],
@@ -130,7 +131,7 @@ const buildLocalRecommendations = (
   priority: Priority,
 ) => {
   const rankedCars = rankCars(cars, drivingMix, priority);
-  return selectDiverseLocalCars(rankedCars, 3, 1)
+  return selectDiverseLocalCars(rankedCars, RECOMMENDATION_LIMIT, 1)
     .map((car) => {
       const mpgMetric = getMpgMetric(car, drivingMix);
       const reasons = [
@@ -148,7 +149,7 @@ const buildLocalRecommendations = (
         score: car.finalScore,
         fuelEconomy: `${Math.round(car.combinedMpg)} combined MPG`,
         type: car.vehicleClass || car.vehicleTypeBucket,
-        aiExplanation: undefined,
+        aiExplanation: `This ${car.year} ${car.make} ${car.model} is a strong fit because it ${reasons[0].charAt(0).toLowerCase()}${reasons[0].slice(1)}.`,
       };
     });
 };
